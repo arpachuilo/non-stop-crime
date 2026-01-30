@@ -21,13 +21,19 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-Lobby="*res://src/Lobby/Lobby.cs"
 SteamSettings="*res://src/SteamNetworking/SteamSettings.tscn"
+Lobby="*res://src/Lobby/Lobby.cs"
 SettingsNode="*res://src/Settings/SettingsNode.cs"
 
 [debug_draw_3d]
 
 settings/addon_root_folder="res://addons/debug_draw_3d"
+
+[display]
+
+window/size/viewport_width=1920
+window/size/viewport_height=1080
+window/size/borderless=true
 
 [dotnet]
 
