@@ -2,14 +2,12 @@ using Godot;
 
 /// <summary>
 /// Character class that supports the following physics:
-/// - Multiple jumps
 /// - Ceiling detection to stop vertical momentum
 /// - Terminal velocity
 /// - Arbitrary gravity axis alignment
 ///
 /// Implementations are expected to override the following:
 /// - GetDirection()
-/// - GetJump()
 /// - LookAt()
 /// </summary>
 public partial class Character : CharacterBody3D {
