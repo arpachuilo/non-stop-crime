@@ -43,6 +43,7 @@ offset_right = 238.0
 offset_bottom = 648.0
 
 [node name="Host Steam" type="Button" parent="UI/VBoxContainer" unique_id=1177966307]
+visible = false
 layout_mode = 2
 text = "Host Steam"
 
@@ -51,6 +52,7 @@ layout_mode = 2
 text = "Host IP"
 
 [node name="Invite Overlay" type="Button" parent="UI/VBoxContainer" unique_id=2127824706]
+visible = false
 layout_mode = 2
 text = "Open Invite Overlay"
 
@@ -62,11 +64,13 @@ text = "Start Game"
 layout_mode = 2
 
 [node name="Join Steam" type="Button" parent="UI/VBoxContainer/HBoxContainer" unique_id=1752652902]
+visible = false
 layout_mode = 2
 text = "Join Lobby
 "
 
 [node name="Lobby ID" type="TextEdit" parent="UI/VBoxContainer/HBoxContainer" unique_id=539846346]
+visible = false
 layout_mode = 2
 size_flags_horizontal = 3
 
@@ -74,11 +78,13 @@ size_flags_horizontal = 3
 layout_mode = 2
 
 [node name="Join IP" type="Button" parent="UI/VBoxContainer/HBoxContainer2" unique_id=1074498743]
+visible = false
 layout_mode = 2
 text = "Join IP
 "
 
 [node name="Lobby IP" type="TextEdit" parent="UI/VBoxContainer/HBoxContainer2" unique_id=2004694253]
+visible = false
 layout_mode = 2
 size_flags_horizontal = 3
 text = "127.0.0.1"
@@ -88,6 +94,7 @@ layout_mode = 2
 size_flags_vertical = 3
 
 [node name="RichTextLabel" type="RichTextLabel" parent="UI/VBoxContainer/Members" unique_id=103982058]
+visible = false
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 4.826
@@ -106,6 +113,7 @@ offset_bottom = 64.0
 grow_horizontal = 0
 
 [node name="Online Friends" type="VBoxContainer" parent="UI" unique_id=1218869087]
+visible = false
 layout_mode = 1
 anchors_preset = 3
 anchor_left = 1.0
