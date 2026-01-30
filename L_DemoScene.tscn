@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://b00vxpbuhimvp"]
+[gd_scene format=3 uid="uid://b00vxpbuhimvp"]
 
 [ext_resource type="Script" uid="uid://bxaf4hbfmbfw0" path="res://src/Multiplayer/MultiplayerLevel.cs" id="1_6ci18"]
 [ext_resource type="PackedScene" uid="uid://cj7ucao0d5den" path="res://AC_Player.tscn" id="2_6ci18"]
