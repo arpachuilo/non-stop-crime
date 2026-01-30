@@ -2,7 +2,7 @@ using Godot;
 
 public partial class PlayerController : MultiplayerSynchronizer {
   [Export]
-  public Vector3 Direction { get; set; } = Vector3.Zero;
+  public Vector3 Direction { get; set; } = Vector3.Forward;
 
   [Export]
   public Vector3 Look { get; set; } = Vector3.Zero;
@@ -21,7 +21,7 @@ public partial class PlayerController : MultiplayerSynchronizer {
   private float _pitch = 0.0f;
   private float _yaw = 0.0f;
 
-  private Vector3 _previousDirection = Vector3.Zero;
+  private Vector3 _previousDirection = Vector3.Forward;
 
   public override void _Ready() {
     SetProcess(GetMultiplayerAuthority() == Multiplayer.GetUniqueId());
