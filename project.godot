@@ -21,6 +21,8 @@ config/icon="res://icon.svg"
 
 [autoload]
 
+SteamSettings="*res://src/SteamNetworking/SteamSettings.tscn"
+Lobby="*res://src/Lobby/Lobby.cs"
 SettingsNode="*res://src/Settings/SettingsNode.cs"
 
 [debug_draw_3d]
@@ -41,6 +43,7 @@ project/assembly_name="non-stop-crime"
 
 folder_colors={
 "res://addons/": "gray",
+"res://assets/": "purple",
 "res://external/": "gray",
 "res://levels/": "teal",
 "res://menus/": "orange",
