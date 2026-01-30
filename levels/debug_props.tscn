@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://dj4b3q747s03q"]
 
-[ext_resource type="PackedScene" uid="uid://d0pad10tpqfvf" path="res://levels/props/Skyscraper.tscn" id="1_gkect"]
+[ext_resource type="PackedScene" uid="uid://i6204ss4jj6q" path="res://levels/props/Skyscraper.tscn" id="1_gkect"]
 [ext_resource type="PackedScene" uid="uid://cj7ucao0d5den" path="res://AC_Player.tscn" id="2_jrkpo"]
 
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_gkect"]
