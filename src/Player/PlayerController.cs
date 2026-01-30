@@ -21,6 +21,8 @@ public partial class PlayerController : MultiplayerSynchronizer {
   private float _pitch = 0.0f;
   private float _yaw = 0.0f;
 
+  private Vector3 _previousDirection = Vector3.Zero;
+
   public override void _Ready() {
     SetProcess(GetMultiplayerAuthority() == Multiplayer.GetUniqueId());
     SetPhysicsProcess(GetMultiplayerAuthority() == Multiplayer.GetUniqueId());
@@ -66,7 +68,12 @@ public partial class PlayerController : MultiplayerSynchronizer {
         InputActions.move_fwd, InputActions.move_back
     );
 
+  if (movementInput != Vector2.Zero) {
     Direction = new Vector3(movementInput.X, 0, movementInput.Y);
+  } else
+  {
+    Direction = _previousDirection;
+  }
 
     // Get movement input for WASD
     var lookInput = Input.GetVector(
