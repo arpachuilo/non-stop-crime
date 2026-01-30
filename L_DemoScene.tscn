@@ -8,6 +8,10 @@
 [sub_resource type="PlaneMesh" id="PlaneMesh_6ci18"]
 size = Vector2(1000, 1000)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_6ci18"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_bmjc0"]
+
 [node name="L_DemoScene" type="Node3D" unique_id=1463421934 node_paths=PackedStringArray("SpawnLocation", "PlayerContainer")]
 script = ExtResource("1_r2psd")
 PlayerScene = ExtResource("2_6ci18")
@@ -33,3 +37,12 @@ transform = Transform3D(1, 0, 0, 0, 0.8537144, 0.52074146, 0, -0.52074146, 0.853
 [node name="Camera3D" type="Camera3D" parent="." unique_id=1793912464]
 transform = Transform3D(1, 0, 0, 0, 0.24483354, 0.9695651, 0, -0.9695651, 0.24483354, 0, 9.794, 0)
 fov = 90.0
+
+[node name="StaticBody3D2" type="StaticBody3D" parent="." unique_id=828839558]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.0670433, 0, -0.27054453)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D2" unique_id=37566856]
+shape = SubResource("BoxShape3D_6ci18")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D2/CollisionShape3D" unique_id=2076929172]
+mesh = SubResource("BoxMesh_bmjc0")

@@ -6,16 +6,16 @@ using System.Collections.Generic;
 /// </summary>
 public partial class LocalMultiplayerLevel : Node
 {
-	[Export]
-	public PackedScene PlayerScene;
+  [Export]
+  public PackedScene PlayerScene;
 
-	[Export]
-	public Node3D SpawnLocation;
+  [Export]
+  public Node3D SpawnLocation;
 
-	[Export]
-	public Node3D PlayerContainer;
+  [Export]
+  public Node3D PlayerContainer;
 
-	public Dictionary<int, Node> JoypadToPlayer = new();
+  public Dictionary<int, Node> JoypadToPlayer = new();
 
 	public Node KBPlayer = null;
 
@@ -30,11 +30,11 @@ public partial class LocalMultiplayerLevel : Node
 				return;
 			}
 
-			// Already assigned
-			if (JoypadToPlayer.ContainsKey(joypadEvent.Device))
-			{
-				return;
-			}
+      // Already assigned
+      if (JoypadToPlayer.ContainsKey(joypadEvent.Device))
+      {
+        return;
+      }
 
 			var player = AddPlayer(joypadEvent.Device);
 			JoypadToPlayer[joypadEvent.Device] = player;
