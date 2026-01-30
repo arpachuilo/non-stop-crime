@@ -1,0 +1,32 @@
+[gd_scene format=3 uid="uid://i6204ss4jj6q"]
+
+[ext_resource type="Script" uid="uid://deh28pcq3hu8a" path="res://levels/props/Skyscraper.cs" id="1_c360q"]
+[ext_resource type="Texture2D" uid="uid://byypbk1dit0cw" path="res://levels/assets/Skyscraper_Buildings _pack_OldNinjaCat_v1.png" id="1_dglnq"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c360q"]
+atlas = ExtResource("1_dglnq")
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_oix73"]
+height = 3.0
+radius = 0.3
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x2i7h"]
+atlas = SubResource("AtlasTexture_c360q")
+region = Rect2(100, 126, 60, 258)
+
+[node name="SkyscraperRoot" type="Node3D" unique_id=1031286824]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0)
+script = ExtResource("1_c360q")
+Atlas = SubResource("AtlasTexture_c360q")
+
+[node name="SkyscraperStaticBody" type="StaticBody3D" parent="." unique_id=1434113344]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SkyscraperStaticBody" unique_id=681795113]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+shape = SubResource("CylinderShape3D_oix73")
+
+[node name="Sprite3D" type="Sprite3D" parent="SkyscraperStaticBody" unique_id=1191314548]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.29, 0)
+billboard = 2
+shaded = true
+texture = SubResource("AtlasTexture_x2i7h")

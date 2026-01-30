@@ -10,7 +10,8 @@ using Godot;
 /// - GetDirection()
 /// - LookAt()
 /// </summary>
-public partial class Character : CharacterBody3D {
+public partial class Character : CharacterBody3D
+{
   [Export]
   public Node3D Visual;
 
@@ -30,23 +31,36 @@ public partial class Character : CharacterBody3D {
   [Export] private bool _displayVelocity = false;
   [Export] private bool _displayGravity = false;
   [Export] private bool _displayForward = false;
+  [Export] public float MaxSpeed { get; set; } = 8.0f;
+  [Export] public float MinSpeed { get; set; } = 2.0f;
+  [Export] public float AccelerationRate { get; set; } = 1.0f;
+  [Export] public float CollisionSpeedPenalty { get; set; } = 0.8f;  // Lose 50%
+  [Export] public float CollisionMinSpeedThreshold { get; set; } = 3.0f;
+  protected float _currentSpeed = 2.0f;
+  protected float _collisionCooldown = 0f;
+  private const float CollisionCooldownDuration = 0.3f;
 
-  public Vector3 PreviousLocation {
+  public Vector3 PreviousLocation
+  {
     get => _previousPosition;
   }
 
-  public virtual Vector3 GetDirection() {
+  public virtual Vector3 GetDirection()
+  {
     return Vector3.Zero;
   }
 
-  public virtual void LookAt() {
+  public virtual void LookAt()
+  {
     // Create a normalized quaternion for the target direction
     var projectedForward = Vector3.Zero;
-    if (_velocity.Length() > 0f) {
+    if (_velocity.Length() > 0f)
+    {
       projectedForward = _velocity.Slide(UpDirection).Normalized();
     }
 
-    if (projectedForward == Vector3.Zero) {
+    if (projectedForward == Vector3.Zero)
+    {
       return;
     }
 
@@ -54,7 +68,8 @@ public partial class Character : CharacterBody3D {
     Visual.LookAt(projectedPosition, UpDirection);
   }
 
-  private void AlignToGravity(float delta) {
+  private void AlignToGravity(float delta)
+  {
     // Get current forward direction (before rotation)
     Vector3 currentForward = -GlobalTransform.Basis.Z;
 
@@ -64,12 +79,14 @@ public partial class Character : CharacterBody3D {
 
     // If the projection resulted in a zero vector (current forward parallel to gravity)
     // then we need to choose an arbitrary forward direction
-    if (projectedForward.LengthSquared() < 0.001f) {
+    if (projectedForward.LengthSquared() < 0.001f)
+    {
       // Choose an arbitrary reference vector
       Vector3 reference = Vector3.Right;
 
       // If gravity is nearly parallel to our reference, use a different reference
-      if (Mathf.Abs(-UpDirection.Dot(reference)) > 0.9f) {
+      if (Mathf.Abs(-UpDirection.Dot(reference)) > 0.9f)
+      {
         reference = Vector3.Forward;
       }
 
@@ -89,9 +106,18 @@ public partial class Character : CharacterBody3D {
     GlobalTransform = GlobalTransform.InterpolateWith(newTransform, delta * 1.5f);
   }
 
-  public override void _PhysicsProcess(double delta) {
+  public override void _PhysicsProcess(double delta)
+  {
     // Get what our "up" vector is
     var up = -GetGravity().Normalized();
+    var direction = GetDirection();
+
+    // Acceleration
+    if (direction != Vector3.Zero)
+    {
+      _currentSpeed = Mathf.MoveToward(_currentSpeed, MaxSpeed, AccelerationRate * (float)delta);
+    }
+
     UpDirection = up.IsZeroApprox() ? Vector3.Up : up;
 
     // Get what gravity should be
@@ -104,29 +130,33 @@ public partial class Character : CharacterBody3D {
     Vector3 verticalVelocity = _velocity - horizontalVelocity;
 
     // Handle Ceiling Hits
-    if (IsOnCeiling()) {
+    if (IsOnCeiling())
+    {
       verticalVelocity = Vector3.Zero;
     }
 
     // Handle gravity with terminal velocity
-    if (!IsOnFloor()) {
+    if (!IsOnFloor())
+    {
       Vector3 gravityDir = _gravity.Normalized();
       float currentFallSpeed = verticalVelocity.Dot(gravityDir); // Negative because we're falling
 
       // Only apply more gravity if we haven't reached terminal velocity
-      if (currentFallSpeed < _terminalVelocity) {
+      if (currentFallSpeed < _terminalVelocity)
+      {
         float gravityMultiplier = 2.5f; // Increased initial acceleration for snappier feel
         verticalVelocity += gravityMultiplier * _gravity * (float)delta;
 
         // Clamp to terminal velocity
-        if (currentFallSpeed > _terminalVelocity) {
+        if (currentFallSpeed > _terminalVelocity)
+        {
           verticalVelocity = gravityDir * _terminalVelocity;
         }
       }
     }
 
     // Update horizontal velocity with input direction
-    horizontalVelocity = horizontalVelocity / 1.0f + GetDirection() * Speed;
+    horizontalVelocity = horizontalVelocity / 1.0f + GetDirection() * _currentSpeed;
 
     // Apply drag
     horizontalVelocity /= Vector3.One + Drag * (float)delta;
@@ -142,6 +172,29 @@ public partial class Character : CharacterBody3D {
     Velocity = _velocity;
     MoveAndSlide();
 
+    // Deceleration collision detection
+    if (_collisionCooldown > 0)
+    {
+      _collisionCooldown -= (float)delta;
+    }
+
+    if (GetSlideCollisionCount() > 0 && _collisionCooldown <= 0)
+    {
+      for (int i = 0; i < GetSlideCollisionCount(); i++)
+      {
+        var collision = GetSlideCollision(i);
+        var normal = collision.GetNormal();
+        float verticalComponent = Mathf.Abs(normal.Dot(UpDirection));
+
+        if (verticalComponent < 0.5f)
+        {  // Wall (not floor/ceiling)
+          _currentSpeed = Mathf.Max(_currentSpeed * CollisionSpeedPenalty, CollisionMinSpeedThreshold);
+          _collisionCooldown = CollisionCooldownDuration;
+          break;
+        }
+      }
+    }
+
     // Perform gravity alignment
     AlignToGravity((float)delta);
 
@@ -149,16 +202,19 @@ public partial class Character : CharacterBody3D {
     LookAt();
 
     // Debug
-    if (_displayGravity) {
+    if (_displayGravity)
+    {
       DebugDraw3D.DrawArrow(GlobalPosition, GlobalPosition + _gravity.LimitLength(2f), Colors.Orange);
     }
 
-    if (_displayVelocity) {
+    if (_displayVelocity)
+    {
       DebugDraw3D.DrawArrow(GlobalPosition, GlobalPosition + horizontalVelocity.LimitLength(2f), Colors.Red);
       DebugDraw3D.DrawArrow(GlobalPosition, GlobalPosition + verticalVelocity.LimitLength(2f), Colors.Green);
     }
 
-    if (_displayForward) {
+    if (_displayForward)
+    {
       DebugDraw3D.DrawArrow(GlobalPosition, GlobalPosition + Visual.Forward(), Colors.Blue);
     }
   }

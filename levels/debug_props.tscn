@@ -1,3 +1,31 @@
 [gd_scene format=3 uid="uid://dj4b3q747s03q"]
 
+[ext_resource type="PackedScene" uid="uid://i6204ss4jj6q" path="res://levels/props/Skyscraper.tscn" id="1_gkect"]
+[ext_resource type="PackedScene" uid="uid://cj7ucao0d5den" path="res://AC_Player.tscn" id="2_jrkpo"]
+
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_gkect"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_jrkpo"]
+size = Vector2(1000, 1000)
+
 [node name="DebugProps" type="Node3D" unique_id=407639222]
+
+[node name="Skyscraper" parent="." unique_id=1031286824 instance=ExtResource("1_gkect")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.043816242, 0, -0.04835616)
+
+[node name="Floor" type="StaticBody3D" parent="." unique_id=426149682]
+
+[node name="Player" parent="." unique_id=1092909276 instance=ExtResource("2_jrkpo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 1.1203701, 1)
+
+[node name="Node3D" type="Node3D" parent="." unique_id=2055370371]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Node3D" unique_id=831389898]
+disable_mode = 1
+collision_layer = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Node3D/StaticBody3D" unique_id=1788690489]
+shape = SubResource("WorldBoundaryShape3D_gkect")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Node3D/StaticBody3D" unique_id=773935856]
+mesh = SubResource("PlaneMesh_jrkpo")

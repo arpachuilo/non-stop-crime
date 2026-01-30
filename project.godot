@@ -41,6 +41,7 @@ project/assembly_name="non-stop-crime"
 
 folder_colors={
 "res://addons/": "gray",
+"res://assets/": "purple",
 "res://external/": "gray",
 "res://levels/": "teal",
 "res://menus/": "orange",

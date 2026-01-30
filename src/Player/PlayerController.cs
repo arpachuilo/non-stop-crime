@@ -7,7 +7,9 @@ public partial class PlayerController : Node
 
 	public int DeviceId { get; set; } = -1;
 
-	public override void _Ready() {}
+	private Vector3 _previousDirection = Vector3.Zero;
+
+	public override void _Ready() { }
 
 	public override void _Input(InputEvent @event)
 	{
@@ -23,6 +25,14 @@ public partial class PlayerController : Node
 		float y = Input.GetJoyAxis(DeviceId, JoyAxis.LeftY);
 		Vector2 movementInput = new(x, y);
 
-		Direction = new Vector3(movementInput.X, 0, movementInput.Y);
+		if (movementInput.Length() > 0.0f)
+		{
+			Direction = new Vector3(movementInput.X, 0f, movementInput.Y).Normalized();
+			_previousDirection = Direction.Normalized();
+		}
+		else
+		{
+			Direction = _previousDirection;
+		}
 	}
 }
