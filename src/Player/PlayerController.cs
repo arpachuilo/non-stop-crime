@@ -25,7 +25,7 @@ public partial class PlayerController : Node
 		float y = Input.GetJoyAxis(DeviceId, JoyAxis.LeftY);
 		Vector2 movementInput = new(x, y);
 
-		if (movementInput.Length() > 0.0f)
+		if (movementInput.Length() > 0.1f)
 		{
 			Direction = new Vector3(movementInput.X, 0f, movementInput.Y).Normalized();
 			_previousDirection = Direction.Normalized();

@@ -34,7 +34,7 @@ public partial class Character : CharacterBody3D
   [Export] public float MaxSpeed { get; set; } = 8.0f;
   [Export] public float MinSpeed { get; set; } = 2.0f;
   [Export] public float AccelerationRate { get; set; } = 1.0f;
-  [Export] public float CollisionSpeedPenalty { get; set; } = 0.8f;  // Lose 50%
+  [Export] public float CollisionSpeedPenalty { get; set; } = 0.1f;
   [Export] public float CollisionMinSpeedThreshold { get; set; } = 3.0f;
   protected float _currentSpeed = 2.0f;
   protected float _collisionCooldown = 0f;
