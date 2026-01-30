@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://d0pad10tpqfvf"]
+
+[ext_resource type="Texture2D" uid="uid://byypbk1dit0cw" path="res://levels/assets/Skyscraper_Buildings _pack_OldNinjaCat_v1.png" id="1_dglnq"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_c360q"]
+radius = 0.3
+height = 3.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x2i7h"]
+atlas = ExtResource("1_dglnq")
+region = Rect2(98.16446, 121.75927, 64.76802, 260.97626)
+
+[node name="Skyscraper" type="Node3D" unique_id=1031286824]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=1434113344]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 1.5, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=681795113]
+shape = SubResource("CapsuleShape3D_c360q")
+
+[node name="Sprite3D" type="Sprite3D" parent="StaticBody3D" unique_id=1191314548]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.30896103, 0)
+billboard = 2
+shaded = true
+texture = SubResource("AtlasTexture_x2i7h")
