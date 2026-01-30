@@ -1,0 +1,19 @@
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "non-stop-crime", "non-stop-crime.csproj", "{55221B10-4208-4710-B6EF-987DDE901CF7}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+	Debug|Any CPU = Debug|Any CPU
+	ExportDebug|Any CPU = ExportDebug|Any CPU
+	ExportRelease|Any CPU = ExportRelease|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{55221B10-4208-4710-B6EF-987DDE901CF7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{55221B10-4208-4710-B6EF-987DDE901CF7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{55221B10-4208-4710-B6EF-987DDE901CF7}.ExportDebug|Any CPU.ActiveCfg = ExportDebug|Any CPU
+		{55221B10-4208-4710-B6EF-987DDE901CF7}.ExportDebug|Any CPU.Build.0 = ExportDebug|Any CPU
+		{55221B10-4208-4710-B6EF-987DDE901CF7}.ExportRelease|Any CPU.ActiveCfg = ExportRelease|Any CPU
+		{55221B10-4208-4710-B6EF-987DDE901CF7}.ExportRelease|Any CPU.Build.0 = ExportRelease|Any CPU
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,118 @@
+[gd_scene format=3 uid="uid://b3v4lwrnkkc6u"]
+
+[ext_resource type="Script" uid="uid://6gfevrtvlq6x" path="res://src/Menu.cs" id="1_3svc1"]
+[ext_resource type="Script" uid="uid://3sxipybp3ce2" path="res://src/Multiplayer/MultiplayerLevelManager.cs" id="1_p73yt"]
+
+[node name="MultiplayerLevelManager" type="Node" unique_id=1587746499 node_paths=PackedStringArray("_levelContainer", "_spawner")]
+script = ExtResource("1_p73yt")
+_levelContainer = NodePath("Level")
+_spawner = NodePath("LevelSpawner")
+
+[node name="Level" type="Node" parent="." unique_id=1291589545]
+
+[node name="LevelSpawner" type="MultiplayerSpawner" parent="." unique_id=1459517205]
+_spawnable_scenes = PackedStringArray("uid://b00vxpbuhimvp")
+spawn_path = NodePath("../Level")
+spawn_limit = 1
+
+[node name="UI" type="Control" parent="." unique_id=690150324 node_paths=PackedStringArray("HostSteamButton", "JoinSteamButton", "LobbyId", "HostIPButton", "JoinIPButton", "LobbyIP", "StartButton", "OpenInviteOverlayButton", "Members", "AvatarsContainer", "FriendsContainer")]
+process_mode = 3
+custom_minimum_size = Vector2(50, 128)
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_3svc1")
+HostSteamButton = NodePath("VBoxContainer/Host Steam")
+JoinSteamButton = NodePath("VBoxContainer/HBoxContainer/Join Steam")
+LobbyId = NodePath("VBoxContainer/HBoxContainer/Lobby ID")
+HostIPButton = NodePath("VBoxContainer/Host IP")
+JoinIPButton = NodePath("VBoxContainer/HBoxContainer2/Join IP")
+LobbyIP = NodePath("VBoxContainer/HBoxContainer2/Lobby IP")
+StartButton = NodePath("VBoxContainer/Start")
+OpenInviteOverlayButton = NodePath("VBoxContainer/Invite Overlay")
+Members = NodePath("VBoxContainer/Members/RichTextLabel")
+AvatarsContainer = NodePath("Avatars")
+FriendsContainer = NodePath("Online Friends")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI" unique_id=215335646]
+layout_mode = 0
+offset_right = 238.0
+offset_bottom = 648.0
+
+[node name="Host Steam" type="Button" parent="UI/VBoxContainer" unique_id=1177966307]
+layout_mode = 2
+text = "Host Steam"
+
+[node name="Host IP" type="Button" parent="UI/VBoxContainer" unique_id=1367683677]
+layout_mode = 2
+text = "Host IP"
+
+[node name="Invite Overlay" type="Button" parent="UI/VBoxContainer" unique_id=2127824706]
+layout_mode = 2
+text = "Open Invite Overlay"
+
+[node name="Start" type="Button" parent="UI/VBoxContainer" unique_id=1624687659]
+layout_mode = 2
+text = "Start Game"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UI/VBoxContainer" unique_id=1198676506]
+layout_mode = 2
+
+[node name="Join Steam" type="Button" parent="UI/VBoxContainer/HBoxContainer" unique_id=1752652902]
+layout_mode = 2
+text = "Join Lobby
+"
+
+[node name="Lobby ID" type="TextEdit" parent="UI/VBoxContainer/HBoxContainer" unique_id=539846346]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="UI/VBoxContainer" unique_id=526672546]
+layout_mode = 2
+
+[node name="Join IP" type="Button" parent="UI/VBoxContainer/HBoxContainer2" unique_id=1074498743]
+layout_mode = 2
+text = "Join IP
+"
+
+[node name="Lobby IP" type="TextEdit" parent="UI/VBoxContainer/HBoxContainer2" unique_id=2004694253]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "127.0.0.1"
+
+[node name="Members" type="Control" parent="UI/VBoxContainer" unique_id=1987134317]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="RichTextLabel" type="RichTextLabel" parent="UI/VBoxContainer/Members" unique_id=103982058]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 4.826
+offset_left = -1.0
+offset_top = 26.0
+offset_right = 0.0039978027
+offset_bottom = 176.0
+
+[node name="Avatars" type="HBoxContainer" parent="UI" unique_id=1408269786]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -64.0
+offset_bottom = 64.0
+grow_horizontal = 0
+
+[node name="Online Friends" type="VBoxContainer" parent="UI" unique_id=1218869087]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -40.0
+offset_top = -40.0
+grow_horizontal = 0
+grow_vertical = 0

@@ -1,0 +1,95 @@
+[gd_scene load_steps=8 format=3 uid="uid://cj7ucao0d5den"]
+
+[ext_resource type="Script" uid="uid://b2yg1oih5ffa5" path="res://src/Player/Player.cs" id="1_f76hg"]
+[ext_resource type="Script" uid="uid://c1rrgldwnt40" path="res://src/Player/PlayerController.cs" id="2_32haq"]
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_i6pfi"]
+properties/0/path = NodePath(".:position")
+properties/0/spawn = true
+properties/0/replication_mode = 1
+properties/1/path = NodePath(".:PlayerID")
+properties/1/spawn = true
+properties/1/replication_mode = 1
+properties/2/path = NodePath(".:_velocity")
+properties/2/spawn = true
+properties/2/replication_mode = 1
+properties/3/path = NodePath("MeshInstance3D:rotation")
+properties/3/spawn = true
+properties/3/replication_mode = 1
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_1w8sc"]
+properties/0/path = NodePath(".:Direction")
+properties/0/spawn = true
+properties/0/replication_mode = 1
+properties/1/path = NodePath(".:Look")
+properties/1/spawn = true
+properties/1/replication_mode = 1
+properties/2/path = NodePath(".:Jumping")
+properties/2/spawn = true
+properties/2/replication_mode = 1
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_bmjc0"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_5i8u7"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_f76hg"]
+size = Vector2(32, 32)
+
+[node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("NamePlate", "Avatar", "PlayerController", "_cameraPivot", "_cameraSpring", "_camera", "Visual")]
+collision_layer = 16
+collision_mask = 55
+floor_constant_speed = true
+floor_block_on_wall = false
+script = ExtResource("1_f76hg")
+NamePlate = NodePath("MeshInstance3D/NamePlate/Name")
+Avatar = NodePath("MeshInstance3D/NamePlate/Avatar")
+PlayerController = NodePath("PlayerController")
+_cameraPivot = NodePath("CameraPivot")
+_cameraSpring = NodePath("CameraPivot/SpringArm3D")
+_camera = NodePath("CameraPivot/SpringArm3D/Camera3D")
+Visual = NodePath("MeshInstance3D")
+Drag = Vector3(10, 10, 10)
+_jumpForce = 2.0
+_displayVelocity = true
+_displayGravity = true
+_displayForward = true
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
+replication_config = SubResource("SceneReplicationConfig_i6pfi")
+
+[node name="PlayerController" type="MultiplayerSynchronizer" parent="."]
+root_path = NodePath(".")
+replication_config = SubResource("SceneReplicationConfig_1w8sc")
+script = ExtResource("2_32haq")
+_lookAngleMax = 1.0471975511965976
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CapsuleShape3D_bmjc0")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+mesh = SubResource("CapsuleMesh_5i8u7")
+
+[node name="NamePlate" type="Node3D" parent="MeshInstance3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.313, 0)
+
+[node name="Avatar" type="Sprite3D" parent="MeshInstance3D/NamePlate"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.285, 0, 0)
+billboard = 1
+texture = SubResource("PlaceholderTexture2D_f76hg")
+
+[node name="Name" type="Label3D" parent="MeshInstance3D/NamePlate"]
+billboard = 2
+text = "Steve"
+horizontal_alignment = 0
+
+[node name="CameraPivot" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 0)
+
+[node name="SpringArm3D" type="SpringArm3D" parent="CameraPivot"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0)
+spring_length = 10.0
+
+[node name="Camera3D" type="Camera3D" parent="CameraPivot/SpringArm3D"]
+transform = Transform3D(1, 0, 0, 0, 0.925871, 0.377841, 0, -0.377841, 0.925871, 0, 2.45, 3.64)

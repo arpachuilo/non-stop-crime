@@ -1,0 +1,30 @@
+[*.cs]
+
+# CA1050: Declare types in namespaces
+dotnet_diagnostic.CA1050.severity = none
+
+# Braces - Google style: no line break before opening brace
+csharp_new_line_before_open_brace = none
+csharp_new_line_before_else = false
+csharp_new_line_before_catch = false
+csharp_new_line_before_finally = false
+
+# Braces should be used even when optional
+csharp_prefer_braces = false:none
+
+# Indentation - Google uses 2 spaces
+indent_size = 2
+indent_style = space
+
+# Naming rules - Private fields must start with underscore
+dotnet_naming_rule.private_fields_with_underscore.symbols = private_fields
+dotnet_naming_rule.private_fields_with_underscore.style = underscore_prefix
+dotnet_naming_rule.private_fields_with_underscore.severity = warning
+
+# Symbol specification - Define what counts as a private field
+dotnet_naming_symbols.private_fields.applicable_kinds = field
+dotnet_naming_symbols.private_fields.applicable_accessibilities = private
+
+# Naming style - Underscore prefix with camelCase
+dotnet_naming_style.underscore_prefix.required_prefix = _
+dotnet_naming_style.underscore_prefix.capitalization = camel_case

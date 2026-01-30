@@ -1,0 +1,23 @@
+<Project Sdk="Godot.NET.Sdk/4.5.1">
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <EnableDynamicLoading>true</EnableDynamicLoading>
+	<RootNamespace>GodotGameUtil</RootNamespace>
+	<GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+	<GenerateTargetFrameworkAttribute>false</GenerateTargetFrameworkAttribute>
+  </PropertyGroup>
+
+  <ItemGroup>
+	<AdditionalFiles Include="project.godot" Condition="Exists('project.godot')" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Remove="_Generators\**\*.cs" />
+    <Compile Remove="_Analyzers\**\*.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+	<ProjectReference Include="_Generators\Generators.csproj" OutputItemType="Analyzer" />
+	<ProjectReference Include="_Analyzers\Analyzers.csproj" OutputItemType="Analyzer" ReferenceOutputAssembly="false" />
+  </ItemGroup>
+</Project>
