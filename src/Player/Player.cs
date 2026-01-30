@@ -9,7 +9,6 @@ public partial class Player : Character {
     set {
       _playerID = value;
       PlayerController.SetMultiplayerAuthority(_playerID);
-      SyncDetails();
     }
   }
 
@@ -56,22 +55,10 @@ public partial class Player : Character {
 
   public override void _EnterTree() {
     base._EnterTree();
-    Lobby.OnMembersUpdated += SyncDetails;
-
-    SyncDetails();
   }
 
   public override void _ExitTree() {
     base._EnterTree();
-    Lobby.OnMembersUpdated -= SyncDetails;
-  }
-
-  private void SyncDetails() {
-    if (Lobby.MemberByPeerID.ContainsKey(PlayerID)) {
-      Member = Lobby.MemberByPeerID[PlayerID];
-      NamePlate.Text = Member.Name;
-      Avatar.Texture = Member.AvatarSmall;
-    }
   }
 
   public override bool GetJump() {
