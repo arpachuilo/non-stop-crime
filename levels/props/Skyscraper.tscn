@@ -29,4 +29,5 @@ shape = SubResource("CylinderShape3D_oix73")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.29, 0)
 billboard = 2
 shaded = true
+texture_filter = 0
 texture = SubResource("AtlasTexture_x2i7h")

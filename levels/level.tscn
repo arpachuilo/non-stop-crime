@@ -1,4 +1,6 @@
-[gd_scene format=3 uid="uid://vr472n0ku81u"]
+[gd_scene format=3 uid="uid://dha85mpbnsgsa"]
+
+[ext_resource type="Shader" uid="uid://cxvp62bp8aq08" path="res://levels/assets/Backdrop.gdshader" id="1_80vhd"]
 
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_umreq"]
 
@@ -6,6 +8,24 @@
 
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_80vhd"]
 data = PackedVector3Array(-0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, -0.5)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_hjsbj"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_cwqvt"]
+render_priority = 0
+shader = ExtResource("1_80vhd")
+shader_parameter/top_color = Color(0.1, 0.14, 0.28, 1)
+shader_parameter/bottom_color = Color(0.03, 0.03, 0.04, 1)
+shader_parameter/boundary_y = 0.52
+shader_parameter/arc_curvature = 0.18
+shader_parameter/band_softness = 0.06
+shader_parameter/wobble_amp = 0.015
+shader_parameter/wobble_freq = 2.0
+shader_parameter/wobble_speed = 0.35
+shader_parameter/shimmer_amp = 0.006
+shader_parameter/shimmer_freq = 18.0
+shader_parameter/shimmer_speed = 1.2
+shader_parameter/noise_amount = 0.55
 
 [node name="Level" type="Node3D" unique_id=596543593]
 
@@ -59,3 +79,9 @@ skeleton = NodePath("")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="wall4/StaticBody3D" unique_id=642406714]
 shape = SubResource("ConcavePolygonShape3D_80vhd")
+
+[node name="Backdrop" type="MeshInstance3D" parent="." unique_id=361163437]
+transform = Transform3D(17.517313, 0, 0, 0, -4.3711392e-08, -7.311988, 0, 1.0000001, -3.1961716e-07, 0, 6.9632235, -10.960913)
+mesh = SubResource("PlaneMesh_hjsbj")
+skeleton = NodePath("")
+surface_material_override/0 = SubResource("ShaderMaterial_cwqvt")

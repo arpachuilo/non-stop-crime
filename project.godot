@@ -14,13 +14,15 @@ compatibility/default_parent_skeleton_in_mesh_instance_3d=true
 
 [application]
 
-config/name="non-stop-crime"
+config/name="Non-Stop Crime"
 run/main_scene="uid://b3v4lwrnkkc6u"
 config/features=PackedStringArray("4.6", "C#", "Mobile")
 config/icon="res://icon.svg"
 
 [autoload]
 
+SteamSettings="*res://src/SteamNetworking/SteamSettings.tscn"
+Lobby="*res://src/Lobby/Lobby.cs"
 SettingsNode="*res://src/Settings/SettingsNode.cs"
 
 [debug_draw_3d]
@@ -45,6 +47,7 @@ folder_colors={
 "res://external/": "gray",
 "res://levels/": "teal",
 "res://menus/": "orange",
+"res://player/": "yellow",
 "res://src/": "pink"
 }
 
