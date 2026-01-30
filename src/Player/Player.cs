@@ -1,19 +1,6 @@
 using Godot;
 
 public partial class Player : Character {
-  private int _playerID = 1;
-
-  [Export]
-  public int PlayerID {
-    get => _playerID;
-    set {
-      _playerID = value;
-      PlayerController.SetMultiplayerAuthority(_playerID);
-    }
-  }
-
-  public Member Member { get; private set; }
-
   [Export]
   public Label3D NamePlate;
 
@@ -33,16 +20,6 @@ public partial class Player : Character {
   private Camera3D _camera;
 
   public override void _Ready() {
-    base._Ready();
-
-    // Set this camera to current if we are this player
-    if (PlayerID == Multiplayer.GetUniqueId()) {
-      _camera.Current = true;
-    }
-
-    // EDIT: Let the client simulate player movement too to compensate network input latency.
-    // SetPhysicsProcess(Multiplayer.IsServer());
-
     PlayerController.InitializeYawPitch(
         _camera.Rotation.X,
         _camera.Rotation.Y
@@ -59,15 +36,6 @@ public partial class Player : Character {
 
   public override void _ExitTree() {
     base._EnterTree();
-  }
-
-  public override bool GetJump() {
-    if (PlayerController.Jumping) {
-      PlayerController.Jumping = false;
-      return true;
-    }
-
-    return false;
   }
 
   public override Vector3 GetDirection() {

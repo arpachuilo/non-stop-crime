@@ -2,14 +2,12 @@ using Godot;
 
 /// <summary>
 /// Character class that supports the following physics:
-/// - Multiple jumps
 /// - Ceiling detection to stop vertical momentum
 /// - Terminal velocity
 /// - Arbitrary gravity axis alignment
 ///
 /// Implementations are expected to override the following:
 /// - GetDirection()
-/// - GetJump()
 /// - LookAt()
 /// </summary>
 public partial class Character : CharacterBody3D {
@@ -21,10 +19,6 @@ public partial class Character : CharacterBody3D {
 
   [Export]
   public Vector3 Drag { get; set; } = Vector3.One * 10f;
-
-  [Export] private float _jumpForce = 4.5f;
-  [Export] private int _maxJumpCount = 2;
-  private int _jumpCount = 0;
 
   [Export] private Vector3 _gravity = Vector3.Down * 9.8f;
   [Export] private Vector3 _velocity; // Helper to sync velocity
@@ -43,10 +37,6 @@ public partial class Character : CharacterBody3D {
 
   public virtual Vector3 GetDirection() {
     return Vector3.Zero;
-  }
-
-  public virtual bool GetJump() {
-    return false;
   }
 
   public virtual void LookAt() {
@@ -100,11 +90,6 @@ public partial class Character : CharacterBody3D {
   }
 
   public override void _PhysicsProcess(double delta) {
-    // Reset jump count
-    if (IsOnFloor()) {
-      _jumpCount = 0;
-    }
-
     // Get what our "up" vector is
     var up = -GetGravity().Normalized();
     UpDirection = up.IsZeroApprox() ? Vector3.Up : up;
@@ -138,16 +123,6 @@ public partial class Character : CharacterBody3D {
           verticalVelocity = gravityDir * _terminalVelocity;
         }
       }
-    }
-
-    // Handle Jump
-    if (GetJump() && _jumpCount < _maxJumpCount) {
-      if (verticalVelocity.Dot(_gravity) > 0) {
-        verticalVelocity = Vector3.Zero;
-      }
-
-      verticalVelocity += -_gravity * _jumpForce;
-      _jumpCount++;
     }
 
     // Update horizontal velocity with input direction

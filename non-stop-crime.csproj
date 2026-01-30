@@ -29,37 +29,4 @@
 	<ProjectReference Include="external/godot-game-util/_Generators\Generators.csproj" OutputItemType="Analyzer" />
 	<ProjectReference Include="external/godot-game-util/_Analyzers\Analyzers.csproj" OutputItemType="Analyzer" ReferenceOutputAssembly="false" />
   </ItemGroup>
-
-  <!-- Windows -->
-  <ItemGroup Condition="$([MSBuild]::IsOSPlatform('Windows'))">
-    <SteamworksDll Include="external/Facepunch.Steamworks.2.4.1/net6.0/Facepunch.Steamworks.Win64.dll" />
-    <SteamNative Include="external/Facepunch.Steamworks.2.4.1/net6.0/redistributable_bin/win64/steam_api64.dll" />
-  </ItemGroup>
-
-  <!-- Linux -->
-  <ItemGroup Condition="$([MSBuild]::IsOSPlatform('Linux'))">
-    <SteamworksDll Include="external/Facepunch.Steamworks.2.4.1/net6.0/Facepunch.Steamworks.Posix.dll" />
-    <SteamNative Include="external/Facepunch.Steamworks.2.4.1/net6.0/redistributable_bin/linux64/libsteam_api.so" />
-  </ItemGroup>
-
-  <!-- macOS -->
-  <ItemGroup Condition="$([MSBuild]::IsOSPlatform('OSX'))">
-    <SteamworksDll Include="external/Facepunch.Steamworks.2.4.1/net6.0/Facepunch.Steamworks.Posix.dll" />
-    <SteamNative Include="external/Facepunch.Steamworks.2.4.1/net6.0/redistributable_bin/osx/libsteam_api.dylib" />
-  </ItemGroup>
-
-  <!-- Copy everything to output -->
-  <ItemGroup>
-    <Reference Include="@(SteamworksDll)">
-      <HintPath>%(SteamworksDll.FullPath)</HintPath>
-      <Private>true</Private>
-    </Reference>
-    <None Include="@(SteamworksDll);@(SteamNative)">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-      <Link>%(Filename)%(Extension)</Link>
-	</None>
-	<None Include="steam_appid.txt">
-	  <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-	</None>
-  </ItemGroup>
 </Project>

@@ -1,6 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://bh3x1ic2idvd"]
-
-[ext_resource type="Script" uid="uid://bhmk5sx67x4tt" path="res://src/SteamNetworking/SteamSettings.cs" id="1_v8t75"]
-
-[node name="SteamSettings" type="Node"]
-script = ExtResource("1_v8t75")
