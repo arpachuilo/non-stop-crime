@@ -6,6 +6,7 @@ public partial class PlayerController : Node
 	public Vector3 Direction { get; set; } = Vector3.Zero;
 
 	public int DeviceId { get; set; } = -1;
+	public bool IsKB { get; set; } = false;
 
 	private Vector3 _previousDirection = Vector3.Zero;
 
@@ -21,18 +22,31 @@ public partial class PlayerController : Node
 
 	public override void _Process(double delta)
 	{
-		float x = Input.GetJoyAxis(DeviceId, JoyAxis.LeftX);
-		float y = Input.GetJoyAxis(DeviceId, JoyAxis.LeftY);
-		Vector2 movementInput = new(x, y);
-
-		if (movementInput.Length() > 0.0f)
+		var movement = GetMovement();
+		if (movement.Length() > 0.0f)
 		{
-			Direction = new Vector3(movementInput.X, 0f, movementInput.Y).Normalized();
+			Direction = new Vector3(movement.X, 0f, movement.Y).Normalized();
 			_previousDirection = Direction.Normalized();
 		}
 		else
 		{
 			Direction = _previousDirection;
 		}
+	}
+
+	public Vector2 GetMovement()
+	{
+		if (IsKB)
+		{
+			return new(
+				Input.GetAxis(InputActions.move_left_kb, InputActions.move_right_kb),
+				Input.GetAxis(InputActions.move_fwd_kb, InputActions.move_back_kb)
+			);
+		}
+
+		return new(
+			Input.GetJoyAxis(DeviceId, JoyAxis.LeftX),
+			Input.GetJoyAxis(DeviceId, JoyAxis.LeftY)
+		);
 	}
 }
