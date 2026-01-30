@@ -7,9 +7,6 @@ public partial class PlayerController : MultiplayerSynchronizer {
   [Export]
   public Vector3 Look { get; set; } = Vector3.Zero;
 
-  [Export]
-  public bool Jumping { get; set; } = false;
-
   [ExportGroup("Camera Settings")]
   [Export] private float _sensX = 100.0f;
   [Export] private float _sensY = 100.0f;
@@ -44,11 +41,6 @@ public partial class PlayerController : MultiplayerSynchronizer {
     }
   }
 
-  [Rpc(CallLocal = true)]
-  private void Jump() {
-    Jumping = true;
-  }
-
   private void MoveCamera(float delta) {
     // Update pitch and yaw angles
     var x = _cameraRotation.X;
@@ -66,11 +58,6 @@ public partial class PlayerController : MultiplayerSynchronizer {
       Input.MouseMode = Input.MouseModeEnum.Captured == Input.MouseMode
         ? Input.MouseModeEnum.Visible
         : Input.MouseModeEnum.Captured;
-    }
-
-    // Handle jump
-    if (Input.IsActionJustPressed(InputActions.jump)) {
-      Rpc(MethodName.Jump);
     }
 
     // Get movement input

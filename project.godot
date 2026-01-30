@@ -21,8 +21,6 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-Lobby="*res://src/Lobby/Lobby.cs"
-SteamSettings="*res://src/SteamNetworking/SteamSettings.tscn"
 SettingsNode="*res://src/Settings/SettingsNode.cs"
 
 [debug_draw_3d]

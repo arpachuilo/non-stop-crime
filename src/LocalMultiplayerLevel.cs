@@ -1,9 +1,9 @@
 using Godot;
 
 /// <summary>
-/// Host driven player spawning
+/// Handle spawning in players for level based joypad
 /// </summary>
-public partial class MultiplayerLevel : Node {
+public partial class LocalMultiplayerLevel : Node {
   [Export]
   public PackedScene PlayerScene;
 
@@ -43,7 +43,6 @@ public partial class MultiplayerLevel : Node {
 
   private void AddPlayer(long id) {
     var player = PlayerScene.Instantiate() as Player;
-    player.PlayerID = (int)id;
     player.Name = id.ToString();
     player.Position = SpawnLocation.Position;
     PlayerContainer.AddChild(player);
