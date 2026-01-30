@@ -33,6 +33,12 @@ settings/addon_root_folder="res://addons/debug_draw_3d"
 
 project/assembly_name="non-stop-crime"
 
+[file_customization]
+
+folder_colors={
+"res://menus/": "orange"
+}
+
 [input]
 
 jump={
