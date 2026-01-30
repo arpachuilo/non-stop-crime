@@ -149,15 +149,15 @@ public partial class Lobby : Node {
       return;
     }
 
-    TryPrepareUpnp();
+    // TryPrepareUpnp();
 
-    try {
-      SteamInitializer.Init();
-      SteamManager.Load();
-      GD.Print("Hello ", SteamClient.Name);
-    } catch (Exception e) {
-      GD.PrintErr("Steam initialization failed: " + e.Message);
-    }
+    // try {
+    //   SteamInitializer.Init();
+    //   SteamManager.Load();
+    //   GD.Print("Hello ", SteamClient.Name);
+    // } catch (Exception e) {
+    //   GD.PrintErr("Steam initialization failed: " + e.Message);
+    // }
   }
 
   /// <summary>
