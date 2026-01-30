@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://vr472n0ku81u"]
+
+[ext_resource type="Texture2D" uid="uid://we4iy73o4423" path="res://assets/rykkel-imagen-2023-05-11-170835960-1854358763.jpg" id="1_80vhd"]
+
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_umreq"]
+
+[node name="Level" type="Node3D" unique_id=596543593]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=673564305]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=1702323393]
+shape = SubResource("WorldBoundaryShape3D_umreq")
+
+[node name="Sprite3D" type="Sprite3D" parent="StaticBody3D/CollisionShape3D" unique_id=680690393]
+axis = 1
+texture = ExtResource("1_80vhd")
