@@ -1,0 +1,41 @@
+[gd_scene format=3 uid="uid://r1l4cou0ykpr"]
+
+[node name="MainMenu" type="Control" unique_id=1873563801]
+clip_contents = true
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 768.0
+offset_bottom = 432.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MainMenuBG" type="TextureRect" parent="." unique_id=1230870007]
+visible = false
+layout_mode = 0
+offset_right = 1280.0
+offset_bottom = 720.0
+
+[node name="MainMenuSolidBG" type="ColorRect" parent="." unique_id=2075122090]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=2100988451]
+layout_mode = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+theme_override_constants/margin_left = 32
+theme_override_constants/margin_top = 32
+theme_override_constants/margin_right = 32
+theme_override_constants/margin_bottom = 32
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" unique_id=1694186044]
+layout_mode = 2
+
+[node name="ButtonsVBox" type="VBoxContainer" parent="MarginContainer/VBoxContainer" unique_id=976049832]
+layout_mode = 2
