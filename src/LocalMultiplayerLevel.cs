@@ -1,56 +1,57 @@
 using Godot;
+using System.Collections.Generic;
 
 /// <summary>
 /// Handle spawning in players for level based joypad
 /// </summary>
-public partial class LocalMultiplayerLevel : Node {
-  [Export]
-  public PackedScene PlayerScene;
+public partial class LocalMultiplayerLevel : Node
+{
+	[Export]
+	public PackedScene PlayerScene;
 
-  [Export]
-  public Node3D SpawnLocation;
+	[Export]
+	public Node3D SpawnLocation;
 
-  [Export]
-  public Node3D PlayerContainer;
+	[Export]
+	public Node3D PlayerContainer;
 
-  public override void _Ready() {
-    if (!Multiplayer.IsServer()) return;
+	public Dictionary<int, Node> JoypadToPlayer = new();
 
-    // Spawn already connected players
-    foreach (var peerID in Multiplayer.GetPeers()) {
-      AddPlayer(peerID);
-    }
+	public override void _Input(InputEvent @event)
+	{
+		if (@event is InputEventJoypadButton joypadEvent)
+		{
+		  GD.Print($"Joypad Event: Device={joypadEvent.Device}, ButtonIndex={joypadEvent.ButtonIndex}, Pressed={joypadEvent.Pressed}");
+			// Not start
+			if (joypadEvent.ButtonIndex != JoyButton.Start)
+			{
+				return;
+			}
 
-    // Spawn local player
-    if (!OS.HasFeature("dedicated_server")) {
-      AddPlayer(Multiplayer.GetUniqueId());
-    }
-  }
+			// Already assigned
+			if (JoypadToPlayer.ContainsKey(joypadEvent.Device))
+			{
+				return;
+			}
 
-  public override void _EnterTree() {
-    if (!Multiplayer.IsServer()) return;
+			AddPlayer(joypadEvent.Device);
+		}
+	}
 
-    Multiplayer.PeerConnected += AddPlayer;
-    Multiplayer.PeerDisconnected += RemovePlayer;
-  }
+	private void AddPlayer(int deviceId)
+	{
+		var player = PlayerScene.Instantiate() as Player;
+		player.PlayerController.DeviceId = deviceId;
+		player.Position = SpawnLocation.Position;
+		PlayerContainer.AddChild(player, true);
+		JoypadToPlayer[deviceId] = player;
+	}
 
-  public override void _ExitTree() {
-    if (!Multiplayer.IsServer()) return;
+	private void RemovePlayer(int id)
+	{
+		if (!JoypadToPlayer.ContainsKey(id)) return;
 
-    Multiplayer.PeerConnected -= AddPlayer;
-    Multiplayer.PeerDisconnected -= RemovePlayer;
-  }
-
-  private void AddPlayer(long id) {
-    var player = PlayerScene.Instantiate() as Player;
-    player.Name = id.ToString();
-    player.Position = SpawnLocation.Position;
-    PlayerContainer.AddChild(player);
-  }
-
-  private void RemovePlayer(long id) {
-    if (!PlayerContainer.HasNode(id.ToString())) return;
-
-    PlayerContainer.GetNode(id.ToString()).QueueFree();
-  }
+		var player = JoypadToPlayer[id];
+		PlayerContainer.RemoveChild(player);
+	}
 }

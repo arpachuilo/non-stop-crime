@@ -20,14 +20,9 @@ public partial class Player : Character {
   private Camera3D _camera;
 
   public override void _Ready() {
-    PlayerController.InitializeYawPitch(
-        _camera.Rotation.X,
-        _camera.Rotation.Y
-    );
   }
 
   public override void _Process(double delta) {
-    _cameraPivot.Rotation = PlayerController.Look;
   }
 
   public override void _EnterTree() {

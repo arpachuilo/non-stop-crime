@@ -32,7 +32,7 @@ public partial class LevelManager : Node
 		}
 
 		// Instance and add the new level
-		Node3D newLevel = levelScene.Instantiate<Node3D>();
+		Node newLevel = levelScene.Instantiate();
 		_this.LevelContainer.AddChild(newLevel);
 	}
 }
