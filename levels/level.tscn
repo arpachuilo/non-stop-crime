@@ -12,6 +12,5 @@
 shape = SubResource("WorldBoundaryShape3D_umreq")
 
 [node name="Sprite3D" type="Sprite3D" parent="StaticBody3D/CollisionShape3D" unique_id=680690393]
-pixel_size = 0.2
 axis = 1
 texture = ExtResource("1_80vhd")
