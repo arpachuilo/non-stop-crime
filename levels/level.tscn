@@ -147,6 +147,8 @@ transform = Transform3D(2.5, 0, 0, 0, 1, 0, 0, 0, 2.5, 0, 0, 16.874304)
 transform = Transform3D(2.07, 0, 0, 0, 2.07, 0, 0, 0, 2.07, 0, 0, 0)
 axis = 1
 shaded = true
+alpha_cut = 2
+alpha_antialiasing_mode = 2
 texture_filter = 4
 render_priority = -1
 texture = SubResource("NoiseTexture2D_cwqvt")
@@ -193,7 +195,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.450158, 0.099998, 5.278441
 transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 0.99999994, -14.251998, 0.07900095, 3.4021654)
 
 [node name="ParkingLot" parent="Goal Zones" unique_id=2030573530 instance=ExtResource("14_lh335")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.078856, 2.0166271e-06, 31.810728)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.078856, 0.0130320685, 31.810728)
 
 [node name="Pigsty" parent="Goal Zones" unique_id=367026064 instance=ExtResource("15_u6cys")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.963837, 0.13432145, 32.129284)

@@ -8,7 +8,7 @@
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_oph0r"]
 height = 4.7
-radius = 3.3
+radius = 2.7
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1mu3e"]
 atlas = ExtResource("5_k6xqd")
@@ -20,12 +20,14 @@ script = ExtResource("1_nl4c2")
 [node name="HospitalAreaBody" type="CollisionShape3D" parent="." unique_id=1999436185 groups=["goal_zones"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.4, 0)
 shape = SubResource("CylinderShape3D_oph0r")
+debug_color = Color(0.92941177, 0, 0.65882355, 1)
 
 [node name="HospitalStaticBody" type="StaticBody3D" parent="." unique_id=539560832]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.58501, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="HospitalStaticBody" unique_id=62033802]
 shape = SubResource("CylinderShape3D_oph0r")
+debug_color = Color(0.92941177, 0, 0.65882355, 1)
 
 [node name="SpriteRoot" type="Node3D" parent="HospitalStaticBody" unique_id=161558991]
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)

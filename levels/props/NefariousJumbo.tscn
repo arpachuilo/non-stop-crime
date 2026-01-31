@@ -8,7 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://bx6jancv55uem" path="res://levels/props/Lamp.tscn" id="6_35ju7"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_3rvjk"]
-radius = 1.8
+radius = 1.7
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8omod"]
 atlas = ExtResource("4_qx4yl")
@@ -24,13 +24,15 @@ script = ExtResource("1_wfldc")
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="." unique_id=1294118475 groups=["goal_zones"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0354397, 0)
 shape = SubResource("CylinderShape3D_3rvjk")
+debug_color = Color(1, 0, 0.7607843, 1)
 
 [node name="ObmujStaticBody" type="StaticBody3D" parent="." unique_id=762354467]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.3901017, 0)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="ObmujStaticBody" unique_id=1913153043]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.8855593, 0)
+[node name="ObmujCollider" type="CollisionShape3D" parent="ObmujStaticBody" unique_id=1913153043]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.332231, -0.8855593, 0.77364755)
 shape = SubResource("CylinderShape3D_3rvjk")
+debug_color = Color(1, 0, 0.7607843, 1)
 
 [node name="SpriteRoot" type="Node3D" parent="ObmujStaticBody" unique_id=1335112486]
 
