@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://cks4fmo6ia6pb" path="res://src/LocalMultiplayerLevel.cs" id="1_gjl0y"]
 [ext_resource type="PackedScene" uid="uid://cj7ucao0d5den" path="res://AC_Player.tscn" id="2_hjsbj"]
 [ext_resource type="Script" uid="uid://ccylebg7df6u2" path="res://src/GoalZone/GoalZoneSpawner.cs" id="3_5mrsh"]
-[ext_resource type="PackedScene" path="res://UI_PlayerInfo.tscn" id="3_vnv7o"]
+[ext_resource type="PackedScene" uid="uid://b1awodkisntg" path="res://UI_PlayerInfo.tscn" id="3_vnv7o"]
 [ext_resource type="PackedScene" uid="uid://5q744y4bjyiq" path="res://GoalZone.tscn" id="4_safpt"]
 [ext_resource type="Script" uid="uid://bx8sqineax63u" path="res://src/Mask/MaskSpawner.cs" id="7_d5x7l"]
 [ext_resource type="PackedScene" path="res://src/Mask/MaskPickup.tscn" id="8_rtcij"]
@@ -47,10 +47,10 @@ shader_parameter/shimmer_freq = 18.0
 shader_parameter/shimmer_speed = 1.2
 shader_parameter/noise_amount = 0.55
 
-[node name="Level" type="Node3D" unique_id=596543593 node_paths=PackedStringArray("SpawnLocation", "PlayerContainer", "PlayerInfoContainer")]
+[node name="Level" type="Node3D" unique_id=596543593 node_paths=PackedStringArray("SpawnLocations", "PlayerContainer", "PlayerInfoContainer")]
 script = ExtResource("1_gjl0y")
 PlayerScene = ExtResource("2_hjsbj")
-SpawnLocation = NodePath("Players")
+SpawnLocations = [NodePath("Players")]
 PlayerContainer = NodePath("Players")
 PlayerInfoScene = ExtResource("3_vnv7o")
 PlayerInfoContainer = NodePath("HBoxContainer")

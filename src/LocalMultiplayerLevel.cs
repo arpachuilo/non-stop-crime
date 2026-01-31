@@ -47,9 +47,9 @@ public partial class LocalMultiplayerLevel : Node
       // Already assigned
       if (JoypadToPlayer.ContainsKey(joypadEvent.Device))
       {
-		var joyPlayer = JoypadToPlayer[joypadEvent.Device];
-		if (joyPlayer.PlayerInfo.IsPlaying) return;
-		joyPlayer.PlayerInfo.IsReady = !joyPlayer.PlayerInfo.IsReady;
+    var joyPlayer = JoypadToPlayer[joypadEvent.Device];
+    if (joyPlayer.PlayerInfo.IsPlaying) return;
+    joyPlayer.PlayerInfo.IsReady = !joyPlayer.PlayerInfo.IsReady;
         return;
       }
 
@@ -68,8 +68,8 @@ public partial class LocalMultiplayerLevel : Node
       // Already assigned
       if (KBPlayer != null)
       {
-		if (KBPlayer.PlayerInfo.IsPlaying) return;
-		KBPlayer.PlayerInfo.IsReady = !KBPlayer.PlayerInfo.IsReady;
+    if (KBPlayer.PlayerInfo.IsPlaying) return;
+    KBPlayer.PlayerInfo.IsReady = !KBPlayer.PlayerInfo.IsReady;
         return;
       }
 
@@ -80,19 +80,19 @@ public partial class LocalMultiplayerLevel : Node
 
   private Player AddPlayer(int deviceId, bool isKB = false)
   {
-	var spawnPosition = new Vector3(0, 1, 0);
+  var spawnPosition = new Vector3(0, 1, 0);
 
-	if (SpawnLocations.Count > 0) {
-	  spawnPosition = SpawnLocations[0].Position;
-	  SpawnLocations.RemoveAt(0);
-	}
+  if (SpawnLocations.Count > 0) {
+    spawnPosition = SpawnLocations[0].Position;
+    SpawnLocations.RemoveAt(0);
+  }
 
     // Add player
     var player = PlayerScene.Instantiate() as Player;
     player.PlayerController.DeviceId = deviceId;
     player.PlayerController.IsKB = isKB;
     player.Position = spawnPosition;
-	player.Spawn = spawnPosition;
+  player.Spawn = spawnPosition;
     player.NamePlate.Text = RandomUtil.FromList(Canned.PlayerNames.Except(Players.Select(p => p.NamePlate.Text)));
     PlayerContainer.AddChild(player, true);
 
@@ -105,7 +105,7 @@ public partial class LocalMultiplayerLevel : Node
     PlayerToInfo[player] = playerInfo;
     PlayerInfoContainer.AddChild(playerInfo);
 
-	player.PlayerInfo = playerInfo;
+  player.PlayerInfo = playerInfo;
     return player;
   }
 

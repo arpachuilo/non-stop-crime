@@ -23,15 +23,15 @@ public partial class ScoreTracker : Control
   public override void _Process(double delta)
   {
     var players = GetTree().GetNodesInGroup(Group.Player).Cast<Player>().ToList();
-	var allReady = players.All(p => p.PlayerInfo.IsReady);
+  var allReady = players.All(p => p.PlayerInfo.IsReady);
 
     // Start timer when first player spawns
     if (!_timerStarted && players.Count >= RequiredNumberOfPlayers && allReady)
     {
       _timerStarted = true;
-	  foreach (var player in players) {
-		player.StartPlaying();
-	  }
+    foreach (var player in players) {
+    player.StartPlaying();
+    }
     }
 
     // Countdown logic

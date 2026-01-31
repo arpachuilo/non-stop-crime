@@ -78,8 +78,8 @@ public partial class MaskSpawner : Node3D
         }
 
         pickup.MaskData = maskData;
-        pickup.GlobalPosition = GlobalPosition + position;
-        _activeMaskPositions[pickup] = pickup.GlobalPosition;
+        pickup.Position += position;
+        _activeMaskPositions[pickup] = pickup.Position;
         pickup.PickedUp += () => OnMaskPickedUp(pickup);
         AddChild(pickup);
     }
