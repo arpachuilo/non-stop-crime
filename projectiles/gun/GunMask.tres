@@ -6,6 +6,7 @@
 [resource]
 script = ExtResource("2_xynlu")
 MaskBits = 2
+Sprite = ExtResource("2_xdgfy")
 HasProjectile = true
 ProjectileScene = ExtResource("1_76idr")
 FireRate = 0.8

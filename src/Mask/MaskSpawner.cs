@@ -4,26 +4,39 @@ using System.Collections.Generic;
 public partial class MaskSpawner : Node3D
 {
     [Export] public Vector3 SpawnAreaSize { get; set; } = new(10, 0, 10);
-    [Export] public float RespawnDelay { get; set; } = 5.0f;
     [Export] public string MaskDataDirectory { get; set; } = "res://src/Mask/MaskData";
-    [Export] public int MaxActiveMasks { get; set; } = 3;
     [Export] public PackedScene MaskPickupScene { get; set; }
     [Export] public float MinDistance { get; set; } = 3.0f;
     [Export] public float MinDistanceFromZones { get; set; } = 4.0f;
     [Export] public int MaxPlacementAttempts { get; set; } = 30;
 
     private List<MaskData> _availableMasks = new();
-    private Dictionary<MaskPickup, Vector3> _activeMaskPositions = new();
+    private Dictionary<MaskData, MaskPickup> _spawnedPickups = new();
+    private Dictionary<MaskData, Player> _equippedByPlayer = new();
     private RandomNumberGenerator _rng = new();
 
     public override void _Ready()
     {
         _rng.Randomize();
         LoadMasksFromDirectory();
+        CallDeferred(nameof(InitializeSpawning));
+    }
 
-        // Initial spawn
-        for (int i = 0; i < MaxActiveMasks; i++)
-            SpawnRandomMask();
+    private void InitializeSpawning()
+    {
+        SubscribeToPlayerResets();
+        foreach (var maskData in _availableMasks)
+            SpawnMask(maskData);
+    }
+
+    private void SubscribeToPlayerResets()
+    {
+        var players = GetTree().GetNodesInGroup("Player");
+        foreach (var node in players)
+        {
+            if (node is Player player)
+                player.PlayerReset += () => OnPlayerReset(player);
+        }
     }
 
     private void LoadMasksFromDirectory()
@@ -56,16 +69,9 @@ public partial class MaskSpawner : Node3D
         GD.Print($"MaskSpawner: Loaded {_availableMasks.Count} masks from {MaskDataDirectory}");
     }
 
-    private void SpawnRandomMask()
+    private void SpawnMask(MaskData maskData)
     {
-        if (_availableMasks.Count == 0)
-        {
-            GD.PrintErr("MaskSpawner: No masks found in directory");
-            return;
-        }
-
         var position = FindValidPosition();
-        var maskData = GetRandomMaskData();
 
         MaskPickup pickup;
         if (MaskPickupScene != null)
@@ -78,10 +84,11 @@ public partial class MaskSpawner : Node3D
         }
 
         pickup.MaskData = maskData;
-        pickup.Position += position;
-        _activeMaskPositions[pickup] = pickup.Position;
-        pickup.PickedUp += () => OnMaskPickedUp(pickup);
+        pickup.GlobalPosition = GlobalPosition + position;
+        pickup.PickedUp += (player) => OnMaskPickedUp(maskData, player);
         AddChild(pickup);
+
+        _spawnedPickups[maskData] = pickup;
     }
 
     private Vector3 FindValidPosition()
@@ -123,13 +130,13 @@ public partial class MaskSpawner : Node3D
 
     private float GetMinDistanceToActiveMasks(Vector3 worldPosition)
     {
-        if (_activeMaskPositions.Count == 0)
+        if (_spawnedPickups.Count == 0)
             return float.MaxValue;
 
         float minDist = float.MaxValue;
-        foreach (var pos in _activeMaskPositions.Values)
+        foreach (var pickup in _spawnedPickups.Values)
         {
-            float dist = worldPosition.DistanceTo(pos);
+            float dist = worldPosition.DistanceTo(pickup.GlobalPosition);
             if (dist < minDist)
                 minDist = dist;
         }
@@ -152,15 +159,28 @@ public partial class MaskSpawner : Node3D
         return false;
     }
 
-    private MaskData GetRandomMaskData()
+    private void OnMaskPickedUp(MaskData maskData, Player player)
     {
-        if (_availableMasks.Count == 0) return null;
-        return _availableMasks[GD.RandRange(0, _availableMasks.Count - 1)];
+        _spawnedPickups.Remove(maskData);
+        _equippedByPlayer[maskData] = player;
     }
 
-    private void OnMaskPickedUp(MaskPickup pickup)
+    private void OnPlayerReset(Player player)
     {
-        _activeMaskPositions.Remove(pickup);
-        GetTree().CreateTimer(RespawnDelay).Timeout += SpawnRandomMask;
+        MaskData maskToRespawn = null;
+        foreach (var kvp in _equippedByPlayer)
+        {
+            if (kvp.Value == player)
+            {
+                maskToRespawn = kvp.Key;
+                break;
+            }
+        }
+
+        if (maskToRespawn != null)
+        {
+            _equippedByPlayer.Remove(maskToRespawn);
+            SpawnMask(maskToRespawn);
+        }
     }
 }

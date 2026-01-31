@@ -1,7 +1,8 @@
 using Godot;
 
-public partial class Player : Character
-{
+public partial class Player : Character {
+  [Signal] public delegate void PlayerResetEventHandler();
+
   [Export]
   public Label3D NamePlate;
 
@@ -86,6 +87,8 @@ public partial class Player : Character
   public void Reset()
   {
     GlobalPosition = Spawn;
+    EquipMask(null);
+    EmitSignal(SignalName.PlayerReset);
   }
 
   public void AddScore(int points)
