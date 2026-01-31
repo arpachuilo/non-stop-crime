@@ -1,9 +1,9 @@
 [gd_scene format=3 uid="uid://ctol3tugnm1rv"]
 
-[ext_resource type="Texture2D" uid="uid://c3vrmkr66ueta" path="res://levels/assets/police left.png" id="1_kjg33"]
+[ext_resource type="Texture2D" uid="uid://c3vrmkr66ueta" path="res://levels/assets/pigsty/police left.png" id="1_kjg33"]
 [ext_resource type="Script" uid="uid://drs71jkrerwcu" path="res://src/GoalZone/GoalZone.cs" id="1_qi2m5"]
-[ext_resource type="Texture2D" uid="uid://dbgxu13stgkyi" path="res://levels/assets/police right.png" id="2_qi2m5"]
-[ext_resource type="Texture2D" uid="uid://2e1tsxbyoafj" path="res://levels/assets/police front.png" id="3_m6wmv"]
+[ext_resource type="Texture2D" uid="uid://dbgxu13stgkyi" path="res://levels/assets/pigsty/police right.png" id="2_qi2m5"]
+[ext_resource type="Texture2D" uid="uid://2e1tsxbyoafj" path="res://levels/assets/pigsty/police front.png" id="3_m6wmv"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_kjg33"]
 height = 4.7

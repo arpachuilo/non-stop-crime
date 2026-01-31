@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://b0u72twc7avie"]
 
-[ext_resource type="Texture2D" uid="uid://r6w7t6avl27v" path="res://levels/assets/Obmuj.png" id="1_3rvjk"]
+[ext_resource type="Texture2D" uid="uid://r6w7t6avl27v" path="res://levels/assets/nefarious_jumbo/Obmuj.png" id="1_3rvjk"]
 [ext_resource type="Script" uid="uid://drs71jkrerwcu" path="res://src/GoalZone/GoalZone.cs" id="1_wfldc"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_3rvjk"]

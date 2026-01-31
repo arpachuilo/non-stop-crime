@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://d0ie1mhex1w1l"]
 
-[ext_resource type="Texture2D" uid="uid://byb6d0dbprr7v" path="res://levels/assets/hospital front.png" id="1_e0v0s"]
+[ext_resource type="Texture2D" uid="uid://byb6d0dbprr7v" path="res://levels/assets/hospital/hospital front.png" id="1_e0v0s"]
 [ext_resource type="Script" uid="uid://drs71jkrerwcu" path="res://src/GoalZone/GoalZone.cs" id="1_nl4c2"]
-[ext_resource type="Texture2D" uid="uid://ljln3d3yslvn" path="res://levels/assets/hospital side.png" id="2_nl4c2"]
+[ext_resource type="Texture2D" uid="uid://ljln3d3yslvn" path="res://levels/assets/hospital/hospital side.png" id="2_nl4c2"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_oph0r"]
 height = 4.7

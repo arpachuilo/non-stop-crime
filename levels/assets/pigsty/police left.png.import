@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ljln3d3yslvn"
-path.s3tc="res://.godot/imported/hospital side.png-d55fa21a8465d16c49da68b406cc4dd3.s3tc.ctex"
+uid="uid://c3vrmkr66ueta"
+path.s3tc="res://.godot/imported/police left.png-0d3be02af44aa92f327db13ee9f34654.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://levels/assets/hospital side.png"
-dest_files=["res://.godot/imported/hospital side.png-d55fa21a8465d16c49da68b406cc4dd3.s3tc.ctex"]
+source_file="res://levels/assets/pigsty/police left.png"
+dest_files=["res://.godot/imported/police left.png-0d3be02af44aa92f327db13ee9f34654.s3tc.ctex"]
 
 [params]
 

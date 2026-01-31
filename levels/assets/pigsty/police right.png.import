@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dbgxu13stgkyi"
-path.s3tc="res://.godot/imported/police right.png-2edfea37e412b78fe369e414d76fa055.s3tc.ctex"
+path.s3tc="res://.godot/imported/police right.png-2b62d11e4b8005901a6c2ff525cf7db4.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://levels/assets/police right.png"
-dest_files=["res://.godot/imported/police right.png-2edfea37e412b78fe369e414d76fa055.s3tc.ctex"]
+source_file="res://levels/assets/pigsty/police right.png"
+dest_files=["res://.godot/imported/police right.png-2b62d11e4b8005901a6c2ff525cf7db4.s3tc.ctex"]
 
 [params]
 
