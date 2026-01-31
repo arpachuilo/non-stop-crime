@@ -5,5 +5,6 @@
 
 [resource]
 script = ExtResource("1_sqefs")
+MaskBits = 1
 Sprite = ExtResource("1_ob4fd")
 metadata/_custom_type_script = "uid://cbwkmtyoylbwe"

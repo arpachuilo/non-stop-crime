@@ -5,6 +5,8 @@
 
 [resource]
 script = ExtResource("1_xfu4p")
+MaskBits = 2
 HasProjectile = true
 ProjectileScene = ExtResource("1_gc1ej")
+Scorable = true
 metadata/_custom_type_script = "uid://cbwkmtyoylbwe"
