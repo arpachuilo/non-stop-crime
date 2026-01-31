@@ -3,6 +3,8 @@
 [ext_resource type="PackedScene" uid="uid://i6204ss4jj6q" path="res://levels/props/Skyscraper.tscn" id="1_gkect"]
 [ext_resource type="PackedScene" uid="uid://cj7ucao0d5den" path="res://AC_Player.tscn" id="2_jrkpo"]
 
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_jrkpo"]
+
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_gkect"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_jrkpo"]
@@ -15,8 +17,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.043816242, 0, -0.04835616)
 
 [node name="Floor" type="StaticBody3D" parent="." unique_id=426149682]
 
-[node name="Player" parent="." unique_id=1092909276 instance=ExtResource("2_jrkpo")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 1.1203701, 1)
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor" unique_id=2041810095]
+transform = Transform3D(11.200658, 0, 0, 0, 1, 0, 0, 0, 10.852729, 0, 0, 0)
+shape = SubResource("WorldBoundaryShape3D_jrkpo")
+
+[node name="Player" parent="." unique_id=1092909276 node_paths=PackedStringArray("_camera") instance=ExtResource("2_jrkpo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.741653, 4.7683716e-07, -0.07455206)
+_camera = NodePath("../Camera3D")
 
 [node name="Node3D" type="Node3D" parent="." unique_id=2055370371]
 
@@ -29,3 +36,10 @@ shape = SubResource("WorldBoundaryShape3D_gkect")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Node3D/StaticBody3D" unique_id=773935856]
 mesh = SubResource("PlaneMesh_jrkpo")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="." unique_id=1100114729]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 17.212925, 7.1261244)
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=1541536123]
+transform = Transform3D(0.99999666, -0.0015132728, 0.0020906625, 0, 0.8100627, 0.5863432, -0.002580865, -0.58634126, 0.81006, 0.020883512, 5.8569508, 8.091646)
+current = true

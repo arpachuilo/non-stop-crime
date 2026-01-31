@@ -5,16 +5,7 @@ public partial class Player : Character {
   public Label3D NamePlate;
 
   [Export]
-  public Sprite3D Avatar;
-
-  [Export]
   public PlayerController PlayerController { get; set; }
-
-  [Export]
-  private Node3D _cameraPivot;
-
-  [Export]
-  private SpringArm3D _cameraSpring;
 
   [Export]
   private Camera3D _camera;
@@ -27,6 +18,8 @@ public partial class Player : Character {
 
   public override void _EnterTree() {
     base._EnterTree();
+
+    _camera ??= GetViewport().GetCamera3D();
   }
 
   public override void _ExitTree() {
