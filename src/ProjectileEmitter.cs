@@ -6,13 +6,13 @@ public partial class ProjectileEmitter : Node3D
 	public PackedScene ProjectileScene;
 
 	[Export]
-	public float FireRate = 0.1f;
+	public float FireRate = 0.5f;
 
 	[Export]
 	public float ProjectileSpeed = 10.0f;
 
 	[Export]
-	public Player Owner;
+	public Player PlayerOwner;
 
 	private Poller _firePoller = new(1.0f);
 
@@ -31,9 +31,23 @@ public partial class ProjectileEmitter : Node3D
 		if (ProjectileScene == null) return;
 
 		var projectileInstance = ProjectileScene.Instantiate<Projectile>();
-		projectileInstance.Own(Owner);
+		projectileInstance.Own(PlayerOwner);
 		projectileInstance.Speed = ProjectileSpeed;
-		projectileInstance.GlobalTransform = GlobalTransform;
+
+		// Spawn transform based on player velocity
+		Vector3 forward = -PlayerOwner.Velocity.Normalized();
+		if (forward.Length() < 0.01f)
+			forward = -projectileInstance.Transform.Basis.Z;
+
+		Vector3 up = Vector3.Up;
+		Vector3 right = up.Cross(forward).Normalized();
+		up = forward.Cross(right).Normalized();
+
+		projectileInstance.Transform = new Transform3D(
+				new Basis(right, up, forward),
+				PlayerOwner.GlobalPosition
+		);
+
 		GetTree().CurrentScene.AddChild(projectileInstance);
 	}
 }

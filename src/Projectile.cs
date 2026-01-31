@@ -9,13 +9,13 @@ public partial class Projectile : Area3D
 	public float Speed = 3.0f;
 
 	[Export]
-	public Player Owner;
+	public Player PlayerOwner;
 
 	private Poller _lifetimePoller = new(5.0f);
 
 	public void Own(Player player)
 	{
-		Owner = player;
+		PlayerOwner = player;
 	}
 
 	public override void _EnterTree()
@@ -52,7 +52,7 @@ public partial class Projectile : Area3D
 	{
 		if (body is Player player)
 		{
-			if (player == Owner) return; // Ignore self-hit
+			if (player == PlayerOwner) return; // Ignore self-hit
 
 			player.Reset();
 		}
