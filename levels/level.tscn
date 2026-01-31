@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://d0ie1mhex1w1l" path="res://levels/props/Hospital.tscn" id="12_0qmeg"]
 [ext_resource type="PackedScene" uid="uid://b0u72twc7avie" path="res://levels/props/NefariousJumbo.tscn" id="13_ta7ci"]
 [ext_resource type="PackedScene" uid="uid://c2hmq40jdskvd" path="res://levels/props/ParkingLot.tscn" id="14_lh335"]
+[ext_resource type="PackedScene" uid="uid://bx6jancv55uem" path="res://levels/props/Lamp.tscn" id="15_0qmeg"]
 [ext_resource type="PackedScene" uid="uid://ctol3tugnm1rv" path="res://levels/props/Pigsty.tscn" id="15_u6cys"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_umreq"]
@@ -56,14 +57,13 @@ shader_parameter/noise_amount = 0.55
 
 [node name="Level" type="Node3D" unique_id=596543593]
 
-[node name="Lobby" type="Node" parent="." unique_id=1714533031 node_paths=PackedStringArray("PlayerContainer", "PlayerInfoContainer", "SpawnPoints", "GoalZoneSpawner", "MaskSpawner", "LobbyOverlay")]
+[node name="Lobby" type="Node" parent="." unique_id=1714533031 node_paths=PackedStringArray("PlayerContainer", "PlayerInfoContainer", "SpawnPoints", "MaskSpawner", "LobbyOverlay")]
 script = ExtResource("1_pb8y7")
 PlayerScene = ExtResource("2_hjsbj")
 PlayerContainer = NodePath("../Players")
 PlayerInfoScene = ExtResource("3_vnv7o")
 PlayerInfoContainer = NodePath("../HBoxContainer")
 SpawnPoints = [NodePath("../Players/Spawn A"), NodePath("../Players/Spawn B"), NodePath("../Players/Spawn C"), NodePath("../Players/Spawn D")]
-GoalZoneSpawner = NodePath("")
 MaskSpawner = NodePath("../MaskSpawner")
 LobbyOverlay = NodePath("LobbyOverlay")
 
@@ -193,6 +193,20 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.300488, 2.0166271e-06, 31
 
 [node name="Pigsty" parent="Goal Zones" unique_id=367026064 instance=ExtResource("15_u6cys")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.23092, 0.13432145, 32.187057)
+
+[node name="Props" type="Node3D" parent="." unique_id=421055543]
+
+[node name="Lamp" parent="Props" unique_id=1407807229 instance=ExtResource("15_0qmeg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.643962, 0, 7.8159313)
+
+[node name="Lamp2" parent="Props" unique_id=1266492961 instance=ExtResource("15_0qmeg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.542943, 0, 7.0217896)
+
+[node name="Lamp3" parent="Props" unique_id=354961715 instance=ExtResource("15_0qmeg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.263576, 0, 34.04188)
+
+[node name="Lamp4" parent="Props" unique_id=988699820 instance=ExtResource("15_0qmeg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.618424, 0, 33.87192)
 
 [connection signal="GameStarted" from="Lobby" to="MaskSpawner" method="_on_lobby_game_started"]
 [connection signal="GameStarted" from="Lobby" to="ScoreTracker" method="_on_lobby_game_started"]

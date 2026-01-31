@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://bx6jancv55uem"]
+
+[ext_resource type="Texture2D" uid="uid://3m13orq37nxp" path="res://levels/assets/greeblies/streetlight.png" id="1_jtqwi"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ta7ci"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_jtqwi")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Lamp" type="Node3D" unique_id=1407807229]
+
+[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="." unique_id=1654670080]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.1440701, 0)
+sprite_frames = SubResource("SpriteFrames_ta7ci")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="." unique_id=1679526219]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.1460127, 3.9454412, 0)
+light_color = Color(0.47508043, 0.4702974, 0, 1)
+omni_range = 12.0
