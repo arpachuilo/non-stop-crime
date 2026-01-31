@@ -1,17 +1,17 @@
 [gd_scene format=3 uid="uid://vr472n0ku81u"]
 
-[ext_resource type="Shader" path="res://levels/assets/Backdrop.gdshader" id="1_80vhd"]
+[ext_resource type="Shader" uid="uid://cxvp62bp8aq08" path="res://levels/assets/Backdrop.gdshader" id="1_80vhd"]
 [ext_resource type="Script" uid="uid://cks4fmo6ia6pb" path="res://src/LocalMultiplayerLevel.cs" id="1_gjl0y"]
 [ext_resource type="PackedScene" uid="uid://cj7ucao0d5den" path="res://AC_Player.tscn" id="2_hjsbj"]
 [ext_resource type="Script" uid="uid://ccylebg7df6u2" path="res://src/GoalZone/GoalZoneSpawner.cs" id="3_5mrsh"]
-[ext_resource type="PackedScene" uid="uid://b1awodkisntg" path="res://UI_PlayerInfo.tscn" id="3_vnv7o"]
+[ext_resource type="PackedScene" path="res://UI_PlayerInfo.tscn" id="3_vnv7o"]
 [ext_resource type="PackedScene" uid="uid://5q744y4bjyiq" path="res://GoalZone.tscn" id="4_safpt"]
 [ext_resource type="Script" uid="uid://bx8sqineax63u" path="res://src/Mask/MaskSpawner.cs" id="7_d5x7l"]
-[ext_resource type="PackedScene" path="res://src/Mask/MaskPickup.tscn" id="8_rtcij"]
+[ext_resource type="PackedScene" uid="uid://27h8ms28togi" path="res://src/Mask/MaskPickup.tscn" id="8_rtcij"]
 
 [sub_resource type="Gradient" id="Gradient_80vhd"]
-offsets = PackedFloat32Array(0.54535145, 1)
-colors = PackedColorArray(1.5642494e-06, 0.53888744, 0.18877912, 1, 0.5372549, 0.2, 0.2, 1)
+offsets = PackedFloat32Array(0.527668, 1)
+colors = PackedColorArray(0.10639999, 0.38, 0.20216002, 1, 0.5372549, 0.2, 0.2, 1)
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_hjsbj"]
 
@@ -124,7 +124,6 @@ GoalZoneScene = ExtResource("4_safpt")
 
 [node name="MaskSpawner" type="Node3D" parent="." unique_id=321745574]
 script = ExtResource("7_d5x7l")
-MaxActiveMasks = 6
 MaskPickupScene = ExtResource("8_rtcij")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=1143154661]
