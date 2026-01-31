@@ -1,16 +1,31 @@
+using System.ComponentModel;
 using Chickensoft.Collections;
 using Godot;
 
 [Tool]
 public partial class GoalZone : Area3D {
-  [Signal] public delegate void CapturedEventHandler(Player player);
-  private MeshInstance3D _visualMesh;
-  private CollisionShape3D _collisionShape;
+  const int NEUTRAL_OWNER_ID = -1;
 
-  [Export] public Color NeutralColor { get; set; } = new Color(0.5f, 0.5f, 0.5f, 0.5f);
-  [Export] public Vector3 ZoneSize { get; set; } = new Vector3(3, 1, 3);
-  [Export] public int Mask { get; set; } = 0;
-  public int OwnerPlayerId { get; private set; } = -1;  // -1 = neutral
+  [Signal] public delegate void CapturedEventHandler(Player player);
+
+  [Description("Mesh representing the visual size of the goal zone")]
+  [Export]
+  public MeshInstance3D VisualMesh;
+
+  [Description("Collision shape for the goal zone that triggers captures")]
+  [Export]
+  public CollisionShape3D CollisionShape;
+
+  [Export]
+  public Color NeutralColor { get; set; } = new Color(0.5f, 0.5f, 0.5f, 0.5f);
+
+  [Export]
+  public Vector3 ZoneSize { get; set; } = new Vector3(3, 1, 3);
+
+  [Export]
+  public int Mask { get; set; } = 0;
+
+  public int OwnerPlayerId { get; private set; } = NEUTRAL_OWNER_ID;
   public bool IsCompleted { get; private set; } = false;
 
   public override void _Ready() {
@@ -22,31 +37,13 @@ public partial class GoalZone : Area3D {
   }
 
   private void SetupVisuals() {
-    _visualMesh = GetNodeOrNull<MeshInstance3D>("VisualMesh");
-    if (_visualMesh == null) {
-      _visualMesh = new MeshInstance3D();
-      _visualMesh.Name = "VisualMesh";
-      AddChild(_visualMesh);
-    }
-
-    var box = new BoxMesh();
-    box.Size = ZoneSize;
-    _visualMesh.Mesh = box;
+    VisualMesh ??= GetNodeOrNull<MeshInstance3D>("VisualMesh");
 
     UpdateVisualColor(NeutralColor);
   }
 
   private void SetupCollision() {
-    _collisionShape = GetNodeOrNull<CollisionShape3D>("CollisionShape");
-    if (_collisionShape == null) {
-      _collisionShape = new CollisionShape3D();
-      _collisionShape.Name = "CollisionShape";
-      AddChild(_collisionShape);
-    }
-
-    var shape = new BoxShape3D();
-    shape.Size = ZoneSize;
-    _collisionShape.Shape = shape;
+    CollisionShape ??= GetNodeOrNull<CollisionShape3D>("CollisionShape");
   }
 
   private void OnBodyEntered(Node3D body) {
@@ -86,7 +83,7 @@ public partial class GoalZone : Area3D {
   }
 
   private void UpdateVisualColor(Color playerColor) {
-    if (_visualMesh == null) return;
+    if (VisualMesh == null) return;
 
     var material = new StandardMaterial3D();
     material.Transparency = BaseMaterial3D.TransparencyEnum.Alpha;
@@ -97,6 +94,6 @@ public partial class GoalZone : Area3D {
       material.AlbedoColor = NeutralColor;
     }
 
-    _visualMesh.MaterialOverride = material;
+    VisualMesh.MaterialOverride = material;
   }
 }
