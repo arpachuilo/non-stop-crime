@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="MaskData" format=3 uid="uid://bfx8px6hsb2wc"]
 
-[ext_resource type="Texture2D" uid="uid://dgrc1k4g2dvv0" path="res://player/assets/stab_mask_icon.png" id="1_m0r6e"]
+[ext_resource type="Texture2D" uid="uid://dgrc1k4g2dvv0" path="res://projectiles/knife/stab_mask_icon.png" id="1_m0r6e"]
 [ext_resource type="PackedScene" uid="uid://bxql0ucoobt72" path="res://projectiles/knife/KNIFE.tscn" id="2_5e1bu"]
 [ext_resource type="Texture2D" uid="uid://djps0jcq2hgmy" path="res://projectiles/knife/stab_mask.png" id="2_m0r6e"]
 [ext_resource type="Script" uid="uid://cbwkmtyoylbwe" path="res://src/Mask/MaskData.cs" id="3_5e1bu"]
@@ -14,4 +14,6 @@ HasProjectile = true
 ProjectileScene = ExtResource("2_5e1bu")
 FireRate = 0.3
 Scorable = true
+HasAnimation = true
+Animation = "stab"
 metadata/_custom_type_script = "uid://cbwkmtyoylbwe"
