@@ -40,6 +40,9 @@ public partial class ProjectileEmitter : Node3D
 			forward = -projectileInstance.Transform.Basis.Z;
 
 		Vector3 up = Vector3.Up;
+		if (Mathf.Abs(forward.Dot(up)) > 0.99f) // Prevent degenerate cross product
+			up = Vector3.Right;
+
 		Vector3 right = up.Cross(forward).Normalized();
 		up = forward.Cross(right).Normalized();
 
