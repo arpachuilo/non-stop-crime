@@ -61,17 +61,28 @@ shader_parameter/noise_amount = 0.55
 
 [node name="Level" type="Node3D" unique_id=596543593]
 
-[node name="Lobby" type="Node" parent="." unique_id=1714533031 node_paths=PackedStringArray("PlayerContainer", "PlayerInfoContainer", "SpawnPoints", "MaskSpawner", "LobbyOverlay")]
+[node name="Lobby" type="Node" parent="." unique_id=1714533031 node_paths=PackedStringArray("PlayerContainer", "PlayerInfoContainer", "Safetymode", "SpawnPoints", "MaskSpawner", "LobbyOverlay")]
 script = ExtResource("1_pb8y7")
 PlayerScene = ExtResource("2_hjsbj")
 PlayerContainer = NodePath("../Players")
 PlayerInfoScene = ExtResource("3_vnv7o")
 PlayerInfoContainer = NodePath("../HBoxContainer")
+Safetymode = NodePath("LobbyOverlay/SafetyModeLabel")
 SpawnPoints = [NodePath("../Players/Spawn A"), NodePath("../Players/Spawn B"), NodePath("../Players/Spawn C"), NodePath("../Players/Spawn D")]
 MaskSpawner = NodePath("../MaskSpawner")
 LobbyOverlay = NodePath("LobbyOverlay")
 
 [node name="LobbyOverlay" parent="Lobby" unique_id=848800051 instance=ExtResource("4_hy0rb")]
+
+[node name="SafetyModeLabel" type="Label" parent="Lobby/LobbyOverlay" unique_id=1512008240]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -40.0
+offset_bottom = 23.0
+grow_horizontal = 0
+theme_override_font_sizes/font_size = 32
 
 [node name="Players" type="Node3D" parent="." unique_id=842050307]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.57536626, 0)
