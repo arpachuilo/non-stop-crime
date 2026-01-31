@@ -49,7 +49,7 @@ animations = [{
 "speed": 9.0
 }]
 
-[node name="Player" type="CharacterBody3D" unique_id=1005422296 node_paths=PackedStringArray("NamePlate", "PlayerController")]
+[node name="Player" type="CharacterBody3D" unique_id=1005422296 node_paths=PackedStringArray("NamePlate", "PlayerController") groups=["Player"]]
 floor_constant_speed = true
 floor_block_on_wall = false
 script = ExtResource("1_f76hg")
