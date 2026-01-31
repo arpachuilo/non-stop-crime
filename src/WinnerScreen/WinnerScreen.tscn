@@ -1,13 +1,11 @@
 [gd_scene format=3 uid="uid://dqeupnhachgnt"]
 
 [ext_resource type="Script" uid="uid://bits1rmvalj68" path="res://src/WinnerScreen/WinnerScreen.cs" id="1_winner"]
-[ext_resource type="PackedScene" uid="uid://r1l4cou0ykpr" path="res://menus/MainMenu.tscn" id="2_mainmenu"]
 
 [node name="Node2D" type="CanvasLayer" unique_id=260927615 node_paths=PackedStringArray("WinnerLabel", "MainMenuButton")]
 script = ExtResource("1_winner")
 WinnerLabel = NodePath("winnerText")
 MainMenuButton = NodePath("Button")
-MainMenuScene = ExtResource("2_mainmenu")
 
 [node name="winnerText" type="Label" parent="." unique_id=573335501]
 anchors_preset = -1

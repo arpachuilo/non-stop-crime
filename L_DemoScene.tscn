@@ -4,7 +4,8 @@
 [ext_resource type="PackedScene" uid="uid://cj7ucao0d5den" path="res://AC_Player.tscn" id="2_6ci18"]
 [ext_resource type="Script" uid="uid://ch7jcbdn7a7yi" path="res://src/DynamicCamera.cs" id="3_5i8u7"]
 [ext_resource type="Script" uid="uid://cam52fb8h24fv" path="res://src/Projectile.cs" id="3_bmjc0"]
-[ext_resource type="PackedScene" uid="uid://b1awodkisntg" path="res://UI_PlayerInfo.tscn" id="3_hb5mc"]
+[ext_resource type="PackedScene" path="res://UI_PlayerInfo.tscn" id="3_hb5mc"]
+[ext_resource type="PackedScene" path="res://src/ScoreTracker/ScoreTracker.tscn" id="7_score"]
 
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_r2psd"]
 
@@ -92,3 +93,6 @@ offset_right = 20.0
 grow_horizontal = 2
 grow_vertical = 0
 theme_override_constants/separation = 24
+
+[node name="ScoreTracker" parent="." unique_id=1467006090 instance=ExtResource("7_score")]
+GameDurationSeconds = 5.0

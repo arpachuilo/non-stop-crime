@@ -4,8 +4,8 @@ public partial class WinnerScreen : CanvasLayer
 {
   [Export] public Label WinnerLabel;
   [Export] public Button MainMenuButton;
-  [Export] public PackedScene MainMenuScene;
 
+  private const string MainMenuPath = "res://menus/MainMenu.tscn";
   private static string _winnerText = "Winner!";
 
   public static void SetWinnerText(string text)
@@ -26,7 +26,6 @@ public partial class WinnerScreen : CanvasLayer
 
   private void OnMainMenuPressed()
   {
-    GD.Print(MainMenuScene.ResourcePath);
-    GetTree().ChangeSceneToPacked(MainMenuScene);
+    GetTree().ChangeSceneToFile(MainMenuPath);
   }
 }
