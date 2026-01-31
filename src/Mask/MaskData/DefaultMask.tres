@@ -1,7 +1,9 @@
 [gd_resource type="Resource" script_class="MaskData" format=3 uid="uid://d0k8gsx6stk63"]
 
+[ext_resource type="Texture2D" uid="uid://djps0jcq2hgmy" path="res://player/assets/stab_mask.png" id="1_ob4fd"]
 [ext_resource type="Script" uid="uid://cbwkmtyoylbwe" path="res://src/Mask/MaskData.cs" id="1_sqefs"]
 
 [resource]
 script = ExtResource("1_sqefs")
+Sprite = ExtResource("1_ob4fd")
 metadata/_custom_type_script = "uid://cbwkmtyoylbwe"

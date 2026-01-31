@@ -121,3 +121,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, -8)
 
 [node name="Pigsty" parent="Props" unique_id=367026064 instance=ExtResource("11_ygne2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.66833353, -0.015680552, -12.120096)
+
+[node name="MaskPickup" parent="." unique_id=2005297524 instance=ExtResource("5_1w8sc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.7641926, 0.5, -5.7281437)
+MaskData = ExtResource("10_ygne2")

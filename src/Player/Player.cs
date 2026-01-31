@@ -39,8 +39,8 @@ public partial class Player : Character {
   public PlayerInfo PlayerInfo { get; set; }
 
   public override void _Ready() {
-    _camera ??= GetViewport().GetCamera3D();
     SpriteParent ??= GetNode<SpriteParent>("SpriteParent");
+    _camera ??= GetViewport().GetCamera3D();
     _baseMaxSpeed = MaxSpeed;
 
 	Visible = false;
@@ -101,6 +101,8 @@ public partial class Player : Character {
 
     CurrentMask = mask;
     Mask = mask?.MaskBits ?? 0;  // Update zone access mask
+
+    SpriteParent.ApplyMaskTexture(mask?.Sprite);
 
     ApplyMaskAbilities();
   }

@@ -28,19 +28,27 @@ public partial class SpriteParent : Node3D {
   [Export(PropertyHint.Range, "1,20,1")]
   public float SpeedForMaxFps = 12f;
 
+  [ExportGroup("Sprite Refs")]
   [Export]
   private Player _player;
 
+  [ExportGroup("Sprite Refs")]
   [Export]
   private Sprite3D _head;
 
+  [ExportGroup("Sprite Refs")]
   [Export]
   private AnimatedSprite3D _run;
+
+  [ExportGroup("Sprite Refs")]
+  [Export]
+  private Sprite3D _mask;
 
   public override void _Ready() {
     _player = GetNode<Player>(PlayerPath);
     _head = GetNode<Sprite3D>("HeadSprite");
     _run = GetNode<AnimatedSprite3D>("RunCycleSprite");
+    _mask = GetNode<Sprite3D>("MaskSprite");
 
     _head.Modulate = color;
     _run.Modulate = color;
@@ -57,6 +65,7 @@ public partial class SpriteParent : Node3D {
 
       _head.FlipH = facingLeft;
       _run.FlipH = facingLeft;
+      _mask.FlipH = facingLeft;
     }
 
     if (planarSpeed <= Deadzone) {
@@ -66,11 +75,18 @@ public partial class SpriteParent : Node3D {
 
     _run.Play();
 
-	DebugDraw2D.SetText(_player.NamePlate.Text, $"Speed: {planarSpeed}");
-
     float t = Mathf.Clamp(planarSpeed / SpeedForMaxFps, 0f, 1f);
     float targetFps = Mathf.Lerp(MinFps, MaxFps, t);
 
     _run.SpeedScale = targetFps / Mathf.Max(MinFps, 0.001f);
+  }
+
+  public void ApplyMaskTexture(Texture2D maskTexture) {
+    if (maskTexture != null) {
+      _mask.Texture = maskTexture;
+      _mask.Visible = true;
+    } else {
+      _mask.Visible = false;
+    }
   }
 }
