@@ -14,4 +14,6 @@ HasProjectile = true
 ProjectileScene = ExtResource("2_vut3j")
 FireRate = 0.3
 Scorable = true
+HasAnimation = true
+Animation = "gun"
 metadata/_custom_type_script = "uid://cbwkmtyoylbwe"
