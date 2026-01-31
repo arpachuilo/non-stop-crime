@@ -13,9 +13,6 @@ using Godot;
 public partial class Character : CharacterBody3D
 {
   [Export]
-  public Node3D Visual;
-
-  [Export]
   public float Speed { get; set; } = 8.0f;
 
   [Export]
@@ -30,7 +27,6 @@ public partial class Character : CharacterBody3D
   [ExportGroup("Debug Settings")]
   [Export] private bool _displayVelocity = false;
   [Export] private bool _displayGravity = false;
-  [Export] private bool _displayForward = false;
   [Export] public float MaxSpeed { get; set; } = 8.0f;
   [Export] public float MinSpeed { get; set; } = 2.0f;
   [Export] public float AccelerationRate { get; set; } = 1.0f;
@@ -48,62 +44,6 @@ public partial class Character : CharacterBody3D
   public virtual Vector3 GetDirection()
   {
     return Vector3.Zero;
-  }
-
-  public virtual void LookAt()
-  {
-    // Create a normalized quaternion for the target direction
-    var projectedForward = Vector3.Zero;
-    if (_velocity.Length() > 0f)
-    {
-      projectedForward = _velocity.Slide(UpDirection).Normalized();
-    }
-
-    if (projectedForward == Vector3.Zero)
-    {
-      return;
-    }
-
-    var projectedPosition = GlobalPosition + projectedForward * 5.0f;
-    Visual.LookAt(projectedPosition, UpDirection);
-  }
-
-  private void AlignToGravity(float delta)
-  {
-    // Get current forward direction (before rotation)
-    Vector3 currentForward = -GlobalTransform.Basis.Z;
-
-    // Project current forward onto the plane perpendicular to gravity
-    // This preserves the player's forward direction as much as possible
-    Vector3 projectedForward = currentForward.Slide(UpDirection).Normalized();
-
-    // If the projection resulted in a zero vector (current forward parallel to gravity)
-    // then we need to choose an arbitrary forward direction
-    if (projectedForward.LengthSquared() < 0.001f)
-    {
-      // Choose an arbitrary reference vector
-      Vector3 reference = Vector3.Right;
-
-      // If gravity is nearly parallel to our reference, use a different reference
-      if (Mathf.Abs(-UpDirection.Dot(reference)) > 0.9f)
-      {
-        reference = Vector3.Forward;
-      }
-
-      // Calculate right vector (perpendicular to both up and reference)
-      Vector3 right1 = reference.Cross(UpDirection).Normalized();
-
-      // Calculate forward vector (perpendicular to both up and right)
-      projectedForward = right1.Cross(UpDirection).Normalized();
-    }
-
-    // Create a basis with the right, up, and forward vectors
-    Vector3 right = projectedForward.Cross(UpDirection).Normalized();
-    Basis newBasis = new(right, UpDirection, -projectedForward);
-
-    // Apply the rotation to the player
-    Transform3D newTransform = new(newBasis, GlobalPosition);
-    GlobalTransform = GlobalTransform.InterpolateWith(newTransform, delta * 1.5f);
   }
 
   public override void _PhysicsProcess(double delta)
@@ -195,12 +135,6 @@ public partial class Character : CharacterBody3D
       }
     }
 
-    // Perform gravity alignment
-    AlignToGravity((float)delta);
-
-    // Update visual rotation
-    LookAt();
-
     // Debug
     if (_displayGravity)
     {
@@ -211,11 +145,6 @@ public partial class Character : CharacterBody3D
     {
       DebugDraw3D.DrawArrow(GlobalPosition, GlobalPosition + horizontalVelocity.LimitLength(2f), Colors.Red);
       DebugDraw3D.DrawArrow(GlobalPosition, GlobalPosition + verticalVelocity.LimitLength(2f), Colors.Green);
-    }
-
-    if (_displayForward)
-    {
-      DebugDraw3D.DrawArrow(GlobalPosition, GlobalPosition + Visual.Forward(), Colors.Blue);
     }
   }
 }
