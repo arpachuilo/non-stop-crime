@@ -25,14 +25,6 @@ region = Rect2(226, 122, 153, 121)
 atlas = ExtResource("3_gt4ln")
 region = Rect2(43, 161, 166, 152)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_hfl4s"]
-atlas = ExtResource("4_oca1t")
-region = Rect2(142, 52, 334, 415)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_u7s6g"]
-atlas = ExtResource("5_dumxj")
-region = Rect2(14, 131, 124, 316)
-
 [node name="ParkingLot" type="Area3D" unique_id=1136181582 groups=["goal_zones"]]
 script = ExtResource("1_6j07c")
 
@@ -45,6 +37,7 @@ shape = SubResource("CylinderShape3D_qoybe")
 shape = SubResource("CylinderShape3D_qoybe")
 
 [node name="SpriteRoot" type="Node3D" parent="StaticBody3D" unique_id=240347247]
+transform = Transform3D(1.8, 0, 0, 0, 1.8, 0, 0, 0, 1.8, 0, 0, 0)
 
 [node name="ParkingLot" type="Sprite3D" parent="StaticBody3D/SpriteRoot" unique_id=919538968]
 axis = 1

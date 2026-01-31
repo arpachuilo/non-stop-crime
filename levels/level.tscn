@@ -3,7 +3,7 @@
 [ext_resource type="Shader" uid="uid://cxvp62bp8aq08" path="res://levels/assets/Backdrop.gdshader" id="1_80vhd"]
 [ext_resource type="Script" uid="uid://b430y4e1vno6x" path="res://src/Lobby.cs" id="1_pb8y7"]
 [ext_resource type="PackedScene" uid="uid://cj7ucao0d5den" path="res://AC_Player.tscn" id="2_hjsbj"]
-[ext_resource type="PackedScene" uid="uid://b1awodkisntg" path="res://UI_PlayerInfo.tscn" id="3_vnv7o"]
+[ext_resource type="PackedScene" path="res://UI_PlayerInfo.tscn" id="3_vnv7o"]
 [ext_resource type="PackedScene" path="res://menus/LobbyOverlay.tscn" id="4_hy0rb"]
 [ext_resource type="Script" uid="uid://ch7jcbdn7a7yi" path="res://src/DynamicCamera.cs" id="4_rtcij"]
 [ext_resource type="Script" uid="uid://bx8sqineax63u" path="res://src/Mask/MaskSpawner.cs" id="7_d5x7l"]
@@ -15,6 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://c2hmq40jdskvd" path="res://levels/props/ParkingLot.tscn" id="14_lh335"]
 [ext_resource type="PackedScene" uid="uid://bx6jancv55uem" path="res://levels/props/Lamp.tscn" id="15_0qmeg"]
 [ext_resource type="PackedScene" uid="uid://ctol3tugnm1rv" path="res://levels/props/Pigsty.tscn" id="15_u6cys"]
+[ext_resource type="PackedScene" uid="uid://5h4p037xui6w" path="res://levels/props/greeblies/Bush.tscn" id="16_ta7ci"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_umreq"]
 
@@ -94,8 +95,8 @@ light_color = Color(0.8036638, 0.871072, 1, 1)
 light_energy = 1.5
 shadow_enabled = true
 distance_fade_enabled = true
-omni_range = 45.0
-omni_attenuation = 0.85
+omni_range = 55.0
+omni_attenuation = 0.75
 
 [node name="Walls" type="Node3D" parent="." unique_id=8154275]
 
@@ -154,7 +155,7 @@ texture = SubResource("NoiseTexture2D_cwqvt")
 shape = SubResource("WorldBoundaryShape3D_umreq")
 
 [node name="Backdrop" type="MeshInstance3D" parent="." unique_id=361163437]
-transform = Transform3D(87.39753, 0, 0, 0, 3.1312087, -41.997375, 0, 3.1312087, 41.997375, 0, 1.563, -11.931)
+transform = Transform3D(87.39753, 0, 0, 0, 3.1312087, -41.997375, 0, 3.1312087, 41.997375, 0, 1.563, -14.834841)
 sorting_offset = -2.0
 mesh = SubResource("PlaneMesh_hjsbj")
 skeleton = NodePath("")
@@ -183,16 +184,16 @@ grow_vertical = 0
 [node name="Goal Zones" type="Node3D" parent="." unique_id=1627682746]
 
 [node name="Hospital" parent="Goal Zones" unique_id=1738063490 instance=ExtResource("12_0qmeg")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.421402, 0.099998, 6.2036724)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.450158, 0.099998, 5.2784414)
 
 [node name="NefariousJumbo" parent="Goal Zones" unique_id=227731175 instance=ExtResource("13_ta7ci")]
-transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 0.99999994, -15.927681, 0.07900095, 4.7968254)
+transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 0.99999994, -14.251998, 0.07900095, 3.4021654)
 
 [node name="ParkingLot" parent="Goal Zones" unique_id=2030573530 instance=ExtResource("14_lh335")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.300488, 2.0166271e-06, 31.997404)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.078856, 2.0166271e-06, 31.810728)
 
 [node name="Pigsty" parent="Goal Zones" unique_id=367026064 instance=ExtResource("15_u6cys")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.23092, 0.13432145, 32.187057)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.963837, 0.13432145, 32.129284)
 
 [node name="Props" type="Node3D" parent="." unique_id=421055543]
 
@@ -203,10 +204,19 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.643962, 0, 7.8159313)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.542943, 0, 7.0217896)
 
 [node name="Lamp3" parent="Props" unique_id=354961715 instance=ExtResource("15_0qmeg")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.263576, 0, 34.04188)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.170438, 0, 32.59895)
 
 [node name="Lamp4" parent="Props" unique_id=988699820 instance=ExtResource("15_0qmeg")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.618424, 0, 33.87192)
+
+[node name="Bush" parent="Props" unique_id=1866846027 instance=ExtResource("16_ta7ci")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0.11466503, 41)
+
+[node name="Bush2" parent="Props" unique_id=1546602081 instance=ExtResource("16_ta7ci")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0.11466503, 37)
+
+[node name="Bush3" parent="Props" unique_id=1599744540 instance=ExtResource("16_ta7ci")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15, 0.11466503, 22)
 
 [connection signal="GameStarted" from="Lobby" to="MaskSpawner" method="_on_lobby_game_started"]
 [connection signal="GameStarted" from="Lobby" to="ScoreTracker" method="_on_lobby_game_started"]
