@@ -10,6 +10,7 @@
 [ext_resource type="Script" uid="uid://bx8sqineax63u" path="res://src/Mask/MaskSpawner.cs" id="7_d5x7l"]
 [ext_resource type="PackedScene" uid="uid://27h8ms28togi" path="res://src/Mask/MaskPickup.tscn" id="8_rtcij"]
 [ext_resource type="Resource" uid="uid://bif5c1tl2gr2i" path="res://src/Mask/D_AllMasks.tres" id="8_ukwr8"]
+[ext_resource type="PackedScene" uid="uid://bxaqr0eh0nytl" path="res://src/ScoreTracker/ScoreTracker.tscn" id="11_pb8y7"]
 
 [sub_resource type="Gradient" id="Gradient_80vhd"]
 offsets = PackedFloat32Array(0.527668, 1)
@@ -130,6 +131,8 @@ _availableMasks = ExtResource("8_ukwr8")
 script = ExtResource("7_d5x7l")
 MaskPickupScene = ExtResource("8_rtcij")
 _availableMasks = ExtResource("8_ukwr8")
+
+[node name="ScoreTracker" parent="." unique_id=2090427259 instance=ExtResource("11_pb8y7")]
 
 [node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=1143154661]
 anchors_preset = 7
