@@ -8,6 +8,8 @@ public partial class MaskSpawner : Node3D
     [Export] public float MinDistance { get; set; } = 3.0f;
     [Export] public float MinDistanceFromZones { get; set; } = 4.0f;
     [Export] public int MaxPlacementAttempts { get; set; } = 30;
+    [Export] public float MinDistanceFromPlayerSpawns { get; set; } = 5f;
+    [Export] public Godot.Collections.Array<Node3D> PlayerSpawnLocations { get; set; } = new();
     [Export] public MaskDataArray _availableMasks = new();
 
     private Dictionary<MaskData, MaskPickup> _spawnedPickups = new();
@@ -69,6 +71,9 @@ public partial class MaskSpawner : Node3D
             Vector3 candidate = GenerateRandomPosition();
             Vector3 worldCandidate = Position + candidate;
 
+            if (IsPositionNearPlayerSpawn(worldCandidate))
+                continue;
+
             if (IsPositionNearGoalZone(worldCandidate))
                 continue;
 
@@ -87,6 +92,18 @@ public partial class MaskSpawner : Node3D
         }
 
         return bestPosition;
+    }
+
+    private bool IsPositionNearPlayerSpawn(Vector3 worldPosition)
+    {
+        foreach (var spawn in PlayerSpawnLocations)
+        {
+            if (spawn == null) continue;
+            float dist = worldPosition.DistanceTo(spawn.GlobalPosition);
+            if (dist < MinDistanceFromPlayerSpawns)
+                return true;
+        }
+        return false;
     }
 
     private Vector3 GenerateRandomPosition()
