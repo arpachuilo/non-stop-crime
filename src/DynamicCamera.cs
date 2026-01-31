@@ -53,8 +53,5 @@ public partial class DynamicCamera : Camera3D
 
 		// Smooth movement
 		GlobalPosition = GlobalPosition.Lerp(targetPosition, (float)(SmoothSpeed * delta));
-
-		// Look at the center of players
-		LookAt(averagePosition);
 	}
 }
