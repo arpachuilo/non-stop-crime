@@ -66,7 +66,7 @@ public partial class MaskSpawner : Node3D {
     }
 
     pickup.MaskData = maskData;
-    pickup.Position = Position + position;
+    pickup.Position = position;
     pickup.PickedUp += (player) => OnMaskPickedUp(maskData, player);
     AddChild(pickup);
 
