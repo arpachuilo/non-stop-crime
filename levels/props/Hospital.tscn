@@ -26,12 +26,14 @@ shape = SubResource("CylinderShape3D_oph0r")
 [node name="HospitalFrontSprite" type="Sprite3D" parent="HospitalStaticBody/SpriteRoot" unique_id=3444417]
 billboard = 2
 shaded = true
+alpha_cut = 2
 texture_filter = 4
 texture = ExtResource("1_e0v0s")
 
 [node name="HospitalSideSprite" type="Sprite3D" parent="HospitalStaticBody/SpriteRoot" unique_id=1637615163]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.30471146, 0, -0.759855)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.13657027, 0, -0.41465732)
 billboard = 2
 shaded = true
+alpha_cut = 2
 texture_filter = 4
 texture = ExtResource("2_nl4c2")

@@ -9,6 +9,14 @@
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_qoybe"]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_hfl4s"]
+atlas = ExtResource("4_oca1t")
+region = Rect2(142, 52, 334, 415)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u7s6g"]
+atlas = ExtResource("5_dumxj")
+region = Rect2(14, 131, 124, 316)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_df053"]
 atlas = ExtResource("2_6j07c")
 region = Rect2(226, 122, 153, 121)
@@ -39,34 +47,38 @@ shape = SubResource("CylinderShape3D_qoybe")
 [node name="SpriteRoot" type="Node3D" parent="StaticBody3D" unique_id=240347247]
 
 [node name="ParkingLot" type="Sprite3D" parent="StaticBody3D/SpriteRoot" unique_id=919538968]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0)
+axis = 1
 shaded = true
 texture = ExtResource("1_rktd0")
 
-[node name="BlueCar" type="Sprite3D" parent="StaticBody3D/SpriteRoot" unique_id=872258304]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.8221061, 0.6249918, -0.8045846)
-billboard = 2
-shaded = true
-texture_filter = 4
-texture = SubResource("AtlasTexture_df053")
-
-[node name="RedCar" type="Sprite3D" parent="StaticBody3D/SpriteRoot" unique_id=1419124746]
-transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, -1.0369365, 0.5623647, -0.72008455)
-billboard = 2
-shaded = true
-texture_filter = 4
-texture = SubResource("AtlasTexture_og56b")
-
 [node name="TreeBig" type="Sprite3D" parent="StaticBody3D/SpriteRoot" unique_id=280093948]
-transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, -1.87349, 1.4720867, 2.0322566)
+transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, -1.87349, 1.4076941, 2.0322566)
 billboard = 2
 shaded = true
+alpha_cut = 2
 texture_filter = 4
 texture = SubResource("AtlasTexture_hfl4s")
 
 [node name="TreeSmall" type="Sprite3D" parent="StaticBody3D/SpriteRoot" unique_id=2048419388]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.8355582, 1.5853059, 1.93979)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.8355582, 1.5191033, 1.93979)
 billboard = 2
 shaded = true
+alpha_cut = 2
 texture_filter = 4
 texture = SubResource("AtlasTexture_u7s6g")
+
+[node name="BlueCar" type="Sprite3D" parent="StaticBody3D/SpriteRoot" unique_id=872258304]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.8221061, 0.57698965, -0.8045846)
+billboard = 2
+shaded = true
+alpha_cut = 2
+texture_filter = 4
+texture = SubResource("AtlasTexture_df053")
+
+[node name="RedCar" type="Sprite3D" parent="StaticBody3D/SpriteRoot" unique_id=1419124746]
+transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, -1.0369365, 0.52541554, -0.72008455)
+billboard = 2
+shaded = true
+alpha_cut = 1
+texture_filter = 4
+texture = SubResource("AtlasTexture_og56b")

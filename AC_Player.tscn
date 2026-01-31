@@ -187,7 +187,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5918386, 0)
 billboard = 1
 render_priority = 3
 outline_render_priority = 2
-text = "Steve"
+text = "gun man"
 
 [node name="SpriteParent" type="Node3D" parent="." unique_id=1334660876 node_paths=PackedStringArray("_player", "_head", "_body", "_mask")]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 1.0101486, 0)
@@ -202,13 +202,16 @@ _mask = NodePath("MaskSprite")
 [node name="BodyCycleSprite" type="AnimatedSprite3D" parent="SpriteParent" unique_id=593184352]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
 billboard = 1
+shaded = true
 sprite_frames = SubResource("SpriteFrames_p6bia")
 
 [node name="HeadSprite" type="Sprite3D" parent="SpriteParent" unique_id=2129601922]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.074, -0.512, 0.1)
 billboard = 1
+shaded = true
 texture = ExtResource("3_077pa")
 
 [node name="MaskSprite" type="Sprite3D" parent="SpriteParent" unique_id=576538117]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.074, -0.512, 0.15)
 billboard = 1
+shaded = true
