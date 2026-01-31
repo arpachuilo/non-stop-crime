@@ -8,5 +8,16 @@ public partial class PlayerInfo : Control {
   public TextureRect Avatar { get; set; }
 
   [Export]
-  public Label Score { get; set; }
+  public Label ScoreOrReadyStatus { get; set; }
+
+  public bool IsPlaying = false;
+
+  public bool _isReady = false;
+  public bool IsReady {
+	get => _isReady;
+	set {
+	  _isReady = value;
+	  ScoreOrReadyStatus.Text = _isReady ? "Ready" : "Not Ready";
+	}
+  }
 }

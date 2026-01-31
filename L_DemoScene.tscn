@@ -98,7 +98,7 @@ grow_vertical = 0
 theme_override_constants/separation = 24
 
 [node name="ScoreTracker" parent="." unique_id=1467006090 instance=ExtResource("7_score")]
-GameDurationSeconds = 5.0
+GameDurationSeconds = 20.0
 
 [node name="Props" type="Node3D" parent="." unique_id=1999398117]
 

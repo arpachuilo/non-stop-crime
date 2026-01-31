@@ -42,6 +42,19 @@ public partial class Player : Character {
     _camera ??= GetViewport().GetCamera3D();
     SpriteParent ??= GetNode<SpriteParent>("SpriteParent");
     _baseMaxSpeed = MaxSpeed;
+
+	Visible = false;
+	SetProcess(false);
+	SetPhysicsProcess(false);
+  }
+
+  public void StartPlaying() {
+	PlayerInfo.IsReady = true;
+	PlayerInfo.IsPlaying = true;
+	PlayerInfo.ScoreOrReadyStatus.Text = Score.ToString();
+	Visible = true;
+	SetProcess(true);
+	SetPhysicsProcess(true);
   }
 
   public override void _Process(double delta) {
@@ -63,7 +76,7 @@ public partial class Player : Character {
 
   public void AddScore(int points) {
     Score += points;
-	PlayerInfo.Score.Text = Score.ToString();
+	PlayerInfo.ScoreOrReadyStatus.Text = Score.ToString();
     GD.Print($"Player {PlayerController?.DeviceId} scored {points} points (Total: {Score})");
   }
 

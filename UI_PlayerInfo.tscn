@@ -5,12 +5,12 @@
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_hk8mb"]
 size = Vector2(64, 64)
 
-[node name="PlayerInfo" type="VBoxContainer" unique_id=163918719 node_paths=PackedStringArray("NameLabel", "Avatar", "Score")]
+[node name="PlayerInfo" type="VBoxContainer" unique_id=163918719 node_paths=PackedStringArray("NameLabel", "Avatar", "ScoreOrReadyStatus")]
 alignment = 1
 script = ExtResource("1_v54wg")
 NameLabel = NodePath("Name")
 Avatar = NodePath("Avatar")
-Score = NodePath("Score")
+ScoreOrReadyStatus = NodePath("Score")
 
 [node name="Avatar" type="TextureRect" parent="." unique_id=115759476]
 layout_mode = 2

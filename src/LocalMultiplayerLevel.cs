@@ -47,6 +47,9 @@ public partial class LocalMultiplayerLevel : Node
       // Already assigned
       if (JoypadToPlayer.ContainsKey(joypadEvent.Device))
       {
+		var joyPlayer = JoypadToPlayer[joypadEvent.Device];
+		if (joyPlayer.PlayerInfo.IsPlaying) return;
+		joyPlayer.PlayerInfo.IsReady = !joyPlayer.PlayerInfo.IsReady;
         return;
       }
 
@@ -65,6 +68,8 @@ public partial class LocalMultiplayerLevel : Node
       // Already assigned
       if (KBPlayer != null)
       {
+		if (KBPlayer.PlayerInfo.IsPlaying) return;
+		KBPlayer.PlayerInfo.IsReady = !KBPlayer.PlayerInfo.IsReady;
         return;
       }
 
