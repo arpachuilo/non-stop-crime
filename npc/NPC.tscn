@@ -19,7 +19,6 @@
 [ext_resource type="Texture2D" uid="uid://dwjvs1xsvfgd1" path="res://player/assets/frames_running/frame_7.png" id="16_x3mm6"]
 [ext_resource type="Texture2D" uid="uid://hbn4cw142vli" path="res://player/assets/frames_running/frame_8.png" id="17_iqto4"]
 [ext_resource type="Texture2D" uid="uid://buya8506ukc0l" path="res://player/assets/head.png" id="18_hhdgm"]
-[ext_resource type="Texture2D" uid="uid://djps0jcq2hgmy" path="res://projectiles/knife/stab_mask.png" id="19_dvqy8"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_dnf2n"]
 
@@ -109,6 +108,9 @@ _mask = NodePath("MaskSprite")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
 billboard = 1
 shaded = true
+alpha_cut = 2
+alpha_antialiasing_mode = 2
+texture_filter = 4
 sprite_frames = SubResource("SpriteFrames_akyw2")
 animation = &"walk"
 frame_progress = 0.54208577
@@ -117,10 +119,15 @@ frame_progress = 0.54208577
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.074, -0.512, 0.1)
 billboard = 1
 shaded = true
+alpha_cut = 2
+alpha_antialiasing_mode = 2
+texture_filter = 4
 texture = ExtResource("18_hhdgm")
 
 [node name="MaskSprite" type="Sprite3D" parent="SpriteParent" unique_id=723561790]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.074, -0.512, 0.15)
 billboard = 1
 shaded = true
-texture = ExtResource("19_dvqy8")
+alpha_cut = 2
+alpha_antialiasing_mode = 2
+texture_filter = 4

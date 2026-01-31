@@ -10,7 +10,9 @@
   - Build final level 👉 Floris: I'm pretty pleased with the current state, might add some more greeblies
   - Communicate which zones relate to which masks 👉 Are we still doing this?
   - Spawnpoint asset (tiny house colored in player color)
-  - CaptureZones do not always change colors
+  - Capture zones should maybe not be instant to capture
+  - Owning capture zones should give points over time
+  - Capture zones might have uncappable cooldown after being captured
 - Sound
   - SFX for abilities
   - Background music
