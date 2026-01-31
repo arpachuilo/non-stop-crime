@@ -21,13 +21,16 @@ shape = SubResource("CylinderShape3D_kjg33")
 [node name="PoliceLeftSprite" type="Sprite3D" parent="StaticBody3D/SpriteRoot" unique_id=1487589853]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.2, 0, -0.4)
 billboard = 2
+shaded = true
 texture = ExtResource("1_kjg33")
 
 [node name="PoliceRightSprite" type="Sprite3D" parent="StaticBody3D/SpriteRoot" unique_id=1862093500]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.2, 0, -0.4)
 billboard = 2
+shaded = true
 texture = ExtResource("2_qi2m5")
 
 [node name="PoliceFrontSprite" type="Sprite3D" parent="StaticBody3D/SpriteRoot" unique_id=1899919337]
 billboard = 2
+shaded = true
 texture = ExtResource("3_m6wmv")
