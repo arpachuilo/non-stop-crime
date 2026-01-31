@@ -12,8 +12,8 @@
 [ext_resource type="Resource" uid="uid://bif5c1tl2gr2i" path="res://src/Mask/D_AllMasks.tres" id="8_ukwr8"]
 
 [sub_resource type="Gradient" id="Gradient_80vhd"]
-offsets = PackedFloat32Array(0.54535145, 1)
-colors = PackedColorArray(1.5642494e-06, 0.53888744, 0.18877912, 1, 0.5372549, 0.2, 0.2, 1)
+offsets = PackedFloat32Array(0.527668, 1)
+colors = PackedColorArray(0.10639999, 0.38, 0.20216002, 1, 0.5372549, 0.2, 0.2, 1)
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_hjsbj"]
 

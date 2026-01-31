@@ -9,13 +9,6 @@ public partial class GoalZone : Area3D
     private CollisionShape3D _collisionShape;
 
     [Export] public Color NeutralColor { get; set; } = new Color(0.5f, 0.5f, 0.5f, 0.5f);
-    [Export]
-    public Color[] PlayerColors { get; set; } = [
-           new(1, 0, 0, 0.5f),
-        new(0, 0, 1, 0.5f),
-        new(0, 1, 0, 0.5f),
-        new(1, 1, 0, 0.5f),
- ];
     [Export] public Vector3 ZoneSize { get; set; } = new Vector3(3, 1, 3);
     [Export] public int Mask { get; set; } = 0;
     public int OwnerPlayerId { get; private set; } = -1;  // -1 = neutral
@@ -43,7 +36,7 @@ public partial class GoalZone : Area3D
         box.Size = ZoneSize;
         _visualMesh.Mesh = box;
 
-        UpdateVisualColor();
+        UpdateVisualColor(NeutralColor);
     }
 
     private void SetupCollision()
@@ -78,7 +71,7 @@ public partial class GoalZone : Area3D
             {
                 OwnerPlayerId = playerId;
                 IsCompleted = true;
-                UpdateVisualColor();
+                UpdateVisualColor(player.color);
                 player.AddScore(1);
                 EmitSignal(SignalName.Captured, player);
                 GD.Print($"Zone captured by Player {playerId}");
@@ -86,16 +79,16 @@ public partial class GoalZone : Area3D
         }
     }
 
-    private void UpdateVisualColor()
+    private void UpdateVisualColor(Color playerColor)
     {
         if (_visualMesh == null) return;
 
         var material = new StandardMaterial3D();
         material.Transparency = BaseMaterial3D.TransparencyEnum.Alpha;
 
-        if (OwnerPlayerId >= 0 && OwnerPlayerId < PlayerColors.Length)
+        if (OwnerPlayerId >= 0 )
         {
-            material.AlbedoColor = PlayerColors[OwnerPlayerId];
+            material.AlbedoColor = playerColor;
         }
         else
         {
