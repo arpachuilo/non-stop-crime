@@ -23,7 +23,7 @@ public partial class PlayerController : Node
 	public override void _Process(double delta)
 	{
 		var movement = GetMovement();
-		if (movement.Length() > 0.0f)
+		if (movement.Length() > 0.1f)
 		{
 			Direction = new Vector3(movement.X, 0f, movement.Y).Normalized();
 			_previousDirection = Direction.Normalized();
