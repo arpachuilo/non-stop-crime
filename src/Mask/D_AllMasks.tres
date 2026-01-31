@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://bs5r0hgmu14nl" path="res://src/Mask/MaskDataArray.cs" id="2_6a2qg"]
 [ext_resource type="Resource" uid="uid://bygsu8w48ifb7" path="res://projectiles/arson/ArsonMask.tres" id="2_nd6jh"]
 [ext_resource type="Resource" uid="uid://bfx8px6hsb2wc" path="res://projectiles/knife/KnifeMask.tres" id="3_nd6jh"]
-[ext_resource type="Resource" uid="uid://twg2fuvnnfgb" path="res://projectiles/gun/GunMask.tres" id="4_f7gkc"]
+[ext_resource type="Resource" uid="uid://b4ruexidpexgr" path="res://projectiles/gun/GunMask.tres" id="4_f7gkc"]
 
 [resource]
 script = ExtResource("2_6a2qg")

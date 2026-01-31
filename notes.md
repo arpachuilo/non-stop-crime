@@ -9,9 +9,20 @@
   - Finalize mask abilities + VFX
   - Build final level
   - Communicate which zones relate to which masks
+  - Spawnpoint asset
 - Sound
   - SFX for abilities
   - Background music
+- User journey
+  - Launch game 
+  - Go into lobby
+  - 2-4 players join and ready
+  - Game starts if all ready
+  - Players spawn in without a mask in their own corner
+  - Players pick up a mask
+  - After pickup, targets become apparent, may have to be spawned
+  - Players complete objectives and frustrate others until time limit
+  - Game ends, winner announced
 
 # Graphics
 - 2.5D sprite-based graphics
