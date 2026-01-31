@@ -47,17 +47,4 @@ public partial class Player : Character {
     // Calculate movement direction in the gravity plane
     return (forward * direction.Z + right * direction.X).Normalized();
   }
-
-  public override void LookAt() {
-    // Create a normalized quaternion for the target direction
-    Vector3 visualForward = -_camera.GlobalTransform.Basis.Z;
-    var projectedForward = visualForward.Slide(UpDirection).Normalized();
-
-    if (projectedForward == Vector3.Zero) {
-      return;
-    }
-
-    var projectedPosition = GlobalPosition + projectedForward * 5.0f;
-    Visual.LookAt(projectedPosition, UpDirection);
-  }
 }
