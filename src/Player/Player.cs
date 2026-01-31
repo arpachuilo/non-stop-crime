@@ -14,6 +14,7 @@ public partial class Player : Character {
   public Vector3 _spawn;
 
   public override void _Ready() {
+    _camera ??= GetViewport().GetCamera3D();
   }
 
   public override void _Process(double delta) {
@@ -21,8 +22,6 @@ public partial class Player : Character {
 
   public override void _EnterTree() {
     base._EnterTree();
-
-    _camera ??= GetViewport().GetCamera3D();
   }
 
   public override void _ExitTree() {

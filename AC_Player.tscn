@@ -47,20 +47,19 @@ animations = [{
 "speed": 10.0
 }]
 
-[node name="Player" type="CharacterBody3D" unique_id=1005422296 node_paths=PackedStringArray("NamePlate", "PlayerController", "Visual")]
+[node name="Player" type="CharacterBody3D" unique_id=1005422296 node_paths=PackedStringArray("NamePlate", "PlayerController")]
 floor_constant_speed = true
 floor_block_on_wall = false
 script = ExtResource("1_f76hg")
 NamePlate = NodePath("NamePlate/Name")
 PlayerController = NodePath("PlayerController")
-Visual = NodePath("Sprites")
 Speed = 1.0
 _displayVelocity = true
 _displayGravity = true
-_displayForward = true
 
 [node name="PlayerController" type="Node" parent="." unique_id=1303242672]
 script = ExtResource("2_32haq")
+DeviceId = 0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=700832482]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)

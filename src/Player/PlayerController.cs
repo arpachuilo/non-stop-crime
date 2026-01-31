@@ -5,6 +5,7 @@ public partial class PlayerController : Node
 	[Export]
 	public Vector3 Direction { get; set; } = Vector3.Zero;
 
+  [Export]
 	public int DeviceId { get; set; } = -1;
 	public bool IsKB { get; set; } = false;
 
