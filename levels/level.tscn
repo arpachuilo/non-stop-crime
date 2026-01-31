@@ -3,10 +3,10 @@
 [ext_resource type="Shader" uid="uid://cxvp62bp8aq08" path="res://levels/assets/Backdrop.gdshader" id="1_80vhd"]
 [ext_resource type="Script" uid="uid://b430y4e1vno6x" path="res://src/Lobby.cs" id="1_pb8y7"]
 [ext_resource type="PackedScene" uid="uid://cj7ucao0d5den" path="res://AC_Player.tscn" id="2_hjsbj"]
-[ext_resource type="PackedScene" uid="uid://b1awodkisntg" path="res://UI_PlayerInfo.tscn" id="3_vnv7o"]
+[ext_resource type="PackedScene" uid="uid://b1awodkisntg" path="res://player/UI_PlayerInfo.tscn" id="3_vnv7o"]
 [ext_resource type="PackedScene" path="res://menus/LobbyOverlay.tscn" id="4_hy0rb"]
 [ext_resource type="Script" uid="uid://ch7jcbdn7a7yi" path="res://src/DynamicCamera.cs" id="4_rtcij"]
-[ext_resource type="PackedScene" uid="uid://e72mqccnojuq" path="res://levels/props/greeblies/Trashbag.tscn" id="6_lh335"]
+[ext_resource type="PackedScene" path="res://levels/props/greeblies/Trashbag.tscn" id="6_lh335"]
 [ext_resource type="Script" uid="uid://bx8sqineax63u" path="res://src/Mask/MaskSpawner.cs" id="7_d5x7l"]
 [ext_resource type="PackedScene" uid="uid://27h8ms28togi" path="res://src/Mask/MaskPickup.tscn" id="8_rtcij"]
 [ext_resource type="Resource" uid="uid://bif5c1tl2gr2i" path="res://src/Mask/D_AllMasks.tres" id="8_ukwr8"]
@@ -19,7 +19,7 @@
 [ext_resource type="PackedScene" uid="uid://5h4p037xui6w" path="res://levels/props/greeblies/Bush.tscn" id="16_ta7ci"]
 [ext_resource type="Script" uid="uid://h6b127a3t5at" path="res://npc/NPCSpawner.cs" id="17_u6cys"]
 [ext_resource type="PackedScene" uid="uid://c4a4i2hhu3r40" path="res://npc/NPC.tscn" id="18_368ro"]
-[ext_resource type="PackedScene" uid="uid://cq086pc3a0s8n" path="res://levels/props/Park.tscn" id="20_3ca7f"]
+[ext_resource type="PackedScene" path="res://levels/props/Park.tscn" id="20_3ca7f"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_umreq"]
 
@@ -197,17 +197,20 @@ SpawnAreaSize = Vector3(40, 10.04, 40)
 [node name="ScoreTracker" parent="." unique_id=2090427259 instance=ExtResource("11_pb8y7")]
 
 [node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=1143154661]
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -20.0
-offset_top = -40.0
-offset_right = 20.0
+anchors_preset = -1
+anchor_left = 0.49300003
+anchor_top = 0.94400007
+anchor_right = 0.504
+anchor_bottom = 0.94400007
+offset_left = -6.5600586
+offset_top = -59.52008
+offset_right = 12.320007
+offset_bottom = 60.47992
 grow_horizontal = 2
 grow_vertical = 0
-theme_override_constants/separation = 32
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 542
 
 [node name="Goal Zones" type="Node3D" parent="." unique_id=1627682746]
 
