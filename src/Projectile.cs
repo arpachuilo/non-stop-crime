@@ -5,7 +5,18 @@ public partial class Projectile : Area3D
 	[Export]
 	public float Duration = 5.0f;
 
+	[Export]
+	public float Speed = 10.0f;
+
+	[Export]
+	public Player Owner;
+
 	private Poller _lifetimePoller = new(5.0f);
+
+	public void Own(Player player)
+	{
+		Owner = player;
+	}
 
 	public override void _EnterTree()
 	{
@@ -22,7 +33,14 @@ public partial class Projectile : Area3D
 
 	public override void _PhysicsProcess(double delta)
 	{
+		MoveTowards(delta);
 		_lifetimePoller?.Poll(QueueFree);
+	}
+
+	protected virtual void MoveTowards(double delta)
+	{
+		Vector3 forward = -GlobalTransform.Basis.Z;
+		GlobalPosition += forward * Speed * (float)delta;
 	}
 
 	protected virtual void OnAreaEntered(Area3D area)
