@@ -16,8 +16,15 @@ public partial class Player : Character {
   [Export]
   public Vector3 _spawn;
 
+  [Export]
+  public MaskData CurrentMask { get; set; }
+
+  private ProjectileEmitter _projectileEmitter;
+  private float _baseMaxSpeed;
+
   public override void _Ready() {
     _camera ??= GetViewport().GetCamera3D();
+    _baseMaxSpeed = MaxSpeed;
   }
 
   public override void _Process(double delta) {
@@ -48,5 +55,43 @@ public partial class Player : Character {
 
     // Calculate movement direction in the gravity plane
     return (forward * direction.Z + right * direction.X).Normalized();
+  }
+
+  public void EquipMask(MaskData mask) {
+    // Remove previous abilities
+    RemoveMaskAbilities();
+
+    CurrentMask = mask;
+    Mask = mask?.MaskBits ?? 0;  // Update zone access mask
+
+    ApplyMaskAbilities();
+  }
+
+  private void ApplyMaskAbilities() {
+    if (CurrentMask == null) return;
+
+    // Speed modifier
+    MaxSpeed = _baseMaxSpeed * CurrentMask.SpeedMultiplier;
+
+    // Projectile ability
+    if (CurrentMask.HasProjectile && CurrentMask.ProjectileScene != null) {
+      _projectileEmitter = new ProjectileEmitter();
+      _projectileEmitter.PlayerOwner = this;
+      _projectileEmitter.ProjectileScene = CurrentMask.ProjectileScene;
+      _projectileEmitter.FireRate = CurrentMask.ProjectileFireRate;
+      _projectileEmitter.ProjectileSpeed = CurrentMask.ProjectileSpeed;
+      AddChild(_projectileEmitter);
+    }
+  }
+
+  private void RemoveMaskAbilities() {
+    // Reset speed
+    MaxSpeed = _baseMaxSpeed;
+
+    // Remove projectile emitter if exists
+    if (_projectileEmitter != null) {
+      _projectileEmitter.QueueFree();
+      _projectileEmitter = null;
+    }
   }
 }
