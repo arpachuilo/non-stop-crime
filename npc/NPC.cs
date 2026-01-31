@@ -37,7 +37,8 @@ public partial class NPC : Character
       return -(closest.GlobalPosition - GlobalPosition).Normalized();
     }
 
-    return Vector3.Zero;
+    // Do a random walk if no player is within aggro radius
+    return RandomUtil.RandomDirection().Normalized()._X0Y();
   }
 
   public bool IsCaptured { get; private set; } = false;
