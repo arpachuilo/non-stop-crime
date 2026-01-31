@@ -1,0 +1,58 @@
+[gd_scene format=3 uid="uid://cq086pc3a0s8n"]
+
+[ext_resource type="Texture2D" uid="uid://h0f168houwv5" path="res://levels/assets/park/park_floor_tile.png" id="1_ygj20"]
+[ext_resource type="PackedScene" uid="uid://du6dtncihpf5y" path="res://levels/props/greeblies/Parkbench.tscn" id="2_u70mh"]
+[ext_resource type="PackedScene" uid="uid://5h4p037xui6w" path="res://levels/props/greeblies/Bush.tscn" id="3_nn6rl"]
+[ext_resource type="PackedScene" uid="uid://dhbmch1isdgnu" path="res://levels/props/greeblies/TreeSmall.tscn" id="4_op4qb"]
+[ext_resource type="PackedScene" uid="uid://d0brgf0lct3w" path="res://levels/props/greeblies/TreeLarge.tscn" id="5_yi8ha"]
+[ext_resource type="PackedScene" uid="uid://cdvtkfm4wp54d" path="res://levels/props/greeblies/Trashcan.tscn" id="6_yi8ha"]
+[ext_resource type="PackedScene" uid="uid://e72mqccnojuq" path="res://levels/props/greeblies/Trashbag.tscn" id="7_un034"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_yi8ha"]
+size = Vector3(10.38855, 1, 5.658081)
+
+[node name="Park" type="Area3D" unique_id=977220458]
+
+[node name="ParkCaptureZoneCollider" type="CollisionShape3D" parent="." unique_id=1630871338]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0020141602, 0.51687694, -0.018615723)
+shape = SubResource("BoxShape3D_yi8ha")
+debug_color = Color(0.94509804, 0, 0.6039216, 1)
+
+[node name="ParkStaticBody" type="StaticBody3D" parent="." unique_id=2053917575]
+
+[node name="ParkFloorSprite" type="Sprite3D" parent="ParkStaticBody" unique_id=985037978]
+axis = 1
+shaded = true
+alpha_cut = 1
+alpha_antialiasing_mode = 2
+texture_filter = 4
+texture = ExtResource("1_ygj20")
+
+[node name="Props" type="Node3D" parent="ParkStaticBody" unique_id=755366121]
+
+[node name="Parkbench" parent="ParkStaticBody/Props" unique_id=1866846027 instance=ExtResource("2_u70mh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.4308789, 4.7683716e-07, 0.6076722)
+
+[node name="Parkbench2" parent="ParkStaticBody/Props" unique_id=513831365 instance=ExtResource("2_u70mh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.3519866, 0, 0.6634636)
+
+[node name="Bush" parent="ParkStaticBody/Props" unique_id=78446932 instance=ExtResource("3_nn6rl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.4924846, 4.7683716e-07, 4.5402336)
+
+[node name="TreeSmall" parent="ParkStaticBody/Props" unique_id=1803420776 instance=ExtResource("4_op4qb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.72354, 4.7683716e-07, 4.5038295)
+
+[node name="TreeLarge" parent="ParkStaticBody/Props" unique_id=324430008 instance=ExtResource("5_yi8ha")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.001723975, -4.7683716e-07, 0.58202696)
+
+[node name="TreeSmall2" parent="ParkStaticBody/Props" unique_id=1786511087 instance=ExtResource("4_op4qb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.8059506, 0, -2.5425916)
+
+[node name="Trashcan" parent="ParkStaticBody/Props" unique_id=127851357 instance=ExtResource("6_yi8ha")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.7940907, 0, 1.3793445)
+
+[node name="Trashbag" parent="ParkStaticBody/Props" unique_id=370217 instance=ExtResource("7_un034")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.922046, 0, -1.3926411)
+
+[node name="Bush2" parent="ParkStaticBody/Props" unique_id=1707694629 instance=ExtResource("3_nn6rl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.6822188, -4.7683716e-07, -3.937886)

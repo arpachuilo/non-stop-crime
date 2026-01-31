@@ -8,6 +8,9 @@ public partial class PlayerInfo : Control {
   public TextureRect Avatar { get; set; }
 
   [Export]
+  public Color UIColor { get; set; }
+
+  [Export]
   public Label ScoreOrReadyStatus { get; set; }
 
   [Export]

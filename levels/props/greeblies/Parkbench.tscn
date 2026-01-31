@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://du6dtncihpf5y"]
+
+[ext_resource type="Texture2D" uid="uid://c35dyri2k1uj1" path="res://levels/assets/park/park_bench.png" id="1_i86f5"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_k6eyc"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4gyap"]
+atlas = ExtResource("1_i86f5")
+region = Rect2(400, 432, 454, 261)
+
+[node name="Parkbench" type="Node3D" unique_id=1866846027]
+
+[node name="ParkbenchStaticBody" type="StaticBody3D" parent="." unique_id=248253457]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.88533497, 0)
+
+[node name="ParkbenchCollider" type="CollisionShape3D" parent="ParkbenchStaticBody" unique_id=742267192]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.108807206, 0)
+shape = SubResource("CylinderShape3D_k6eyc")
+
+[node name="ParkbenchSprite" type="Sprite3D" parent="ParkbenchStaticBody" unique_id=371091995]
+transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 0, -0.12229502, 0)
+shaded = true
+alpha_cut = 2
+texture_filter = 4
+texture = SubResource("AtlasTexture_4gyap")

@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" path="res://menus/LobbyOverlay.tscn" id="4_hy0rb"]
 [ext_resource type="Script" uid="uid://ch7jcbdn7a7yi" path="res://src/DynamicCamera.cs" id="4_rtcij"]
 [ext_resource type="Texture2D" uid="uid://dq8fhsvfeubu4" path="res://levels/assets/PavingStones150_1K-PNG_Color.png" id="6_3ca7f"]
-[ext_resource type="PackedScene" path="res://levels/props/greeblies/Trashbag.tscn" id="6_lh335"]
+[ext_resource type="PackedScene" uid="uid://e72mqccnojuq" path="res://levels/props/greeblies/Trashbag.tscn" id="6_lh335"]
 [ext_resource type="Script" uid="uid://bx8sqineax63u" path="res://src/Mask/MaskSpawner.cs" id="7_d5x7l"]
 [ext_resource type="PackedScene" uid="uid://27h8ms28togi" path="res://src/Mask/MaskPickup.tscn" id="8_rtcij"]
 [ext_resource type="Resource" uid="uid://bif5c1tl2gr2i" path="res://src/Mask/D_AllMasks.tres" id="8_ukwr8"]
@@ -20,11 +20,26 @@
 [ext_resource type="PackedScene" uid="uid://5h4p037xui6w" path="res://levels/props/greeblies/Bush.tscn" id="16_ta7ci"]
 [ext_resource type="Script" uid="uid://h6b127a3t5at" path="res://npc/NPCSpawner.cs" id="17_u6cys"]
 [ext_resource type="PackedScene" uid="uid://c4a4i2hhu3r40" path="res://npc/NPC.tscn" id="18_368ro"]
+[ext_resource type="PackedScene" uid="uid://cq086pc3a0s8n" path="res://levels/props/Park.tscn" id="20_3ca7f"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_umreq"]
 
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_80vhd"]
 data = PackedVector3Array(-0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, -0.5)
+
+[sub_resource type="Gradient" id="Gradient_80vhd"]
+offsets = PackedFloat32Array(0, 0.78853756, 0.9505929)
+colors = PackedColorArray(0.10500001, 0.3, 0.1635, 1, 0.10639999, 0.38, 0.20216002, 1, 0.3529412, 0.18039216, 0.1254902, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_hjsbj"]
+frequency = 0.0176
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_cwqvt"]
+width = 1024
+height = 1024
+noise = SubResource("FastNoiseLite_hjsbj")
+color_ramp = SubResource("Gradient_80vhd")
+seamless = true
 
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_umreq"]
 
@@ -92,7 +107,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.706207, 0, 19.295162)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.53366, 0, 17.91121)
 
 [node name="Spawn D" type="Node3D" parent="Players" unique_id=1040147215]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.634876, 0, -2.663765)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.1638875, 0, -4.2016945)
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=170340263]
 transform = Transform3D(1, 0, 0, 0, 0.7071068, 0.7071068, 0, -0.7071068, 0.7071068, 0, 22.298, 49.86)
@@ -155,9 +170,6 @@ transform = Transform3D(2.5, 0, 0, 0, 1, 0, 0, 0, 2.5, 0, 0, 16.874304)
 [node name="GroundCollider" type="CollisionShape3D" parent="Ground" unique_id=1702323393]
 shape = SubResource("WorldBoundaryShape3D_umreq")
 
-[node name="Trashbag" parent="Ground" unique_id=1866846027 instance=ExtResource("6_lh335")]
-transform = Transform3D(0.3999999, 0, 0, 0, 1, 0, 0, 0, 0.3999999, 9.038604, 0.0061295033, -9.383417)
-
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Ground" unique_id=1340531726]
 mesh = SubResource("QuadMesh_3ca7f")
 surface_material_override/0 = SubResource("StandardMaterial3D_kogck")
@@ -202,7 +214,7 @@ theme_override_constants/separation = 32
 [node name="Goal Zones" type="Node3D" parent="." unique_id=1627682746]
 
 [node name="Hospital" parent="Goal Zones" unique_id=1738063490 groups=["goal_zones"] instance=ExtResource("12_0qmeg")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.450158, 0.02974391, 5.2784414)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.726382, 0.02974391, 1.6693773)
 
 [node name="NefariousJumbo" parent="Goal Zones" unique_id=227731175 instance=ExtResource("13_ta7ci")]
 transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 0.99999994, -14.251998, 0.0014432669, 3.4021654)
@@ -213,10 +225,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.078856, 0.0130320685, 31.
 [node name="Pigsty" parent="Goal Zones" unique_id=367026064 instance=ExtResource("15_u6cys")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.963837, 0.13432145, 32.129284)
 
+[node name="Park" parent="Goal Zones" unique_id=1205434241 instance=ExtResource("20_3ca7f")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.6167254, 0.037527084, 18.250727)
+
 [node name="Props" type="Node3D" parent="." unique_id=421055543]
 
 [node name="Lamp" parent="Props" unique_id=1407807229 instance=ExtResource("15_0qmeg")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.643963, 0, 8.815931)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.720348, 0, 4.7660136)
 
 [node name="Lamp3" parent="Props" unique_id=354961715 instance=ExtResource("15_0qmeg")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.170438, 0, 32.59895)
@@ -228,13 +243,19 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, -0.1078918, 41)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.4000425, -0.16430438, 31.968193)
 
 [node name="Bush3" parent="Props" unique_id=1599744540 instance=ExtResource("16_ta7ci")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15, -0.17378032, 22)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20, -0.17378032, 19)
 
 [node name="Lamp5" parent="Props" unique_id=1962808378 instance=ExtResource("15_0qmeg")]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 4, 0, 3)
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 3.4116511, 0, -1.9749408)
 
-[node name="Trashbag" parent="." unique_id=1436539569 instance=ExtResource("6_lh335")]
+[node name="Trashbag" parent="Props" unique_id=1436539569 instance=ExtResource("6_lh335")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.175316, 0.03834796, 1.9990458)
+
+[node name="Bush4" parent="Props" unique_id=2107547200 instance=ExtResource("16_ta7ci")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14, -0.1457392, 17)
+
+[node name="Trashbag2" parent="Props" unique_id=1866846027 instance=ExtResource("6_lh335")]
+transform = Transform3D(0.9999997, 0, 0, 0, 1, 0, 0, 0, 0.9999997, 22.59651, 0.0061295033, -6.584238)
 
 [connection signal="GameStarted" from="Lobby" to="MaskSpawner" method="_on_lobby_game_started"]
 [connection signal="GameStarted" from="Lobby" to="NPCSpawner" method="_on_lobby_game_started"]
