@@ -4,11 +4,15 @@ public partial class PlayerInfo : Control {
   [Export]
   public Label NameLabel { get; set; }
 
+  private Color _uiColor;
   [Export]
-  public TextureRect Avatar { get; set; }
-
-  [Export]
-  public Color UIColor { get; set; }
+  public Color UIColor {
+    get => _uiColor;
+    set {
+      _uiColor = value;
+      UpdateColors();
+    }
+  }
 
   [Export]
   public Label ScoreOrReadyStatus { get; set; }
@@ -16,25 +20,39 @@ public partial class PlayerInfo : Control {
   [Export]
   public TextureRect MaskIcon { get; set; }
 
+  [Export]
+  public TextureRect DefaultMask { get; set; }
+
+  [Export]
+  public Sprite2D PlayerHUD { get; set; }
+
   public bool IsPlaying = false;
 
   public bool _isReady = false;
   public bool IsReady {
-  get => _isReady;
-  set {
-    _isReady = value;
-    ScoreOrReadyStatus.Text = _isReady ? "Ready" : "Not Ready";
+    get => _isReady;
+    set {
+      _isReady = value;
+      ScoreOrReadyStatus.Text = _isReady ? "Ready" : "Not Ready";
+    }
   }
+
+  public void UpdateColors() {
+    DefaultMask.Modulate = UIColor;
+    PlayerHUD.Modulate = UIColor;
   }
 
   public void UpdateMaskIcon(Texture2D icon) {
     if (MaskIcon == null) return;
 
     if (icon != null) {
+      DefaultMask.Visible = false;
       MaskIcon.Texture = icon;
       MaskIcon.Visible = true;
+      MaskIcon.Modulate = UIColor;
     } else {
       MaskIcon.Visible = false;
+      DefaultMask.Visible = true;
     }
   }
 }

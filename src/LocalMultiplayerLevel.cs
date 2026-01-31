@@ -93,9 +93,6 @@ public partial class LocalMultiplayerLevel : Node
 
     // Add player info
     var playerInfo = PlayerInfoScene.Instantiate() as PlayerInfo;
-    var image = AvatarGenerator.NextAvatar(playerInfo.NameLabel.Text);
-    image.Resize(64, 64);
-    playerInfo.Avatar.Texture = ImageTexture.CreateFromImage(image);
     PlayerInfoContainer.AddChild(playerInfo);
     playerInfo.IsPlaying = somePlaying;
 
