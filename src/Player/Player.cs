@@ -19,6 +19,9 @@ public partial class Player : Character {
   [Export]
   private Camera3D _camera;
 
+  [Export]
+  public Vector3 _spawn;
+
   public override void _Ready() {
   }
 
@@ -31,6 +34,10 @@ public partial class Player : Character {
 
   public override void _ExitTree() {
     base._EnterTree();
+  }
+
+  public void Reset() {
+	GlobalPosition = _spawn;
   }
 
   public override Vector3 GetDirection() {

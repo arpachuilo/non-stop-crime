@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://cks4fmo6ia6pb" path="res://src/LocalMultiplayerLevel.cs" id="1_r2psd"]
 [ext_resource type="PackedScene" uid="uid://cj7ucao0d5den" path="res://AC_Player.tscn" id="2_6ci18"]
+[ext_resource type="Script" uid="uid://cam52fb8h24fv" path="res://src/Projectile.cs" id="3_bmjc0"]
 
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_r2psd"]
 
@@ -10,7 +11,20 @@ size = Vector2(1000, 1000)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_6ci18"]
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6ci18"]
+albedo_color = Color(1, 0.30980393, 1, 1)
+
 [sub_resource type="BoxMesh" id="BoxMesh_bmjc0"]
+material = SubResource("StandardMaterial3D_6ci18")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bmjc0"]
+albedo_color = Color(1, 0.26666668, 0.25882354, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_5i8u7"]
+material = SubResource("StandardMaterial3D_bmjc0")
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_6ci18"]
+data = PackedVector3Array(-0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, -0.5)
 
 [node name="L_DemoScene" type="Node3D" unique_id=1463421934 node_paths=PackedStringArray("SpawnLocation", "PlayerContainer")]
 script = ExtResource("1_r2psd")
@@ -23,7 +37,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.57536626, 0)
 
 [node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=900134267]
 disable_mode = 1
-collision_layer = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=1919821390]
 shape = SubResource("WorldBoundaryShape3D_r2psd")
@@ -45,4 +58,16 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.0670433, 0, -0.27054453)
 shape = SubResource("BoxShape3D_6ci18")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D2/CollisionShape3D" unique_id=2076929172]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.38081336, 0)
 mesh = SubResource("BoxMesh_bmjc0")
+
+[node name="Area3D" type="Area3D" parent="." unique_id=1307644242]
+script = ExtResource("3_bmjc0")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Area3D" unique_id=1725156432]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.41266143, 2.4467177)
+mesh = SubResource("BoxMesh_5i8u7")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=1797333413]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.4467177)
+shape = SubResource("ConcavePolygonShape3D_6ci18")
