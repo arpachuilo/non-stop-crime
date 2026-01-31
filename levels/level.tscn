@@ -161,10 +161,12 @@ mesh = SubResource("PlaneMesh_hjsbj")
 skeleton = NodePath("")
 surface_material_override/0 = SubResource("ShaderMaterial_cwqvt")
 
-[node name="MaskSpawner" type="Node3D" parent="." unique_id=321745574]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 17.169998)
+[node name="MaskSpawner" type="Node3D" parent="." unique_id=321745574 node_paths=PackedStringArray("PlayerSpawnLocations")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 17.17)
 script = ExtResource("7_d5x7l")
+SpawnAreaSize = Vector3(50, 8.11, 50)
 MaskPickupScene = ExtResource("8_rtcij")
+PlayerSpawnLocations = [NodePath("../Players")]
 _availableMasks = ExtResource("8_ukwr8")
 
 [node name="ScoreTracker" parent="." unique_id=2090427259 instance=ExtResource("11_pb8y7")]
