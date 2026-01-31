@@ -140,6 +140,7 @@ public partial class Player : Character {
       _projectileEmitter = new ProjectileEmitter();
       _projectileEmitter.PlayerOwner = this;
       _projectileEmitter.ProjectileScene = CurrentMask.ProjectileScene;
+      _projectileEmitter.FireRate = CurrentMask.FireRate;
       AddChild(_projectileEmitter);
     }
   }

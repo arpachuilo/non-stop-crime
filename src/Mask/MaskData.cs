@@ -14,5 +14,6 @@ public partial class MaskData : Resource
     [Export] public float SpeedMultiplier { get; set; } = 1.0f;
     [Export] public bool HasProjectile { get; set; } = false;
     [Export] public PackedScene ProjectileScene { get; set; }
+    [Export] public float FireRate { get; set; } = 0.5f;
     [Export] public bool Scorable {get; set; }
 }

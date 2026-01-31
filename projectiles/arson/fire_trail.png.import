@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://djps0jcq2hgmy"
-path.s3tc="res://.godot/imported/stab_mask.png-2d2cc65ca11cd10e18584fb43a0a5eb9.s3tc.ctex"
+uid="uid://dx2ea7xigbgo"
+path.s3tc="res://.godot/imported/fire_trail.png-be98e01d73b7eb41d00d16f7628698f9.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://player/assets/stab_mask.png"
-dest_files=["res://.godot/imported/stab_mask.png-2d2cc65ca11cd10e18584fb43a0a5eb9.s3tc.ctex"]
+source_file="res://projectiles/arson/fire_trail.png"
+dest_files=["res://.godot/imported/fire_trail.png-be98e01d73b7eb41d00d16f7628698f9.s3tc.ctex"]
 
 [params]
 
