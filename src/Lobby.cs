@@ -32,9 +32,12 @@ public partial class Lobby : Node {
 
   private bool _gameStarted = false;
   private int _nextSpawnIndex = 0;
-  private int _nextColorIndex = 0;
+  private List<Color> _availableColors = new();
+  private RandomNumberGenerator _rng = new();
 
   public override void _Ready() {
+    _rng.Randomize();
+    _availableColors = new List<Color>(PlayerColors);
     Safetymode.Text = Canned.UseSafeNames ? "S" : "";
     if (GoalZoneSpawner != null)
       GoalZoneSpawner.PlayerSpawnLocations = SpawnPoints;
@@ -98,6 +101,9 @@ public partial class Lobby : Node {
     var spawnPosition = GetNextSpawnPosition();
 
     var playerInfo = PlayerInfoScene.Instantiate<PlayerInfo>();
+    var image = AvatarGenerator.NextAvatar(playerInfo.NameLabel.Text);
+    image.Resize(64, 64);
+    playerInfo.Avatar.Texture = ImageTexture.CreateFromImage(image);
     PlayerInfoContainer.AddChild(playerInfo);
 
     var player = PlayerScene.Instantiate<Player>();
@@ -109,7 +115,9 @@ public partial class Lobby : Node {
     playerInfo.NameLabel.Text = player.NamePlate.Text;
     playerInfo.ScoreOrReadyStatus.Text = "Not Ready";
     player.PlayerInfo = playerInfo;
-    player.PlayerInfo.UIColor = PlayerColors[_nextColorIndex++ % PlayerColors.Count];
+    var playerColor = GetNextColor();
+    player.PlayerInfo.UIColor = playerColor;
+    player.color = playerColor;
     PlayerContainer.AddChild(player);
 
     if (isKB)
@@ -130,6 +138,16 @@ public partial class Lobby : Node {
   private string GetUniqueName() {
     var usedNames = Players.Select(p => p.NamePlate.Text);
     return RandomUtil.FromList(Canned.PlayerNames.Except(usedNames));
+  }
+
+  private Color GetNextColor() {
+    if (_availableColors.Count == 0)
+      _availableColors = new List<Color>(PlayerColors);
+
+    int index = _rng.RandiRange(0, _availableColors.Count - 1);
+    var color = _availableColors[index];
+    _availableColors.RemoveAt(index);
+    return color;
   }
 
   private void CheckStartCondition() {

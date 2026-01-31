@@ -8,7 +8,6 @@ public partial class NPCSpawner : Node3D {
   [Export] public float SpawnHeight { get; set; } = 20.0f;
   [Export] public Vector3 SpawnAreaSize { get; set; } = new(20, 0, 20);
   [Export] public Vector3 GoalZoneSize { get; set; } = new(2, 1, 2);
-  [Export] public Color GoalZoneColor { get; set; } = new Color(1f, 0.5f, 0f, 0.5f);
   [Export] public int MaxPlacementAttempts { get; set; } = 30;
   [Export] public float MinDistanceFromPlayerSpawns { get; set; } = 5f;
   [Export] public float MinDistanceFromZones { get; set; } = 4.0f;
@@ -27,6 +26,20 @@ public partial class NPCSpawner : Node3D {
 
     _rng.Randomize();
     _lifetimePoller.Interval = SpawnDelay;
+  }
+
+  public override void _ExitTree() {
+    if (Engine.IsEditorHint()) return;
+    DespawnAllNPCs();
+  }
+
+  public void DespawnAllNPCs() {
+    foreach (var npc in _spawnedNPCs) {
+      if (IsInstanceValid(npc)) {
+        npc.QueueFree();
+      }
+    }
+    _spawnedNPCs.Clear();
   }
 
   public override void _Process(double delta) {
@@ -57,7 +70,7 @@ public partial class NPCSpawner : Node3D {
     var npc = NPCScene.Instantiate<NPC>();
     npc.Position = spawnPosition;
 
-    var goalZone = CreateGoalZone(npc);
+    var goalZone = CreateGoalZone();
     npc.AddChild(goalZone);
 
     GetTree().Root.AddChild(npc);
@@ -68,21 +81,12 @@ public partial class NPCSpawner : Node3D {
     GD.Print($"NPCSpawner: Spawned NPC at {spawnPosition}");
   }
 
-  private GoalZone CreateGoalZone(NPC npc) {
-    var goalZone = new GoalZone {
+  private NPCGoalZone CreateGoalZone() {
+    var goalZone = new NPCGoalZone {
       ZoneSize = GoalZoneSize,
-      NeutralColor = GoalZoneColor,
       Position = Vector3.Zero
     };
-    goalZone.AddToGroup("goal_zones");
-
-    goalZone.Captured += (player) => OnGoalCaptured(npc, player);
-
     return goalZone;
-  }
-
-  private void OnGoalCaptured(NPC npc, Player player) {
-    npc.OnGoalCaptured(player);
   }
 
   private void OnNPCRemoved(NPC npc) {
