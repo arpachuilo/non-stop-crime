@@ -4,17 +4,17 @@
 [ext_resource type="Script" uid="uid://b430y4e1vno6x" path="res://src/Lobby.cs" id="1_pb8y7"]
 [ext_resource type="PackedScene" uid="uid://cj7ucao0d5den" path="res://AC_Player.tscn" id="2_hjsbj"]
 [ext_resource type="Script" uid="uid://ccylebg7df6u2" path="res://src/GoalZone/GoalZoneSpawner.cs" id="3_5mrsh"]
-[ext_resource type="PackedScene" path="res://UI_PlayerInfo.tscn" id="3_vnv7o"]
+[ext_resource type="PackedScene" uid="uid://b1awodkisntg" path="res://UI_PlayerInfo.tscn" id="3_vnv7o"]
 [ext_resource type="PackedScene" path="res://menus/LobbyOverlay.tscn" id="4_hy0rb"]
 [ext_resource type="Script" uid="uid://ch7jcbdn7a7yi" path="res://src/DynamicCamera.cs" id="4_rtcij"]
 [ext_resource type="PackedScene" uid="uid://5q744y4bjyiq" path="res://GoalZone.tscn" id="4_safpt"]
 [ext_resource type="Script" uid="uid://bx8sqineax63u" path="res://src/Mask/MaskSpawner.cs" id="7_d5x7l"]
 [ext_resource type="PackedScene" uid="uid://27h8ms28togi" path="res://src/Mask/MaskPickup.tscn" id="8_rtcij"]
-[ext_resource type="Resource" path="res://src/Mask/D_AllMasks.tres" id="8_ukwr8"]
+[ext_resource type="Resource" uid="uid://bif5c1tl2gr2i" path="res://src/Mask/D_AllMasks.tres" id="8_ukwr8"]
 [ext_resource type="PackedScene" uid="uid://bxaqr0eh0nytl" path="res://src/ScoreTracker/ScoreTracker.tscn" id="11_pb8y7"]
-[ext_resource type="PackedScene" uid="uid://ccn7yggoeg288" path="res://levels/props/Hospital.tscn" id="12_0qmeg"]
-[ext_resource type="PackedScene" uid="uid://pbjl7krhhl6f" path="res://levels/props/NefariousJumbo.tscn" id="13_ta7ci"]
-[ext_resource type="PackedScene" uid="uid://cl287gsw6v0bh" path="res://levels/props/ParkingLot.tscn" id="14_lh335"]
+[ext_resource type="PackedScene" path="res://levels/props/Hospital.tscn" id="12_0qmeg"]
+[ext_resource type="PackedScene" path="res://levels/props/NefariousJumbo.tscn" id="13_ta7ci"]
+[ext_resource type="PackedScene" path="res://levels/props/ParkingLot.tscn" id="14_lh335"]
 [ext_resource type="PackedScene" uid="uid://ctol3tugnm1rv" path="res://levels/props/Pigsty.tscn" id="15_u6cys"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_umreq"]
@@ -64,7 +64,7 @@ PlayerScene = ExtResource("2_hjsbj")
 PlayerContainer = NodePath("../Players")
 PlayerInfoScene = ExtResource("3_vnv7o")
 PlayerInfoContainer = NodePath("../HBoxContainer")
-SpawnPoints = [NodePath("../Players")]
+SpawnPoints = [NodePath("../Players/Spawn A"), NodePath("../Players/Spawn B"), NodePath("../Players/Spawn C"), NodePath("../Players/Spawn D")]
 GoalZoneSpawner = NodePath("../Goal Spawner")
 MaskSpawner = NodePath("../MaskSpawner")
 LobbyOverlay = NodePath("LobbyOverlay")
@@ -76,6 +76,15 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.57536626, 0)
 
 [node name="Spawn A" type="Node3D" parent="Players" unique_id=1881068005]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 36.330376)
+
+[node name="Spawn B" type="Node3D" parent="Players" unique_id=2089744014]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.706207, 0, 19.295162)
+
+[node name="Spawn C" type="Node3D" parent="Players" unique_id=1601103748]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.53366, 0, 17.91121)
+
+[node name="Spawn D" type="Node3D" parent="Players" unique_id=1040147215]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.634876, 0, -2.663765)
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=170340263]
 transform = Transform3D(1, 0, 0, 0, 0.7071068, 0.7071068, 0, -0.7071068, 0.7071068, 0, 22.298, 49.86)
@@ -179,10 +188,6 @@ offset_right = 20.0
 grow_horizontal = 2
 grow_vertical = 0
 
-[connection signal="GameStarted" from="Lobby" to="Goal Spawner" method="_on_lobby_game_started"]
-[connection signal="GameStarted" from="Lobby" to="MaskSpawner" method="_on_lobby_game_started"]
-[connection signal="GameStarted" from="Lobby" to="ScoreTracker" method="_on_lobby_game_started"]
-
 [node name="Props" type="Node3D" parent="." unique_id=1627682746]
 visible = false
 
@@ -197,3 +202,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.270412, 1.09278474e-07, 2
 
 [node name="Pigsty" parent="Props" unique_id=367026064 instance=ExtResource("15_u6cys")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.910869, 0.13431954, 24.216793)
+
+[connection signal="GameStarted" from="Lobby" to="Goal Spawner" method="_on_lobby_game_started"]
+[connection signal="GameStarted" from="Lobby" to="MaskSpawner" method="_on_lobby_game_started"]
+[connection signal="GameStarted" from="Lobby" to="ScoreTracker" method="_on_lobby_game_started"]
