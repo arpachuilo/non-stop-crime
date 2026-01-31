@@ -40,51 +40,66 @@ public partial class Player : Character {
 
   public PlayerInfo PlayerInfo { get; set; }
 
-  public override void _Ready() {
+  public override void _Ready()
+  {
     SpriteParent ??= GetNode<SpriteParent>("SpriteParent");
     _camera ??= GetViewport().GetCamera3D();
     _baseMaxSpeed = MaxSpeed;
 
-  Visible = false;
-  SetProcess(false);
-  SetPhysicsProcess(false);
+    if (PlayerInfo.IsPlaying)
+    {
+      StartPlaying();
+    }
+    else
+    {
+      Visible = false;
+      SetProcess(false);
+      SetPhysicsProcess(false);
+    }
   }
 
-  public void StartPlaying() {
-  PlayerInfo.IsReady = true;
-  PlayerInfo.IsPlaying = true;
-  PlayerInfo.ScoreOrReadyStatus.Text = Score.ToString();
-  Visible = true;
-  SetProcess(true);
-  SetPhysicsProcess(true);
+  public void StartPlaying()
+  {
+    PlayerInfo.IsReady = true;
+    PlayerInfo.IsPlaying = true;
+    PlayerInfo.ScoreOrReadyStatus.Text = Score.ToString();
+    Visible = true;
+    SetProcess(true);
+    SetPhysicsProcess(true);
   }
 
-  public override void _Process(double delta) {
+  public override void _Process(double delta)
+  {
   }
 
-  public override void _EnterTree() {
+  public override void _EnterTree()
+  {
     base._EnterTree();
     SpriteParent.color = color;
     NamePlate.Modulate = labelColor;
   }
 
-  public override void _ExitTree() {
+  public override void _ExitTree()
+  {
     base._EnterTree();
   }
 
-  public void Reset() {
+  public void Reset()
+  {
     GlobalPosition = Spawn;
     EquipMask(null);
     EmitSignal(SignalName.PlayerReset);
   }
 
-  public void AddScore(int points) {
+  public void AddScore(int points)
+  {
     Score += points;
-  PlayerInfo.ScoreOrReadyStatus.Text = Score.ToString();
+    PlayerInfo.ScoreOrReadyStatus.Text = Score.ToString();
     GD.Print($"Player {PlayerController?.DeviceId} scored {points} points (Total: {Score})");
   }
 
-  public override Vector3 GetDirection() {
+  public override Vector3 GetDirection()
+  {
     var direction = PlayerController.Direction;
 
     // Get camera's forward and right vectors
@@ -99,7 +114,8 @@ public partial class Player : Character {
     return (forward * direction.Z + right * direction.X).Normalized();
   }
 
-  public void EquipMask(MaskData mask) {
+  public void EquipMask(MaskData mask)
+  {
     // Remove previous abilities
     RemoveMaskAbilities();
 
@@ -111,14 +127,16 @@ public partial class Player : Character {
     ApplyMaskAbilities();
   }
 
-  private void ApplyMaskAbilities() {
+  private void ApplyMaskAbilities()
+  {
     if (CurrentMask == null) return;
 
     // Speed modifier
     MaxSpeed = _baseMaxSpeed * CurrentMask.SpeedMultiplier;
 
     // Projectile ability
-    if (CurrentMask.HasProjectile && CurrentMask.ProjectileScene != null) {
+    if (CurrentMask.HasProjectile && CurrentMask.ProjectileScene != null)
+    {
       _projectileEmitter = new ProjectileEmitter();
       _projectileEmitter.PlayerOwner = this;
       _projectileEmitter.ProjectileScene = CurrentMask.ProjectileScene;
@@ -126,12 +144,14 @@ public partial class Player : Character {
     }
   }
 
-  private void RemoveMaskAbilities() {
+  private void RemoveMaskAbilities()
+  {
     // Reset speed
     MaxSpeed = _baseMaxSpeed;
 
     // Remove projectile emitter if exists
-    if (_projectileEmitter != null) {
+    if (_projectileEmitter != null)
+    {
       _projectileEmitter.QueueFree();
       _projectileEmitter = null;
     }

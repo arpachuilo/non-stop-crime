@@ -47,9 +47,9 @@ public partial class LocalMultiplayerLevel : Node
       // Already assigned
       if (JoypadToPlayer.ContainsKey(joypadEvent.Device))
       {
-    var joyPlayer = JoypadToPlayer[joypadEvent.Device];
-    if (joyPlayer.PlayerInfo.IsPlaying) return;
-    joyPlayer.PlayerInfo.IsReady = !joyPlayer.PlayerInfo.IsReady;
+        var joyPlayer = JoypadToPlayer[joypadEvent.Device];
+        if (joyPlayer.PlayerInfo.IsPlaying) return;
+        joyPlayer.PlayerInfo.IsReady = !joyPlayer.PlayerInfo.IsReady;
         return;
       }
 
@@ -68,8 +68,8 @@ public partial class LocalMultiplayerLevel : Node
       // Already assigned
       if (KBPlayer != null)
       {
-    if (KBPlayer.PlayerInfo.IsPlaying) return;
-    KBPlayer.PlayerInfo.IsReady = !KBPlayer.PlayerInfo.IsReady;
+        if (KBPlayer.PlayerInfo.IsPlaying) return;
+        KBPlayer.PlayerInfo.IsReady = !KBPlayer.PlayerInfo.IsReady;
         return;
       }
 
@@ -80,32 +80,37 @@ public partial class LocalMultiplayerLevel : Node
 
   private Player AddPlayer(int deviceId, bool isKB = false)
   {
-  var spawnPosition = new Vector3(0, 1, 0);
+    var spawnPosition = new Vector3(0, 1, 0);
 
-  if (SpawnLocations.Count > 0) {
-    spawnPosition = SpawnLocations[0].Position;
-    SpawnLocations.RemoveAt(0);
-  }
+    if (SpawnLocations.Count > 0)
+    {
+      spawnPosition = SpawnLocations[0].Position;
+      SpawnLocations.RemoveAt(0);
+    }
+
+    var players = GetTree().GetNodesInGroup(Group.Player).Cast<Player>().ToList();
+    var somePlaying = players.Any(p => p.PlayerInfo.IsPlaying);
+
+    // Add player info
+    var playerInfo = PlayerInfoScene.Instantiate() as PlayerInfo;
+    var image = AvatarGenerator.NextAvatar(playerInfo.NameLabel.Text);
+    image.Resize(64, 64);
+    playerInfo.Avatar.Texture = ImageTexture.CreateFromImage(image);
+    PlayerInfoContainer.AddChild(playerInfo);
+    playerInfo.IsPlaying = somePlaying;
 
     // Add player
     var player = PlayerScene.Instantiate() as Player;
     player.PlayerController.DeviceId = deviceId;
     player.PlayerController.IsKB = isKB;
     player.Position = spawnPosition;
-  player.Spawn = spawnPosition;
+    player.Spawn = spawnPosition;
     player.NamePlate.Text = RandomUtil.FromList(Canned.PlayerNames.Except(Players.Select(p => p.NamePlate.Text)));
+    playerInfo.NameLabel.Text = player.NamePlate.Text;
+    player.PlayerInfo = playerInfo;
+    PlayerToInfo[player] = playerInfo;
     PlayerContainer.AddChild(player, true);
 
-    // Add player info
-    var playerInfo = PlayerInfoScene.Instantiate() as PlayerInfo;
-    playerInfo.NameLabel.Text = player.NamePlate.Text;
-    var image = AvatarGenerator.NextAvatar(playerInfo.NameLabel.Text);
-    image.Resize(64, 64);
-    playerInfo.Avatar.Texture = ImageTexture.CreateFromImage(image);
-    PlayerToInfo[player] = playerInfo;
-    PlayerInfoContainer.AddChild(playerInfo);
-
-  player.PlayerInfo = playerInfo;
     return player;
   }
 
