@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://b1awodkisntg"]
+
+[ext_resource type="Script" uid="uid://blijpu13bmx3v" path="res://src/PlayerInfo.cs" id="1_v54wg"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_hk8mb"]
+size = Vector2(64, 64)
+
+[node name="PlayerInfo" type="VBoxContainer" unique_id=163918719 node_paths=PackedStringArray("NameLabel", "Avatar")]
+alignment = 1
+script = ExtResource("1_v54wg")
+NameLabel = NodePath("Name")
+Avatar = NodePath("Avatar")
+
+[node name="Avatar" type="TextureRect" parent="." unique_id=115759476]
+layout_mode = 2
+texture = SubResource("PlaceholderTexture2D_hk8mb")
+stretch_mode = 2
+
+[node name="Name" type="Label" parent="." unique_id=668544563]
+layout_mode = 2
+text = "Very long long name"

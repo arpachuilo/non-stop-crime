@@ -7,9 +7,6 @@ public partial class Menu : Control {
   [Export]
   public Button StartButton;
 
-  [Export]
-  public Control AvatarsContainer;
-
   public override void _EnterTree() {
     StartButton.Pressed += ChangeLevel;
   }
