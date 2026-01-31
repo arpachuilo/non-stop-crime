@@ -4,9 +4,10 @@
 [ext_resource type="PackedScene" uid="uid://cj7ucao0d5den" path="res://AC_Player.tscn" id="2_6ci18"]
 [ext_resource type="Script" uid="uid://ch7jcbdn7a7yi" path="res://src/DynamicCamera.cs" id="3_5i8u7"]
 [ext_resource type="Script" uid="uid://cam52fb8h24fv" path="res://src/Projectile.cs" id="3_bmjc0"]
-[ext_resource type="PackedScene" path="res://src/ScoreTracker/ScoreTracker.tscn" id="7_score"]
-[ext_resource type="PackedScene" uid="uid://ccn7yggoeg288" path="res://levels/props/Hospital.tscn" id="9_6ln0e"]
-[ext_resource type="PackedScene" uid="uid://pbjl7krhhl6f" path="res://levels/props/NefariousJumbo.tscn" id="10_qd27c"]
+[ext_resource type="PackedScene" uid="uid://b1awodkisntg" path="res://UI_PlayerInfo.tscn" id="3_hb5mc"]
+[ext_resource type="PackedScene" uid="uid://bxaqr0eh0nytl" path="res://src/ScoreTracker/ScoreTracker.tscn" id="7_score"]
+[ext_resource type="PackedScene" path="res://levels/props/Hospital.tscn" id="9_6ln0e"]
+[ext_resource type="PackedScene" path="res://levels/props/NefariousJumbo.tscn" id="10_qd27c"]
 [ext_resource type="PackedScene" uid="uid://ctol3tugnm1rv" path="res://levels/props/Pigsty.tscn" id="11_ygne2"]
 
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_r2psd"]
@@ -31,11 +32,13 @@ material = SubResource("StandardMaterial3D_bmjc0")
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_6ci18"]
 data = PackedVector3Array(-0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, -0.5)
 
-[node name="L_DemoScene" type="Node3D" unique_id=1463421934 node_paths=PackedStringArray("SpawnLocation", "PlayerContainer")]
+[node name="L_DemoScene" type="Node3D" unique_id=1463421934 node_paths=PackedStringArray("SpawnLocation", "PlayerContainer", "PlayerInfoContainer")]
 script = ExtResource("1_r2psd")
 PlayerScene = ExtResource("2_6ci18")
 SpawnLocation = NodePath("Players")
 PlayerContainer = NodePath("Players")
+PlayerInfoScene = ExtResource("3_hb5mc")
+PlayerInfoContainer = NodePath("PlayerInfo")
 
 [node name="Players" type="Node3D" parent="." unique_id=40203226]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.57536626, 0)
