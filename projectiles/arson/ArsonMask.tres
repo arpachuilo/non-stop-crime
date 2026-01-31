@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="MaskData" format=3 uid="uid://bygsu8w48ifb7"]
 
-[ext_resource type="Texture2D" uid="uid://dtx4y8bi8gp3d" path="res://player/assets/arson_mask_icon.png" id="1_utepg"]
+[ext_resource type="Texture2D" uid="uid://dtx4y8bi8gp3d" path="res://projectiles/arson/arson_mask_icon.png" id="1_utepg"]
 [ext_resource type="PackedScene" uid="uid://duiaxhaqrnfsm" path="res://projectiles/arson/GASOLINE.tscn" id="1_xqwmr"]
 [ext_resource type="Texture2D" uid="uid://dc4ovjqlo8s3l" path="res://projectiles/arson/arson_mask.png" id="2_utepg"]
 [ext_resource type="Script" uid="uid://cbwkmtyoylbwe" path="res://src/Mask/MaskData.cs" id="3_jark5"]

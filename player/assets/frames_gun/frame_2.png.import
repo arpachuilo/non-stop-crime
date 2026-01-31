@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ct1wkvmvewpkj"
-path.s3tc="res://.godot/imported/frame_5.png-301ef5832cbd31228f8a4f3ef2342f52.s3tc.ctex"
+uid="uid://b3cb1a2tlnx1q"
+path.s3tc="res://.godot/imported/frame_2.png-019c54b7d85378049719a09ccb4b2527.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://player/assets/frames_stab/frame_5.png"
-dest_files=["res://.godot/imported/frame_5.png-301ef5832cbd31228f8a4f3ef2342f52.s3tc.ctex"]
+source_file="res://player/assets/frames_gun/frame_2.png"
+dest_files=["res://.godot/imported/frame_2.png-019c54b7d85378049719a09ccb4b2527.s3tc.ctex"]
 
 [params]
 

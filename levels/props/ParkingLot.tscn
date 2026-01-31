@@ -39,19 +39,17 @@ shaded = true
 texture = ExtResource("1_rktd0")
 
 [node name="BlueCar" type="Sprite3D" parent="StaticBody3D/SpriteRoot" unique_id=872258304]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.8221061, 0.5757818, -0.8045846)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.8221061, 0.6249918, -0.8045846)
 billboard = 2
 shaded = true
 texture_filter = 4
-render_priority = 1
 texture = SubResource("AtlasTexture_df053")
 
 [node name="RedCar" type="Sprite3D" parent="StaticBody3D/SpriteRoot" unique_id=1419124746]
-transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, -1.0369365, 0.5289254, -0.72008455)
+transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, -1.0369365, 0.5623647, -0.72008455)
 billboard = 2
 shaded = true
 texture_filter = 4
-render_priority = 1
 texture = SubResource("AtlasTexture_og56b")
 
 [node name="TreeBig" type="Sprite3D" parent="StaticBody3D/SpriteRoot" unique_id=280093948]
@@ -59,7 +57,6 @@ transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, -1.87349, 1.4720867, 2.
 billboard = 2
 shaded = true
 texture_filter = 4
-render_priority = 1
 texture = SubResource("AtlasTexture_hfl4s")
 
 [node name="TreeSmall" type="Sprite3D" parent="StaticBody3D/SpriteRoot" unique_id=2048419388]
@@ -67,5 +64,4 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.8355582, 1.5853059, 1.93979
 billboard = 2
 shaded = true
 texture_filter = 4
-render_priority = 1
 texture = SubResource("AtlasTexture_u7s6g")
