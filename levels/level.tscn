@@ -203,9 +203,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.963837, 0.13432145, 32.129
 [node name="Lamp" parent="Props" unique_id=1407807229 instance=ExtResource("15_0qmeg")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.643963, 0, 8.815931)
 
-[node name="Lamp2" parent="Props" unique_id=1266492961 instance=ExtResource("15_0qmeg")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.542943, 0, 7.0217896)
-
 [node name="Lamp3" parent="Props" unique_id=354961715 instance=ExtResource("15_0qmeg")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.170438, 0, 32.59895)
 

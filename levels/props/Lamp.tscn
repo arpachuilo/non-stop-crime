@@ -17,6 +17,10 @@ animations = [{
 
 [node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="." unique_id=1654670080]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.1440701, 0)
+shaded = true
+alpha_cut = 1
+alpha_antialiasing_mode = 2
+texture_filter = 4
 sprite_frames = SubResource("SpriteFrames_ta7ci")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="." unique_id=1679526219]
