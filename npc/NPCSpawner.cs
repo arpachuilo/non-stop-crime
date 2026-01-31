@@ -55,7 +55,7 @@ public partial class NPCSpawner : Node3D {
     spawnPosition.Y = SpawnHeight;
 
     var npc = NPCScene.Instantiate<NPC>();
-    npc.GlobalPosition = spawnPosition;
+    npc.Position = spawnPosition;
 
     var goalZone = CreateGoalZone(npc);
     npc.AddChild(goalZone);
