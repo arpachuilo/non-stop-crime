@@ -6,6 +6,8 @@ public partial class GoalZoneSpawner : Node3D
     [Export] public Vector3 SpawnAreaSize { get; set; } = new Vector3(16, 0, 16);
     [Export] public float MinDistance { get; set; } = 5f;
     [Export] public int MaxPlacementAttempts { get; set; } = 30;
+    [Export] public float MinDistanceFromPlayerSpawns { get; set; } = 5f;
+    [Export] public Godot.Collections.Array<Node3D> PlayerSpawnLocations { get; set; } = new();
     [Export] public string PropDirectory { get; set; } = "res://levels/props";
     [Export] public PackedScene GoalZoneScene { get; set; }
     [Export] public MaskDataArray _availableMasks = new();
@@ -98,6 +100,10 @@ public partial class GoalZoneSpawner : Node3D
         for (int attempt = 0; attempt < MaxPlacementAttempts; attempt++)
         {
             Vector3 candidate = GenerateRandomPosition();
+
+            if (IsPositionNearPlayerSpawn(candidate))
+                continue;
+
             float minDistToExisting = GetMinDistanceToPlaced(candidate);
 
             if (minDistToExisting >= MinDistance)
@@ -113,6 +119,19 @@ public partial class GoalZoneSpawner : Node3D
         }
 
         return bestPosition;
+    }
+
+    private bool IsPositionNearPlayerSpawn(Vector3 position)
+    {
+        Vector3 worldPosition = GlobalPosition + position;
+        foreach (var spawn in PlayerSpawnLocations)
+        {
+            if (spawn == null) continue;
+            float dist = worldPosition.DistanceTo(spawn.GlobalPosition);
+            if (dist < MinDistanceFromPlayerSpawns)
+                return true;
+        }
+        return false;
     }
 
     private Vector3 GenerateRandomPosition()
