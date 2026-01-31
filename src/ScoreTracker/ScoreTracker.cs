@@ -2,8 +2,7 @@ using Godot;
 using System.Collections.Generic;
 using System.Linq;
 
-public partial class ScoreTracker : Control
-{
+public partial class ScoreTracker : Control {
   [Export] public VBoxContainer ScoreContainer;
   [Export] public Label TimerLabel;
   [Export] public PackedScene WinnerScreenScene;
@@ -14,32 +13,27 @@ public partial class ScoreTracker : Control
   private bool _timerStarted = false;
   private bool _gameEnded = false;
 
-  public override void _Ready()
-  {
+  public override void _Ready() {
     _timeRemaining = GameDurationSeconds;
     UpdateTimerDisplay();
   }
 
-  public override void _Process(double delta)
-  {
+  public override void _Process(double delta) {
     var players = GetTree().GetNodesInGroup(Group.Player).Cast<Player>().ToList();
-  var allReady = players.All(p => p.PlayerInfo.IsReady);
+    var allReady = players.All(p => p.PlayerInfo.IsReady);
 
     // Start timer when first player spawns
-    if (!_timerStarted && players.Count >= RequiredNumberOfPlayers && allReady)
-    {
+    if (!_timerStarted && players.Count >= RequiredNumberOfPlayers && allReady) {
       _timerStarted = true;
-    foreach (var player in players) {
-    player.StartPlaying();
-    }
+      foreach (var player in players) {
+        player.StartPlaying();
+      }
     }
 
     // Countdown logic
-    if (_timerStarted && !_gameEnded)
-    {
+    if (_timerStarted && !_gameEnded) {
       _timeRemaining -= (float)delta;
-      if (_timeRemaining <= 0)
-      {
+      if (_timeRemaining <= 0) {
         _timeRemaining = 0;
         _gameEnded = true;
         DeclareWinner(players);
@@ -48,32 +42,24 @@ public partial class ScoreTracker : Control
     }
   }
 
-  private void UpdateTimerDisplay()
-  {
+  private void UpdateTimerDisplay() {
     int minutes = (int)(_timeRemaining / 60);
     int seconds = (int)(_timeRemaining % 60);
     TimerLabel.Text = $"{minutes:D2}:{seconds:D2}";
   }
 
-  private void DeclareWinner(List<Player> players)
-  {
+  private void DeclareWinner(List<Player> players) {
     string winnerText;
-    if (players.Count == 0)
-    {
+    if (players.Count == 0) {
       winnerText = "No players!";
-    }
-    else
-    {
+    } else {
       var winner = players.OrderByDescending(p => p.Score).First();
       var topScore = winner.Score;
       var tied = players.Where(p => p.Score == topScore).ToList();
 
-      if (tied.Count > 1)
-      {
+      if (tied.Count > 1) {
         winnerText = "TIE!";
-      }
-      else
-      {
+      } else {
         winnerText = $"Winner: {winner.NamePlate.Text}!";
       }
     }
