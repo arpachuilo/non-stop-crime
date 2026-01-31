@@ -4,6 +4,10 @@
 [ext_resource type="PackedScene" uid="uid://cj7ucao0d5den" path="res://AC_Player.tscn" id="2_6ci18"]
 [ext_resource type="Script" uid="uid://ch7jcbdn7a7yi" path="res://src/DynamicCamera.cs" id="3_5i8u7"]
 [ext_resource type="Script" uid="uid://cam52fb8h24fv" path="res://src/Projectile.cs" id="3_bmjc0"]
+[ext_resource type="PackedScene" uid="uid://5q744y4bjyiq" path="res://GoalZone.tscn" id="4_5i8u7"]
+[ext_resource type="PackedScene" path="res://src/Mask/MaskPickup.tscn" id="5_1w8sc"]
+[ext_resource type="Resource" uid="uid://gshqmoyctg6e" path="res://src/Mask/MaskData/ProjectileMask.tres" id="6_hb5mc"]
+[ext_resource type="PackedScene" path="res://src/ScoreTracker/ScoreTracker.tscn" id="7_score"]
 
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_r2psd"]
 
@@ -43,6 +47,7 @@ disable_mode = 1
 shape = SubResource("WorldBoundaryShape3D_r2psd")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D" unique_id=1193582359]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0042972565, 0.025681496, 0.02411747)
 mesh = SubResource("PlaneMesh_6ci18")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1843344117]
@@ -75,3 +80,14 @@ mesh = SubResource("BoxMesh_5i8u7")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=1797333413]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.4467177)
 shape = SubResource("ConcavePolygonShape3D_6ci18")
+
+[node name="Node3D" parent="." unique_id=1652105036 instance=ExtResource("4_5i8u7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.989602, 0, 0)
+NeutralColor = Color(0.49273372, 0.4963066, 0.4633873, 0.5019608)
+
+[node name="MaskPickup" parent="." unique_id=400107992 instance=ExtResource("5_1w8sc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.4094024, 0.5, 2.682902)
+MaskData = ExtResource("6_hb5mc")
+
+[node name="ScoreTracker" parent="." unique_id=945003984 instance=ExtResource("7_score")]
+GameDurationSeconds = 15.0
