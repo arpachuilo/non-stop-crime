@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://pbjl7krhhl6f"]
+
+[ext_resource type="Texture2D" uid="uid://r6w7t6avl27v" path="res://levels/assets/Obmuj.png" id="1_3rvjk"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_3rvjk"]
+radius = 1.8
+
+[node name="NefariousJumbo" type="Node3D" unique_id=227731175]
+
+[node name="ObmujStaticBody" type="StaticBody3D" parent="." unique_id=762354467]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.920999, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ObmujStaticBody" unique_id=1913153043]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.8855593, 0)
+shape = SubResource("CylinderShape3D_3rvjk")
+
+[node name="SpriteRoot" type="Node3D" parent="ObmujStaticBody" unique_id=1335112486]
+
+[node name="ObmujSprite" type="Sprite3D" parent="ObmujStaticBody/SpriteRoot" unique_id=865831583]
+transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 0, 0, 0)
+billboard = 2
+texture_filter = 4
+texture = ExtResource("1_3rvjk")

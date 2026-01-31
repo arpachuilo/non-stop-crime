@@ -1,0 +1,29 @@
+[gd_scene format=3 uid="uid://ccn7yggoeg288"]
+
+[ext_resource type="Texture2D" uid="uid://byb6d0dbprr7v" path="res://levels/assets/hospital front.png" id="1_e0v0s"]
+[ext_resource type="Texture2D" uid="uid://ljln3d3yslvn" path="res://levels/assets/hospital side.png" id="2_nl4c2"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_oph0r"]
+height = 4.7
+radius = 2.3
+
+[node name="Hospital" type="Node3D" unique_id=1738063490]
+
+[node name="HospitalStaticBody" type="StaticBody3D" parent="." unique_id=539560832]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.4, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="HospitalStaticBody" unique_id=62033802]
+shape = SubResource("CylinderShape3D_oph0r")
+
+[node name="SpriteRoot" type="Node3D" parent="HospitalStaticBody" unique_id=161558991]
+
+[node name="HospitalFrontSprite" type="Sprite3D" parent="HospitalStaticBody/SpriteRoot" unique_id=3444417]
+billboard = 2
+texture_filter = 4
+texture = ExtResource("1_e0v0s")
+
+[node name="HospitalSideSprite" type="Sprite3D" parent="HospitalStaticBody/SpriteRoot" unique_id=1637615163]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.30471146, 0, -0.759855)
+billboard = 2
+texture_filter = 4
+texture = ExtResource("2_nl4c2")
