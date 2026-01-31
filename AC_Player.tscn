@@ -4,16 +4,57 @@
 [ext_resource type="Script" uid="uid://c1rrgldwnt40" path="res://src/Player/PlayerController.cs" id="2_32haq"]
 [ext_resource type="Script" uid="uid://dkoc23piooi7c" path="res://player/SpriteParent.cs" id="3_4jfri"]
 [ext_resource type="Texture2D" uid="uid://buya8506ukc0l" path="res://player/assets/head.png" id="3_077pa"]
+[ext_resource type="Texture2D" uid="uid://ojhdl63j4jho" path="res://player/assets/frames_walking/frame_1.png" id="4_0hh6e"]
 [ext_resource type="Texture2D" uid="uid://dvsv0as8aic04" path="res://player/assets/frames_running/frame_1.png" id="4_4jfri"]
+[ext_resource type="Texture2D" uid="uid://cqj84jnat5roi" path="res://player/assets/frames_walking/frame_2.png" id="5_7rwuv"]
+[ext_resource type="Texture2D" uid="uid://djps0jcq2hgmy" path="res://player/assets/stab_mask.png" id="5_g3tfa"]
 [ext_resource type="Texture2D" uid="uid://c35vl110amvs0" path="res://player/assets/frames_running/frame_2.png" id="5_pg7c2"]
+[ext_resource type="Texture2D" uid="uid://xcq65mqjxmqb" path="res://player/assets/frames_walking/frame_3.png" id="6_2ycdd"]
 [ext_resource type="Texture2D" uid="uid://c0aijrv3vs7ln" path="res://player/assets/frames_running/frame_3.png" id="6_g3tfa"]
 [ext_resource type="Texture2D" uid="uid://buswr27nnyv70" path="res://player/assets/frames_running/frame_4.png" id="7_5qk2n"]
+[ext_resource type="Texture2D" uid="uid://dwkcqwvjcjfag" path="res://player/assets/frames_walking/frame_4.png" id="7_scor6"]
+[ext_resource type="Texture2D" uid="uid://bg46commnyx5l" path="res://player/assets/frames_walking/frame_5.png" id="8_0n0xx"]
 [ext_resource type="Texture2D" uid="uid://wqgpiop1pkwc" path="res://player/assets/frames_running/frame_5.png" id="8_5jsu2"]
+[ext_resource type="Texture2D" uid="uid://di46adoqsoech" path="res://player/assets/frames_walking/frame_6.png" id="9_abqoo"]
 [ext_resource type="Texture2D" uid="uid://dnm77y13n12al" path="res://player/assets/frames_running/frame_6.png" id="9_ymn2f"]
 [ext_resource type="Texture2D" uid="uid://dwjvs1xsvfgd1" path="res://player/assets/frames_running/frame_7.png" id="10_h1s1y"]
+[ext_resource type="Texture2D" uid="uid://gg44a5qhti0j" path="res://player/assets/frames_walking/frame_7.png" id="10_pwtji"]
+[ext_resource type="Texture2D" uid="uid://3nhxkbgs432t" path="res://player/assets/frames_walking/frame_8.png" id="11_7qkkx"]
 [ext_resource type="Texture2D" uid="uid://hbn4cw142vli" path="res://player/assets/frames_running/frame_8.png" id="11_cu1ij"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_bmjc0"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_7h1v2"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_0hh6e")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_7rwuv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_2ycdd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_scor6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_0n0xx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_abqoo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_pwtji")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_7qkkx")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_p6bia"]
 animations = [{
@@ -44,7 +85,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"default",
-"speed": 9.0
+"speed": 10.0
 }]
 
 [node name="Player" type="CharacterBody3D" unique_id=1005422296 node_paths=PackedStringArray("NamePlate", "PlayerController", "SpriteParent") groups=["Player"]]
@@ -84,19 +125,23 @@ script = ExtResource("3_4jfri")
 PlayerPath = NodePath("..")
 MaxFps = 8.0
 
+[node name="WalkCycleSprite" type="AnimatedSprite3D" parent="SpriteParent" unique_id=1340190508]
+transform = Transform3D(1.2, 0, 0, 0, 1.2, 0, 0, 0, 1.2, 0.083696604, -0.23034406, 0)
+visible = false
+billboard = 1
+sprite_frames = SubResource("SpriteFrames_7h1v2")
+
 [node name="RunCycleSprite" type="AnimatedSprite3D" parent="SpriteParent" unique_id=593184352]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
 billboard = 1
 sprite_frames = SubResource("SpriteFrames_p6bia")
-frame_progress = 0.55459386
 
 [node name="HeadSprite" type="Sprite3D" parent="SpriteParent" unique_id=2129601922]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.07417208, -0.5121162, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.074, -0.512, 0.1)
 billboard = 1
-render_priority = 1
 texture = ExtResource("3_077pa")
 
 [node name="MaskSprite" type="Sprite3D" parent="SpriteParent" unique_id=576538117]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.07417208, -0.5121162, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.074, -0.512, 0.15)
 billboard = 1
-render_priority = 2
+texture = ExtResource("5_g3tfa")
