@@ -63,7 +63,7 @@ attempts of other players at achieving their objectives
   - Theft
 
 # Tutorializing
-- TBD
+- Instructions on lobby screen
 
 # UI
 - TBD

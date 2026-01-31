@@ -12,13 +12,19 @@ public partial class NPC : Character
   [Export]
   public float AggroRadius = 10f;
 
+  private static Texture2D _deathTexture;
+
   public override void _Ready()
   {
     SpriteParent ??= GetNode<SpriteParent>("SpriteParent");
+    _deathTexture ??= GD.Load<Texture2D>("res://player/assets/death.png");
   }
 
   public override Vector3 GetDirection()
   {
+    if (IsCaptured)
+      return Vector3.Zero;
+
     var players = GetTree().GetNodesInGroup(Group.Player).Cast<Player>().ToList();
     Player closest = null;
     var minRadius = AggroRadius * 2f;
@@ -48,7 +54,7 @@ public partial class NPC : Character
   {
     IsCaptured = true;
     CapturedBy = player;
-    // TODO: Change sprite/state when captured
+    SpriteParent?.ShowDeath(_deathTexture);
     GD.Print($"NPC {NPCName} was captured by player {player.PlayerController.DeviceId}");
   }
 

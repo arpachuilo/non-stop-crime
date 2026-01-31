@@ -93,4 +93,10 @@ public partial class SpriteParent : Node3D {
       _mask.Visible = false;
     }
   }
+
+  public void ShowDeath(Texture2D deathTexture) {
+    _body.Visible = false;
+    _mask.Visible = false;
+    _head.Texture = deathTexture;
+  }
 }
