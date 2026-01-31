@@ -11,13 +11,8 @@ public static class RandomUtil {
   public static RandomNumberGenerator Rng = new RandomNumberGenerator();
 
   static RandomUtil() {
-#if DEBUG
-    Rng.Seed = 1176213204;
-    GD.Print("Seed (debug): ", Rng.Seed);
-#else
-      Rng.Seed = GD.Randi();
-      GD.Print("Seed: ", Rng.Seed);
-#endif
+    Rng.Seed = GD.Randi();
+    GD.Print("Seed: ", Rng.Seed);
   }
 
   /// <summary>
