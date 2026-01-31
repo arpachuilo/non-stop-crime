@@ -64,7 +64,7 @@ texture = SubResource("AtlasTexture_u7s6g")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.8221061, 0.57698965, -0.8045846)
 billboard = 2
 shaded = true
-alpha_cut = 2
+alpha_cut = 1
 texture_filter = 4
 texture = SubResource("AtlasTexture_df053")
 
