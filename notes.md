@@ -1,10 +1,9 @@
 # TODO
 - UI
-  - In-round HUD
-  - Tutorial
-  - Lobby
-  - Main menu art 👉 Ready to go, need to be implemented
-  - Win screen
+  - In-round HUD 👉 Pretty good already, might need some scaling for 4K screens and general polish
+  - Tutorial 👉 Throw some text up in the lobby
+  - Lobby 👉 Matthis is finishing assets
+  - Win screen 👉 Needs design still
 - Gameplay
   - Finalize mask abilities + VFX 👉 Maybe add one or two more masks as a stretch goal
   - Build final level 👉 Floris: I'm pretty pleased with the current state, might add some more greeblies
@@ -20,7 +19,6 @@
   - Replace wall assets with fences 👉 Nice to have tbh
   - Masks are hard to see 👉 Add cylinder with capture zone shader?
   - Player characters are hard to see 👉 Dont shade them, or add light source to them
-  - NPC's are not shaded 👉 Make their sprite shaded
 - NPC's
   - Reduce jittering
   - Reduce spawnrate
@@ -31,18 +29,22 @@
   - Gun is too powerful
     - Reduce fire rate
     - Do not allow projectiles to penetrate walls
-  - Timer is too long
-- User journey
+  - Round timer is too long
+- User journey aka The Horizontal Vertical Slice
   - ✅ Launch game 
   - ✅ Go into lobby
-  - ✅ 2-4 players join and ready
+  - ✅ 2-4 players join and ready 👉 Let's verify 3 and 4 player modes
   - ✅ Game starts if all ready
   - ✅ Players spawn in without a mask in their own corner
   - ✅ Players pick up a mask
-  - After pickup, targets become apparent, may have to be spawned
-  - Players complete objectives and frustrate others until time limit
-  - Game ends, winner announced
-  - Game restarts or goes back to lobby
+  - After pickup, targets become apparent, may have to be spawned 👉 All players can go to all targets, do we want this?
+  - Players complete objectives and frustrate others until time limit 👉 This works really well right now, only the gun is a little OP
+  - Game ends, winner announced 👉 Just needs a better win screen
+  - Game restarts or goes back to lobby 👉 Add buttons to the win screen
+
+# Stretch goals
+- Main menu: button states
+- More than 4 masks
 
 # Graphics
 - 2.5D sprite-based graphics
