@@ -2,9 +2,6 @@ using System.ComponentModel;
 using Godot;
 
 public partial class SpriteParent : Node3D {
-  [Export]
-  public NodePath PlayerPath;
-
   [Description("Lateral speed below which the animation will be paused")]
   [Export(PropertyHint.Range, "0,0.5,0.01")]
   public float Deadzone = 0.05f;
@@ -24,14 +21,16 @@ public partial class SpriteParent : Node3D {
   [Export(PropertyHint.Range, "1,20,1")]
   public float SpeedForMaxFps = 12f;
 
-  private CharacterBody3D _player;
+  [Export]
+  private Player _player;
+
+  [Export]
   private Sprite3D _head;
+
+  [Export]
   private AnimatedSprite3D _run;
 
   public override void _Ready() {
-    _player = GetNode<CharacterBody3D>(PlayerPath);
-    _head = GetNode<Sprite3D>("HeadSprite");
-    _run = GetNode<AnimatedSprite3D>("RunCycleSprite");
   }
 
   public override void _Process(double delta) {
@@ -54,7 +53,7 @@ public partial class SpriteParent : Node3D {
 
     _run.Play();
 
-    System.Diagnostics.Debug.WriteLine($"Speed: {planarSpeed}");
+	DebugDraw2D.SetText(_player.NamePlate.Text, $"Speed: {planarSpeed}");
 
     float t = Mathf.Clamp(planarSpeed / SpeedForMaxFps, 0f, 1f);
     float targetFps = Mathf.Lerp(MinFps, MaxFps, t);
