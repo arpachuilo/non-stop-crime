@@ -20,7 +20,7 @@ public partial class Player : Character {
   private Camera3D _camera;
 
   [Export]
-  public Vector3 _spawn;
+  public Vector3 Spawn;
 
   [Export]
   public MaskData CurrentMask { get; set; }
@@ -71,7 +71,7 @@ public partial class Player : Character {
   }
 
   public void Reset() {
-    GlobalPosition = _spawn;
+    GlobalPosition = Spawn;
   }
 
   public void AddScore(int points) {

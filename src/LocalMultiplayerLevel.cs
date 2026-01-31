@@ -11,7 +11,7 @@ public partial class LocalMultiplayerLevel : Node
   public PackedScene PlayerScene;
 
   [Export]
-  public Node3D SpawnLocation;
+  public Godot.Collections.Array<Node3D> SpawnLocations;
 
   [Export]
   public Node3D PlayerContainer;
@@ -80,11 +80,19 @@ public partial class LocalMultiplayerLevel : Node
 
   private Player AddPlayer(int deviceId, bool isKB = false)
   {
+	var spawnPosition = new Vector3(0, 1, 0);
+
+	if (SpawnLocations.Count > 0) {
+	  spawnPosition = SpawnLocations[0].Position;
+	  SpawnLocations.RemoveAt(0);
+	}
+
     // Add player
     var player = PlayerScene.Instantiate() as Player;
     player.PlayerController.DeviceId = deviceId;
     player.PlayerController.IsKB = isKB;
-    player.Position = SpawnLocation.Position;
+    player.Position = spawnPosition;
+	player.Spawn = spawnPosition;
     player.NamePlate.Text = RandomUtil.FromList(Canned.PlayerNames.Except(Players.Select(p => p.NamePlate.Text)));
     PlayerContainer.AddChild(player, true);
 
