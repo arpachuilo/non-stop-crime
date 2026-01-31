@@ -10,7 +10,7 @@ LevelContainer = NodePath("Level")
 
 [node name="Level" type="Node" parent="." unique_id=1291589545]
 
-[node name="UI" type="Control" parent="." unique_id=690150324 node_paths=PackedStringArray("StartButton", "AvatarsContainer")]
+[node name="UI" type="Control" parent="." unique_id=690150324 node_paths=PackedStringArray("StartButton")]
 process_mode = 3
 custom_minimum_size = Vector2(50, 128)
 layout_mode = 3
@@ -22,7 +22,6 @@ grow_vertical = 2
 script = ExtResource("1_3svc1")
 LevelScene = ExtResource("3_hk8mb")
 StartButton = NodePath("VBoxContainer/Start")
-AvatarsContainer = NodePath("Avatars")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="UI" unique_id=215335646]
 layout_mode = 0
@@ -32,12 +31,3 @@ offset_bottom = 648.0
 [node name="Start" type="Button" parent="UI/VBoxContainer" unique_id=1624687659]
 layout_mode = 2
 text = "Start Game"
-
-[node name="Avatars" type="HBoxContainer" parent="UI" unique_id=1408269786]
-layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -64.0
-offset_bottom = 64.0
-grow_horizontal = 0
