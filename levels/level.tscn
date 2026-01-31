@@ -44,7 +44,7 @@ render_priority = -2
 shader = ExtResource("1_80vhd")
 shader_parameter/top_color = Color(0.1, 0.14, 0.28, 1)
 shader_parameter/bottom_color = Color(0.03, 0.03, 0.04, 1)
-shader_parameter/boundary_y = 0.42
+shader_parameter/boundary_y = 0.52
 shader_parameter/arc_curvature = 0.18
 shader_parameter/band_softness = 0.06
 shader_parameter/wobble_amp = 0.015
@@ -70,10 +70,10 @@ LobbyOverlay = NodePath("LobbyOverlay")
 [node name="LobbyOverlay" parent="Lobby" unique_id=848800051 instance=ExtResource("4_hy0rb")]
 
 [node name="Players" type="Node3D" parent="." unique_id=842050307]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9964564, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.57536626, 0)
 
 [node name="Spawn A" type="Node3D" parent="Players" unique_id=1881068005]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6971245, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 36.330376)
 
 [node name="Spawn B" type="Node3D" parent="Players" unique_id=2089744014]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.706207, 0, 19.295162)
@@ -85,22 +85,22 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.53366, 0, 17.91121)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.634876, 0, -2.663765)
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=170340263]
-transform = Transform3D(1, 0, 0, 0, 0.7071068, 0.7071068, 0, -0.7071068, 0.7071068, 0, 22.298, 25.547077)
+transform = Transform3D(1, 0, 0, 0, 0.7071068, 0.7071068, 0, -0.7071068, 0.7071068, 0, 22.298, 49.86)
 script = ExtResource("4_rtcij")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="Camera3D" unique_id=154900804]
 transform = Transform3D(1, 0, 0, 0, 0.70710677, -0.70710677, 0, 0.70710677, 0.70710677, 0, 0, 0)
 light_color = Color(0.8036638, 0.871072, 1, 1)
-light_energy = 1.75
+light_energy = 1.5
 shadow_enabled = true
 distance_fade_enabled = true
-omni_range = 55.0
-omni_attenuation = 0.75
+omni_range = 45.0
+omni_attenuation = 0.85
 
 [node name="Walls" type="Node3D" parent="." unique_id=8154275]
 
 [node name="WallEast" type="MeshInstance3D" parent="Walls" unique_id=203067950]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 39, -19, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 55, -26.778, 0, 17)
 mesh = SubResource("BoxMesh_umreq")
 skeleton = NodePath("")
 
@@ -110,7 +110,7 @@ skeleton = NodePath("")
 shape = SubResource("ConcavePolygonShape3D_80vhd")
 
 [node name="WallWest" type="MeshInstance3D" parent="Walls" unique_id=658359860]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 39, 19, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 55, 25.979944, 0, 16.95297)
 mesh = SubResource("BoxMesh_umreq")
 skeleton = NodePath("")
 
@@ -120,7 +120,7 @@ skeleton = NodePath("")
 shape = SubResource("ConcavePolygonShape3D_80vhd")
 
 [node name="WallNorth" type="MeshInstance3D" parent="Walls" unique_id=517507882]
-transform = Transform3D(39, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -19)
+transform = Transform3D(52.95, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -10)
 mesh = SubResource("BoxMesh_umreq")
 skeleton = NodePath("")
 
@@ -130,7 +130,7 @@ skeleton = NodePath("")
 shape = SubResource("ConcavePolygonShape3D_80vhd")
 
 [node name="WallSouth" type="MeshInstance3D" parent="Walls" unique_id=1983312205]
-transform = Transform3D(39, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 19)
+transform = Transform3D(53, 0, 0, 0, 1, 0, 0, 0, 1, -0.396552, 0, 43.97227)
 mesh = SubResource("BoxMesh_umreq")
 skeleton = NodePath("")
 
@@ -140,7 +140,7 @@ skeleton = NodePath("")
 shape = SubResource("ConcavePolygonShape3D_80vhd")
 
 [node name="Ground" type="StaticBody3D" parent="." unique_id=673564305]
-transform = Transform3D(1.75, 0, 0, 0, 1.75, 0, 0, 0, 1.75, 0, 0, 0)
+transform = Transform3D(2.5, 0, 0, 0, 1, 0, 0, 0, 2.5, 0, 0, 16.874304)
 
 [node name="GroundSprite" type="Sprite3D" parent="Ground" unique_id=680690393]
 transform = Transform3D(2.07, 0, 0, 0, 2.07, 0, 0, 0, 2.07, 0, 0, 0)
@@ -154,14 +154,14 @@ texture = SubResource("NoiseTexture2D_cwqvt")
 shape = SubResource("WorldBoundaryShape3D_umreq")
 
 [node name="Backdrop" type="MeshInstance3D" parent="." unique_id=361163437]
-transform = Transform3D(87.39753, 0, 0, 0, 3.1312087, -41.997375, 0, 3.1312087, 41.997375, 0, -2.0205193, -18.211258)
+transform = Transform3D(87.39753, 0, 0, 0, 3.1312087, -41.997375, 0, 3.1312087, 41.997375, 0, 1.563, -11.931)
 sorting_offset = -2.0
 mesh = SubResource("PlaneMesh_hjsbj")
 skeleton = NodePath("")
 surface_material_override/0 = SubResource("ShaderMaterial_cwqvt")
 
 [node name="MaskSpawner" type="Node3D" parent="." unique_id=321745574]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.054136276)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 17.169998)
 script = ExtResource("7_d5x7l")
 MaskPickupScene = ExtResource("8_rtcij")
 _availableMasks = ExtResource("8_ukwr8")
