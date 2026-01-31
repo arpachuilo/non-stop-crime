@@ -3,7 +3,7 @@
 [ext_resource type="Shader" uid="uid://cxvp62bp8aq08" path="res://levels/assets/Backdrop.gdshader" id="1_80vhd"]
 [ext_resource type="Script" uid="uid://b430y4e1vno6x" path="res://src/Lobby.cs" id="1_pb8y7"]
 [ext_resource type="PackedScene" uid="uid://cj7ucao0d5den" path="res://AC_Player.tscn" id="2_hjsbj"]
-[ext_resource type="PackedScene" path="res://UI_PlayerInfo.tscn" id="3_vnv7o"]
+[ext_resource type="PackedScene" uid="uid://b1awodkisntg" path="res://UI_PlayerInfo.tscn" id="3_vnv7o"]
 [ext_resource type="PackedScene" path="res://menus/LobbyOverlay.tscn" id="4_hy0rb"]
 [ext_resource type="Script" uid="uid://ch7jcbdn7a7yi" path="res://src/DynamicCamera.cs" id="4_rtcij"]
 [ext_resource type="Script" uid="uid://bx8sqineax63u" path="res://src/Mask/MaskSpawner.cs" id="7_d5x7l"]
@@ -180,6 +180,7 @@ offset_top = -40.0
 offset_right = 20.0
 grow_horizontal = 2
 grow_vertical = 0
+theme_override_constants/separation = 32
 
 [node name="Goal Zones" type="Node3D" parent="." unique_id=1627682746]
 
