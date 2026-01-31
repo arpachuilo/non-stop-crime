@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dc4ovjqlo8s3l"
-path="res://.godot/imported/arson_mask.png-a5e4735d200f7084080c9334ad12bc13.ctex"
+path="res://.godot/imported/arson_mask.png-29c45c4ae3ad4faf7e320404cb5fc166.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://player/assets/arson_mask.png"
-dest_files=["res://.godot/imported/arson_mask.png-a5e4735d200f7084080c9334ad12bc13.ctex"]
+source_file="res://projectiles/arson/arson_mask.png"
+dest_files=["res://.godot/imported/arson_mask.png-29c45c4ae3ad4faf7e320404cb5fc166.ctex"]
 
 [params]
 

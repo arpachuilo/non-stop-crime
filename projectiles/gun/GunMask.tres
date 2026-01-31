@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="MaskData" format=3 uid="uid://gshqmoyctg6e"]
+
+[ext_resource type="PackedScene" uid="uid://bxql0ucoobt72" path="res://projectiles/knife/KNIFE.tscn" id="1_76idr"]
+[ext_resource type="Script" uid="uid://cbwkmtyoylbwe" path="res://src/Mask/MaskData.cs" id="2_xynlu"]
+
+[resource]
+script = ExtResource("2_xynlu")
+MaskBits = 2
+HasProjectile = true
+ProjectileScene = ExtResource("1_76idr")
+FireRate = 0.8
+Scorable = true
+metadata/_custom_type_script = "uid://cbwkmtyoylbwe"

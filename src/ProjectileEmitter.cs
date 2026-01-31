@@ -9,9 +9,6 @@ public partial class ProjectileEmitter : Node3D
 	public float FireRate = 0.5f;
 
 	[Export]
-	public float ProjectileSpeed = 10.0f;
-
-	[Export]
 	public Player PlayerOwner;
 
 	private Poller _firePoller = new(1.0f);
@@ -32,7 +29,6 @@ public partial class ProjectileEmitter : Node3D
 
 		var projectileInstance = ProjectileScene.Instantiate<Projectile>();
 		projectileInstance.Own(PlayerOwner);
-		projectileInstance.Speed = ProjectileSpeed;
 
 		// Spawn transform based on player velocity
 		Vector3 forward = -PlayerOwner.Velocity.Normalized();
