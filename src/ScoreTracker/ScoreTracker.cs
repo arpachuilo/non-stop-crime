@@ -8,6 +8,7 @@ public partial class ScoreTracker : Control
   [Export] public Label TimerLabel;
   [Export] public PackedScene WinnerScreenScene;
   [Export] public float GameDurationSeconds = 600f; // 10 minutes default
+  [Export] public int RequiredNumberOfPlayers = 1;
 
   private float _timeRemaining;
   private bool _timerStarted = false;
@@ -25,7 +26,7 @@ public partial class ScoreTracker : Control
 	var allReady = players.All(p => p.PlayerInfo.IsReady);
 
     // Start timer when first player spawns
-    if (!_timerStarted && players.Count > 1 && allReady)
+    if (!_timerStarted && players.Count >= RequiredNumberOfPlayers && allReady)
     {
       _timerStarted = true;
 	  foreach (var player in players) {
