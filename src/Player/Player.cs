@@ -27,6 +27,9 @@ public partial class Player : Character {
   [Export]
   public MaskData CurrentMask { get; set; }
 
+  [Export]
+  public OmniLight3D Light;
+
   private ProjectileEmitter _projectileEmitter;
   private float _baseMaxSpeed;
 
@@ -70,6 +73,7 @@ public partial class Player : Character {
     base._EnterTree();
     SpriteParent.color = color;
     NamePlate.Modulate = labelColor;
+    Light.LightColor = PlayerInfo.UIColor;
   }
 
   public override void _ExitTree() {

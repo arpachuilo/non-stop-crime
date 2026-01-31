@@ -158,13 +158,14 @@ animations = [{
 "speed": 10.0
 }]
 
-[node name="Player" type="CharacterBody3D" unique_id=1005422296 node_paths=PackedStringArray("NamePlate", "PlayerController", "SpriteParent") groups=["Player"]]
+[node name="Player" type="CharacterBody3D" unique_id=1005422296 node_paths=PackedStringArray("NamePlate", "PlayerController", "SpriteParent", "Light") groups=["Player"]]
 floor_constant_speed = true
 floor_block_on_wall = false
 script = ExtResource("1_f76hg")
 NamePlate = NodePath("NamePlate/Name")
 PlayerController = NodePath("PlayerController")
 SpriteParent = NodePath("SpriteParent")
+Light = NodePath("OmniLight3D")
 color = Color(0.8039216, 0, 0.92156863, 1)
 MaxSpeed = 2.0
 MinSpeed = 0.0
@@ -230,3 +231,7 @@ shaded = true
 alpha_cut = 1
 alpha_antialiasing_mode = 2
 texture_filter = 4
+
+[node name="OmniLight3D" type="OmniLight3D" parent="." unique_id=163656326]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -0.7987615)
+light_energy = 3.0
