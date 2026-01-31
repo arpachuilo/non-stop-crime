@@ -13,9 +13,6 @@ using Godot;
 public partial class Character : CharacterBody3D
 {
   [Export]
-  public float Speed { get; set; } = 8.0f;
-
-  [Export]
   public Vector3 Drag { get; set; } = Vector3.One * 10f;
 
   [Export] private Vector3 _gravity = Vector3.Down * 9.8f;
@@ -24,14 +21,16 @@ public partial class Character : CharacterBody3D
   protected Vector3 _previousVelocity = Vector3.Zero;
   protected Vector3 _previousPosition = Vector3.Zero;
 
-  [ExportGroup("Debug Settings")]
-  [Export] private bool _displayVelocity = false;
-  [Export] private bool _displayGravity = false;
   [Export] public float MaxSpeed { get; set; } = 8.0f;
   [Export] public float MinSpeed { get; set; } = 2.0f;
   [Export] public float AccelerationRate { get; set; } = 1.0f;
   [Export] public float CollisionSpeedPenalty { get; set; } = 0.1f;
   [Export] public float CollisionMinSpeedThreshold { get; set; } = 3.0f;
+
+  [ExportGroup("Debug Settings")]
+  [Export] private bool _displayVelocity = false;
+  [Export] private bool _displayGravity = false;
+
   protected float _currentSpeed = 2.0f;
   protected float _collisionCooldown = 0f;
   private const float CollisionCooldownDuration = 0.3f;
@@ -55,7 +54,7 @@ public partial class Character : CharacterBody3D
     // Acceleration
     if (direction != Vector3.Zero)
     {
-      _currentSpeed = Mathf.MoveToward(_currentSpeed, MaxSpeed, AccelerationRate * (float)delta);
+      _currentSpeed = Mathf.Clamp(Mathf.MoveToward(_currentSpeed, MaxSpeed, AccelerationRate * (float)delta), MinSpeed, MaxSpeed);
     }
 
     UpDirection = up.IsZeroApprox() ? Vector3.Up : up;
@@ -96,7 +95,7 @@ public partial class Character : CharacterBody3D
     }
 
     // Update horizontal velocity with input direction
-    horizontalVelocity = horizontalVelocity / 1.0f + GetDirection() * _currentSpeed;
+    horizontalVelocity = horizontalVelocity / 1.0f + GetDirection().Normalized() * _currentSpeed;
 
     // Apply drag
     horizontalVelocity /= Vector3.One + Drag * (float)delta;

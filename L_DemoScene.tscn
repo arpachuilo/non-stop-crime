@@ -38,6 +38,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.57536626, 0)
 [node name="Player" parent="Players" unique_id=1005422296 node_paths=PackedStringArray("_camera") instance=ExtResource("2_6ci18")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.004034698, -0.3294568, 0.004099846)
 _camera = NodePath("../../Camera3D")
+MaxSpeed = 2.0
+MinSpeed = 0.0
 
 [node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=900134267]
 disable_mode = 1

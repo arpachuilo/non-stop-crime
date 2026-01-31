@@ -6,7 +6,7 @@ public partial class Projectile : Area3D
 	public float Duration = 5.0f;
 
 	[Export]
-	public float Speed = 10.0f;
+	public float Speed = 3.0f;
 
 	[Export]
 	public Player Owner;
@@ -50,9 +50,10 @@ public partial class Projectile : Area3D
 
 	protected virtual void OnBodyEntered(Node3D body)
 	{
-		GD.Print("Projectile hit body: " + body.Name);
 		if (body is Player player)
 		{
+			if (player == Owner) return; // Ignore self-hit
+
 			player.Reset();
 		}
 	}
