@@ -34,13 +34,25 @@ public partial class Lobby : Node {
     }
 
     public override void _Input(InputEvent @event) {
-        if (_gameStarted) return;
-
         if (@event is InputEventJoypadButton joypadEvent && joypadEvent.ButtonIndex == JoyButton.Start && joypadEvent.Pressed) {
+            if (_gameStarted) {
+                ReturnToLobby();
+                return;
+            }
             HandleJoypadInput(joypadEvent.Device);
-        } else if (@event is InputEventKey keyEvent && keyEvent.Keycode == Key.Enter && keyEvent.Pressed) {
-            HandleKeyboardInput();
+        } else if (@event is InputEventKey keyEvent && keyEvent.Pressed) {
+            if (keyEvent.Keycode == Key.Escape && _gameStarted) {
+                ReturnToLobby();
+                return;
+            }
+            if (keyEvent.Keycode == Key.Enter && !_gameStarted) {
+                HandleKeyboardInput();
+            }
         }
+    }
+
+    private void ReturnToLobby() {
+        GetTree().ReloadCurrentScene();
     }
 
     private void HandleJoypadInput(int deviceId) {
