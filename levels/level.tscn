@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://5q744y4bjyiq" path="res://GoalZone.tscn" id="4_safpt"]
 [ext_resource type="Script" uid="uid://bx8sqineax63u" path="res://src/Mask/MaskSpawner.cs" id="7_d5x7l"]
 [ext_resource type="PackedScene" uid="uid://27h8ms28togi" path="res://src/Mask/MaskPickup.tscn" id="8_rtcij"]
+[ext_resource type="Resource" path="res://src/Mask/D_AllMasks.tres" id="8_ukwr8"]
 [ext_resource type="PackedScene" uid="uid://bxaqr0eh0nytl" path="res://src/ScoreTracker/ScoreTracker.tscn" id="11_pb8y7"]
 
 [sub_resource type="Gradient" id="Gradient_80vhd"]
@@ -132,6 +133,7 @@ GoalZoneScene = ExtResource("4_safpt")
 script = ExtResource("7_d5x7l")
 MaskPickupScene = ExtResource("8_rtcij")
 PlayerSpawnLocations = [NodePath("../Players")]
+_availableMasks = ExtResource("8_ukwr8")
 
 [node name="ScoreTracker" parent="." unique_id=2090427259 instance=ExtResource("11_pb8y7")]
 

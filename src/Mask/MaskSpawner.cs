@@ -59,6 +59,7 @@ public partial class MaskSpawner : Node3D
         AddChild(pickup);
 
         _spawnedPickups[maskData] = pickup;
+        GD.Print($"MaskSpawner: Spawned mask");
     }
 
     private Vector3 FindValidPosition()
