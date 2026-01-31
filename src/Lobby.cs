@@ -101,9 +101,6 @@ public partial class Lobby : Node {
     var spawnPosition = GetNextSpawnPosition();
 
     var playerInfo = PlayerInfoScene.Instantiate<PlayerInfo>();
-    var image = AvatarGenerator.NextAvatar(playerInfo.NameLabel.Text);
-    image.Resize(64, 64);
-    playerInfo.Avatar.Texture = ImageTexture.CreateFromImage(image);
     PlayerInfoContainer.AddChild(playerInfo);
 
     var player = PlayerScene.Instantiate<Player>();
