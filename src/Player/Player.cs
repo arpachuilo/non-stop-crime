@@ -111,6 +111,7 @@ public partial class Player : Character {
     Mask = mask?.MaskBits ?? 0;  // Update zone access mask
 
     SpriteParent.ApplyMaskTexture(mask?.Sprite);
+    PlayerInfo?.UpdateMaskIcon(mask?.Icon);
 
     ApplyMaskAbilities();
   }

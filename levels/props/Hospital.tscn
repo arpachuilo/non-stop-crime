@@ -20,7 +20,7 @@ region = Rect2(103, 600, 387, 247)
 script = ExtResource("1_nl4c2")
 
 [node name="HospitalAreaBody" type="CollisionShape3D" parent="." unique_id=1999436185 groups=["goal_zones"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.4, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.4, 1.9024124)
 shape = SubResource("CylinderShape3D_oph0r")
 debug_color = Color(0.92941177, 0, 0.65882355, 1)
 
