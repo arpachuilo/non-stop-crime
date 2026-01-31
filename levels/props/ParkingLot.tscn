@@ -1,5 +1,6 @@
-[gd_scene format=3 uid="uid://cl287gsw6v0bh"]
+[gd_scene format=3 uid="uid://c2hmq40jdskvd"]
 
+[ext_resource type="Script" uid="uid://drs71jkrerwcu" path="res://src/GoalZone/GoalZone.cs" id="1_6j07c"]
 [ext_resource type="Texture2D" uid="uid://dxja8mn3i57on" path="res://levels/assets/parking_lot/parking lot.png" id="1_rktd0"]
 [ext_resource type="Texture2D" uid="uid://ckwnx5suw54x7" path="res://levels/assets/parking_lot/Blue car.png" id="2_6j07c"]
 [ext_resource type="Texture2D" uid="uid://dva2mopqst03j" path="res://levels/assets/parking_lot/Red car.png" id="3_gt4ln"]
@@ -24,7 +25,11 @@ region = Rect2(142, 52, 334, 415)
 atlas = ExtResource("5_dumxj")
 region = Rect2(14, 131, 124, 316)
 
-[node name="ParkingLot" type="Node3D" unique_id=2030573530]
+[node name="ParkingLot" type="Area3D" unique_id=1136181582 groups=["goal_zones"]]
+script = ExtResource("1_6j07c")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="." unique_id=1951636886]
+shape = SubResource("CylinderShape3D_qoybe")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=466445471]
 

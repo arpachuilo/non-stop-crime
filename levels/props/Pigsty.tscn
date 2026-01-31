@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://ctol3tugnm1rv"]
 
 [ext_resource type="Texture2D" uid="uid://c3vrmkr66ueta" path="res://levels/assets/police left.png" id="1_kjg33"]
+[ext_resource type="Script" uid="uid://drs71jkrerwcu" path="res://src/GoalZone/GoalZone.cs" id="1_qi2m5"]
 [ext_resource type="Texture2D" uid="uid://dbgxu13stgkyi" path="res://levels/assets/police right.png" id="2_qi2m5"]
 [ext_resource type="Texture2D" uid="uid://2e1tsxbyoafj" path="res://levels/assets/police front.png" id="3_m6wmv"]
 
@@ -8,7 +9,12 @@
 height = 4.7
 radius = 3.0
 
-[node name="Pigsty" type="Node3D" unique_id=367026064]
+[node name="Pigsty" type="Area3D" unique_id=88811157 groups=["goal_zones"]]
+script = ExtResource("1_qi2m5")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="." unique_id=136379880]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.3656805, 0)
+shape = SubResource("CylinderShape3D_kjg33")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=389625438]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.3656805, 0)

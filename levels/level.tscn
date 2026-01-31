@@ -3,18 +3,16 @@
 [ext_resource type="Shader" uid="uid://cxvp62bp8aq08" path="res://levels/assets/Backdrop.gdshader" id="1_80vhd"]
 [ext_resource type="Script" uid="uid://b430y4e1vno6x" path="res://src/Lobby.cs" id="1_pb8y7"]
 [ext_resource type="PackedScene" uid="uid://cj7ucao0d5den" path="res://AC_Player.tscn" id="2_hjsbj"]
-[ext_resource type="Script" uid="uid://ccylebg7df6u2" path="res://src/GoalZone/GoalZoneSpawner.cs" id="3_5mrsh"]
 [ext_resource type="PackedScene" uid="uid://b1awodkisntg" path="res://UI_PlayerInfo.tscn" id="3_vnv7o"]
 [ext_resource type="PackedScene" path="res://menus/LobbyOverlay.tscn" id="4_hy0rb"]
 [ext_resource type="Script" uid="uid://ch7jcbdn7a7yi" path="res://src/DynamicCamera.cs" id="4_rtcij"]
-[ext_resource type="PackedScene" uid="uid://5q744y4bjyiq" path="res://GoalZone.tscn" id="4_safpt"]
 [ext_resource type="Script" uid="uid://bx8sqineax63u" path="res://src/Mask/MaskSpawner.cs" id="7_d5x7l"]
 [ext_resource type="PackedScene" uid="uid://27h8ms28togi" path="res://src/Mask/MaskPickup.tscn" id="8_rtcij"]
 [ext_resource type="Resource" uid="uid://bif5c1tl2gr2i" path="res://src/Mask/D_AllMasks.tres" id="8_ukwr8"]
 [ext_resource type="PackedScene" uid="uid://bxaqr0eh0nytl" path="res://src/ScoreTracker/ScoreTracker.tscn" id="11_pb8y7"]
-[ext_resource type="PackedScene" path="res://levels/props/Hospital.tscn" id="12_0qmeg"]
-[ext_resource type="PackedScene" path="res://levels/props/NefariousJumbo.tscn" id="13_ta7ci"]
-[ext_resource type="PackedScene" path="res://levels/props/ParkingLot.tscn" id="14_lh335"]
+[ext_resource type="PackedScene" uid="uid://d0ie1mhex1w1l" path="res://levels/props/Hospital.tscn" id="12_0qmeg"]
+[ext_resource type="PackedScene" uid="uid://b0u72twc7avie" path="res://levels/props/NefariousJumbo.tscn" id="13_ta7ci"]
+[ext_resource type="PackedScene" uid="uid://c2hmq40jdskvd" path="res://levels/props/ParkingLot.tscn" id="14_lh335"]
 [ext_resource type="PackedScene" uid="uid://ctol3tugnm1rv" path="res://levels/props/Pigsty.tscn" id="15_u6cys"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_umreq"]
@@ -65,7 +63,7 @@ PlayerContainer = NodePath("../Players")
 PlayerInfoScene = ExtResource("3_vnv7o")
 PlayerInfoContainer = NodePath("../HBoxContainer")
 SpawnPoints = [NodePath("../Players/Spawn A"), NodePath("../Players/Spawn B"), NodePath("../Players/Spawn C"), NodePath("../Players/Spawn D")]
-GoalZoneSpawner = NodePath("../Goal Spawner")
+GoalZoneSpawner = NodePath("")
 MaskSpawner = NodePath("../MaskSpawner")
 LobbyOverlay = NodePath("LobbyOverlay")
 
@@ -162,12 +160,6 @@ mesh = SubResource("PlaneMesh_hjsbj")
 skeleton = NodePath("")
 surface_material_override/0 = SubResource("ShaderMaterial_cwqvt")
 
-[node name="Goal Spawner" type="Node3D" parent="." unique_id=1021437552]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 17.005247)
-script = ExtResource("3_5mrsh")
-MinDistance = 6.0
-GoalZoneScene = ExtResource("4_safpt")
-
 [node name="MaskSpawner" type="Node3D" parent="." unique_id=321745574]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 17.169998)
 script = ExtResource("7_d5x7l")
@@ -188,21 +180,19 @@ offset_right = 20.0
 grow_horizontal = 2
 grow_vertical = 0
 
-[node name="Props" type="Node3D" parent="." unique_id=1627682746]
-visible = false
+[node name="Goal Zones" type="Node3D" parent="." unique_id=1627682746]
 
-[node name="Hospital" parent="Props" unique_id=1738063490 instance=ExtResource("12_0qmeg")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.243156, 0.099999905, 17.459963)
+[node name="Hospital" parent="Goal Zones" unique_id=1738063490 instance=ExtResource("12_0qmeg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.421402, 0.099998, 6.2036724)
 
-[node name="NefariousJumbo" parent="Props" unique_id=227731175 instance=ExtResource("13_ta7ci")]
-transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 0.99999994, -18.783222, 0.07900095, 18.06541)
+[node name="NefariousJumbo" parent="Goal Zones" unique_id=227731175 instance=ExtResource("13_ta7ci")]
+transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 0.99999994, -15.927681, 0.07900095, 4.7968254)
 
-[node name="ParkingLot" parent="Props" unique_id=2030573530 instance=ExtResource("14_lh335")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.270412, 1.09278474e-07, 23.151766)
+[node name="ParkingLot" parent="Goal Zones" unique_id=2030573530 instance=ExtResource("14_lh335")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.300488, 2.0166271e-06, 31.997404)
 
-[node name="Pigsty" parent="Props" unique_id=367026064 instance=ExtResource("15_u6cys")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.910869, 0.13431954, 24.216793)
+[node name="Pigsty" parent="Goal Zones" unique_id=367026064 instance=ExtResource("15_u6cys")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.23092, 0.13432145, 32.187057)
 
-[connection signal="GameStarted" from="Lobby" to="Goal Spawner" method="_on_lobby_game_started"]
 [connection signal="GameStarted" from="Lobby" to="MaskSpawner" method="_on_lobby_game_started"]
 [connection signal="GameStarted" from="Lobby" to="ScoreTracker" method="_on_lobby_game_started"]
