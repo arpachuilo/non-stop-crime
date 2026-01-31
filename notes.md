@@ -13,6 +13,10 @@
 - Sound
   - SFX for abilities
   - Background music
+- Graphics/design
+  - Replace wall assets with fences
+  - Extend floor plane beyond walls
+  - Capture zone design (glowing circle?)
 - User journey
   - Launch game 
   - Go into lobby
@@ -60,9 +64,6 @@ attempts of other players at achieving their objectives
 - TBD
 
 # UI
-- TBD
-
-# Development
 - TBD
 
 # Playtests/feedback
