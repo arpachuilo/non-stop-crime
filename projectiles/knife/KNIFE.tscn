@@ -4,19 +4,16 @@
 [ext_resource type="AudioStream" uid="uid://jjf3s8gntn4b" path="res://assets/sfx/knife.mp3" id="2_6bviy"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_3olir"]
-
-[sub_resource type="BoxMesh" id="BoxMesh_8pew8"]
+radius = 1.0
 
 [node name="Knife" type="Area3D" unique_id=1383547292 node_paths=PackedStringArray("Sfx")]
 script = ExtResource("1_8pew8")
 Duration = 0.1
+Speed = 0.0
 Sfx = NodePath("AudioStreamPlayer")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=618795808]
 shape = SubResource("SphereShape3D_3olir")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=184741504]
-mesh = SubResource("BoxMesh_8pew8")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=2101211837]
 stream = ExtResource("2_6bviy")
