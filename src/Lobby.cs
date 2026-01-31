@@ -113,6 +113,7 @@ public partial class Lobby : Node {
     playerInfo.ScoreOrReadyStatus.Text = "Not Ready";
     player.PlayerInfo = playerInfo;
     var playerColor = GetNextColor();
+    if (!isKB) Input.SetJoyLight(deviceId, playerColor);
     player.PlayerInfo.UIColor = playerColor;
     player.color = playerColor;
     PlayerContainer.AddChild(player);
