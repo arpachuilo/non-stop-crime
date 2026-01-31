@@ -50,11 +50,29 @@ public partial class NPC : Character
   public bool IsCaptured { get; private set; } = false;
   public Player CapturedBy { get; private set; } = null;
 
+  public override void _PhysicsProcess(double delta)
+  {
+    if (_lockOnFloor && IsOnFloor())
+    {
+      AxisLockLinearX = true;
+      AxisLockLinearY = true;
+      AxisLockLinearZ = true;
+      SetPhysicsProcess(false);
+      SetProcess(false);
+    }
+
+    base._PhysicsProcess(delta);
+  }
+
+  private bool _lockOnFloor = false;
   public void OnGoalCaptured(Player player)
   {
     IsCaptured = true;
     CapturedBy = player;
     SpriteParent?.ShowDeath(_deathTexture);
+    _lockOnFloor = true;
+    CollisionLayer = 0;
+    CollisionMask = 0;
     GD.Print($"NPC {NPCName} was captured by player {player.PlayerController.DeviceId}");
   }
 
