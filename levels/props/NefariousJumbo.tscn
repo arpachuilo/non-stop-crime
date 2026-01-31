@@ -19,5 +19,6 @@ shape = SubResource("CylinderShape3D_3rvjk")
 [node name="ObmujSprite" type="Sprite3D" parent="ObmujStaticBody/SpriteRoot" unique_id=865831583]
 transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 0, 0, 0)
 billboard = 2
+shaded = true
 texture_filter = 4
 texture = ExtResource("1_3rvjk")
