@@ -3,13 +3,13 @@
 [ext_resource type="Texture2D" uid="uid://dgrc1k4g2dvv0" path="res://projectiles/knife/stab_mask_icon.png" id="1_xsw4k"]
 [ext_resource type="PackedScene" uid="uid://q06iw3qaigpn" path="res://projectiles/gun/GAT.tscn" id="2_vut3j"]
 [ext_resource type="Script" uid="uid://cbwkmtyoylbwe" path="res://src/Mask/MaskData.cs" id="2_xynlu"]
-[ext_resource type="Texture2D" uid="uid://djps0jcq2hgmy" path="res://projectiles/knife/stab_mask.png" id="3_qggvf"]
+[ext_resource type="Texture2D" uid="uid://binyunater2xi" path="res://projectiles/gun/gun_mask.png" id="3_xsw4k"]
 
 [resource]
 script = ExtResource("2_xynlu")
 MaskBits = 2
 Icon = ExtResource("1_xsw4k")
-Sprite = ExtResource("3_qggvf")
+Sprite = ExtResource("3_xsw4k")
 HasProjectile = true
 ProjectileScene = ExtResource("2_vut3j")
 FireRate = 0.3
