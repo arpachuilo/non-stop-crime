@@ -84,6 +84,9 @@ public partial class Player : Character {
     GlobalPosition = Spawn;
     EquipMask(null);
     EmitSignal(SignalName.PlayerReset);
+    if (!PlayerController.IsKB) {
+      Input.StartJoyVibration(PlayerController.DeviceId, 0.5f, 0.5f, 1.2f);
+    }
   }
 
   public void AddScore(int points) {
