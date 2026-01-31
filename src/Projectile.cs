@@ -67,5 +67,13 @@ public partial class Projectile : Area3D
 			EmitSignal(SignalName.HitPlayer, PlayerOwner, player);
 			player.Reset();
 		}
+		else if (body is NPC npc)
+		{
+			if (npc.IsCaptured) return; // Already captured
+
+			PlayerOwner?.AddScore(1);
+			npc.OnGoalCaptured(PlayerOwner);
+			QueueFree();
+		}
 	}
 }
