@@ -149,6 +149,7 @@ transform = Transform3D(2.5, 0, 0, 0, 1, 0, 0, 0, 2.5, 0, 0, 16.874304)
 [node name="GroundSprite" type="Sprite3D" parent="Ground" unique_id=680690393]
 transform = Transform3D(2.0699997, 0, 0, 0, 2.07, 0, 0, 0, 2.0699997, -0.006941032, 1.9073486e-06, -0.0014882088)
 axis = 1
+transparent = false
 shaded = true
 alpha_cut = 2
 alpha_antialiasing_mode = 2
