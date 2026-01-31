@@ -186,7 +186,7 @@ theme_override_constants/separation = 32
 
 [node name="Goal Zones" type="Node3D" parent="." unique_id=1627682746]
 
-[node name="Hospital" parent="Goal Zones" unique_id=1738063490 instance=ExtResource("12_0qmeg")]
+[node name="Hospital" parent="Goal Zones" unique_id=1738063490 groups=["goal_zones"] instance=ExtResource("12_0qmeg")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.450158, 0.099998, 5.2784414)
 
 [node name="NefariousJumbo" parent="Goal Zones" unique_id=227731175 instance=ExtResource("13_ta7ci")]
