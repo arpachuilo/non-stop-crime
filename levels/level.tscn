@@ -1,21 +1,22 @@
 [gd_scene format=3 uid="uid://vr472n0ku81u"]
 
-[ext_resource type="Shader" uid="uid://cxvp62bp8aq08" path="res://levels/assets/Backdrop.gdshader" id="1_80vhd"]
+[ext_resource type="Shader" path="res://levels/assets/Backdrop.gdshader" id="1_80vhd"]
 [ext_resource type="Script" uid="uid://b430y4e1vno6x" path="res://src/Lobby.cs" id="1_pb8y7"]
 [ext_resource type="PackedScene" uid="uid://cj7ucao0d5den" path="res://AC_Player.tscn" id="2_hjsbj"]
 [ext_resource type="PackedScene" uid="uid://b1awodkisntg" path="res://UI_PlayerInfo.tscn" id="3_vnv7o"]
 [ext_resource type="PackedScene" path="res://menus/LobbyOverlay.tscn" id="4_hy0rb"]
 [ext_resource type="Script" uid="uid://ch7jcbdn7a7yi" path="res://src/DynamicCamera.cs" id="4_rtcij"]
+[ext_resource type="Texture2D" uid="uid://dq8fhsvfeubu4" path="res://levels/assets/PavingStones150_1K-PNG_Color.png" id="6_3ca7f"]
 [ext_resource type="PackedScene" path="res://levels/props/greeblies/Trashbag.tscn" id="6_lh335"]
 [ext_resource type="Script" uid="uid://bx8sqineax63u" path="res://src/Mask/MaskSpawner.cs" id="7_d5x7l"]
 [ext_resource type="PackedScene" uid="uid://27h8ms28togi" path="res://src/Mask/MaskPickup.tscn" id="8_rtcij"]
 [ext_resource type="Resource" uid="uid://bif5c1tl2gr2i" path="res://src/Mask/D_AllMasks.tres" id="8_ukwr8"]
 [ext_resource type="PackedScene" uid="uid://bxaqr0eh0nytl" path="res://src/ScoreTracker/ScoreTracker.tscn" id="11_pb8y7"]
-[ext_resource type="PackedScene" uid="uid://d0ie1mhex1w1l" path="res://levels/props/Hospital.tscn" id="12_0qmeg"]
-[ext_resource type="PackedScene" uid="uid://b0u72twc7avie" path="res://levels/props/NefariousJumbo.tscn" id="13_ta7ci"]
-[ext_resource type="PackedScene" uid="uid://c2hmq40jdskvd" path="res://levels/props/ParkingLot.tscn" id="14_lh335"]
-[ext_resource type="PackedScene" uid="uid://bx6jancv55uem" path="res://levels/props/Lamp.tscn" id="15_0qmeg"]
-[ext_resource type="PackedScene" uid="uid://ctol3tugnm1rv" path="res://levels/props/Pigsty.tscn" id="15_u6cys"]
+[ext_resource type="PackedScene" path="res://levels/props/Hospital.tscn" id="12_0qmeg"]
+[ext_resource type="PackedScene" path="res://levels/props/NefariousJumbo.tscn" id="13_ta7ci"]
+[ext_resource type="PackedScene" path="res://levels/props/ParkingLot.tscn" id="14_lh335"]
+[ext_resource type="PackedScene" path="res://levels/props/Lamp.tscn" id="15_0qmeg"]
+[ext_resource type="PackedScene" path="res://levels/props/Pigsty.tscn" id="15_u6cys"]
 [ext_resource type="PackedScene" uid="uid://5h4p037xui6w" path="res://levels/props/greeblies/Bush.tscn" id="16_ta7ci"]
 [ext_resource type="Script" uid="uid://h6b127a3t5at" path="res://npc/NPCSpawner.cs" id="17_u6cys"]
 [ext_resource type="PackedScene" uid="uid://c4a4i2hhu3r40" path="res://npc/NPC.tscn" id="18_368ro"]
@@ -25,21 +26,16 @@
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_80vhd"]
 data = PackedVector3Array(-0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, -0.5)
 
-[sub_resource type="Gradient" id="Gradient_80vhd"]
-offsets = PackedFloat32Array(0.41699606, 0.9505929)
-colors = PackedColorArray(0.10639999, 0.38, 0.20216002, 1, 0.3529412, 0.18039216, 0.1254902, 1)
-
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_hjsbj"]
-frequency = 0.0176
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_cwqvt"]
-width = 1024
-height = 1024
-noise = SubResource("FastNoiseLite_hjsbj")
-color_ramp = SubResource("Gradient_80vhd")
-seamless = true
-
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_umreq"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_3ca7f"]
+size = Vector2(50, 50)
+orientation = 1
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kogck"]
+albedo_texture = ExtResource("6_3ca7f")
+uv1_scale = Vector3(0.1, 0, 0.25)
+uv1_triplanar = true
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_hjsbj"]
 
@@ -61,13 +57,12 @@ shader_parameter/noise_amount = 0.55
 
 [node name="Level" type="Node3D" unique_id=596543593]
 
-[node name="Lobby" type="Node" parent="." unique_id=1714533031 node_paths=PackedStringArray("PlayerContainer", "PlayerInfoContainer", "Safetymode", "SpawnPoints", "MaskSpawner", "LobbyOverlay")]
+[node name="Lobby" type="Node" parent="." unique_id=1714533031 node_paths=PackedStringArray("PlayerContainer", "PlayerInfoContainer", "SpawnPoints", "MaskSpawner", "LobbyOverlay")]
 script = ExtResource("1_pb8y7")
 PlayerScene = ExtResource("2_hjsbj")
 PlayerContainer = NodePath("../Players")
 PlayerInfoScene = ExtResource("3_vnv7o")
 PlayerInfoContainer = NodePath("../HBoxContainer")
-Safetymode = NodePath("LobbyOverlay/SafetyModeLabel")
 SpawnPoints = [NodePath("../Players/Spawn A"), NodePath("../Players/Spawn B"), NodePath("../Players/Spawn C"), NodePath("../Players/Spawn D")]
 MaskSpawner = NodePath("../MaskSpawner")
 LobbyOverlay = NodePath("LobbyOverlay")
@@ -157,22 +152,15 @@ shape = SubResource("ConcavePolygonShape3D_80vhd")
 [node name="Ground" type="StaticBody3D" parent="." unique_id=673564305]
 transform = Transform3D(2.5, 0, 0, 0, 1, 0, 0, 0, 2.5, 0, 0, 16.874304)
 
-[node name="GroundSprite" type="Sprite3D" parent="Ground" unique_id=680690393]
-transform = Transform3D(2.0699997, 0, 0, 0, 2.07, 0, 0, 0, 2.0699997, -0.006941032, 1.9073486e-06, -0.0014882088)
-axis = 1
-transparent = false
-shaded = true
-alpha_cut = 2
-alpha_antialiasing_mode = 2
-texture_filter = 4
-render_priority = -1
-texture = SubResource("NoiseTexture2D_cwqvt")
-
 [node name="GroundCollider" type="CollisionShape3D" parent="Ground" unique_id=1702323393]
 shape = SubResource("WorldBoundaryShape3D_umreq")
 
 [node name="Trashbag" parent="Ground" unique_id=1866846027 instance=ExtResource("6_lh335")]
 transform = Transform3D(0.3999999, 0, 0, 0, 1, 0, 0, 0, 0.3999999, 9.038604, 0.0061295033, -9.383417)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Ground" unique_id=1340531726]
+mesh = SubResource("QuadMesh_3ca7f")
+surface_material_override/0 = SubResource("StandardMaterial3D_kogck")
 
 [node name="Backdrop" type="MeshInstance3D" parent="." unique_id=361163437]
 transform = Transform3D(87.39753, 0, 0, 0, 3.1312087, -41.997375, 0, 3.1312087, 41.997375, 0, 1.563, -14.834841)
