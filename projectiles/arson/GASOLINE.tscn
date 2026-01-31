@@ -17,6 +17,7 @@ shader_parameter/wiggle_strength = 0.04400000209
 shader_parameter/wiggle_speed = 1.110000052725
 shader_parameter/wiggle_frequency = Vector2(3, 4)
 shader_parameter/billboard_enabled = true
+shader_parameter/emission = Color(0.9912072, 0.45870316, 0.4433076, 1)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_3y3sn"]
 animations = [{
@@ -47,10 +48,4 @@ material_override = SubResource("ShaderMaterial_k7yy8")
 billboard = 2
 sprite_frames = SubResource("SpriteFrames_3y3sn")
 script = ExtResource("5_k7yy8")
-DecayTime = 0.5
-
-[node name="OmniLight3D" type="OmniLight3D" parent="." unique_id=231767090]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.44119018, 0)
-light_color = Color(0.90805054, 0.31669828, 0, 1)
-light_energy = 6.572
-omni_range = 25.0
+DecayTime = 1.2
