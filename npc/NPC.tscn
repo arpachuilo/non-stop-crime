@@ -90,6 +90,9 @@ animations = [{
 [node name="Npc" type="CharacterBody3D" unique_id=1618199586 node_paths=PackedStringArray("SpriteParent")]
 script = ExtResource("1_ob0l3")
 SpriteParent = NodePath("SpriteParent")
+AggroRadius = 6.0
+MaxSpeed = 1.0
+MinSpeed = 0.0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1399256817]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
