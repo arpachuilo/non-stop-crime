@@ -13,14 +13,17 @@ Avatar = NodePath("Avatar")
 ScoreOrReadyStatus = NodePath("Score")
 
 [node name="Avatar" type="TextureRect" parent="." unique_id=115759476]
+visible = false
 layout_mode = 2
 texture = SubResource("PlaceholderTexture2D_hk8mb")
 stretch_mode = 2
 
 [node name="Score" type="Label" parent="." unique_id=247613344]
 layout_mode = 2
+theme_override_font_sizes/font_size = 62
 text = "0"
 
 [node name="Name" type="Label" parent="." unique_id=668544563]
 layout_mode = 2
+theme_override_font_sizes/font_size = 24
 text = "Very long long name"
