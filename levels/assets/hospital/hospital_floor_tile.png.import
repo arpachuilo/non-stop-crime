@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://byypbk1dit0cw"
-path.s3tc="res://.godot/imported/Skyscraper_Buildings _pack_OldNinjaCat_v1.png-9ae6358e3950f2ccd62d78e77815a2cf.s3tc.ctex"
+uid="uid://ccv1s1yp4qhuw"
+path.s3tc="res://.godot/imported/hospital_floor_tile.png-b0931e7f36b03bb23831663fb74c1f6c.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://levels/assets/Skyscraper_Buildings _pack_OldNinjaCat_v1.png"
-dest_files=["res://.godot/imported/Skyscraper_Buildings _pack_OldNinjaCat_v1.png-9ae6358e3950f2ccd62d78e77815a2cf.s3tc.ctex"]
+source_file="res://levels/assets/hospital/hospital_floor_tile.png"
+dest_files=["res://.godot/imported/hospital_floor_tile.png-b0931e7f36b03bb23831663fb74c1f6c.s3tc.ctex"]
 
 [params]
 
