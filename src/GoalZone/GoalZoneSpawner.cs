@@ -3,14 +3,15 @@ using System.Collections.Generic;
 
 public partial class GoalZoneSpawner : Node3D
 {
-    [Export] public int ZoneCount { get; set; } = 6;
     [Export] public Vector3 SpawnAreaSize { get; set; } = new Vector3(16, 0, 16);
     [Export] public float MinDistance { get; set; } = 5f;
     [Export] public int MaxPlacementAttempts { get; set; } = 30;
     [Export] public string MaskDataDirectory { get; set; } = "res://src/Mask/MaskData";
+    [Export] public string PropDirectory { get; set; } = "res://levels/props";
     [Export] public PackedScene GoalZoneScene { get; set; }
 
     private List<MaskData> _availableMasks = new();
+    private List<PackedScene> _propScenes = new();
     private List<Vector3> _placedPositions = new();
     private RandomNumberGenerator _rng = new();
 
@@ -18,7 +19,8 @@ public partial class GoalZoneSpawner : Node3D
     {
         _rng.Randomize();
         LoadMasks();
-        SpawnZones();
+        LoadProps();
+        SpawnPropsWithZones();
     }
 
     private void LoadMasks()
@@ -54,7 +56,37 @@ public partial class GoalZoneSpawner : Node3D
         }
     }
 
-    private void SpawnZones()
+    private void LoadProps()
+    {
+        var dir = DirAccess.Open(PropDirectory);
+        if (dir == null)
+        {
+            GD.PrintErr($"GoalZoneSpawner: Could not open directory {PropDirectory}");
+            return;
+        }
+
+        dir.ListDirBegin();
+        string fileName = dir.GetNext();
+        while (fileName != "")
+        {
+            if (!dir.CurrentIsDir() && fileName.EndsWith(".tscn"))
+            {
+                string path = $"{PropDirectory}/{fileName}";
+                var scene = GD.Load<PackedScene>(path);
+                if (scene != null)
+                {
+                    _propScenes.Add(scene);
+                    GD.Print($"GoalZoneSpawner: Loaded prop from {path}");
+                }
+            }
+            fileName = dir.GetNext();
+        }
+        dir.ListDirEnd();
+
+        GD.Print($"GoalZoneSpawner: Loaded {_propScenes.Count} props from {PropDirectory}");
+    }
+
+    private void SpawnPropsWithZones()
     {
         if (GoalZoneScene == null)
         {
@@ -62,27 +94,35 @@ public partial class GoalZoneSpawner : Node3D
             return;
         }
 
-        for (int i = 0; i < ZoneCount; i++)
+        int maskIndex = 0;
+        foreach (var propScene in _propScenes)
         {
             Vector3 position = FindValidPosition();
             _placedPositions.Add(position);
 
-            var zone = GoalZoneScene.Instantiate<GoalZone>();
-            zone.Position = position;
+            // Spawn prop
+            var prop = propScene.Instantiate<Node3D>();
+            prop.Position = position;
+            AddChild(prop);
 
-            // Assign random mask if available
+            // Create and attach goal zone
+            var zone = GoalZoneScene.Instantiate<GoalZone>();
+            zone.Position = Vector3.Zero;
+
+            // Assign mask if available
             if (_availableMasks.Count > 0)
             {
-                int maskIndex = _rng.RandiRange(0, _availableMasks.Count - 1);
-                zone.Mask = _availableMasks[maskIndex].MaskBits;
-                GD.Print($"GoalZoneSpawner: Zone {i} at {position} assigned mask bits {zone.Mask}");
+                zone.Mask = _availableMasks[maskIndex % _availableMasks.Count].MaskBits;
+                maskIndex++;
             }
 
-            AddChild(zone);
+            prop.AddChild(zone);
             zone.AddToGroup("goal_zones");
+
+            GD.Print($"GoalZoneSpawner: Spawned prop at {position} with goal zone (mask bits: {zone.Mask})");
         }
 
-        GD.Print($"GoalZoneSpawner: Spawned {ZoneCount} goal zones");
+        GD.Print($"GoalZoneSpawner: Spawned {_propScenes.Count} props with goal zones");
     }
 
     private Vector3 FindValidPosition()
@@ -107,7 +147,6 @@ public partial class GoalZoneSpawner : Node3D
             }
         }
 
-        // Return best effort position if no valid one found
         return bestPosition;
     }
 

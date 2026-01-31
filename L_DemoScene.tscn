@@ -117,17 +117,6 @@ theme_override_constants/separation = 24
 [node name="ScoreTracker" parent="." unique_id=1467006090 instance=ExtResource("7_score")]
 GameDurationSeconds = 20.0
 
-[node name="Props" type="Node3D" parent="." unique_id=1999398117]
-
-[node name="Hospital" parent="Props" unique_id=1738063490 instance=ExtResource("9_6ln0e")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.116512, 0.09319568, -6.0070367)
-
-[node name="NefariousJumbo" parent="Props" unique_id=227731175 instance=ExtResource("10_qd27c")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, -8)
-
-[node name="Pigsty" parent="Props" unique_id=367026064 instance=ExtResource("11_ygne2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.66833353, -0.015680552, -12.120096)
-
 [node name="GoalSpawner" type="Node3D" parent="." unique_id=1048349799]
 script = ExtResource("7_np4ro")
 GoalZoneScene = ExtResource("4_5i8u7")
