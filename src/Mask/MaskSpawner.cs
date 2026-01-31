@@ -4,13 +4,12 @@ using System.Collections.Generic;
 public partial class MaskSpawner : Node3D
 {
     [Export] public Vector3 SpawnAreaSize { get; set; } = new(10, 0, 10);
-    [Export] public string MaskDataDirectory { get; set; } = "res://src/Mask/MaskData";
     [Export] public PackedScene MaskPickupScene { get; set; }
     [Export] public float MinDistance { get; set; } = 3.0f;
     [Export] public float MinDistanceFromZones { get; set; } = 4.0f;
     [Export] public int MaxPlacementAttempts { get; set; } = 30;
+    [Export] public MaskDataArray _availableMasks = new();
 
-    private List<MaskData> _availableMasks = new();
     private Dictionary<MaskData, MaskPickup> _spawnedPickups = new();
     private Dictionary<MaskData, Player> _equippedByPlayer = new();
     private RandomNumberGenerator _rng = new();
@@ -18,14 +17,13 @@ public partial class MaskSpawner : Node3D
     public override void _Ready()
     {
         _rng.Randomize();
-        LoadMasksFromDirectory();
         CallDeferred(nameof(InitializeSpawning));
     }
 
     private void InitializeSpawning()
     {
         SubscribeToPlayerResets();
-        foreach (var maskData in _availableMasks)
+        foreach (var maskData in _availableMasks.Masks)
             SpawnMask(maskData);
     }
 
@@ -37,36 +35,6 @@ public partial class MaskSpawner : Node3D
             if (node is Player player)
                 player.PlayerReset += () => OnPlayerReset(player);
         }
-    }
-
-    private void LoadMasksFromDirectory()
-    {
-        var dir = DirAccess.Open(MaskDataDirectory);
-        if (dir == null)
-        {
-            GD.PrintErr($"MaskSpawner: Could not open directory {MaskDataDirectory}");
-            return;
-        }
-
-        dir.ListDirBegin();
-        string fileName = dir.GetNext();
-        while (fileName != "")
-        {
-            if (!dir.CurrentIsDir() && (fileName.EndsWith(".tres") || fileName.EndsWith(".res")))
-            {
-                string path = $"{MaskDataDirectory}/{fileName}";
-                var resource = GD.Load<MaskData>(path);
-                if (resource != null)
-                {
-                    _availableMasks.Add(resource);
-                    GD.Print($"MaskSpawner: Loaded mask '{resource.Name}' from {path}");
-                }
-            }
-            fileName = dir.GetNext();
-        }
-        dir.ListDirEnd();
-
-        GD.Print($"MaskSpawner: Loaded {_availableMasks.Count} masks from {MaskDataDirectory}");
     }
 
     private void SpawnMask(MaskData maskData)
@@ -84,7 +52,7 @@ public partial class MaskSpawner : Node3D
         }
 
         pickup.MaskData = maskData;
-        pickup.GlobalPosition = GlobalPosition + position;
+        pickup.Position = Position + position;
         pickup.PickedUp += (player) => OnMaskPickedUp(maskData, player);
         AddChild(pickup);
 
@@ -99,7 +67,7 @@ public partial class MaskSpawner : Node3D
         for (int attempt = 0; attempt < MaxPlacementAttempts; attempt++)
         {
             Vector3 candidate = GenerateRandomPosition();
-            Vector3 worldCandidate = GlobalPosition + candidate;
+            Vector3 worldCandidate = Position + candidate;
 
             if (IsPositionNearGoalZone(worldCandidate))
                 continue;

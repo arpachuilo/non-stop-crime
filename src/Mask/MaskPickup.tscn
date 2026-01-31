@@ -1,9 +1,9 @@
 [gd_scene format=3 uid="uid://27h8ms28togi"]
 
 [ext_resource type="Script" uid="uid://bjerjgsbg7k1d" path="res://src/Mask/MaskPickup.cs" id="1_pickup"]
-[ext_resource type="Resource" uid="uid://d0k8gsx6stk63" path="res://src/Mask/MaskData/DefaultMask.tres" id="2_v4e6o"]
+[ext_resource type="Resource" uid="uid://twg2fuvnnfgb" path="res://projectiles/gun/GunMask.tres" id="2_v4e6o"]
 [ext_resource type="Texture2D" uid="uid://dgrc1k4g2dvv0" path="res://player/assets/stab_mask_icon.png" id="3_v4e6o"]
-[ext_resource type="Script" uid="uid://cumljpiaj7ee6" path="res://src/Mask/MaskSpriteBob.cs" id="4_ck8un"]
+[ext_resource type="Script" path="res://src/Mask/MaskSpriteBob.cs" id="4_ck8un"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ck8un"]
 transparency = 1

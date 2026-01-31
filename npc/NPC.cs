@@ -40,14 +40,16 @@ public partial class NPC : Character
     return Vector3.Zero;
   }
 
-  public void Kill() {
+  public void Kill()
+  {
     var timer = new Timer
     {
       Autostart = true,
       WaitTime = 0.5f
     };
 
-    timer.Timeout += () => {
+    timer.Timeout += () =>
+    {
       QueueFree();
     };
   }

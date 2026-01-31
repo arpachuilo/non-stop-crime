@@ -6,11 +6,10 @@ public partial class GoalZoneSpawner : Node3D
     [Export] public Vector3 SpawnAreaSize { get; set; } = new Vector3(16, 0, 16);
     [Export] public float MinDistance { get; set; } = 5f;
     [Export] public int MaxPlacementAttempts { get; set; } = 30;
-    [Export] public string MaskDataDirectory { get; set; } = "res://src/Mask/MaskData";
     [Export] public string PropDirectory { get; set; } = "res://levels/props";
     [Export] public PackedScene GoalZoneScene { get; set; }
+    [Export] public MaskDataArray _availableMasks = new();
 
-    private List<MaskData> _availableMasks = new();
     private List<PackedScene> _propScenes = new();
     private List<Vector3> _placedPositions = new();
     private RandomNumberGenerator _rng = new();
@@ -18,42 +17,8 @@ public partial class GoalZoneSpawner : Node3D
     public override void _Ready()
     {
         _rng.Randomize();
-        LoadMasks();
         LoadProps();
         SpawnPropsWithZones();
-    }
-
-    private void LoadMasks()
-    {
-        var dir = DirAccess.Open(MaskDataDirectory);
-        if (dir == null)
-        {
-            GD.PrintErr($"GoalZoneSpawner: Could not open directory {MaskDataDirectory}");
-            return;
-        }
-
-        dir.ListDirBegin();
-        string fileName = dir.GetNext();
-        while (fileName != "")
-        {
-            if (!dir.CurrentIsDir() && fileName.EndsWith(".tres"))
-            {
-                string path = $"{MaskDataDirectory}/{fileName}";
-                var resource = GD.Load<MaskData>(path);
-                if (resource != null && resource.MaskBits != 0)
-                {
-                    _availableMasks.Add(resource);
-                    GD.Print($"GoalZoneSpawner: Loaded mask '{resource.Name}' with bits {resource.MaskBits}");
-                }
-            }
-            fileName = dir.GetNext();
-        }
-        dir.ListDirEnd();
-
-        if (_availableMasks.Count == 0)
-        {
-            GD.PrintErr("GoalZoneSpawner: No masks with MaskBits != 0 found");
-        }
     }
 
     private void LoadProps()
@@ -110,9 +75,9 @@ public partial class GoalZoneSpawner : Node3D
             zone.Position = Vector3.Zero;
 
             // Assign mask if available
-            if (_availableMasks.Count > 0)
+            if (_availableMasks.Masks.Count > 0)
             {
-                zone.Mask = _availableMasks[maskIndex % _availableMasks.Count].MaskBits;
+                zone.Mask = _availableMasks.Masks[maskIndex % _availableMasks.Masks.Count].MaskBits;
                 maskIndex++;
             }
 

@@ -1,13 +1,15 @@
 [gd_scene format=3 uid="uid://vr472n0ku81u"]
 
-[ext_resource type="Shader" path="res://levels/assets/Backdrop.gdshader" id="1_80vhd"]
+[ext_resource type="Shader" uid="uid://cxvp62bp8aq08" path="res://levels/assets/Backdrop.gdshader" id="1_80vhd"]
 [ext_resource type="Script" uid="uid://cks4fmo6ia6pb" path="res://src/LocalMultiplayerLevel.cs" id="1_gjl0y"]
 [ext_resource type="PackedScene" uid="uid://cj7ucao0d5den" path="res://AC_Player.tscn" id="2_hjsbj"]
 [ext_resource type="Script" uid="uid://ccylebg7df6u2" path="res://src/GoalZone/GoalZoneSpawner.cs" id="3_5mrsh"]
 [ext_resource type="PackedScene" uid="uid://b1awodkisntg" path="res://UI_PlayerInfo.tscn" id="3_vnv7o"]
+[ext_resource type="Script" uid="uid://ch7jcbdn7a7yi" path="res://src/DynamicCamera.cs" id="4_rtcij"]
 [ext_resource type="PackedScene" uid="uid://5q744y4bjyiq" path="res://GoalZone.tscn" id="4_safpt"]
 [ext_resource type="Script" uid="uid://bx8sqineax63u" path="res://src/Mask/MaskSpawner.cs" id="7_d5x7l"]
-[ext_resource type="PackedScene" path="res://src/Mask/MaskPickup.tscn" id="8_rtcij"]
+[ext_resource type="PackedScene" uid="uid://27h8ms28togi" path="res://src/Mask/MaskPickup.tscn" id="8_rtcij"]
+[ext_resource type="Resource" uid="uid://bif5c1tl2gr2i" path="res://src/Mask/D_AllMasks.tres" id="8_ukwr8"]
 
 [sub_resource type="Gradient" id="Gradient_80vhd"]
 offsets = PackedFloat32Array(0.54535145, 1)
@@ -60,6 +62,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.57536626, 0)
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=170340263]
 transform = Transform3D(1, 0, 0, 0, 0.7071068, 0.7071068, 0, -0.7071068, 0.7071068, 0, 4.298, 9.86)
+script = ExtResource("4_rtcij")
 
 [node name="ground" type="StaticBody3D" parent="." unique_id=673564305]
 
@@ -121,12 +124,21 @@ surface_material_override/0 = SubResource("ShaderMaterial_cwqvt")
 script = ExtResource("3_5mrsh")
 MinDistance = 6.0
 GoalZoneScene = ExtResource("4_safpt")
+_availableMasks = ExtResource("8_ukwr8")
 
 [node name="MaskSpawner" type="Node3D" parent="." unique_id=321745574]
 script = ExtResource("7_d5x7l")
-MaxActiveMasks = 6
 MaskPickupScene = ExtResource("8_rtcij")
+_availableMasks = ExtResource("8_ukwr8")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=1143154661]
-offset_right = 40.0
-offset_bottom = 40.0
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -20.0
+offset_top = -40.0
+offset_right = 20.0
+grow_horizontal = 2
+grow_vertical = 0
