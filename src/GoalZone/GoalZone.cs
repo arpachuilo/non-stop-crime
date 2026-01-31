@@ -54,20 +54,7 @@ public partial class GoalZone : Area3D {
     if (IsCompleted) return;
 
     if (body is Player player) {
-      // Check if player's mask matches zone's mask using bitwise AND
-      // Zone mask 0 = any player can complete (default)
-      // Otherwise, player must have all bits set that the zone requires
-      if (Mask != 0 && (player.Mask & Mask) != Mask) return;
-
-      int playerId = player.PlayerController.DeviceId;
-      if (playerId != OwnerPlayerId) {
-        OwnerPlayerId = playerId;
-        IsCompleted = true;
-        UpdateVisualColor(player.color);
-        player.AddScore(1);
-        EmitSignal(SignalName.Captured, player);
-        GD.Print($"Zone captured by Player {playerId}");
-      }
+      Claim(player);
     }
   }
 
@@ -77,20 +64,24 @@ public partial class GoalZone : Area3D {
 
     if (area is Projectile projectie) {
       var player = projectie.PlayerOwner;
-      // Check if player's mask matches zone's mask using bitwise AND
-      // Zone mask 0 = any player can complete (default)
-      // Otherwise, player must have all bits set that the zone requires
-      if (Mask != 0 && (player.Mask & Mask) != Mask) return;
+      Claim(player);
+    }
+  }
 
-      int playerId = player.PlayerController.DeviceId;
-      if (playerId != OwnerPlayerId) {
-        OwnerPlayerId = playerId;
-        IsCompleted = true;
-        UpdateVisualColor(player.color);
-        player.AddScore(1);
-        EmitSignal(SignalName.Captured, player);
-        GD.Print($"Zone captured by Player {playerId}");
-      }
+  private void Claim(Player player) {
+    // Check if player's mask matches zone's mask using bitwise AND
+    // Zone mask 0 = any player can complete (default)
+    // Otherwise, player must have all bits set that the zone requires
+    if (Mask != 0 && (player.Mask & Mask) != Mask) return;
+
+    int playerId = player.PlayerController.DeviceId;
+    if (playerId != OwnerPlayerId) {
+      OwnerPlayerId = playerId;
+      IsCompleted = true;
+      UpdateVisualColor(player.PlayerInfo.UIColor);
+      player.AddScore(1);
+      EmitSignal(SignalName.Captured, player);
+      GD.Print($"Zone captured by Player {playerId}");
     }
   }
 

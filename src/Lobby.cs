@@ -11,6 +11,12 @@ public partial class Lobby : Node {
   [Export] public Control PlayerInfoContainer;
   [Export] public Label Safetymode;
   [Export] public int MinPlayersToStart { get; set; } = 2;
+  [Export] public Godot.Collections.Array<Color> PlayerColors { get; set; } = [
+    Colors.IndianRed,
+    Colors.Azure,
+    Colors.LimeGreen,
+    Colors.LightYellow
+  ];
 
   [Export] public Godot.Collections.Array<Node3D> SpawnPoints { get; set; } = new();
 
@@ -26,6 +32,7 @@ public partial class Lobby : Node {
 
   private bool _gameStarted = false;
   private int _nextSpawnIndex = 0;
+  private int _nextColorIndex = 0;
 
   public override void _Ready() {
     Safetymode.Text = Canned.UseSafeNames ? "S" : "";
@@ -105,6 +112,7 @@ public partial class Lobby : Node {
     playerInfo.NameLabel.Text = player.NamePlate.Text;
     playerInfo.ScoreOrReadyStatus.Text = "Not Ready";
     player.PlayerInfo = playerInfo;
+    player.PlayerInfo.UIColor = PlayerColors[_nextColorIndex++ % PlayerColors.Count];
     PlayerContainer.AddChild(player);
 
     if (isKB)
