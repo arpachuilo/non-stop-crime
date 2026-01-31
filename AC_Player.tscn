@@ -20,40 +20,16 @@
 [ext_resource type="Texture2D" uid="uid://gg44a5qhti0j" path="res://player/assets/frames_walking/frame_7.png" id="10_pwtji"]
 [ext_resource type="Texture2D" uid="uid://3nhxkbgs432t" path="res://player/assets/frames_walking/frame_8.png" id="11_7qkkx"]
 [ext_resource type="Texture2D" uid="uid://hbn4cw142vli" path="res://player/assets/frames_running/frame_8.png" id="11_cu1ij"]
+[ext_resource type="Texture2D" uid="uid://dg77scput1i4v" path="res://player/assets/frames_stab/frame_1.png" id="12_7h1v2"]
+[ext_resource type="Texture2D" uid="uid://d6uxm4pveqxu" path="res://player/assets/frames_stab/frame_2.png" id="13_cgkdj"]
+[ext_resource type="Texture2D" uid="uid://dvicvlg4n24jf" path="res://player/assets/frames_stab/frame_3.png" id="14_wu24k"]
+[ext_resource type="Texture2D" uid="uid://d3q0si5jotdyi" path="res://player/assets/frames_stab/frame_4.png" id="15_emb2e"]
+[ext_resource type="Texture2D" uid="uid://ct1wkvmvewpkj" path="res://player/assets/frames_stab/frame_5.png" id="16_l1goa"]
+[ext_resource type="Texture2D" uid="uid://bvhxs8kdxd48g" path="res://player/assets/frames_stab/frame_6.png" id="17_d4mdx"]
+[ext_resource type="Texture2D" uid="uid://bam5spd5yekd5" path="res://player/assets/frames_stab/frame_7.png" id="18_htnea"]
+[ext_resource type="Texture2D" uid="uid://cbv72mx5dbaqj" path="res://player/assets/frames_stab/frame_8.png" id="19_0fo2y"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_bmjc0"]
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_7h1v2"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("4_0hh6e")
-}, {
-"duration": 1.0,
-"texture": ExtResource("5_7rwuv")
-}, {
-"duration": 1.0,
-"texture": ExtResource("6_2ycdd")
-}, {
-"duration": 1.0,
-"texture": ExtResource("7_scor6")
-}, {
-"duration": 1.0,
-"texture": ExtResource("8_0n0xx")
-}, {
-"duration": 1.0,
-"texture": ExtResource("9_abqoo")
-}, {
-"duration": 1.0,
-"texture": ExtResource("10_pwtji")
-}, {
-"duration": 1.0,
-"texture": ExtResource("11_7qkkx")
-}],
-"loop": true,
-"name": &"default",
-"speed": 10.0
-}]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_p6bia"]
 animations = [{
@@ -85,6 +61,64 @@ animations = [{
 "loop": true,
 "name": &"default",
 "speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("12_7h1v2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_cgkdj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_wu24k")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_emb2e")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_l1goa")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_d4mdx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_htnea")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_0fo2y")
+}],
+"loop": true,
+"name": &"stab",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_0hh6e")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_7rwuv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_2ycdd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_scor6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_0n0xx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_abqoo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_pwtji")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_7qkkx")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 5.0
 }]
 
 [node name="Player" type="CharacterBody3D" unique_id=1005422296 node_paths=PackedStringArray("NamePlate", "PlayerController", "SpriteParent") groups=["Player"]]
@@ -118,19 +152,17 @@ render_priority = 3
 outline_render_priority = 2
 text = "Steve"
 
-[node name="SpriteParent" type="Node3D" parent="." unique_id=1334660876]
+[node name="SpriteParent" type="Node3D" parent="." unique_id=1334660876 node_paths=PackedStringArray("_player", "_head", "_body", "_mask")]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 1.0101486, 0)
 script = ExtResource("3_4jfri")
 PlayerPath = NodePath("..")
 MaxFps = 8.0
+_player = NodePath("..")
+_head = NodePath("HeadSprite")
+_body = NodePath("BodyCycleSprite")
+_mask = NodePath("MaskSprite")
 
-[node name="WalkCycleSprite" type="AnimatedSprite3D" parent="SpriteParent" unique_id=1340190508]
-transform = Transform3D(1.2, 0, 0, 0, 1.2, 0, 0, 0, 1.2, 0.083696604, -0.23034406, 0)
-visible = false
-billboard = 1
-sprite_frames = SubResource("SpriteFrames_7h1v2")
-
-[node name="RunCycleSprite" type="AnimatedSprite3D" parent="SpriteParent" unique_id=593184352]
+[node name="BodyCycleSprite" type="AnimatedSprite3D" parent="SpriteParent" unique_id=593184352]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
 billboard = 1
 sprite_frames = SubResource("SpriteFrames_p6bia")
