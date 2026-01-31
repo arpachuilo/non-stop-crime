@@ -15,6 +15,4 @@ public partial class MaskData : Resource
     // Projectile ability (integrates with existing ProjectileEmitter)
     [Export] public bool HasProjectile { get; set; } = false;
     [Export] public PackedScene ProjectileScene { get; set; }
-    [Export] public float ProjectileFireRate { get; set; } = 0.5f;
-    [Export] public float ProjectileSpeed { get; set; } = 10.0f;
 }

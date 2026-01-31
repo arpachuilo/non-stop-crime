@@ -1,21 +1,22 @@
 [gd_scene format=3 uid="uid://r1l4cou0ykpr"]
 
-[node name="MainMenu" type="Control" unique_id=1873563801]
+[ext_resource type="Theme" uid="uid://cu4n20cc1wscg" path="res://menus/assets/DefaultButton.tres" id="1_ct8su"]
+[ext_resource type="Script" uid="uid://ccu7a0wljcis4" path="res://menus/MainMenu.cs" id="1_ot3ob"]
+[ext_resource type="PackedScene" uid="uid://b00vxpbuhimvp" path="res://L_DemoScene.tscn" id="2_rmsp1"]
+[ext_resource type="Texture2D" uid="uid://k5djup6c4in4" path="res://menus/assets/days without nonsense.png" id="3_218cn"]
+
+[node name="MainMenu" type="Control" unique_id=1873563801 node_paths=PackedStringArray("startButton", "exitButton")]
 clip_contents = true
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_right = 768.0
-offset_bottom = 432.0
 grow_horizontal = 2
 grow_vertical = 2
-
-[node name="MainMenuBG" type="TextureRect" parent="." unique_id=1230870007]
-visible = false
-layout_mode = 0
-offset_right = 1280.0
-offset_bottom = 720.0
+script = ExtResource("1_ot3ob")
+gameScene = ExtResource("2_rmsp1")
+startButton = NodePath("MarginContainer/VBoxContainer/ButtonsVBox/StartGame")
+exitButton = NodePath("MarginContainer/VBoxContainer/ButtonsVBox/QuitGame")
 
 [node name="MainMenuSolidBG" type="ColorRect" parent="." unique_id=2075122090]
 layout_mode = 1
@@ -25,17 +26,54 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
+[node name="MainMenuBG" type="TextureRect" parent="." unique_id=1230870007]
+z_index = 2
+layout_mode = 0
+offset_left = 447.0
+offset_top = 97.0
+offset_right = 1481.6666
+offset_bottom = 679.0
+texture = ExtResource("3_218cn")
+
 [node name="MarginContainer" type="MarginContainer" parent="." unique_id=2100988451]
 layout_mode = 0
 offset_right = 1920.0
 offset_bottom = 1080.0
 theme_override_constants/margin_left = 32
-theme_override_constants/margin_top = 32
+theme_override_constants/margin_top = 800
 theme_override_constants/margin_right = 32
 theme_override_constants/margin_bottom = 32
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" unique_id=1694186044]
 layout_mode = 2
+theme_override_constants/separation = 15
 
 [node name="ButtonsVBox" type="VBoxContainer" parent="MarginContainer/VBoxContainer" unique_id=976049832]
 layout_mode = 2
+theme_override_constants/separation = 15
+
+[node name="StartGame" type="Button" parent="MarginContainer/VBoxContainer/ButtonsVBox" unique_id=1731472529]
+layout_mode = 2
+size_flags_horizontal = 4
+focus_neighbor_top = NodePath("../QuitGame")
+focus_neighbor_bottom = NodePath("../QuitGame")
+focus_next = NodePath("../QuitGame")
+focus_previous = NodePath("../QuitGame")
+theme = ExtResource("1_ct8su")
+text = "Start game"
+
+[node name="QuitGame" type="Button" parent="MarginContainer/VBoxContainer/ButtonsVBox" unique_id=2117636949]
+layout_mode = 2
+size_flags_horizontal = 4
+focus_neighbor_top = NodePath("../StartGame")
+focus_neighbor_bottom = NodePath("../StartGame")
+focus_next = NodePath("../StartGame")
+focus_previous = NodePath("../StartGame")
+theme = ExtResource("1_ct8su")
+text = "Exit"
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer" unique_id=1648181000]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "A 2026 Global Game Jame game by Non-stop Crime"
+horizontal_alignment = 1

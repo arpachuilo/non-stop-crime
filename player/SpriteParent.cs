@@ -2,7 +2,14 @@ using System.ComponentModel;
 using Godot;
 
 public partial class SpriteParent : Node3D {
+  [Export]
+  public NodePath PlayerPath;
+
+  [Export]
+  public Color color = Colors.WhiteSmoke;
+
   [Description("Lateral speed below which the animation will be paused")]
+  [ExportGroup("Animation Tuning")]
   [Export(PropertyHint.Range, "0,0.5,0.01")]
   public float Deadzone = 0.05f;
 
@@ -31,6 +38,12 @@ public partial class SpriteParent : Node3D {
   private AnimatedSprite3D _run;
 
   public override void _Ready() {
+    _player = GetNode<Player>(PlayerPath);
+    _head = GetNode<Sprite3D>("HeadSprite");
+    _run = GetNode<AnimatedSprite3D>("RunCycleSprite");
+
+    _head.Modulate = color;
+    _run.Modulate = color;
   }
 
   public override void _Process(double delta) {
