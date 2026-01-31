@@ -161,10 +161,12 @@ mesh = SubResource("PlaneMesh_hjsbj")
 skeleton = NodePath("")
 surface_material_override/0 = SubResource("ShaderMaterial_cwqvt")
 
-[node name="MaskSpawner" type="Node3D" parent="." unique_id=321745574]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 17.169998)
+[node name="MaskSpawner" type="Node3D" parent="." unique_id=321745574 node_paths=PackedStringArray("PlayerSpawnLocations")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 17.17)
 script = ExtResource("7_d5x7l")
+SpawnAreaSize = Vector3(50, 8.11, 50)
 MaskPickupScene = ExtResource("8_rtcij")
+PlayerSpawnLocations = [NodePath("../Players")]
 _availableMasks = ExtResource("8_ukwr8")
 
 [node name="ScoreTracker" parent="." unique_id=2090427259 instance=ExtResource("11_pb8y7")]
@@ -184,7 +186,7 @@ theme_override_constants/separation = 32
 
 [node name="Goal Zones" type="Node3D" parent="." unique_id=1627682746]
 
-[node name="Hospital" parent="Goal Zones" unique_id=1738063490 instance=ExtResource("12_0qmeg")]
+[node name="Hospital" parent="Goal Zones" unique_id=1738063490 groups=["goal_zones"] instance=ExtResource("12_0qmeg")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.450158, 0.099998, 5.2784414)
 
 [node name="NefariousJumbo" parent="Goal Zones" unique_id=227731175 instance=ExtResource("13_ta7ci")]
@@ -199,7 +201,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.963837, 0.13432145, 32.129
 [node name="Props" type="Node3D" parent="." unique_id=421055543]
 
 [node name="Lamp" parent="Props" unique_id=1407807229 instance=ExtResource("15_0qmeg")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.643962, 0, 7.8159313)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.643963, 0, 8.815931)
 
 [node name="Lamp2" parent="Props" unique_id=1266492961 instance=ExtResource("15_0qmeg")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.542943, 0, 7.0217896)
@@ -218,6 +220,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0.11466503, 37)
 
 [node name="Bush3" parent="Props" unique_id=1599744540 instance=ExtResource("16_ta7ci")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15, 0.11466503, 22)
+
+[node name="Lamp5" parent="Props" unique_id=1962808378 instance=ExtResource("15_0qmeg")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 4, 0, 3)
 
 [connection signal="GameStarted" from="Lobby" to="MaskSpawner" method="_on_lobby_game_started"]
 [connection signal="GameStarted" from="Lobby" to="ScoreTracker" method="_on_lobby_game_started"]

@@ -3,10 +3,16 @@
 [ext_resource type="Texture2D" uid="uid://byb6d0dbprr7v" path="res://levels/assets/hospital/hospital front.png" id="1_e0v0s"]
 [ext_resource type="Script" uid="uid://drs71jkrerwcu" path="res://src/GoalZone/GoalZone.cs" id="1_nl4c2"]
 [ext_resource type="Texture2D" uid="uid://ljln3d3yslvn" path="res://levels/assets/hospital/hospital side.png" id="2_nl4c2"]
+[ext_resource type="Texture2D" uid="uid://ccv1s1yp4qhuw" path="res://levels/assets/hospital/hospital_floor_tile.png" id="4_67r1j"]
+[ext_resource type="Texture2D" uid="uid://d2u4ko1oyufgh" path="res://levels/assets/hospital/ambulance.png" id="5_k6xqd"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_oph0r"]
 height = 4.7
 radius = 3.3
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1mu3e"]
+atlas = ExtResource("5_k6xqd")
+region = Rect2(103, 600, 387, 247)
 
 [node name="Hospital" type="Area3D" unique_id=1890571855]
 script = ExtResource("1_nl4c2")
@@ -38,3 +44,21 @@ shaded = true
 alpha_cut = 2
 texture_filter = 4
 texture = ExtResource("2_nl4c2")
+
+[node name="HospitalFloorSprite" type="Sprite3D" parent="HospitalStaticBody/SpriteRoot" unique_id=1245531859]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.3929377, 0)
+axis = 1
+shaded = true
+alpha_cut = 2
+alpha_antialiasing_mode = 2
+texture_filter = 4
+texture = ExtResource("4_67r1j")
+
+[node name="HospitalAmbulanceSprite" type="Sprite3D" parent="HospitalStaticBody/SpriteRoot" unique_id=1708257260]
+transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, -2.1769595, -1.5617607, 3.0157962)
+billboard = 2
+shaded = true
+alpha_cut = 1
+alpha_antialiasing_mode = 2
+texture_filter = 4
+texture = SubResource("AtlasTexture_1mu3e")

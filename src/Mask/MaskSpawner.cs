@@ -1,6 +1,7 @@
 using Godot;
 using System.Collections.Generic;
 
+[Tool]
 public partial class MaskSpawner : Node3D {
   [Export] public Vector3 SpawnAreaSize { get; set; } = new(10, 0, 10);
   [Export] public PackedScene MaskPickupScene { get; set; }
@@ -18,10 +19,18 @@ public partial class MaskSpawner : Node3D {
   private RandomNumberGenerator _rng = new();
 
   public override void _Ready() {
+    if (Engine.IsEditorHint())
+      return;
+
     _rng.Randomize();
 
     if (SpawnOnReady)
       CallDeferred(nameof(InitializeSpawning));
+  }
+
+  public override void _Process(double delta) {
+    if (Engine.IsEditorHint())
+      DebugDraw3D.DrawBox(GlobalPosition - SpawnAreaSize * 0.5f, Quaternion.Identity, SpawnAreaSize, Colors.Green);
   }
 
   public void StartSpawning() {
@@ -62,12 +71,12 @@ public partial class MaskSpawner : Node3D {
   }
 
   private Vector3 FindValidPosition() {
-    Vector3 bestPosition = GenerateRandomPosition();
+    Vector3 bestPosition = GlobalPosition + GenerateRandomPosition();
     float bestScore = 0f;
 
     for (int attempt = 0; attempt < MaxPlacementAttempts; attempt++) {
       Vector3 candidate = GenerateRandomPosition();
-      Vector3 worldCandidate = Position + candidate;
+      Vector3 worldCandidate = GlobalPosition + candidate;
 
       if (IsPositionNearPlayerSpawn(worldCandidate))
         continue;
@@ -163,7 +172,7 @@ public partial class MaskSpawner : Node3D {
     _spawnedPickups.Remove(maskData);
     _equippedByPlayer[maskData] = player;
     if (maskToRespawn != null) {
-     SpawnMask(maskToRespawn); 
+      SpawnMask(maskToRespawn);
     }
   }
 
