@@ -2,12 +2,15 @@
 
 [ext_resource type="Script" uid="uid://bits1rmvalj68" path="res://src/WinnerScreen/WinnerScreen.cs" id="1_winner"]
 
-[node name="Node2D" type="CanvasLayer" unique_id=260927615 node_paths=PackedStringArray("WinnerLabel", "MainMenuButton")]
+[node name="Node2D" type="Control" unique_id=254244403 node_paths=PackedStringArray("WinnerLabel", "MainMenuButton")]
+layout_mode = 3
+anchors_preset = 0
 script = ExtResource("1_winner")
 WinnerLabel = NodePath("winnerText")
 MainMenuButton = NodePath("Button")
 
 [node name="winnerText" type="Label" parent="." unique_id=573335501]
+layout_mode = 1
 anchors_preset = -1
 anchor_right = 0.5
 anchor_bottom = 0.264
@@ -19,6 +22,7 @@ theme_override_font_sizes/font_size = 100
 text = "Winner"
 
 [node name="Button" type="Button" parent="." unique_id=1168580227]
+layout_mode = 0
 offset_left = 819.0
 offset_top = 514.0
 offset_right = 1079.0

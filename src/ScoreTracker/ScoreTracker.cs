@@ -2,7 +2,7 @@ using Godot;
 using System.Collections.Generic;
 using System.Linq;
 
-public partial class ScoreTracker : CanvasLayer
+public partial class ScoreTracker : Control
 {
   [Export] public VBoxContainer ScoreContainer;
   [Export] public Label TimerLabel;

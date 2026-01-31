@@ -1,6 +1,6 @@
 using Godot;
 
-public partial class WinnerScreen : CanvasLayer
+public partial class WinnerScreen : Control
 {
   [Export] public Label WinnerLabel;
   [Export] public Button MainMenuButton;
