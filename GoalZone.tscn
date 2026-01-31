@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://5q744y4bjyiq"]
+
+[ext_resource type="Script" uid="uid://drs71jkrerwcu" path="res://src/GoalZone/GoalZone.cs" id="1_fhmhe"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_rrt82"]
+
+[node name="Area3D" type="Area3D" unique_id=153395511]
+script = ExtResource("1_fhmhe")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1504892571]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1297633937]
+mesh = SubResource("BoxMesh_rrt82")
