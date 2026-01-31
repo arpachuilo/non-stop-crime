@@ -10,6 +10,9 @@ public partial class Projectile : Area3D
 	public float Speed = 3.0f;
 
 	[Export]
+	public AudioStreamPlayer Sfx;
+
+	[Export]
 	public Player PlayerOwner;
 
 	private Poller _lifetimePoller = new(5.0f);
@@ -17,6 +20,11 @@ public partial class Projectile : Area3D
 	public void Own(Player player)
 	{
 		PlayerOwner = player;
+	}
+
+	public override void _Ready()
+	{
+		Sfx?.Play();
 	}
 
 	public override void _EnterTree()
