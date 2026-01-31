@@ -47,12 +47,14 @@ animations = [{
 "speed": 9.0
 }]
 
-[node name="Player" type="CharacterBody3D" unique_id=1005422296 node_paths=PackedStringArray("NamePlate", "PlayerController") groups=["Player"]]
+[node name="Player" type="CharacterBody3D" unique_id=1005422296 node_paths=PackedStringArray("NamePlate", "PlayerController", "SpriteParent") groups=["Player"]]
 floor_constant_speed = true
 floor_block_on_wall = false
 script = ExtResource("1_f76hg")
 NamePlate = NodePath("NamePlate/Name")
 PlayerController = NodePath("PlayerController")
+SpriteParent = NodePath("SpriteParent")
+color = Color(0.8039216, 0, 0.92156863, 1)
 MaxSpeed = 2.0
 MinSpeed = 0.0
 _displayVelocity = true
@@ -60,6 +62,8 @@ _displayGravity = true
 
 [node name="PlayerController" type="Node" parent="." unique_id=1303242672]
 script = ExtResource("2_32haq")
+DeviceId = 0
+IsKB = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=700832482]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
@@ -69,12 +73,15 @@ shape = SubResource("CapsuleShape3D_bmjc0")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5918386, 0)
 
 [node name="Name" type="Label3D" parent="NamePlate" unique_id=883522353]
-billboard = 2
+billboard = 1
+render_priority = 3
+outline_render_priority = 2
 text = "Steve"
 
 [node name="SpriteParent" type="Node3D" parent="." unique_id=1334660876 node_paths=PackedStringArray("_player", "_head", "_run")]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 1.0101486, 0)
 script = ExtResource("3_4jfri")
+PlayerPath = NodePath("..")
 _player = NodePath("..")
 _head = NodePath("HeadSprite")
 _run = NodePath("RunCycleSprite")

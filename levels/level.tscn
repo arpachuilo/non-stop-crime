@@ -1,6 +1,20 @@
 [gd_scene format=3 uid="uid://dha85mpbnsgsa"]
 
 [ext_resource type="Shader" uid="uid://cxvp62bp8aq08" path="res://levels/assets/Backdrop.gdshader" id="1_80vhd"]
+[ext_resource type="PackedScene" uid="uid://cj7ucao0d5den" path="res://AC_Player.tscn" id="2_hjsbj"]
+
+[sub_resource type="Gradient" id="Gradient_80vhd"]
+offsets = PackedFloat32Array(0.54535145, 1)
+colors = PackedColorArray(1.5642494e-06, 0.53888744, 0.18877912, 1, 0.5372549, 0.2, 0.2, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_hjsbj"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_cwqvt"]
+width = 1024
+height = 1024
+noise = SubResource("FastNoiseLite_hjsbj")
+color_ramp = SubResource("Gradient_80vhd")
+seamless = true
 
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_umreq"]
 
@@ -30,15 +44,17 @@ shader_parameter/noise_amount = 0.55
 [node name="Level" type="Node3D" unique_id=596543593]
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=170340263]
-transform = Transform3D(1, 0, 0, 0, 0.7071068, 0.7071068, 0, -0.7071068, 0.7071068, 0, 5.3977475, 6.2803783)
+transform = Transform3D(1, 0, 0, 0, 0.7071068, 0.7071068, 0, -0.7071068, 0.7071068, 0, 4.298, 9.86)
 
 [node name="ground" type="StaticBody3D" parent="." unique_id=673564305]
 
+[node name="Sprite3D" type="Sprite3D" parent="ground" unique_id=680690393]
+transform = Transform3D(2.07, 0, 0, 0, 2.07, 0, 0, 0, 2.07, 0, 0, 0)
+axis = 1
+texture = SubResource("NoiseTexture2D_cwqvt")
+
 [node name="CollisionShape3D" type="CollisionShape3D" parent="ground" unique_id=1702323393]
 shape = SubResource("WorldBoundaryShape3D_umreq")
-
-[node name="Sprite3D" type="Sprite3D" parent="ground/CollisionShape3D" unique_id=680690393]
-axis = 1
 
 [node name="wall1" type="MeshInstance3D" parent="." unique_id=203067950]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 20, -10, 0, -0.1)
@@ -81,7 +97,10 @@ skeleton = NodePath("")
 shape = SubResource("ConcavePolygonShape3D_80vhd")
 
 [node name="Backdrop" type="MeshInstance3D" parent="." unique_id=361163437]
-transform = Transform3D(17.517313, 0, 0, 0, -4.3711392e-08, -7.311988, 0, 1.0000001, -3.1961716e-07, 0, 6.9632235, -10.960913)
+transform = Transform3D(26.437, 0, 0, 0, 1.0670241, -7.802923, 0, 1.0670241, 7.802923, 0, 1.563, -11.931)
 mesh = SubResource("PlaneMesh_hjsbj")
 skeleton = NodePath("")
 surface_material_override/0 = SubResource("ShaderMaterial_cwqvt")
+
+[node name="Player" parent="." unique_id=1005422296 instance=ExtResource("2_hjsbj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.6391065, 0.24590945, 7.894886)

@@ -48,6 +48,7 @@ disable_mode = 1
 shape = SubResource("WorldBoundaryShape3D_r2psd")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D" unique_id=1193582359]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0042972565, 0.025681496, 0.02411747)
 mesh = SubResource("PlaneMesh_6ci18")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1843344117]
@@ -81,18 +82,3 @@ mesh = SubResource("BoxMesh_5i8u7")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.4467177)
 shape = SubResource("ConcavePolygonShape3D_6ci18")
 
-[node name="MaskPickup" parent="." unique_id=1137248120 instance=ExtResource("5_i6pfi")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -7.3469625)
-MaskData = ExtResource("6_1w8sc")
-
-[node name="PlayerInfo" type="HBoxContainer" parent="." unique_id=1511495733]
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -20.0
-offset_top = -40.0
-offset_right = 20.0
-grow_horizontal = 2
-grow_vertical = 0
