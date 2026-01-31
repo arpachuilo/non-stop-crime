@@ -1,0 +1,127 @@
+[gd_scene format=3 uid="uid://c4a4i2hhu3r40"]
+
+[ext_resource type="Script" uid="uid://dkoc23piooi7c" path="res://player/SpriteParent.cs" id="1_ff1tb"]
+[ext_resource type="Script" uid="uid://cgpft4qd7ehvh" path="res://npc/NPC.cs" id="1_ob0l3"]
+[ext_resource type="Texture2D" uid="uid://ojhdl63j4jho" path="res://player/assets/frames_walking/frame_1.png" id="2_ob0l3"]
+[ext_resource type="Texture2D" uid="uid://cqj84jnat5roi" path="res://player/assets/frames_walking/frame_2.png" id="3_c8wls"]
+[ext_resource type="Texture2D" uid="uid://xcq65mqjxmqb" path="res://player/assets/frames_walking/frame_3.png" id="4_6pfqm"]
+[ext_resource type="Texture2D" uid="uid://dwkcqwvjcjfag" path="res://player/assets/frames_walking/frame_4.png" id="5_cngn5"]
+[ext_resource type="Texture2D" uid="uid://bg46commnyx5l" path="res://player/assets/frames_walking/frame_5.png" id="6_mkxqe"]
+[ext_resource type="Texture2D" uid="uid://di46adoqsoech" path="res://player/assets/frames_walking/frame_6.png" id="7_25oib"]
+[ext_resource type="Texture2D" uid="uid://gg44a5qhti0j" path="res://player/assets/frames_walking/frame_7.png" id="8_e6yc7"]
+[ext_resource type="Texture2D" uid="uid://3nhxkbgs432t" path="res://player/assets/frames_walking/frame_8.png" id="9_x3fw3"]
+[ext_resource type="Texture2D" uid="uid://dvsv0as8aic04" path="res://player/assets/frames_running/frame_1.png" id="10_sypi7"]
+[ext_resource type="Texture2D" uid="uid://c35vl110amvs0" path="res://player/assets/frames_running/frame_2.png" id="11_smmwh"]
+[ext_resource type="Texture2D" uid="uid://c0aijrv3vs7ln" path="res://player/assets/frames_running/frame_3.png" id="12_mpr7h"]
+[ext_resource type="Texture2D" uid="uid://buswr27nnyv70" path="res://player/assets/frames_running/frame_4.png" id="13_0tq5w"]
+[ext_resource type="Texture2D" uid="uid://wqgpiop1pkwc" path="res://player/assets/frames_running/frame_5.png" id="14_x8u1q"]
+[ext_resource type="Texture2D" uid="uid://dnm77y13n12al" path="res://player/assets/frames_running/frame_6.png" id="15_vv4om"]
+[ext_resource type="Texture2D" uid="uid://dwjvs1xsvfgd1" path="res://player/assets/frames_running/frame_7.png" id="16_x3mm6"]
+[ext_resource type="Texture2D" uid="uid://hbn4cw142vli" path="res://player/assets/frames_running/frame_8.png" id="17_iqto4"]
+[ext_resource type="Texture2D" uid="uid://buya8506ukc0l" path="res://player/assets/head.png" id="18_hhdgm"]
+[ext_resource type="Texture2D" uid="uid://djps0jcq2hgmy" path="res://projectiles/knife/stab_mask.png" id="19_dvqy8"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_dnf2n"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8mx4t"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_ob0l3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_c8wls")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_6pfqm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_cngn5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_mkxqe")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_25oib")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_e6yc7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_x3fw3")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_akyw2"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("10_sypi7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_smmwh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_mpr7h")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_0tq5w")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_x8u1q")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_vv4om")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_x3mm6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_iqto4")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[node name="Npc" type="CharacterBody3D" unique_id=1618199586 node_paths=PackedStringArray("SpriteParent")]
+script = ExtResource("1_ob0l3")
+SpriteParent = NodePath("SpriteParent")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1399256817]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CapsuleShape3D_dnf2n")
+
+[node name="SpriteParent" type="Node3D" parent="." unique_id=936464386 node_paths=PackedStringArray("_player", "_head", "_run", "_mask")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 1.0101486, 0)
+script = ExtResource("1_ff1tb")
+PlayerPath = NodePath("..")
+MaxFps = 8.0
+_player = NodePath("..")
+_head = NodePath("HeadSprite")
+_run = NodePath("RunCycleSprite")
+_mask = NodePath("MaskSprite")
+
+[node name="WalkCycleSprite" type="AnimatedSprite3D" parent="SpriteParent" unique_id=1437158493]
+transform = Transform3D(1.2, 0, 0, 0, 1.2, 0, 0, 0, 1.2, 0.083696604, -0.23034406, 0)
+visible = false
+billboard = 1
+sprite_frames = SubResource("SpriteFrames_8mx4t")
+
+[node name="RunCycleSprite" type="AnimatedSprite3D" parent="SpriteParent" unique_id=1898876859]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+billboard = 1
+sprite_frames = SubResource("SpriteFrames_akyw2")
+
+[node name="HeadSprite" type="Sprite3D" parent="SpriteParent" unique_id=1861983109]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.074, -0.512, 0.1)
+billboard = 1
+texture = ExtResource("18_hhdgm")
+
+[node name="MaskSprite" type="Sprite3D" parent="SpriteParent" unique_id=723561790]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.074, -0.512, 0.15)
+billboard = 1
+texture = ExtResource("19_dvqy8")

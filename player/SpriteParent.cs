@@ -30,7 +30,7 @@ public partial class SpriteParent : Node3D {
 
   [ExportGroup("Sprite Refs")]
   [Export]
-  private Player _player;
+  private CharacterBody3D _player;
 
   [ExportGroup("Sprite Refs")]
   [Export]
@@ -45,7 +45,7 @@ public partial class SpriteParent : Node3D {
   private Sprite3D _mask;
 
   public override void _Ready() {
-    _player = GetNode<Player>(PlayerPath);
+    _player = GetNode<CharacterBody3D>(PlayerPath);
     _head = GetNode<Sprite3D>("HeadSprite");
     _run = GetNode<AnimatedSprite3D>("RunCycleSprite");
     _mask = GetNode<Sprite3D>("MaskSprite");

@@ -14,6 +14,7 @@
 [ext_resource type="Resource" uid="uid://bygsu8w48ifb7" path="res://projectiles/arson/ArsonMask.tres" id="11_1oo2x"]
 [ext_resource type="PackedScene" uid="uid://ctol3tugnm1rv" path="res://levels/props/Pigsty.tscn" id="11_ygne2"]
 [ext_resource type="Script" uid="uid://bx8sqineax63u" path="res://src/Mask/MaskSpawner.cs" id="12_pg62e"]
+[ext_resource type="PackedScene" uid="uid://c4a4i2hhu3r40" path="res://npc/NPC.tscn" id="15_0vpgi"]
 
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_r2psd"]
 
@@ -138,3 +139,6 @@ MaskPickupScene = ExtResource("5_1w8sc")
 [node name="MaskPickup" parent="." unique_id=915266363 instance=ExtResource("5_1w8sc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.6378206, 0.5, -3.4020166)
 MaskData = ExtResource("11_1oo2x")
+
+[node name="Npc" parent="." unique_id=1618199586 instance=ExtResource("15_0vpgi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5075955, 0.30502355, -1.3605094)
