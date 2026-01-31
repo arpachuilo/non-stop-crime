@@ -4,6 +4,7 @@ using Godot;
 [Tool]
 public partial class GoalZone : Area3D
 {
+    [Signal] public delegate void CapturedEventHandler(Player player);
     private MeshInstance3D _visualMesh;
     private CollisionShape3D _collisionShape;
 
@@ -78,6 +79,8 @@ public partial class GoalZone : Area3D
                 OwnerPlayerId = playerId;
                 IsCompleted = true;
                 UpdateVisualColor();
+                player.AddScore(1);
+                EmitSignal(SignalName.Captured, player);
                 GD.Print($"Zone captured by Player {playerId}");
             }
         }

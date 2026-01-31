@@ -2,6 +2,7 @@ using Godot;
 
 public partial class Projectile : Area3D
 {
+	[Signal] public delegate void HitPlayerEventHandler(Player shooter, Player victim);
 	[Export]
 	public float Duration = 5.0f;
 
@@ -54,6 +55,8 @@ public partial class Projectile : Area3D
 		{
 			if (player == PlayerOwner) return; // Ignore self-hit
 
+			PlayerOwner?.AddScore(1);
+			EmitSignal(SignalName.HitPlayer, PlayerOwner, player);
 			player.Reset();
 		}
 	}

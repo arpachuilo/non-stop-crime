@@ -11,6 +11,9 @@ public partial class Player : Character {
   public int Mask { get; set; } = 0;
 
   [Export]
+  public int Score { get; set; } = 0;
+
+  [Export]
   private Camera3D _camera;
 
   [Export]
@@ -39,7 +42,12 @@ public partial class Player : Character {
   }
 
   public void Reset() {
-  GlobalPosition = _spawn;
+    GlobalPosition = _spawn;
+  }
+
+  public void AddScore(int points) {
+    Score += points;
+    GD.Print($"Player {PlayerController?.DeviceId} scored {points} points (Total: {Score})");
   }
 
   public override Vector3 GetDirection() {
