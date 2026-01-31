@@ -5,11 +5,12 @@
   - Lobby
   - Main menu art
   - Win screen
+  - Escape key goes back to lobby
 - Gameplay
   - Finalize mask abilities + VFX
   - Build final level
   - Communicate which zones relate to which masks
-  - Spawnpoint asset
+  - Spawnpoint asset (tiny house colored in player color)
 - Sound
   - SFX for abilities
   - Background music
@@ -18,15 +19,16 @@
   - Extend floor plane beyond walls
   - Capture zone design (glowing circle?)
 - User journey
-  - Launch game 
-  - Go into lobby
-  - 2-4 players join and ready
-  - Game starts if all ready
-  - Players spawn in without a mask in their own corner
-  - Players pick up a mask
+  - ✅ Launch game 
+  - ✅ Go into lobby
+  - ✅ 2-4 players join and ready
+  - ✅ Game starts if all ready
+  - ✅ Players spawn in without a mask in their own corner
+  - ✅ Players pick up a mask
   - After pickup, targets become apparent, may have to be spawned
   - Players complete objectives and frustrate others until time limit
   - Game ends, winner announced
+  - Game restarts or goes back to lobby
 
 # Graphics
 - 2.5D sprite-based graphics
@@ -46,13 +48,13 @@ attempts of other players at achieving their objectives
 - The player with the most points at the end of the time limit wins
 
 ## Mask Abilities
-- All players start with a mask
-- Masks rotate every N seconds
+- All players start without a mask
+- Masks spawn randomly on the map
 - Each mask grants a unique ability
-- Mask types:
-  - Arson
-  - Knife
-  - Gun
+- (Possible) mask types:
+  - ✅ Arson
+  - ✅ Knife
+  - ✅ Gun
   - Beefy
   - Prank
   - Fast

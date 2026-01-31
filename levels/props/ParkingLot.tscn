@@ -40,6 +40,7 @@ shape = SubResource("CylinderShape3D_qoybe")
 transform = Transform3D(1.8, 0, 0, 0, 1.8, 0, 0, 0, 1.8, 0, 0, 0)
 
 [node name="ParkingLot" type="Sprite3D" parent="StaticBody3D/SpriteRoot" unique_id=919538968]
+extra_cull_margin = 25.0
 axis = 1
 shaded = true
 texture = ExtResource("1_rktd0")
