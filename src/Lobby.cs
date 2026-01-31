@@ -103,6 +103,7 @@ public partial class Lobby : Node {
     player.Spawn = spawnPosition;
     player.NamePlate.Text = GetUniqueName();
     playerInfo.NameLabel.Text = player.NamePlate.Text;
+    playerInfo.ScoreOrReadyStatus.Text = "Not Ready";
     player.PlayerInfo = playerInfo;
     PlayerContainer.AddChild(player);
 
