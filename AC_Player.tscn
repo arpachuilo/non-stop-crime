@@ -12,6 +12,8 @@
 [ext_resource type="Texture2D" uid="uid://dnm77y13n12al" path="res://player/assets/frames_running/frame_6.png" id="9_ymn2f"]
 [ext_resource type="Texture2D" uid="uid://dwjvs1xsvfgd1" path="res://player/assets/frames_running/frame_7.png" id="10_h1s1y"]
 [ext_resource type="Texture2D" uid="uid://hbn4cw142vli" path="res://player/assets/frames_running/frame_8.png" id="11_cu1ij"]
+[ext_resource type="Script" uid="uid://crprdl5ssatvm" path="res://src/ProjectileEmitter.cs" id="12_4jfri"]
+[ext_resource type="PackedScene" uid="uid://bxql0ucoobt72" path="res://projectiles/knife/KNIFE.tscn" id="13_pg7c2"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_bmjc0"]
 
@@ -44,7 +46,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"default",
-"speed": 10.0
+"speed": 9.0
 }]
 
 [node name="Player" type="CharacterBody3D" unique_id=1005422296 node_paths=PackedStringArray("NamePlate", "PlayerController")]
@@ -53,13 +55,13 @@ floor_block_on_wall = false
 script = ExtResource("1_f76hg")
 NamePlate = NodePath("NamePlate/Name")
 PlayerController = NodePath("PlayerController")
-Speed = 1.0
+MaxSpeed = 2.0
+MinSpeed = 0.0
 _displayVelocity = true
 _displayGravity = true
 
 [node name="PlayerController" type="Node" parent="." unique_id=1303242672]
 script = ExtResource("2_32haq")
-DeviceId = 0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=700832482]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
@@ -87,4 +89,10 @@ texture = ExtResource("3_077pa")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
 billboard = 2
 sprite_frames = SubResource("SpriteFrames_p6bia")
-frame_progress = 0.8578956
+frame_progress = 0.55459386
+
+[node name="Emitter" type="Node3D" parent="." unique_id=2044950567 node_paths=PackedStringArray("PlayerOwner")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.81219757, 0)
+script = ExtResource("12_4jfri")
+ProjectileScene = ExtResource("13_pg7c2")
+PlayerOwner = NodePath("..")
