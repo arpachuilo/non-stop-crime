@@ -126,7 +126,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"stab",
-"speed": 5.0
+"speed": 10.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -155,7 +155,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"walk",
-"speed": 5.0
+"speed": 10.0
 }]
 
 [node name="Player" type="CharacterBody3D" unique_id=1005422296 node_paths=PackedStringArray("NamePlate", "PlayerController", "SpriteParent") groups=["Player"]]
