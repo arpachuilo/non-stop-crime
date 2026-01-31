@@ -9,9 +9,6 @@
 [ext_resource type="PackedScene" path="res://src/Mask/MaskPickup.tscn" id="5_1w8sc"]
 [ext_resource type="Script" uid="uid://ccylebg7df6u2" path="res://src/GoalZone/GoalZoneSpawner.cs" id="7_np4ro"]
 [ext_resource type="PackedScene" uid="uid://bxaqr0eh0nytl" path="res://src/ScoreTracker/ScoreTracker.tscn" id="7_score"]
-[ext_resource type="PackedScene" path="res://levels/props/Hospital.tscn" id="9_6ln0e"]
-[ext_resource type="PackedScene" path="res://levels/props/NefariousJumbo.tscn" id="10_qd27c"]
-[ext_resource type="PackedScene" path="res://levels/props/Pigsty.tscn" id="11_ygne2"]
 [ext_resource type="Script" uid="uid://bx8sqineax63u" path="res://src/Mask/MaskSpawner.cs" id="12_pg62e"]
 
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_r2psd"]
@@ -114,17 +111,6 @@ theme_override_constants/separation = 24
 
 [node name="ScoreTracker" parent="." unique_id=1467006090 instance=ExtResource("7_score")]
 GameDurationSeconds = 20.0
-
-[node name="Props" type="Node3D" parent="." unique_id=1999398117]
-
-[node name="Hospital" parent="Props" unique_id=1738063490 instance=ExtResource("9_6ln0e")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.116512, 0.09319568, -6.0070367)
-
-[node name="NefariousJumbo" parent="Props" unique_id=227731175 instance=ExtResource("10_qd27c")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, -8)
-
-[node name="Pigsty" parent="Props" unique_id=367026064 instance=ExtResource("11_ygne2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.66833353, -0.015680552, -12.120096)
 
 [node name="GoalSpawner" type="Node3D" parent="." unique_id=1048349799]
 script = ExtResource("7_np4ro")
