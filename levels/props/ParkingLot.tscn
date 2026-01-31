@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://8bypbnqrh023"]
+
+[node name="ParkingLot" type="Node3D" unique_id=2030573530]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=466445471]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=752268401]
+
+[node name="Node3D" type="Node3D" parent="StaticBody3D" unique_id=240347247]

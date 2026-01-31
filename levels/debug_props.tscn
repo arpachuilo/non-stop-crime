@@ -1,9 +1,10 @@
 [gd_scene format=3 uid="uid://dj4b3q747s03q"]
 
 [ext_resource type="PackedScene" uid="uid://i6204ss4jj6q" path="res://levels/props/Skyscraper.tscn" id="1_gkect"]
+[ext_resource type="PackedScene" uid="uid://ccn7yggoeg288" path="res://levels/props/Hospital.tscn" id="2_b0782"]
 [ext_resource type="PackedScene" uid="uid://cj7ucao0d5den" path="res://AC_Player.tscn" id="2_jrkpo"]
-
-[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_jrkpo"]
+[ext_resource type="PackedScene" uid="uid://pbjl7krhhl6f" path="res://levels/props/NefariousJumbo.tscn" id="3_uvocg"]
+[ext_resource type="PackedScene" uid="uid://ctol3tugnm1rv" path="res://levels/props/Pigsty.tscn" id="4_nba4s"]
 
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_gkect"]
 
@@ -11,19 +12,6 @@
 size = Vector2(1000, 1000)
 
 [node name="DebugProps" type="Node3D" unique_id=407639222]
-
-[node name="Skyscraper" parent="." unique_id=1031286824 instance=ExtResource("1_gkect")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.043816242, 0, -0.04835616)
-
-[node name="Floor" type="StaticBody3D" parent="." unique_id=426149682]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor" unique_id=2041810095]
-transform = Transform3D(11.200658, 0, 0, 0, 1, 0, 0, 0, 10.852729, 0, 0, 0)
-shape = SubResource("WorldBoundaryShape3D_jrkpo")
-
-[node name="Player" parent="." unique_id=1092909276 node_paths=PackedStringArray("_camera") instance=ExtResource("2_jrkpo")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.741653, 4.7683716e-07, -0.07455206)
-_camera = NodePath("../Camera3D")
 
 [node name="Node3D" type="Node3D" parent="." unique_id=2055370371]
 
@@ -38,8 +26,29 @@ shape = SubResource("WorldBoundaryShape3D_gkect")
 mesh = SubResource("PlaneMesh_jrkpo")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="." unique_id=1100114729]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 17.212925, 7.1261244)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.114335, 1.6652565)
+omni_range = 50.0
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=1541536123]
 transform = Transform3D(0.99999666, -0.0015132728, 0.0020906625, 0, 0.8100627, 0.5863432, -0.002580865, -0.58634126, 0.81006, 0.020883512, 5.8569508, 8.091646)
 current = true
+
+[node name="Players" type="Node3D" parent="." unique_id=1799319257]
+
+[node name="Player" parent="Players" unique_id=1005422296 node_paths=PackedStringArray("_camera") instance=ExtResource("2_jrkpo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.8098958, 0, -0.023190975)
+_camera = NodePath("../../Camera3D")
+
+[node name="Props" type="Node3D" parent="." unique_id=1099854954]
+
+[node name="Hospital" parent="." unique_id=1738063490 instance=ExtResource("2_b0782")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.3181074, 0.099999905, -1.514307)
+
+[node name="NefariousJumbo" parent="." unique_id=227731175 instance=ExtResource("3_uvocg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5619223, 0.07900095, -2.2022953)
+
+[node name="Pigsty" parent="." unique_id=367026064 instance=ExtResource("4_nba4s")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.373504, 0.13431954, -1.7318239)
+
+[node name="SkyscraperRoot" parent="." unique_id=1031286824 instance=ExtResource("1_gkect")]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -7.525365, 0, -1.3829184)
