@@ -20,7 +20,7 @@ public class Poller(float interval) {
 
     _timeAccumulator += (float) delta;
     if (_timeAccumulator >= Interval) {
-      _timeAccumulator -= 0;
+      _timeAccumulator = 0;
       f();
     }
   }
