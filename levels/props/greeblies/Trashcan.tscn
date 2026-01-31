@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://cdvtkfm4wp54d"]
+
+[ext_resource type="Texture2D" uid="uid://bci208k8csgy7" path="res://levels/assets/greeblies/trash can.png" id="1_q8jtd"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_k6eyc"]
+
+[node name="Trashcan" type="Node3D" unique_id=1866846027]
+
+[node name="TrashcanStaticBody" type="StaticBody3D" parent="." unique_id=248253457]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.88533497, 0)
+
+[node name="TrashcanCollider" type="CollisionShape3D" parent="TrashcanStaticBody" unique_id=742267192]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.12224877, 0)
+shape = SubResource("CylinderShape3D_k6eyc")
+
+[node name="TrashcanSprite" type="Sprite3D" parent="TrashcanStaticBody" unique_id=371091995]
+transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, -0.0042718947, 0.3410082, -0.00041913986)
+billboard = 2
+shaded = true
+alpha_cut = 2
+texture_filter = 4
+texture = ExtResource("1_q8jtd")

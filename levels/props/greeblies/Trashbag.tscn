@@ -13,7 +13,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.88533497, 0)
 shape = SubResource("CylinderShape3D_k6eyc")
 
 [node name="TrashbagSprite" type="Sprite3D" parent="StaticBody3D" unique_id=371091995]
-transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 0, -0.31026614, 0)
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, -0.36635733, 0)
 billboard = 2
 shaded = true
 alpha_cut = 2
