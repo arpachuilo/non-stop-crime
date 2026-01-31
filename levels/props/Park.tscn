@@ -1,6 +1,8 @@
 [gd_scene format=3 uid="uid://cq086pc3a0s8n"]
 
+[ext_resource type="Script" uid="uid://drs71jkrerwcu" path="res://src/GoalZone/GoalZone.cs" id="1_un034"]
 [ext_resource type="Texture2D" uid="uid://h0f168houwv5" path="res://levels/assets/park/park_floor_tile.png" id="1_ygj20"]
+[ext_resource type="Shader" uid="uid://dfnopia2kdju0" path="res://levels/assets/CaptureZone.gdshader" id="2_blfi2"]
 [ext_resource type="PackedScene" uid="uid://du6dtncihpf5y" path="res://levels/props/greeblies/Parkbench.tscn" id="2_u70mh"]
 [ext_resource type="PackedScene" uid="uid://5h4p037xui6w" path="res://levels/props/greeblies/Bush.tscn" id="3_nn6rl"]
 [ext_resource type="PackedScene" uid="uid://dhbmch1isdgnu" path="res://levels/props/greeblies/TreeSmall.tscn" id="4_op4qb"]
@@ -8,14 +10,40 @@
 [ext_resource type="PackedScene" uid="uid://cdvtkfm4wp54d" path="res://levels/props/greeblies/Trashcan.tscn" id="6_yi8ha"]
 [ext_resource type="PackedScene" uid="uid://e72mqccnojuq" path="res://levels/props/greeblies/Trashbag.tscn" id="7_un034"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_yi8ha"]
-size = Vector3(10.38855, 1, 5.658081)
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qathi"]
+render_priority = 0
+shader = ExtResource("2_blfi2")
+shader_parameter/base_color = Color(0.84, 0.12599997, 0.1973999, 1)
+shader_parameter/glow_strength = 1.5
+shader_parameter/box_height = 1.7
+shader_parameter/bottom_solid_height = 0.15
+shader_parameter/alpha_falloff_power = 1.4
+shader_parameter/noise_scale = 3.0
+shader_parameter/noise_strength = 0.15
+shader_parameter/noise_speed = 0.8
+shader_parameter/noise_wobble = 0.8
+shader_parameter/noise_pulse = 0.8
+
+[sub_resource type="BoxMesh" id="BoxMesh_irl5i"]
+lightmap_size_hint = Vector2i(82, 68)
+material = SubResource("ShaderMaterial_qathi")
+size = Vector3(10.5, 1, 5.285)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_blfi2"]
+size = Vector3(10.499496, 1, 5.2880554)
 
 [node name="Park" type="Area3D" unique_id=977220458]
+script = ExtResource("1_un034")
+
+[node name="ParkCaptureZoneMesh" type="MeshInstance3D" parent="." unique_id=2131893204]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5017222, 0)
+cast_shadow = 0
+ignore_occlusion_culling = true
+mesh = SubResource("BoxMesh_irl5i")
 
 [node name="ParkCaptureZoneCollider" type="CollisionShape3D" parent="." unique_id=1630871338]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0020141602, 0.51687694, -0.018615723)
-shape = SubResource("BoxShape3D_yi8ha")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0050735474, 0.51687694, -0.0074005127)
+shape = SubResource("BoxShape3D_blfi2")
 debug_color = Color(0.94509804, 0, 0.6039216, 1)
 
 [node name="ParkStaticBody" type="StaticBody3D" parent="." unique_id=2053917575]
