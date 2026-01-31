@@ -6,7 +6,7 @@ public partial class MaskPickup : Area3D
     [Export] public MaskData MaskData { get; set; }
     [Export] public Vector3 PickupSize { get; set; } = new Vector3(1, 1, 1);
 
-    [Signal] public delegate void PickedUpEventHandler();
+    [Signal] public delegate void PickedUpEventHandler(Player player);
 
     private MeshInstance3D _visualMesh;
     private CollisionShape3D _collisionShape;
@@ -79,7 +79,7 @@ public partial class MaskPickup : Area3D
         if (body is Player player)
         {
             player.EquipMask(MaskData);
-            EmitSignal(SignalName.PickedUp);
+            EmitSignal(SignalName.PickedUp, player);
             QueueFree();
         }
     }

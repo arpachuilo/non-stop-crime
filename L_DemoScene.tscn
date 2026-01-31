@@ -5,10 +5,14 @@
 [ext_resource type="Script" uid="uid://ch7jcbdn7a7yi" path="res://src/DynamicCamera.cs" id="3_5i8u7"]
 [ext_resource type="Script" uid="uid://cam52fb8h24fv" path="res://src/Projectile.cs" id="3_bmjc0"]
 [ext_resource type="PackedScene" uid="uid://b1awodkisntg" path="res://UI_PlayerInfo.tscn" id="3_hb5mc"]
+[ext_resource type="PackedScene" uid="uid://5q744y4bjyiq" path="res://GoalZone.tscn" id="4_5i8u7"]
+[ext_resource type="PackedScene" path="res://src/Mask/MaskPickup.tscn" id="5_1w8sc"]
+[ext_resource type="Script" uid="uid://ccylebg7df6u2" path="res://src/GoalZone/GoalZoneSpawner.cs" id="7_np4ro"]
 [ext_resource type="PackedScene" uid="uid://bxaqr0eh0nytl" path="res://src/ScoreTracker/ScoreTracker.tscn" id="7_score"]
 [ext_resource type="PackedScene" path="res://levels/props/Hospital.tscn" id="9_6ln0e"]
 [ext_resource type="PackedScene" path="res://levels/props/NefariousJumbo.tscn" id="10_qd27c"]
-[ext_resource type="PackedScene" uid="uid://ctol3tugnm1rv" path="res://levels/props/Pigsty.tscn" id="11_ygne2"]
+[ext_resource type="PackedScene" path="res://levels/props/Pigsty.tscn" id="11_ygne2"]
+[ext_resource type="Script" uid="uid://bx8sqineax63u" path="res://src/Mask/MaskSpawner.cs" id="12_pg62e"]
 
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_r2psd"]
 
@@ -35,7 +39,7 @@ data = PackedVector3Array(-0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0
 [node name="L_DemoScene" type="Node3D" unique_id=1463421934 node_paths=PackedStringArray("SpawnLocations", "PlayerContainer", "PlayerInfoContainer")]
 script = ExtResource("1_r2psd")
 PlayerScene = ExtResource("2_6ci18")
-SpawnLocations = [NodePath("SpawnPoints/Spawn1"), NodePath("SpawnPoints/Spawn2"), NodePath("SpawnPoints/Spawn3")]
+SpawnLocations = []
 PlayerContainer = NodePath("Players")
 PlayerInfoScene = ExtResource("3_hb5mc")
 PlayerInfoContainer = NodePath("PlayerInfo")
@@ -121,3 +125,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, -8)
 
 [node name="Pigsty" parent="Props" unique_id=367026064 instance=ExtResource("11_ygne2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.66833353, -0.015680552, -12.120096)
+
+[node name="GoalSpawner" type="Node3D" parent="." unique_id=1048349799]
+script = ExtResource("7_np4ro")
+GoalZoneScene = ExtResource("4_5i8u7")
+
+[node name="MaskSpawner" type="Node3D" parent="." unique_id=525521038]
+script = ExtResource("12_pg62e")
+MaskPickupScene = ExtResource("5_1w8sc")
