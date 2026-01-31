@@ -5,12 +5,13 @@
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_hk8mb"]
 size = Vector2(64, 64)
 
-[node name="PlayerInfo" type="VBoxContainer" unique_id=163918719 node_paths=PackedStringArray("NameLabel", "Avatar", "ScoreOrReadyStatus")]
+[node name="PlayerInfo" type="VBoxContainer" unique_id=163918719 node_paths=PackedStringArray("NameLabel", "Avatar", "ScoreOrReadyStatus", "MaskIcon")]
 alignment = 1
 script = ExtResource("1_v54wg")
 NameLabel = NodePath("Name")
 Avatar = NodePath("Avatar")
 ScoreOrReadyStatus = NodePath("Score")
+MaskIcon = NodePath("MaskIcon")
 
 [node name="Avatar" type="TextureRect" parent="." unique_id=115759476]
 visible = false
@@ -27,3 +28,10 @@ text = "0"
 layout_mode = 2
 theme_override_font_sizes/font_size = 24
 text = "Very long long name"
+
+[node name="MaskIcon" type="TextureRect" parent="."]
+visible = false
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+expand_mode = 1
+stretch_mode = 5
