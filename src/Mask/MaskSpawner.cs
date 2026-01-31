@@ -132,8 +132,17 @@ public partial class MaskSpawner : Node3D {
   }
 
   private void OnMaskPickedUp(MaskData maskData, Player player) {
+    MaskData maskToRespawn = null;
+    foreach (var kvp in _equippedByPlayer) {
+      if (kvp.Value == player) {
+        maskToRespawn = kvp.Key;
+      }
+    }
     _spawnedPickups.Remove(maskData);
     _equippedByPlayer[maskData] = player;
+    if (maskToRespawn != null) {
+     SpawnMask(maskToRespawn); 
+    }
   }
 
   private void OnPlayerReset(Player player) {
