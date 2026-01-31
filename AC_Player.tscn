@@ -2,10 +2,49 @@
 
 [ext_resource type="Script" uid="uid://b2yg1oih5ffa5" path="res://src/Player/Player.cs" id="1_f76hg"]
 [ext_resource type="Script" uid="uid://c1rrgldwnt40" path="res://src/Player/PlayerController.cs" id="2_32haq"]
+[ext_resource type="Texture2D" uid="uid://buya8506ukc0l" path="res://player/assets/head.png" id="3_077pa"]
+[ext_resource type="Texture2D" uid="uid://dvsv0as8aic04" path="res://player/assets/frames_running/frame_1.png" id="4_4jfri"]
+[ext_resource type="Texture2D" uid="uid://c35vl110amvs0" path="res://player/assets/frames_running/frame_2.png" id="5_pg7c2"]
+[ext_resource type="Texture2D" uid="uid://c0aijrv3vs7ln" path="res://player/assets/frames_running/frame_3.png" id="6_g3tfa"]
+[ext_resource type="Texture2D" uid="uid://buswr27nnyv70" path="res://player/assets/frames_running/frame_4.png" id="7_5qk2n"]
+[ext_resource type="Texture2D" uid="uid://wqgpiop1pkwc" path="res://player/assets/frames_running/frame_5.png" id="8_5jsu2"]
+[ext_resource type="Texture2D" uid="uid://dnm77y13n12al" path="res://player/assets/frames_running/frame_6.png" id="9_ymn2f"]
+[ext_resource type="Texture2D" uid="uid://dwjvs1xsvfgd1" path="res://player/assets/frames_running/frame_7.png" id="10_h1s1y"]
+[ext_resource type="Texture2D" uid="uid://hbn4cw142vli" path="res://player/assets/frames_running/frame_8.png" id="11_cu1ij"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_bmjc0"]
 
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_5i8u7"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_p6bia"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_4jfri")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_pg7c2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_g3tfa")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_5qk2n")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_5jsu2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_ymn2f")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_h1s1y")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_cu1ij")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_f76hg"]
 size = Vector2(32, 32)
@@ -14,13 +53,9 @@ size = Vector2(32, 32)
 floor_constant_speed = true
 floor_block_on_wall = false
 script = ExtResource("1_f76hg")
-NamePlate = NodePath("MeshInstance3D/NamePlate/Name")
-Avatar = NodePath("MeshInstance3D/NamePlate/Avatar")
+NamePlate = NodePath("NamePlate/Name")
 PlayerController = NodePath("PlayerController")
-_cameraPivot = NodePath("CameraPivot")
-_cameraSpring = NodePath("CameraPivot/SpringArm3D")
-_camera = NodePath("CameraPivot/SpringArm3D/Camera3D")
-Visual = NodePath("MeshInstance3D")
+Visual = NodePath("")
 Speed = 1.0
 _displayVelocity = true
 _displayGravity = true
@@ -33,29 +68,24 @@ script = ExtResource("2_32haq")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("CapsuleShape3D_bmjc0")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1461872805]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-mesh = SubResource("CapsuleMesh_5i8u7")
+[node name="NamePlate" type="Node3D" parent="." unique_id=988366800]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.313, 0)
 
-[node name="NamePlate" type="Node3D" parent="MeshInstance3D" unique_id=988366800]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.313, 0)
-
-[node name="Avatar" type="Sprite3D" parent="MeshInstance3D/NamePlate" unique_id=1178443108]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.285, 0, 0)
-billboard = 1
-texture = SubResource("PlaceholderTexture2D_f76hg")
-
-[node name="Name" type="Label3D" parent="MeshInstance3D/NamePlate" unique_id=883522353]
+[node name="Name" type="Label3D" parent="NamePlate" unique_id=883522353]
 billboard = 2
 text = "Steve"
-horizontal_alignment = 0
 
-[node name="CameraPivot" type="Node3D" parent="." unique_id=1020840818]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 0)
+[node name="Sprites" type="Node3D" parent="." unique_id=1334660876]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 1.0101486, 0)
 
-[node name="SpringArm3D" type="SpringArm3D" parent="CameraPivot" unique_id=1829554061]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0)
-spring_length = 10.0
+[node name="Sprite3D" type="Sprite3D" parent="Sprites" unique_id=2129601922]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.07417208, -0.5121162, 0)
+sorting_offset = 1.0
+billboard = 2
+texture = ExtResource("3_077pa")
 
-[node name="Camera3D" type="Camera3D" parent="CameraPivot/SpringArm3D" unique_id=1993553922]
-transform = Transform3D(1, 0, 0, 0, 0.925871, 0.377841, 0, -0.377841, 0.925871, 0, 2.45, 3.64)
+[node name="RunCycleSprite" type="AnimatedSprite3D" parent="Sprites" unique_id=593184352]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+billboard = 2
+sprite_frames = SubResource("SpriteFrames_p6bia")
+frame_progress = 0.8578956
