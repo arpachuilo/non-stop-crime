@@ -2,11 +2,47 @@
 
 [ext_resource type="Texture2D" uid="uid://byb6d0dbprr7v" path="res://levels/assets/hospital/hospital front.png" id="1_e0v0s"]
 [ext_resource type="Script" uid="uid://drs71jkrerwcu" path="res://src/GoalZone/GoalZone.cs" id="1_nl4c2"]
+[ext_resource type="Shader" uid="uid://dfnopia2kdju0" path="res://levels/assets/CaptureZone.gdshader" id="2_dw1xr"]
 [ext_resource type="Texture2D" uid="uid://ljln3d3yslvn" path="res://levels/assets/hospital/hospital side.png" id="2_nl4c2"]
 [ext_resource type="Texture2D" uid="uid://ccv1s1yp4qhuw" path="res://levels/assets/hospital/hospital_floor_tile.png" id="4_67r1j"]
 [ext_resource type="Texture2D" uid="uid://d2u4ko1oyufgh" path="res://levels/assets/hospital/ambulance.png" id="5_k6xqd"]
 [ext_resource type="PackedScene" uid="uid://d0brgf0lct3w" path="res://levels/props/greeblies/TreeLarge.tscn" id="6_1mu3e"]
 [ext_resource type="PackedScene" uid="uid://dhbmch1isdgnu" path="res://levels/props/greeblies/TreeSmall.tscn" id="7_dw1xr"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6mde6"]
+render_priority = 0
+shader = ExtResource("2_dw1xr")
+shader_parameter/base_color = Color(0.16970712, 0.41951844, 1, 1)
+shader_parameter/glow_strength = 2.0
+shader_parameter/box_height = 2.0
+shader_parameter/bottom_solid_height = 0.25
+shader_parameter/alpha_falloff_power = 1.5
+shader_parameter/noise_scale = 6.0
+shader_parameter/noise_strength = 0.15
+shader_parameter/noise_speed = 1.2
+shader_parameter/noise_wobble = 0.35
+shader_parameter/noise_pulse = 0.25
+
+[sub_resource type="BoxMesh" id="BoxMesh_dw1xr"]
+material = SubResource("ShaderMaterial_6mde6")
+size = Vector3(11.425, 1, 8.01)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_dw1xr"]
+render_priority = 0
+shader = ExtResource("2_dw1xr")
+shader_parameter/base_color = Color(0.5, 0.5, 0.5, 0.5)
+shader_parameter/glow_strength = 2.0
+shader_parameter/box_height = 2.0
+shader_parameter/bottom_solid_height = 0.25
+shader_parameter/alpha_falloff_power = 1.5
+shader_parameter/noise_scale = 6.0
+shader_parameter/noise_strength = 0.15
+shader_parameter/noise_speed = 1.2
+shader_parameter/noise_wobble = 0.35
+shader_parameter/noise_pulse = 0.25
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_6wdlg"]
+data = PackedVector3Array(-5.7124996, 0.5, 4.005, 5.7124996, 0.5, 4.005, -5.7124996, -0.5, 4.005, 5.7124996, 0.5, 4.005, 5.7124996, -0.5, 4.005, -5.7124996, -0.5, 4.005, 5.7124996, 0.5, -4.005, -5.7124996, 0.5, -4.005, 5.7124996, -0.5, -4.005, -5.7124996, 0.5, -4.005, -5.7124996, -0.5, -4.005, 5.7124996, -0.5, -4.005, 5.7124996, 0.5, 4.005, 5.7124996, 0.5, -4.005, 5.7124996, -0.5, 4.005, 5.7124996, 0.5, -4.005, 5.7124996, -0.5, -4.005, 5.7124996, -0.5, 4.005, -5.7124996, 0.5, -4.005, -5.7124996, 0.5, 4.005, -5.7124996, -0.5, -4.005, -5.7124996, 0.5, 4.005, -5.7124996, -0.5, 4.005, -5.7124996, -0.5, -4.005, 5.7124996, 0.5, 4.005, -5.7124996, 0.5, 4.005, 5.7124996, 0.5, -4.005, -5.7124996, 0.5, 4.005, -5.7124996, 0.5, -4.005, 5.7124996, 0.5, -4.005, -5.7124996, -0.5, 4.005, 5.7124996, -0.5, 4.005, -5.7124996, -0.5, -4.005, 5.7124996, -0.5, 4.005, 5.7124996, -0.5, -4.005, -5.7124996, -0.5, -4.005)
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_oph0r"]
 height = 4.7
@@ -16,18 +52,24 @@ radius = 2.7
 atlas = ExtResource("5_k6xqd")
 region = Rect2(103, 600, 387, 247)
 
-[node name="Hospital" type="Area3D" unique_id=1890571855]
+[node name="Hospital" type="Area3D" unique_id=1890571855 node_paths=PackedStringArray("VisualMesh", "CollisionShape")]
 script = ExtResource("1_nl4c2")
+VisualMesh = NodePath("HospitalCaptureZoneMesh")
+CollisionShape = NodePath("HospitalCaptureZoneCollider")
 
-[node name="HospitalAreaBody" type="CollisionShape3D" parent="." unique_id=1999436185 groups=["goal_zones"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.4, 1.9024124)
-shape = SubResource("CylinderShape3D_oph0r")
-debug_color = Color(0.92941177, 0, 0.65882355, 1)
+[node name="HospitalCaptureZoneMesh" type="MeshInstance3D" parent="." unique_id=466325357]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.48564076, 0)
+mesh = SubResource("BoxMesh_dw1xr")
+surface_material_override/0 = SubResource("ShaderMaterial_dw1xr")
+
+[node name="HospitalCaptureZoneCollider" type="CollisionShape3D" parent="." unique_id=960844341 groups=["goal_zones"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.48564076, 0)
+shape = SubResource("ConcavePolygonShape3D_6wdlg")
 
 [node name="HospitalStaticBody" type="StaticBody3D" parent="." unique_id=539560832]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.58501, 0)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="HospitalStaticBody" unique_id=62033802]
+[node name="HospitalCollider" type="CollisionShape3D" parent="HospitalStaticBody" unique_id=62033802]
 shape = SubResource("CylinderShape3D_oph0r")
 debug_color = Color(0.92941177, 0, 0.65882355, 1)
 

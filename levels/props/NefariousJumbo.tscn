@@ -2,13 +2,35 @@
 
 [ext_resource type="Texture2D" uid="uid://r6w7t6avl27v" path="res://levels/assets/nefarious_jumbo/Obmuj.png" id="1_3rvjk"]
 [ext_resource type="Script" uid="uid://drs71jkrerwcu" path="res://src/GoalZone/GoalZone.cs" id="1_wfldc"]
+[ext_resource type="Shader" uid="uid://dfnopia2kdju0" path="res://levels/assets/CaptureZone.gdshader" id="2_o3f3e"]
 [ext_resource type="Texture2D" uid="uid://fyttf3c6y3sf" path="res://levels/assets/nefarious_jumbo/store_tile.png" id="3_v1r84"]
 [ext_resource type="Texture2D" uid="uid://dmj0iswu8w41e" path="res://levels/assets/nefarious_jumbo/shopping_cart_arch.png" id="4_qx4yl"]
 [ext_resource type="Texture2D" uid="uid://bh523gfg7oce2" path="res://levels/assets/nefarious_jumbo/Shopping_cart.png" id="5_o3f3e"]
 [ext_resource type="PackedScene" uid="uid://bx6jancv55uem" path="res://levels/props/Lamp.tscn" id="6_35ju7"]
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_35ju7"]
+render_priority = 0
+shader = ExtResource("2_o3f3e")
+shader_parameter/base_color = Color(0.25713375, 0.4030725, 1, 1)
+shader_parameter/glow_strength = 2.0
+shader_parameter/box_height = 2.0
+shader_parameter/bottom_solid_height = 0.25
+shader_parameter/alpha_falloff_power = 1.5
+shader_parameter/noise_scale = 6.0
+shader_parameter/noise_strength = 0.15
+shader_parameter/noise_speed = 1.2
+shader_parameter/noise_wobble = 0.35
+shader_parameter/noise_pulse = 0.25
+
+[sub_resource type="BoxMesh" id="BoxMesh_8omod"]
+material = SubResource("ShaderMaterial_35ju7")
+size = Vector3(3, 1, 6)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_vv5rx"]
+data = PackedVector3Array(-1.5, 0.5, 3, 1.5, 0.5, 3, -1.5, -0.5, 3, 1.5, 0.5, 3, 1.5, -0.5, 3, -1.5, -0.5, 3, 1.5, 0.5, -3, -1.5, 0.5, -3, 1.5, -0.5, -3, -1.5, 0.5, -3, -1.5, -0.5, -3, 1.5, -0.5, -3, 1.5, 0.5, 3, 1.5, 0.5, -3, 1.5, -0.5, 3, 1.5, 0.5, -3, 1.5, -0.5, -3, 1.5, -0.5, 3, -1.5, 0.5, -3, -1.5, 0.5, 3, -1.5, -0.5, -3, -1.5, 0.5, 3, -1.5, -0.5, 3, -1.5, -0.5, -3, 1.5, 0.5, 3, -1.5, 0.5, 3, 1.5, 0.5, -3, -1.5, 0.5, 3, -1.5, 0.5, -3, 1.5, 0.5, -3, -1.5, -0.5, 3, 1.5, -0.5, 3, -1.5, -0.5, -3, 1.5, -0.5, 3, 1.5, -0.5, -3, -1.5, -0.5, -3)
+
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_3rvjk"]
-radius = 1.7
+radius = 1.5
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8omod"]
 atlas = ExtResource("4_qx4yl")
@@ -18,19 +40,24 @@ region = Rect2(166, 381, 197, 187)
 atlas = ExtResource("5_o3f3e")
 region = Rect2(528, 678, 203, 160)
 
-[node name="NefariousJumbo" type="Area3D" unique_id=1828634798 groups=["goal_zones"]]
+[node name="NefariousJumbo" type="Area3D" unique_id=1828634798 node_paths=PackedStringArray("VisualMesh", "CollisionShape") groups=["goal_zones"]]
 script = ExtResource("1_wfldc")
+VisualMesh = NodePath("ObmujCaptureZoneMesh")
+CollisionShape = NodePath("ObmujCaptureZoneCollider")
 
-[node name="CollisionShape3D2" type="CollisionShape3D" parent="." unique_id=1294118475 groups=["goal_zones"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0354397, 0)
-shape = SubResource("CylinderShape3D_3rvjk")
-debug_color = Color(1, 0, 0.7607843, 1)
+[node name="ObmujCaptureZoneMesh" type="MeshInstance3D" parent="." unique_id=1597020757]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5844593, 0.50530374, -0.10588312)
+mesh = SubResource("BoxMesh_8omod")
+
+[node name="ObmujCaptureZoneCollider" type="CollisionShape3D" parent="." unique_id=148417784]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5844593, 0.50530374, -0.10588312)
+shape = SubResource("ConcavePolygonShape3D_vv5rx")
 
 [node name="ObmujStaticBody" type="StaticBody3D" parent="." unique_id=762354467]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.3901017, 0)
 
 [node name="ObmujCollider" type="CollisionShape3D" parent="ObmujStaticBody" unique_id=1913153043]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.332231, -0.8855593, 0.77364755)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5253057, -0.8855593, 0.77364755)
 shape = SubResource("CylinderShape3D_3rvjk")
 debug_color = Color(1, 0, 0.7607843, 1)
 
