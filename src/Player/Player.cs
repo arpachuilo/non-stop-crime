@@ -8,6 +8,9 @@ public partial class Player : Character {
   public PlayerController PlayerController { get; set; }
 
   [Export]
+  public SpriteParent SpriteParent { get; set; }
+
+  [Export]
   public int Mask { get; set; } = 0;
 
   [Export]
@@ -25,8 +28,17 @@ public partial class Player : Character {
   private ProjectileEmitter _projectileEmitter;
   private float _baseMaxSpeed;
 
+  [ExportGroup("Appearance")]
+  [Export]
+  public Color color = Colors.Gray;
+
+  [ExportGroup("Appearance")]
+  [Export]
+  public Color labelColor = Colors.White;
+
   public override void _Ready() {
     _camera ??= GetViewport().GetCamera3D();
+    SpriteParent ??= GetNode<SpriteParent>("SpriteParent");
     _baseMaxSpeed = MaxSpeed;
   }
 
@@ -35,6 +47,8 @@ public partial class Player : Character {
 
   public override void _EnterTree() {
     base._EnterTree();
+    SpriteParent.color = color;
+    NamePlate.Modulate = labelColor;
   }
 
   public override void _ExitTree() {
