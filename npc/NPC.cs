@@ -40,6 +40,17 @@ public partial class NPC : Character
     return Vector3.Zero;
   }
 
+  public bool IsCaptured { get; private set; } = false;
+  public Player CapturedBy { get; private set; } = null;
+
+  public void OnGoalCaptured(Player player)
+  {
+    IsCaptured = true;
+    CapturedBy = player;
+    // TODO: Change sprite/state when captured
+    GD.Print($"NPC {NPCName} was captured by player {player.PlayerController.DeviceId}");
+  }
+
   public void Kill()
   {
     var timer = new Timer
