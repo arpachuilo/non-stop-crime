@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://dhbmch1isdgnu"]
+
+[ext_resource type="Texture2D" uid="uid://cd5ohnhkd3smb" path="res://levels/assets/parking_lot/tree small.png" id="1_0qb47"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_8xk0p"]
+radius = 0.2
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_brbur"]
+atlas = ExtResource("1_0qb47")
+region = Rect2(14, 131, 124, 316)
+
+[node name="TreeSmall" type="Node3D" unique_id=1803420776]
+
+[node name="TreeStaticBody" type="StaticBody3D" parent="." unique_id=186666464]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.8490907, 0)
+
+[node name="TreeCollider" type="CollisionShape3D" parent="TreeStaticBody" unique_id=1554225485]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.8391428, 0)
+shape = SubResource("CylinderShape3D_8xk0p")
+
+[node name="TreeSprite" type="Sprite3D" parent="TreeStaticBody" unique_id=1822262658]
+transform = Transform3D(1.2, 0, 0, 0, 1.2, 0, 0, 0, 1.2, 0, 0, 0)
+billboard = 2
+shaded = true
+alpha_cut = 1
+alpha_antialiasing_mode = 2
+texture_filter = 4
+texture = SubResource("AtlasTexture_brbur")

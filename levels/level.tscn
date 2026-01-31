@@ -221,14 +221,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.643963, 0, 8.815931)
 [node name="Lamp3" parent="Props" unique_id=354961715 instance=ExtResource("15_0qmeg")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.170438, 0, 32.59895)
 
-[node name="Lamp4" parent="Props" unique_id=988699820 instance=ExtResource("15_0qmeg")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.618424, 0, 33.87192)
-
 [node name="Bush" parent="Props" unique_id=158691359 instance=ExtResource("16_ta7ci")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, -0.1078918, 41)
 
 [node name="Bush2" parent="Props" unique_id=1546602081 instance=ExtResource("16_ta7ci")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, -0.16430438, 37)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.4000425, -0.16430438, 31.968193)
 
 [node name="Bush3" parent="Props" unique_id=1599744540 instance=ExtResource("16_ta7ci")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15, -0.17378032, 22)

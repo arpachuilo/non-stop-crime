@@ -5,6 +5,8 @@
 [ext_resource type="Texture2D" uid="uid://ljln3d3yslvn" path="res://levels/assets/hospital/hospital side.png" id="2_nl4c2"]
 [ext_resource type="Texture2D" uid="uid://ccv1s1yp4qhuw" path="res://levels/assets/hospital/hospital_floor_tile.png" id="4_67r1j"]
 [ext_resource type="Texture2D" uid="uid://d2u4ko1oyufgh" path="res://levels/assets/hospital/ambulance.png" id="5_k6xqd"]
+[ext_resource type="PackedScene" uid="uid://d0brgf0lct3w" path="res://levels/props/greeblies/TreeLarge.tscn" id="6_1mu3e"]
+[ext_resource type="PackedScene" uid="uid://dhbmch1isdgnu" path="res://levels/props/greeblies/TreeSmall.tscn" id="7_dw1xr"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_oph0r"]
 height = 4.7
@@ -64,3 +66,13 @@ alpha_cut = 1
 alpha_antialiasing_mode = 2
 texture_filter = 4
 texture = SubResource("AtlasTexture_1mu3e")
+
+[node name="HospitalTreeSprite" type="Sprite3D" parent="HospitalStaticBody/SpriteRoot" unique_id=597008257]
+
+[node name="TreeLarge" parent="HospitalStaticBody/SpriteRoot" unique_id=1803420776 instance=ExtResource("6_1mu3e")]
+transform = Transform3D(0.6666667, 0, 0, 0, 0.6666667, 0, 0, 0, 0.6666667, 3.3873775, -2.3900068, 3.9194436)
+
+[node name="Props" type="Node3D" parent="." unique_id=768903519]
+
+[node name="TreeSmall" parent="." unique_id=675871918 instance=ExtResource("7_dw1xr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.153318, 0, -5.890091)
