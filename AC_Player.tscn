@@ -46,16 +46,13 @@ animations = [{
 "speed": 10.0
 }]
 
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_f76hg"]
-size = Vector2(32, 32)
-
-[node name="Player" type="CharacterBody3D" unique_id=1005422296 node_paths=PackedStringArray("NamePlate", "Avatar", "PlayerController", "_cameraPivot", "_cameraSpring", "_camera", "Visual")]
+[node name="Player" type="CharacterBody3D" unique_id=1005422296 node_paths=PackedStringArray("NamePlate", "PlayerController", "Visual")]
 floor_constant_speed = true
 floor_block_on_wall = false
 script = ExtResource("1_f76hg")
 NamePlate = NodePath("NamePlate/Name")
 PlayerController = NodePath("PlayerController")
-Visual = NodePath("")
+Visual = NodePath("Sprites")
 Speed = 1.0
 _displayVelocity = true
 _displayGravity = true
