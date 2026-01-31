@@ -23,38 +23,6 @@
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_dnf2n"]
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_8mx4t"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("2_ob0l3")
-}, {
-"duration": 1.0,
-"texture": ExtResource("3_c8wls")
-}, {
-"duration": 1.0,
-"texture": ExtResource("4_6pfqm")
-}, {
-"duration": 1.0,
-"texture": ExtResource("5_cngn5")
-}, {
-"duration": 1.0,
-"texture": ExtResource("6_mkxqe")
-}, {
-"duration": 1.0,
-"texture": ExtResource("7_25oib")
-}, {
-"duration": 1.0,
-"texture": ExtResource("8_e6yc7")
-}, {
-"duration": 1.0,
-"texture": ExtResource("9_x3fw3")
-}],
-"loop": true,
-"name": &"default",
-"speed": 10.0
-}]
-
 [sub_resource type="SpriteFrames" id="SpriteFrames_akyw2"]
 animations = [{
 "frames": [{
@@ -85,6 +53,35 @@ animations = [{
 "loop": true,
 "name": &"default",
 "speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_ob0l3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_c8wls")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_6pfqm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_cngn5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_mkxqe")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_25oib")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_e6yc7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_x3fw3")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 10.0
 }]
 
 [node name="Npc" type="CharacterBody3D" unique_id=1618199586 node_paths=PackedStringArray("SpriteParent")]
@@ -98,26 +95,22 @@ MinSpeed = 0.0
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("CapsuleShape3D_dnf2n")
 
-[node name="SpriteParent" type="Node3D" parent="." unique_id=936464386 node_paths=PackedStringArray("_player", "_head", "_run", "_mask")]
+[node name="SpriteParent" type="Node3D" parent="." unique_id=936464386 node_paths=PackedStringArray("_player", "_head", "_body", "_mask")]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 1.0101486, 0)
 script = ExtResource("1_ff1tb")
 PlayerPath = NodePath("..")
 MaxFps = 8.0
 _player = NodePath("..")
 _head = NodePath("HeadSprite")
-_run = NodePath("RunCycleSprite")
+_body = NodePath("BodyCycleSprite")
 _mask = NodePath("MaskSprite")
 
-[node name="WalkCycleSprite" type="AnimatedSprite3D" parent="SpriteParent" unique_id=1437158493]
-transform = Transform3D(1.2, 0, 0, 0, 1.2, 0, 0, 0, 1.2, 0.083696604, -0.23034406, 0)
-visible = false
-billboard = 1
-sprite_frames = SubResource("SpriteFrames_8mx4t")
-
-[node name="RunCycleSprite" type="AnimatedSprite3D" parent="SpriteParent" unique_id=1898876859]
+[node name="BodyCycleSprite" type="AnimatedSprite3D" parent="SpriteParent" unique_id=1898876859]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
 billboard = 1
 sprite_frames = SubResource("SpriteFrames_akyw2")
+animation = &"walk"
+frame_progress = 0.54208577
 
 [node name="HeadSprite" type="Sprite3D" parent="SpriteParent" unique_id=1861983109]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.074, -0.512, 0.1)
