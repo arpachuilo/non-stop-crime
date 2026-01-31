@@ -82,12 +82,12 @@ PlayerPath = NodePath("..")
 [node name="HeadSprite" type="Sprite3D" parent="SpriteParent" unique_id=2129601922]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.07417208, -0.5121162, 0)
 sorting_offset = 1.0
-billboard = 2
+billboard = 1
 texture = ExtResource("3_077pa")
 
 [node name="RunCycleSprite" type="AnimatedSprite3D" parent="SpriteParent" unique_id=593184352]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
-billboard = 2
+billboard = 1
 sprite_frames = SubResource("SpriteFrames_p6bia")
 frame_progress = 0.55459386
 

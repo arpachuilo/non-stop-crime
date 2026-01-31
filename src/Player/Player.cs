@@ -8,6 +8,9 @@ public partial class Player : Character {
   public PlayerController PlayerController { get; set; }
 
   [Export]
+  public int Mask { get; set; } = 0;
+
+  [Export]
   private Camera3D _camera;
 
   [Export]
@@ -29,7 +32,7 @@ public partial class Player : Character {
   }
 
   public void Reset() {
-	GlobalPosition = _spawn;
+  GlobalPosition = _spawn;
   }
 
   public override Vector3 GetDirection() {
