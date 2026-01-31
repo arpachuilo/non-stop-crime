@@ -1,14 +1,17 @@
 [gd_resource type="Resource" script_class="MaskData" format=3 uid="uid://b4ruexidpexgr"]
 
-[ext_resource type="Texture2D" uid="uid://dgrc1k4g2dvv0" path="res://projectiles/knife/stab_mask_icon.png" id="1_xsw4k"]
 [ext_resource type="PackedScene" uid="uid://q06iw3qaigpn" path="res://projectiles/gun/GAT.tscn" id="2_vut3j"]
 [ext_resource type="Script" uid="uid://cbwkmtyoylbwe" path="res://src/Mask/MaskData.cs" id="2_xynlu"]
 [ext_resource type="Texture2D" uid="uid://binyunater2xi" path="res://projectiles/gun/gun_mask.png" id="3_xsw4k"]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_xynlu"]
+atlas = ExtResource("3_xsw4k")
+region = Rect2(138, 85, 203, 155)
+
 [resource]
 script = ExtResource("2_xynlu")
 MaskBits = 2
-Icon = ExtResource("1_xsw4k")
+Icon = SubResource("AtlasTexture_xynlu")
 Sprite = ExtResource("3_xsw4k")
 HasProjectile = true
 ProjectileScene = ExtResource("2_vut3j")
