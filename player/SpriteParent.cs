@@ -38,7 +38,7 @@ public partial class SpriteParent : Node3D {
 
   [ExportGroup("Sprite Refs")]
   [Export]
-  private AnimatedSprite3D _run;
+  private AnimatedSprite3D _body;
 
   [ExportGroup("Sprite Refs")]
   [Export]
@@ -47,11 +47,11 @@ public partial class SpriteParent : Node3D {
   public override void _Ready() {
     _player = GetNode<CharacterBody3D>(PlayerPath);
     _head = GetNode<Sprite3D>("HeadSprite");
-    _run = GetNode<AnimatedSprite3D>("RunCycleSprite");
+    _body = GetNode<AnimatedSprite3D>("BodyCycleSprite");
     _mask = GetNode<Sprite3D>("MaskSprite");
 
     _head.Modulate = color;
-    _run.Modulate = color;
+    _body.Modulate = color;
   }
 
   public override void _Process(double delta) {
@@ -64,21 +64,25 @@ public partial class SpriteParent : Node3D {
       bool facingLeft = lateralSpeed < 0f;
 
       _head.FlipH = facingLeft;
-      _run.FlipH = facingLeft;
+      _body.FlipH = facingLeft;
       _mask.FlipH = facingLeft;
     }
 
     if (planarSpeed <= Deadzone) {
-      _run.Pause();
+      _body.Pause();
       return;
     }
 
-    _run.Play();
+    _body.Play();
 
     float t = Mathf.Clamp(planarSpeed / SpeedForMaxFps, 0f, 1f);
     float targetFps = Mathf.Lerp(MinFps, MaxFps, t);
 
-    _run.SpeedScale = targetFps / Mathf.Max(MinFps, 0.001f);
+    _body.SpeedScale = targetFps / Mathf.Max(MinFps, 0.001f);
+  }
+
+  public void AnimateBody(string animation = "default") {
+    _body.Animation = animation;
   }
 
   public void ApplyMaskTexture(Texture2D maskTexture) {
