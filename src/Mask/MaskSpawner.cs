@@ -1,6 +1,19 @@
 using Godot;
 using System.Collections.Generic;
 
+<<<<<<< HEAD
+public partial class MaskSpawner : Node3D
+{
+    [Export] public Vector3 SpawnAreaSize { get; set; } = new(10, 0, 10);
+    [Export] public PackedScene MaskPickupScene { get; set; }
+    [Export] public float MinDistance { get; set; } = 3.0f;
+    [Export] public float MinDistanceFromZones { get; set; } = 4.0f;
+    [Export] public int MaxPlacementAttempts { get; set; } = 30;
+    [Export] public float MinDistanceFromPlayerSpawns { get; set; } = 5f;
+    [Export] public Godot.Collections.Array<Node3D> PlayerSpawnLocations { get; set; } = new();
+    [Export] public MaskDataArray _availableMasks = new();
+    [Export] public bool SpawnOnReady { get; set; } = true;
+=======
 public partial class MaskSpawner : Node3D {
   [Export] public Vector3 SpawnAreaSize { get; set; } = new(10, 0, 10);
   [Export] public PackedScene MaskPickupScene { get; set; }
@@ -10,11 +23,25 @@ public partial class MaskSpawner : Node3D {
   [Export] public float MinDistanceFromPlayerSpawns { get; set; } = 5f;
   [Export] public Godot.Collections.Array<Node3D> PlayerSpawnLocations { get; set; } = new();
   [Export] public MaskDataArray _availableMasks = new();
+>>>>>>> f26e2a37cdb9d46de31ac1c03f5e6f75f1e944f3
 
   private Dictionary<MaskData, MaskPickup> _spawnedPickups = new();
   private Dictionary<MaskData, Player> _equippedByPlayer = new();
   private RandomNumberGenerator _rng = new();
 
+<<<<<<< HEAD
+    public override void _Ready()
+    {
+        _rng.Randomize();
+
+        if (SpawnOnReady)
+            CallDeferred(nameof(InitializeSpawning));
+    }
+
+    public void StartSpawning()
+    {
+        InitializeSpawning();
+=======
   public override void _Ready() {
     _rng.Randomize();
     CallDeferred(nameof(InitializeSpawning));
@@ -42,6 +69,7 @@ public partial class MaskSpawner : Node3D {
       pickup = MaskPickupScene.Instantiate<MaskPickup>();
     } else {
       pickup = new MaskPickup();
+>>>>>>> f26e2a37cdb9d46de31ac1c03f5e6f75f1e944f3
     }
 
     pickup.MaskData = maskData;

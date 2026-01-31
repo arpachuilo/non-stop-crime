@@ -10,36 +10,34 @@ public partial class ScoreTracker : Control {
   [Export] public int RequiredNumberOfPlayers = 1;
 
   private float _timeRemaining;
-  private bool _timerStarted = false;
   private bool _gameEnded = false;
 
-  public override void _Ready() {
+  [Export] public bool TimerActive { get; set; } = false;
+
+  public override void _Ready()
+  {
     _timeRemaining = GameDurationSeconds;
     UpdateTimerDisplay();
   }
 
-  public override void _Process(double delta) {
-    var players = GetTree().GetNodesInGroup(Group.Player).Cast<Player>().ToList();
-    var allReady = players.All(p => p.PlayerInfo.IsReady);
+  public override void _Process(double delta)
+  {
+    if (!TimerActive || _gameEnded) return;
 
-    // Start timer when first player spawns
-    if (!_timerStarted && players.Count >= RequiredNumberOfPlayers && allReady) {
-      _timerStarted = true;
-      foreach (var player in players) {
-        player.StartPlaying();
-      }
+    _timeRemaining -= (float)delta;
+    if (_timeRemaining <= 0)
+    {
+      _timeRemaining = 0;
+      _gameEnded = true;
+      var players = GetTree().GetNodesInGroup(Group.Player).Cast<Player>().ToList();
+      DeclareWinner(players);
     }
+    UpdateTimerDisplay();
+  }
 
-    // Countdown logic
-    if (_timerStarted && !_gameEnded) {
-      _timeRemaining -= (float)delta;
-      if (_timeRemaining <= 0) {
-        _timeRemaining = 0;
-        _gameEnded = true;
-        DeclareWinner(players);
-      }
-      UpdateTimerDisplay();
-    }
+  public void StartTimer()
+  {
+    TimerActive = true;
   }
 
   private void UpdateTimerDisplay() {
