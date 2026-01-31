@@ -5,8 +5,10 @@ public partial class PlayerController : Node
 	[Export]
 	public Vector3 Direction { get; set; } = Vector3.Zero;
 
-  [Export]
+	[Export]
 	public int DeviceId { get; set; } = -1;
+
+	[Export]
 	public bool IsKB { get; set; } = false;
 
 	private Vector3 _previousDirection = Vector3.Zero;
