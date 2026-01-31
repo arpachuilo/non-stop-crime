@@ -38,7 +38,7 @@ public partial class SpriteParent : Node3D {
   private AnimatedSprite3D _run;
 
   public override void _Ready() {
-    _player = GetNode<CharacterBody3D>(PlayerPath);
+    _player = GetNode<Player>(PlayerPath);
     _head = GetNode<Sprite3D>("HeadSprite");
     _run = GetNode<AnimatedSprite3D>("RunCycleSprite");
 
