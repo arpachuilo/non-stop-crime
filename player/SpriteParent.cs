@@ -1,19 +1,28 @@
+using System.ComponentModel;
 using Godot;
 
 public partial class SpriteParent : Node3D {
   [Export]
   public NodePath PlayerPath;
 
-  [Export]
+  [Description("Lateral speed below which the animation will be paused")]
+  [Export(PropertyHint.Range, "0,0.5,0.01")]
   public float Deadzone = 0.05f;
 
-  // Animation tuning
-  [Export]
-  public float MinFps = 6f;
-  [Export]
-  public float MaxFps = 18f;
-  [Export]
-  public float SpeedForMaxFps = 6f;
+  [Description("Minimum FPS for the run cycle animation at low speed.")]
+  [ExportGroup("Animation Tuning")]
+  [Export(PropertyHint.Range, "1,20,1")]
+  public float MinFps = 4f;
+
+  [Description("Maximum FPS for the run cycle animation at high speed.")]
+  [ExportGroup("Animation Tuning")]
+  [Export(PropertyHint.Range, "1,20,1")]
+  public float MaxFps = 10f;
+
+  [Description("Speed at which the run cycle reaches maximum FPS.")]
+  [ExportGroup("Animation Tuning")]
+  [Export(PropertyHint.Range, "1,20,1")]
+  public float SpeedForMaxFps = 12f;
 
   private CharacterBody3D _player;
   private Sprite3D _head;
@@ -28,39 +37,28 @@ public partial class SpriteParent : Node3D {
   public override void _Process(double delta) {
     var v = _player.Velocity;
 
-    // Choose the axis that represents "left/right" in your game.
-    // Commonly X. If your game uses Z for left/right, swap to v.Z.
-    float lateral = v.X;
+    float lateralSpeed = v.X;
+    float planarSpeed = new Vector3(v.X, 0f, v.Z).Length();
 
-    // 1) Flip rig by mirroring parent scale on X so head+body stay consistent
-    if (Mathf.Abs(lateral) > Deadzone) {
-      bool facingLeft = lateral < 0f;
+    if (Mathf.Abs(lateralSpeed) > Deadzone) {
+      bool facingLeft = lateralSpeed < 0f;
 
       _head.FlipH = facingLeft;
       _run.FlipH = facingLeft;
-      // Scaling-based solution
-      // var s = Scale;
-      // s.X = facingLeft ? -Mathf.Abs(s.X) : Mathf.Abs(s.X);
-      // Scale = s;
     }
 
-    // 2) Animation rate based on speed
-    float speed = Mathf.Abs(lateral);
-
-    if (speed <= Deadzone) {
+    if (planarSpeed <= Deadzone) {
       _run.Pause();
       return;
     }
 
     _run.Play();
 
-    float t = Mathf.Clamp(speed / SpeedForMaxFps, 0f, 1f);
+    System.Diagnostics.Debug.WriteLine($"Speed: {planarSpeed}");
+
+    float t = Mathf.Clamp(planarSpeed / SpeedForMaxFps, 0f, 1f);
     float targetFps = Mathf.Lerp(MinFps, MaxFps, t);
 
-    // AnimatedSprite3D uses SpeedScale as a multiplier.
-    // If your SpriteFrames are authored at some base fps (e.g. 12),
-    // set SpeedScale relative to that. If you authored at MinFps,
-    // this works as-is:
     _run.SpeedScale = targetFps / Mathf.Max(MinFps, 0.001f);
   }
 }
