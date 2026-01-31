@@ -7,7 +7,6 @@
 [ext_resource type="Texture2D" uid="uid://ojhdl63j4jho" path="res://player/assets/frames_walking/frame_1.png" id="4_0hh6e"]
 [ext_resource type="Texture2D" uid="uid://dvsv0as8aic04" path="res://player/assets/frames_running/frame_1.png" id="4_4jfri"]
 [ext_resource type="Texture2D" uid="uid://cqj84jnat5roi" path="res://player/assets/frames_walking/frame_2.png" id="5_7rwuv"]
-[ext_resource type="Texture2D" uid="uid://djps0jcq2hgmy" path="res://projectiles/knife/stab_mask.png" id="5_g3tfa"]
 [ext_resource type="Texture2D" uid="uid://c35vl110amvs0" path="res://player/assets/frames_running/frame_2.png" id="5_pg7c2"]
 [ext_resource type="Texture2D" uid="uid://xcq65mqjxmqb" path="res://player/assets/frames_walking/frame_3.png" id="6_2ycdd"]
 [ext_resource type="Texture2D" uid="uid://c0aijrv3vs7ln" path="res://player/assets/frames_running/frame_3.png" id="6_g3tfa"]
@@ -144,4 +143,3 @@ texture = ExtResource("3_077pa")
 [node name="MaskSprite" type="Sprite3D" parent="SpriteParent" unique_id=576538117]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.074, -0.512, 0.15)
 billboard = 1
-texture = ExtResource("5_g3tfa")
