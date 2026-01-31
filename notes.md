@@ -20,7 +20,6 @@
   - Replace wall assets with fences 👉 Nice to have tbh
   - Masks are hard to see 👉 Add cylinder with capture zone shader?
   - Player characters are hard to see 👉 Dont shade them, or add light source to them
-  - NPC's are not shaded 👉 Make their sprite shaded
 - NPC's
   - Reduce jittering
   - Reduce spawnrate

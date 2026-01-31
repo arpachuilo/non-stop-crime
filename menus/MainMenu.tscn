@@ -1,10 +1,22 @@
 [gd_scene format=3 uid="uid://r1l4cou0ykpr"]
 
-[ext_resource type="Theme" uid="uid://cu4n20cc1wscg" path="res://menus/assets/DefaultButton.tres" id="1_ct8su"]
 [ext_resource type="Script" uid="uid://ccu7a0wljcis4" path="res://menus/MainMenu.cs" id="1_ot3ob"]
 [ext_resource type="PackedScene" uid="uid://b00vxpbuhimvp" path="res://L_DemoScene.tscn" id="2_rmsp1"]
-[ext_resource type="PackedScene" uid="uid://dha85mpbnsgsa" path="res://levels/level.tscn" id="2_vp83o"]
-[ext_resource type="Texture2D" uid="uid://k5djup6c4in4" path="res://menus/assets/days without nonsense.png" id="3_218cn"]
+[ext_resource type="PackedScene" uid="uid://vr472n0ku81u" path="res://levels/level.tscn" id="2_vp83o"]
+[ext_resource type="Texture2D" uid="uid://bh70ortkyk4t" path="res://menus/assets/Main_menu_BG.png" id="4_k15nl"]
+[ext_resource type="Texture2D" uid="uid://bgxko56g8bn26" path="res://menus/assets/Main_menu_buttons.png" id="5_4yyw3"]
+[ext_resource type="FontFile" uid="uid://boo61ehi8k82u" path="res://menus/assets/fonts/Small Town Skyline.ttf" id="6_e2awe"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_je8l7"]
+atlas = ExtResource("5_4yyw3")
+region = Rect2(387, 305, 125, 57)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wnv6w"]
+atlas = ExtResource("5_4yyw3")
+region = Rect2(360, 373, 170, 51)
+
+[sub_resource type="LabelSettings" id="LabelSettings_m8c1o"]
+font_size = 50
 
 [node name="MainMenu" type="Control" unique_id=1873563801 node_paths=PackedStringArray("startButton", "demoButton", "exitButton")]
 clip_contents = true
@@ -17,33 +29,22 @@ grow_vertical = 2
 script = ExtResource("1_ot3ob")
 gameScene = ExtResource("2_vp83o")
 demoScene = ExtResource("2_rmsp1")
-startButton = NodePath("MarginContainer/VBoxContainer/ButtonsVBox/StartGame")
-demoButton = NodePath("MarginContainer/VBoxContainer/ButtonsVBox/StartDemo")
-exitButton = NodePath("MarginContainer/VBoxContainer/ButtonsVBox/QuitGame")
-
-[node name="MainMenuSolidBG" type="ColorRect" parent="." unique_id=2075122090]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+startButton = NodePath("")
+demoButton = NodePath("")
+exitButton = NodePath("")
 
 [node name="MainMenuBG" type="TextureRect" parent="." unique_id=1230870007]
-z_index = 2
 layout_mode = 0
-offset_left = 447.0
-offset_top = 97.0
-offset_right = 1481.6666
-offset_bottom = 679.0
-texture = ExtResource("3_218cn")
+offset_right = 1920.0
+offset_bottom = 1080.0
+texture = ExtResource("4_k15nl")
 
 [node name="MarginContainer" type="MarginContainer" parent="." unique_id=2100988451]
 layout_mode = 0
 offset_right = 1920.0
 offset_bottom = 1080.0
 theme_override_constants/margin_left = 32
-theme_override_constants/margin_top = 735
+theme_override_constants/margin_top = 850
 theme_override_constants/margin_right = 32
 theme_override_constants/margin_bottom = 32
 
@@ -55,39 +56,20 @@ theme_override_constants/separation = 15
 layout_mode = 2
 theme_override_constants/separation = 15
 
-[node name="StartGame" type="Button" parent="MarginContainer/VBoxContainer/ButtonsVBox" unique_id=1731472529]
+[node name="StartGameV2" type="TextureButton" parent="MarginContainer/VBoxContainer/ButtonsVBox" unique_id=1672514580]
 layout_mode = 2
 size_flags_horizontal = 4
-focus_neighbor_top = NodePath("../QuitGame")
-focus_neighbor_bottom = NodePath("../StartDemo")
-focus_next = NodePath("../StartDemo")
-focus_previous = NodePath("../QuitGame")
-theme = ExtResource("1_ct8su")
-text = "Start game"
+texture_normal = SubResource("AtlasTexture_je8l7")
 
-[node name="StartDemo" type="Button" parent="MarginContainer/VBoxContainer/ButtonsVBox" unique_id=1970710295]
+[node name="QuitGameV2" type="TextureButton" parent="MarginContainer/VBoxContainer/ButtonsVBox" unique_id=575679870]
 layout_mode = 2
 size_flags_horizontal = 4
-focus_neighbor_top = NodePath("../StartGame")
-focus_neighbor_bottom = NodePath("../QuitGame")
-focus_next = NodePath("../QuitGame")
-focus_previous = NodePath("../StartGame")
-theme = ExtResource("1_ct8su")
-text = "DEBUG: Start DemoScene
-"
-
-[node name="QuitGame" type="Button" parent="MarginContainer/VBoxContainer/ButtonsVBox" unique_id=2117636949]
-layout_mode = 2
-size_flags_horizontal = 4
-focus_neighbor_top = NodePath("../StartDemo")
-focus_neighbor_bottom = NodePath("../StartGame")
-focus_next = NodePath("../StartGame")
-focus_previous = NodePath("../StartDemo")
-theme = ExtResource("1_ct8su")
-text = "Exit"
+texture_normal = SubResource("AtlasTexture_wnv6w")
 
 [node name="Label" type="Label" parent="MarginContainer/VBoxContainer" unique_id=1648181000]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("6_e2awe")
 text = "A 2026 Global Game Jame game by Non-stop Crime"
+label_settings = SubResource("LabelSettings_m8c1o")
 horizontal_alignment = 1
