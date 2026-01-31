@@ -2,10 +2,11 @@
 
 [ext_resource type="Theme" uid="uid://cu4n20cc1wscg" path="res://menus/assets/DefaultButton.tres" id="1_ct8su"]
 [ext_resource type="Script" uid="uid://ccu7a0wljcis4" path="res://menus/MainMenu.cs" id="1_ot3ob"]
-[ext_resource type="PackedScene" uid="uid://vr472n0ku81u" path="res://levels/level.tscn" id="2_218cn"]
+[ext_resource type="PackedScene" uid="uid://b00vxpbuhimvp" path="res://L_DemoScene.tscn" id="2_rmsp1"]
+[ext_resource type="PackedScene" uid="uid://dha85mpbnsgsa" path="res://levels/level.tscn" id="2_vp83o"]
 [ext_resource type="Texture2D" uid="uid://k5djup6c4in4" path="res://menus/assets/days without nonsense.png" id="3_218cn"]
 
-[node name="MainMenu" type="Control" unique_id=1873563801 node_paths=PackedStringArray("startButton", "exitButton")]
+[node name="MainMenu" type="Control" unique_id=1873563801 node_paths=PackedStringArray("startButton", "demoButton", "exitButton")]
 clip_contents = true
 layout_mode = 3
 anchors_preset = 15
@@ -14,8 +15,10 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_ot3ob")
-gameScene = ExtResource("2_218cn")
+gameScene = ExtResource("2_vp83o")
+demoScene = ExtResource("2_rmsp1")
 startButton = NodePath("MarginContainer/VBoxContainer/ButtonsVBox/StartGame")
+demoButton = NodePath("MarginContainer/VBoxContainer/ButtonsVBox/StartDemo")
 exitButton = NodePath("MarginContainer/VBoxContainer/ButtonsVBox/QuitGame")
 
 [node name="MainMenuSolidBG" type="ColorRect" parent="." unique_id=2075122090]
@@ -40,7 +43,7 @@ layout_mode = 0
 offset_right = 1920.0
 offset_bottom = 1080.0
 theme_override_constants/margin_left = 32
-theme_override_constants/margin_top = 800
+theme_override_constants/margin_top = 735
 theme_override_constants/margin_right = 32
 theme_override_constants/margin_bottom = 32
 
@@ -56,19 +59,30 @@ theme_override_constants/separation = 15
 layout_mode = 2
 size_flags_horizontal = 4
 focus_neighbor_top = NodePath("../QuitGame")
-focus_neighbor_bottom = NodePath("../QuitGame")
-focus_next = NodePath("../QuitGame")
+focus_neighbor_bottom = NodePath("../StartDemo")
+focus_next = NodePath("../StartDemo")
 focus_previous = NodePath("../QuitGame")
 theme = ExtResource("1_ct8su")
 text = "Start game"
 
-[node name="QuitGame" type="Button" parent="MarginContainer/VBoxContainer/ButtonsVBox" unique_id=2117636949]
+[node name="StartDemo" type="Button" parent="MarginContainer/VBoxContainer/ButtonsVBox" unique_id=1970710295]
 layout_mode = 2
 size_flags_horizontal = 4
 focus_neighbor_top = NodePath("../StartGame")
+focus_neighbor_bottom = NodePath("../QuitGame")
+focus_next = NodePath("../QuitGame")
+focus_previous = NodePath("../StartGame")
+theme = ExtResource("1_ct8su")
+text = "DEBUG: Start DemoScene
+"
+
+[node name="QuitGame" type="Button" parent="MarginContainer/VBoxContainer/ButtonsVBox" unique_id=2117636949]
+layout_mode = 2
+size_flags_horizontal = 4
+focus_neighbor_top = NodePath("../StartDemo")
 focus_neighbor_bottom = NodePath("../StartGame")
 focus_next = NodePath("../StartGame")
-focus_previous = NodePath("../StartGame")
+focus_previous = NodePath("../StartDemo")
 theme = ExtResource("1_ct8su")
 text = "Exit"
 
