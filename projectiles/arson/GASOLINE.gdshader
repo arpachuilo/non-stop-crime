@@ -7,6 +7,8 @@ uniform float wiggle_speed : hint_range(0.0, 5.0) = 1.0;
 uniform vec2 wiggle_frequency = vec2(3.0, 4.0);
 uniform bool billboard_enabled = true;
 
+instance uniform float scale = 1.0;
+
 // Simple noise function
 float noise(vec2 uv) {
     return fract(sin(dot(uv, vec2(12.9898, 78.233))) * 43758.5453);
@@ -34,14 +36,16 @@ void vertex() {
             normalize(INV_VIEW_MATRIX[2]),
             MODEL_MATRIX[3]
         );
-        mat_world = mat_world * mat4(
-            vec4(length(MODEL_MATRIX[0].xyz), 0.0, 0.0, 0.0),
-            vec4(0.0, length(MODEL_MATRIX[1].xyz), 0.0, 0.0),
-            vec4(0.0, 0.0, length(MODEL_MATRIX[2].xyz), 0.0),
+       mat_world = mat_world * mat4(
+            vec4(length(MODEL_MATRIX[0].xyz) * scale, 0.0, 0.0, 0.0),
+            vec4(0.0, length(MODEL_MATRIX[1].xyz) * scale, 0.0, 0.0),
+            vec4(0.0, 0.0, length(MODEL_MATRIX[2].xyz) * scale, 0.0),
             vec4(0.0, 0.0, 0.0, 1.0)
         );
         MODELVIEW_MATRIX = VIEW_MATRIX * mat_world;
-    }
+    } else {
+	  VERTEX *= scale;
+	}
 }
 
 void fragment() {
