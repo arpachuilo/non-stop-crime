@@ -20,14 +20,22 @@
 [ext_resource type="Texture2D" uid="uid://gg44a5qhti0j" path="res://player/assets/frames_walking/frame_7.png" id="10_pwtji"]
 [ext_resource type="Texture2D" uid="uid://3nhxkbgs432t" path="res://player/assets/frames_walking/frame_8.png" id="11_7qkkx"]
 [ext_resource type="Texture2D" uid="uid://hbn4cw142vli" path="res://player/assets/frames_running/frame_8.png" id="11_cu1ij"]
+[ext_resource type="Texture2D" uid="uid://bkn22dlcpaa42" path="res://player/assets/frames_gun/frame_1.png" id="12_0fo2y"]
 [ext_resource type="Texture2D" uid="uid://dg77scput1i4v" path="res://player/assets/frames_stab/frame_1.png" id="12_7h1v2"]
+[ext_resource type="Texture2D" uid="uid://b3cb1a2tlnx1q" path="res://player/assets/frames_gun/frame_2.png" id="13_a453s"]
 [ext_resource type="Texture2D" uid="uid://d6uxm4pveqxu" path="res://player/assets/frames_stab/frame_2.png" id="13_cgkdj"]
+[ext_resource type="Texture2D" uid="uid://dvs1xqydpnxgc" path="res://player/assets/frames_gun/frame_3.png" id="14_26uui"]
 [ext_resource type="Texture2D" uid="uid://dvicvlg4n24jf" path="res://player/assets/frames_stab/frame_3.png" id="14_wu24k"]
+[ext_resource type="Texture2D" uid="uid://bwowelg2ri1my" path="res://player/assets/frames_gun/frame_4.png" id="15_1bx2w"]
 [ext_resource type="Texture2D" uid="uid://d3q0si5jotdyi" path="res://player/assets/frames_stab/frame_4.png" id="15_emb2e"]
 [ext_resource type="Texture2D" uid="uid://ct1wkvmvewpkj" path="res://player/assets/frames_stab/frame_5.png" id="16_l1goa"]
+[ext_resource type="Texture2D" uid="uid://q0suv2y583yy" path="res://player/assets/frames_gun/frame_5.png" id="16_niqt1"]
 [ext_resource type="Texture2D" uid="uid://bvhxs8kdxd48g" path="res://player/assets/frames_stab/frame_6.png" id="17_d4mdx"]
+[ext_resource type="Texture2D" uid="uid://d50tstva5ut3" path="res://player/assets/frames_gun/frame_6.png" id="17_nhi1c"]
 [ext_resource type="Texture2D" uid="uid://bam5spd5yekd5" path="res://player/assets/frames_stab/frame_7.png" id="18_htnea"]
+[ext_resource type="Texture2D" uid="uid://d1va534q2b21g" path="res://player/assets/frames_gun/frame_7.png" id="18_yqyef"]
 [ext_resource type="Texture2D" uid="uid://cbv72mx5dbaqj" path="res://player/assets/frames_stab/frame_8.png" id="19_0fo2y"]
+[ext_resource type="Texture2D" uid="uid://0gwtbxxftkt4" path="res://player/assets/frames_gun/frame_8.png" id="19_5xqo2"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_bmjc0"]
 
@@ -60,6 +68,35 @@ animations = [{
 }],
 "loop": true,
 "name": &"default",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("12_0fo2y")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_a453s")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_26uui")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_1bx2w")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_niqt1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_nhi1c")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_yqyef")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_5xqo2")
+}],
+"loop": true,
+"name": &"gun",
 "speed": 10.0
 }, {
 "frames": [{
@@ -166,6 +203,7 @@ _mask = NodePath("MaskSprite")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
 billboard = 1
 sprite_frames = SubResource("SpriteFrames_p6bia")
+frame_progress = 0.8060197
 
 [node name="HeadSprite" type="Sprite3D" parent="SpriteParent" unique_id=2129601922]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.074, -0.512, 0.1)
