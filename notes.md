@@ -1,3 +1,18 @@
+# TODO
+- UI
+  - In-round HUD
+  - Tutorial
+  - Lobby
+  - Main menu art
+  - Win screen
+- Gameplay
+  - Finalize mask abilities + VFX
+  - Build final level
+  - Communicate which zones relate to which masks
+- Sound
+  - SFX for abilities
+  - Background music
+
 # Graphics
 - 2.5D sprite-based graphics
 - Urban cityscape environment
