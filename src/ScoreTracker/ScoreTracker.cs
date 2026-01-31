@@ -9,7 +9,6 @@ public partial class ScoreTracker : CanvasLayer
   [Export] public PackedScene WinnerScreenScene;
   [Export] public float GameDurationSeconds = 600f; // 10 minutes default
 
-  private Dictionary<Player, Label> _playerLabels = new();
   private float _timeRemaining;
   private bool _timerStarted = false;
   private bool _gameEnded = false;
@@ -41,28 +40,6 @@ public partial class ScoreTracker : CanvasLayer
         DeclareWinner(players);
       }
       UpdateTimerDisplay();
-    }
-
-    // Add labels for new players
-    foreach (var player in players)
-    {
-      if (!_playerLabels.ContainsKey(player))
-      {
-        var label = new Label();
-        ScoreContainer.AddChild(label);
-        _playerLabels[player] = label;
-      }
-
-      // Update score display
-      _playerLabels[player].Text = $"{player.NamePlate.Text}: {player.Score}";
-    }
-
-    // Remove labels for removed players
-    var toRemove = _playerLabels.Keys.Where(p => !players.Contains(p)).ToList();
-    foreach (var player in toRemove)
-    {
-      _playerLabels[player].QueueFree();
-      _playerLabels.Remove(player);
     }
   }
 

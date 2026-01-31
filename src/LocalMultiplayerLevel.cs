@@ -92,6 +92,7 @@ public partial class LocalMultiplayerLevel : Node
     PlayerToInfo[player] = playerInfo;
     PlayerInfoContainer.AddChild(playerInfo);
 
+	player.PlayerInfo = playerInfo;
     return player;
   }
 

@@ -36,6 +36,8 @@ public partial class Player : Character {
   [Export]
   public Color labelColor = Colors.White;
 
+  public PlayerInfo PlayerInfo { get; set; }
+
   public override void _Ready() {
     _camera ??= GetViewport().GetCamera3D();
     SpriteParent ??= GetNode<SpriteParent>("SpriteParent");
@@ -61,6 +63,7 @@ public partial class Player : Character {
 
   public void AddScore(int points) {
     Score += points;
+	PlayerInfo.Score.Text = Score.ToString();
     GD.Print($"Player {PlayerController?.DeviceId} scored {points} points (Total: {Score})");
   }
 

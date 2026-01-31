@@ -6,4 +6,7 @@ public partial class PlayerInfo : Control {
 
   [Export]
   public TextureRect Avatar { get; set; }
+
+  [Export]
+  public Label Score { get; set; }
 }
