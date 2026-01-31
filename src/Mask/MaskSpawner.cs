@@ -8,6 +8,7 @@ public partial class MaskSpawner : Node3D {
   [Export] public float MinDistanceFromZones { get; set; } = 4.0f;
   [Export] public int MaxPlacementAttempts { get; set; } = 30;
   [Export] public float MinDistanceFromPlayerSpawns { get; set; } = 5f;
+  [Export] public float CollisionCheckRadius { get; set; } = 1.0f;
   [Export] public Godot.Collections.Array<Node3D> PlayerSpawnLocations { get; set; } = new();
   [Export] public MaskDataArray _availableMasks = new();
   [Export] public bool SpawnOnReady { get; set; } = true;
@@ -74,6 +75,9 @@ public partial class MaskSpawner : Node3D {
       if (IsPositionNearGoalZone(worldCandidate))
         continue;
 
+      if (IsPositionCollidingWithBody(worldCandidate))
+        continue;
+
       float minDistToMasks = GetMinDistanceToActiveMasks(worldCandidate);
 
       if (minDistToMasks >= MinDistance) {
@@ -129,6 +133,24 @@ public partial class MaskSpawner : Node3D {
       }
     }
     return false;
+  }
+
+  private bool IsPositionCollidingWithBody(Vector3 worldPosition) {
+    var spaceState = GetWorld3D().DirectSpaceState;
+    if (spaceState == null)
+      return false;
+
+    var shape = new SphereShape3D();
+    shape.Radius = CollisionCheckRadius;
+
+    var query = new PhysicsShapeQueryParameters3D();
+    query.Shape = shape;
+    query.Transform = new Transform3D(Basis.Identity, worldPosition);
+    query.CollideWithBodies = true;
+    query.CollideWithAreas = false;
+
+    var results = spaceState.IntersectShape(query, 1);
+    return results.Count > 0;
   }
 
   private void OnMaskPickedUp(MaskData maskData, Player player) {
