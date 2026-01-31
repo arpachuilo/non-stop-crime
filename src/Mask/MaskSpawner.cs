@@ -11,6 +11,7 @@ public partial class MaskSpawner : Node3D
     [Export] public float MinDistanceFromPlayerSpawns { get; set; } = 5f;
     [Export] public Godot.Collections.Array<Node3D> PlayerSpawnLocations { get; set; } = new();
     [Export] public MaskDataArray _availableMasks = new();
+    [Export] public bool SpawnOnReady { get; set; } = true;
 
     private Dictionary<MaskData, MaskPickup> _spawnedPickups = new();
     private Dictionary<MaskData, Player> _equippedByPlayer = new();
@@ -19,7 +20,14 @@ public partial class MaskSpawner : Node3D
     public override void _Ready()
     {
         _rng.Randomize();
-        CallDeferred(nameof(InitializeSpawning));
+
+        if (SpawnOnReady)
+            CallDeferred(nameof(InitializeSpawning));
+    }
+
+    public void StartSpawning()
+    {
+        InitializeSpawning();
     }
 
     private void InitializeSpawning()

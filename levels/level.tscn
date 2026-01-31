@@ -1,10 +1,11 @@
 [gd_scene format=3 uid="uid://vr472n0ku81u"]
 
 [ext_resource type="Shader" path="res://levels/assets/Backdrop.gdshader" id="1_80vhd"]
-[ext_resource type="Script" uid="uid://cks4fmo6ia6pb" path="res://src/LocalMultiplayerLevel.cs" id="1_gjl0y"]
+[ext_resource type="Script" uid="uid://b430y4e1vno6x" path="res://src/Lobby.cs" id="1_pb8y7"]
 [ext_resource type="PackedScene" uid="uid://cj7ucao0d5den" path="res://AC_Player.tscn" id="2_hjsbj"]
 [ext_resource type="Script" uid="uid://ccylebg7df6u2" path="res://src/GoalZone/GoalZoneSpawner.cs" id="3_5mrsh"]
 [ext_resource type="PackedScene" uid="uid://b1awodkisntg" path="res://UI_PlayerInfo.tscn" id="3_vnv7o"]
+[ext_resource type="PackedScene" path="res://menus/LobbyOverlay.tscn" id="4_hy0rb"]
 [ext_resource type="Script" uid="uid://ch7jcbdn7a7yi" path="res://src/DynamicCamera.cs" id="4_rtcij"]
 [ext_resource type="PackedScene" uid="uid://5q744y4bjyiq" path="res://GoalZone.tscn" id="4_safpt"]
 [ext_resource type="Script" uid="uid://bx8sqineax63u" path="res://src/Mask/MaskSpawner.cs" id="7_d5x7l"]
@@ -50,13 +51,20 @@ shader_parameter/shimmer_freq = 18.0
 shader_parameter/shimmer_speed = 1.2
 shader_parameter/noise_amount = 0.55
 
-[node name="Level" type="Node3D" unique_id=596543593 node_paths=PackedStringArray("SpawnLocations", "PlayerContainer", "PlayerInfoContainer")]
-script = ExtResource("1_gjl0y")
+[node name="Level" type="Node3D" unique_id=596543593]
+
+[node name="Lobby" type="Node" parent="." unique_id=1714533031 node_paths=PackedStringArray("PlayerContainer", "PlayerInfoContainer", "SpawnPoints", "GoalZoneSpawner", "MaskSpawner", "LobbyOverlay")]
+script = ExtResource("1_pb8y7")
 PlayerScene = ExtResource("2_hjsbj")
-SpawnLocations = [NodePath("Players/Spawn A")]
-PlayerContainer = NodePath("Players")
+PlayerContainer = NodePath("../Players")
 PlayerInfoScene = ExtResource("3_vnv7o")
-PlayerInfoContainer = NodePath("HBoxContainer")
+PlayerInfoContainer = NodePath("../HBoxContainer")
+SpawnPoints = [NodePath("../Players")]
+GoalZoneSpawner = NodePath("../Goal Spawner")
+MaskSpawner = NodePath("../MaskSpawner")
+LobbyOverlay = NodePath("LobbyOverlay")
+
+[node name="LobbyOverlay" parent="Lobby" unique_id=848800051 instance=ExtResource("4_hy0rb")]
 
 [node name="Players" type="Node3D" parent="." unique_id=842050307]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.57536626, 0)
@@ -148,3 +156,7 @@ offset_top = -40.0
 offset_right = 20.0
 grow_horizontal = 2
 grow_vertical = 0
+
+[connection signal="GameStarted" from="Lobby" to="Goal Spawner" method="_on_lobby_game_started"]
+[connection signal="GameStarted" from="Lobby" to="MaskSpawner" method="_on_lobby_game_started"]
+[connection signal="GameStarted" from="Lobby" to="ScoreTracker" method="_on_lobby_game_started"]

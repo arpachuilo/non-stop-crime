@@ -11,6 +11,7 @@ public partial class GoalZoneSpawner : Node3D
     [Export] public string PropDirectory { get; set; } = "res://levels/props";
     [Export] public PackedScene GoalZoneScene { get; set; }
     [Export] public MaskDataArray _availableMasks = new();
+    [Export] public bool SpawnOnReady { get; set; } = true;
 
     private List<PackedScene> _propScenes = new();
     private List<Vector3> _placedPositions = new();
@@ -20,6 +21,13 @@ public partial class GoalZoneSpawner : Node3D
     {
         _rng.Randomize();
         LoadProps();
+
+        if (SpawnOnReady)
+            SpawnPropsWithZones();
+    }
+
+    public void StartSpawning()
+    {
         SpawnPropsWithZones();
     }
 
