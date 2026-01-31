@@ -72,10 +72,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5918386, 0)
 billboard = 2
 text = "Steve"
 
-[node name="SpriteParent" type="Node3D" parent="." unique_id=1334660876]
+[node name="SpriteParent" type="Node3D" parent="." unique_id=1334660876 node_paths=PackedStringArray("_player", "_head", "_run")]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 1.0101486, 0)
 script = ExtResource("3_4jfri")
-PlayerPath = NodePath("..")
+_player = NodePath("..")
+_head = NodePath("HeadSprite")
+_run = NodePath("RunCycleSprite")
 
 [node name="HeadSprite" type="Sprite3D" parent="SpriteParent" unique_id=2129601922]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.07417208, -0.5121162, 0)

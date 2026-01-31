@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://q06iw3qaigpn"]
+
+[ext_resource type="Script" uid="uid://cam52fb8h24fv" path="res://src/Projectile.cs" id="1_5luoj"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7pnnj"]
+albedo_color = Color(0, 1, 1, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_5luoj"]
+material = SubResource("StandardMaterial3D_7pnnj")
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_7pnnj"]
+data = PackedVector3Array(-0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, -0.5)
+
+[node name="Gat" type="Area3D" unique_id=1188901933]
+script = ExtResource("1_5luoj")
+Speed = 12.0
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1585148424]
+mesh = SubResource("BoxMesh_5luoj")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1263328891]
+shape = SubResource("ConcavePolygonShape3D_7pnnj")
