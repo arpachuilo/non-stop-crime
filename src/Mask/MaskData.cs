@@ -16,4 +16,6 @@ public partial class MaskData : Resource
     [Export] public PackedScene ProjectileScene { get; set; }
     [Export] public float FireRate { get; set; } = 0.5f;
     [Export] public bool Scorable {get; set; }
+    [Export] public bool HasAnimation { get; set; } = false;
+    [Export] public string Animation { get; set; } = null;
 }
