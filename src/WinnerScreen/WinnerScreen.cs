@@ -5,7 +5,7 @@ public partial class WinnerScreen : Control
   [Export] public Label WinnerLabel;
   [Export] public Button MainMenuButton;
 
-  private const string MainMenuPath = "res://menus/MainMenu.tscn";
+  [Export] public string MainMenuPath = "res://menus/MainMenu.tscn";
   private static string _winnerText = "Winner!";
 
   public static void SetWinnerText(string text)

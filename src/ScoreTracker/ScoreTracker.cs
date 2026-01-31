@@ -14,19 +14,16 @@ public partial class ScoreTracker : Control {
 
   [Export] public bool TimerActive { get; set; } = false;
 
-  public override void _Ready()
-  {
+  public override void _Ready() {
     _timeRemaining = GameDurationSeconds;
     UpdateTimerDisplay();
   }
 
-  public override void _Process(double delta)
-  {
+  public override void _Process(double delta) {
     if (!TimerActive || _gameEnded) return;
 
     _timeRemaining -= (float)delta;
-    if (_timeRemaining <= 0)
-    {
+    if (_timeRemaining <= 0) {
       _timeRemaining = 0;
       _gameEnded = true;
       var players = GetTree().GetNodesInGroup(Group.Player).Cast<Player>().ToList();
@@ -35,9 +32,12 @@ public partial class ScoreTracker : Control {
     UpdateTimerDisplay();
   }
 
-  public void StartTimer()
-  {
+  public void StartTimer() {
     TimerActive = true;
+  }
+
+  private void _on_lobby_game_started() {
+    StartTimer();
   }
 
   private void UpdateTimerDisplay() {

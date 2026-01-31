@@ -8,6 +8,7 @@ anchors_preset = 0
 script = ExtResource("1_winner")
 WinnerLabel = NodePath("winnerText")
 MainMenuButton = NodePath("Button")
+MainMenuPath = "res://levels/level.tscn"
 
 [node name="winnerText" type="Label" parent="." unique_id=573335501]
 layout_mode = 1

@@ -36,6 +36,10 @@ public partial class MaskSpawner : Node3D {
     InitializeSpawning();
   }
 
+  private void _on_lobby_game_started() {
+    StartSpawning();
+  }
+
   private void InitializeSpawning() {
     SubscribeToPlayerResets();
     foreach (var maskData in _availableMasks.Masks)
@@ -70,12 +74,12 @@ public partial class MaskSpawner : Node3D {
   }
 
   private Vector3 FindValidPosition() {
-    Vector3 bestPosition = GlobalPosition + GenerateRandomPosition();
+    Vector3 bestPosition = Position + GenerateRandomPosition();
     float bestScore = 0f;
 
     for (int attempt = 0; attempt < MaxPlacementAttempts; attempt++) {
       Vector3 candidate = GenerateRandomPosition();
-      Vector3 worldCandidate = GlobalPosition + candidate;
+      Vector3 worldCandidate = Position + candidate;
 
       if (IsPositionNearPlayerSpawn(worldCandidate))
         continue;
