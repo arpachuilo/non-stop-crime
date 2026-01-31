@@ -67,7 +67,7 @@ disable_mode = 1
 shape = SubResource("WorldBoundaryShape3D_r2psd")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D" unique_id=1193582359]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0042972565, 0.025681496, 0.02411747)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.007710457, 0.025681257, 0.017461061)
 mesh = SubResource("PlaneMesh_6ci18")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1843344117]
@@ -131,3 +131,6 @@ MaskData = ExtResource("11_1oo2x")
 
 [node name="Npc" parent="." unique_id=1618199586 instance=ExtResource("15_0vpgi")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5075955, 0.30502355, -1.3605094)
+
+[node name="MaskPickup" parent="." unique_id=1033929926 instance=ExtResource("10_ygne2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.12968826, 0.5, -3.6429834)
