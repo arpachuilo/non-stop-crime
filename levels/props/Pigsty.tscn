@@ -3,11 +3,33 @@
 [ext_resource type="Texture2D" uid="uid://c3vrmkr66ueta" path="res://levels/assets/pigsty/police left.png" id="1_kjg33"]
 [ext_resource type="Script" uid="uid://drs71jkrerwcu" path="res://src/GoalZone/GoalZone.cs" id="1_qi2m5"]
 [ext_resource type="Texture2D" uid="uid://dbgxu13stgkyi" path="res://levels/assets/pigsty/police right.png" id="2_qi2m5"]
+[ext_resource type="Shader" uid="uid://dfnopia2kdju0" path="res://levels/assets/CaptureZone.gdshader" id="2_urtgs"]
 [ext_resource type="Texture2D" uid="uid://2e1tsxbyoafj" path="res://levels/assets/pigsty/police front.png" id="3_m6wmv"]
 [ext_resource type="Texture2D" uid="uid://dh1h6kh6kpuq8" path="res://levels/assets/pigsty/police_floor_tile.png" id="5_m6wmv"]
 [ext_resource type="Texture2D" uid="uid://fhkgty05g71e" path="res://levels/assets/pigsty/police_car.png" id="6_1162o"]
 [ext_resource type="Texture2D" uid="uid://duv80m1bbpn0d" path="res://levels/assets/pigsty/police_officer.png" id="7_rc3nn"]
 [ext_resource type="PackedScene" uid="uid://bx6jancv55uem" path="res://levels/props/Lamp.tscn" id="8_rc3nn"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_lu4a6"]
+render_priority = 0
+shader = ExtResource("2_urtgs")
+shader_parameter/base_color = Color(0.2, 0.8, 1, 1)
+shader_parameter/glow_strength = 2.0
+shader_parameter/box_height = 2.0
+shader_parameter/bottom_solid_height = 0.25
+shader_parameter/alpha_falloff_power = 1.5
+shader_parameter/noise_scale = 6.0
+shader_parameter/noise_strength = 0.15
+shader_parameter/noise_speed = 1.2
+shader_parameter/noise_wobble = 0.35
+shader_parameter/noise_pulse = 0.25
+
+[sub_resource type="BoxMesh" id="BoxMesh_rc3nn"]
+material = SubResource("ShaderMaterial_lu4a6")
+size = Vector3(10, 1, 4)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_urtgs"]
+data = PackedVector3Array(-5, 0.5, 2, 5, 0.5, 2, -5, -0.5, 2, 5, 0.5, 2, 5, -0.5, 2, -5, -0.5, 2, 5, 0.5, -2, -5, 0.5, -2, 5, -0.5, -2, -5, 0.5, -2, -5, -0.5, -2, 5, -0.5, -2, 5, 0.5, 2, 5, 0.5, -2, 5, -0.5, 2, 5, 0.5, -2, 5, -0.5, -2, 5, -0.5, 2, -5, 0.5, -2, -5, 0.5, 2, -5, -0.5, -2, -5, 0.5, 2, -5, -0.5, 2, -5, -0.5, -2, 5, 0.5, 2, -5, 0.5, 2, 5, 0.5, -2, -5, 0.5, 2, -5, 0.5, -2, 5, 0.5, -2, -5, -0.5, 2, 5, -0.5, 2, -5, -0.5, -2, 5, -0.5, 2, 5, -0.5, -2, -5, -0.5, -2)
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_kjg33"]
 height = 4.7
@@ -21,17 +43,25 @@ region = Rect2(448, 599, 474, 197)
 atlas = ExtResource("7_rc3nn")
 region = Rect2(186, 640, 160, 122)
 
-[node name="Pigsty" type="Area3D" unique_id=88811157 groups=["goal_zones"]]
+[node name="Pigsty" type="Area3D" unique_id=88811157 node_paths=PackedStringArray("VisualMesh", "CollisionShape") groups=["goal_zones"]]
 script = ExtResource("1_qi2m5")
+VisualMesh = NodePath("PigstyCaptureZoneMesh")
+CollisionShape = NodePath("PigstyCaptureZoneCollider")
 
-[node name="CollisionShape3D2" type="CollisionShape3D" parent="." unique_id=136379880]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.3656805, 0)
-shape = SubResource("CylinderShape3D_kjg33")
+[node name="PigstyCaptureZoneMesh" type="MeshInstance3D" parent="." unique_id=920715692]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.49084258, 4.63853)
+cast_shadow = 0
+ignore_occlusion_culling = true
+mesh = SubResource("BoxMesh_rc3nn")
+
+[node name="PigstyCaptureZoneCollider" type="CollisionShape3D" parent="." unique_id=1705747883 groups=["goal_zones"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.49084258, 4.63853)
+shape = SubResource("ConcavePolygonShape3D_urtgs")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=389625438]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.5239804, 0)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=1422318716]
+[node name="PigstyCollider" type="CollisionShape3D" parent="StaticBody3D" unique_id=1422318716]
 shape = SubResource("CylinderShape3D_kjg33")
 
 [node name="SpriteRoot" type="Node3D" parent="StaticBody3D" unique_id=840292723]
