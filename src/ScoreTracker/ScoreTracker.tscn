@@ -1,12 +1,13 @@
 [gd_scene format=3]
 
-[ext_resource type="Script" path="res://src/ScoreTracker/ScoreTracker.cs" id="1_score"]
+[ext_resource type="Script" uid="uid://cwquqvlnbup2" path="res://src/ScoreTracker/ScoreTracker.cs" id="1_score"]
+[ext_resource type="PackedScene" path="res://src/WinnerScreen/WinnerScreen.tscn" id="2_winner"]
 
-[node name="ScoreTracker" type="CanvasLayer" node_paths=PackedStringArray("ScoreContainer", "TimerLabel", "WinnerLabel")]
+[node name="ScoreTracker" type="CanvasLayer" node_paths=PackedStringArray("ScoreContainer", "TimerLabel")]
 script = ExtResource("1_score")
 ScoreContainer = NodePath("MarginContainer/VBoxContainer")
 TimerLabel = NodePath("MarginContainer/VBoxContainer/TimerLabel")
-WinnerLabel = NodePath("MarginContainer/VBoxContainer/WinnerLabel")
+WinnerScreenScene = ExtResource("2_winner")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 anchors_preset = 0
@@ -21,8 +22,3 @@ layout_mode = 2
 [node name="TimerLabel" type="Label" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 text = "10:00"
-
-[node name="WinnerLabel" type="Label" parent="MarginContainer/VBoxContainer"]
-layout_mode = 2
-visible = false
-text = "Winner!"
