@@ -11,7 +11,8 @@
 [ext_resource type="PackedScene" uid="uid://bxaqr0eh0nytl" path="res://src/ScoreTracker/ScoreTracker.tscn" id="7_score"]
 [ext_resource type="PackedScene" path="res://levels/props/Hospital.tscn" id="9_6ln0e"]
 [ext_resource type="PackedScene" path="res://levels/props/NefariousJumbo.tscn" id="10_qd27c"]
-[ext_resource type="PackedScene" path="res://levels/props/Pigsty.tscn" id="11_ygne2"]
+[ext_resource type="Resource" uid="uid://bygsu8w48ifb7" path="res://projectiles/arson/ArsonMask.tres" id="11_1oo2x"]
+[ext_resource type="PackedScene" uid="uid://ctol3tugnm1rv" path="res://levels/props/Pigsty.tscn" id="11_ygne2"]
 [ext_resource type="Script" uid="uid://bx8sqineax63u" path="res://src/Mask/MaskSpawner.cs" id="12_pg62e"]
 
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_r2psd"]
@@ -133,3 +134,7 @@ GoalZoneScene = ExtResource("4_5i8u7")
 [node name="MaskSpawner" type="Node3D" parent="." unique_id=525521038]
 script = ExtResource("12_pg62e")
 MaskPickupScene = ExtResource("5_1w8sc")
+
+[node name="MaskPickup" parent="." unique_id=915266363 instance=ExtResource("5_1w8sc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.6378206, 0.5, -3.4020166)
+MaskData = ExtResource("11_1oo2x")

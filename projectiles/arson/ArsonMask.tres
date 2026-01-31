@@ -10,6 +10,6 @@ MaskBits = 2
 Sprite = ExtResource("2_utepg")
 HasProjectile = true
 ProjectileScene = ExtResource("1_xqwmr")
-FireRate = 0.1
+FireRate = 0.05
 Scorable = true
 metadata/_custom_type_script = "uid://cbwkmtyoylbwe"
