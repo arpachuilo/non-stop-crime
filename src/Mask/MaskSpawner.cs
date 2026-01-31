@@ -79,8 +79,8 @@ public partial class MaskSpawner : Node3D {
     float bestScore = 0f;
 
     for (int attempt = 0; attempt < MaxPlacementAttempts; attempt++) {
-      Vector3 candidate = GenerateRandomPosition();
-      Vector3 worldCandidate = Position + candidate;
+      Vector3 candidate = Position + GenerateRandomPosition();
+      Vector3 worldCandidate = candidate;
 
       if (IsPositionNearPlayerSpawn(worldCandidate))
         continue;
@@ -106,7 +106,8 @@ public partial class MaskSpawner : Node3D {
     return bestPosition;
   }
 
-  private bool IsPositionNearPlayerSpawn(Vector3 worldPosition) {
+  private bool IsPositionNearPlayerSpawn(Vector3 localPosition) {
+    Vector3 worldPosition = GlobalTransform * localPosition;
     foreach (var spawn in PlayerSpawnLocations) {
       if (spawn == null) continue;
       float dist = worldPosition.DistanceTo(spawn.GlobalPosition);
@@ -122,7 +123,8 @@ public partial class MaskSpawner : Node3D {
     return new Vector3(x, 0, z);
   }
 
-  private float GetMinDistanceToActiveMasks(Vector3 worldPosition) {
+  private float GetMinDistanceToActiveMasks(Vector3 localPosition) {
+    Vector3 worldPosition = GlobalTransform * localPosition;
     if (_spawnedPickups.Count == 0)
       return float.MaxValue;
 
@@ -135,7 +137,8 @@ public partial class MaskSpawner : Node3D {
     return minDist;
   }
 
-  private bool IsPositionNearGoalZone(Vector3 worldPosition) {
+  private bool IsPositionNearGoalZone(Vector3 localPosition) {
+    Vector3 worldPosition = GlobalTransform * localPosition;
     var zones = GetTree().GetNodesInGroup("goal_zones");
 
     foreach (var node in zones) {
@@ -148,7 +151,8 @@ public partial class MaskSpawner : Node3D {
     return false;
   }
 
-  private bool IsPositionCollidingWithBody(Vector3 worldPosition) {
+  private bool IsPositionCollidingWithBody(Vector3 localPosition) {
+    Vector3 worldPosition = GlobalTransform * localPosition;
     var spaceState = GetWorld3D().DirectSpaceState;
     if (spaceState == null)
       return false;
