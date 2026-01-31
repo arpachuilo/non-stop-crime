@@ -181,7 +181,7 @@ _availableMasks = ExtResource("8_ukwr8")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.7833881, 17.178421)
 script = ExtResource("17_u6cys")
 NPCScene = ExtResource("18_368ro")
-SpawnDelay = 0.01
+SpawnDelay = 0.5
 SpawnAreaSize = Vector3(40, 10.04, 40)
 
 [node name="ScoreTracker" parent="." unique_id=2090427259 instance=ExtResource("11_pb8y7")]
