@@ -5,8 +5,6 @@
 [ext_resource type="Script" uid="uid://ch7jcbdn7a7yi" path="res://src/DynamicCamera.cs" id="3_5i8u7"]
 [ext_resource type="Script" uid="uid://cam52fb8h24fv" path="res://src/Projectile.cs" id="3_bmjc0"]
 [ext_resource type="PackedScene" uid="uid://b1awodkisntg" path="res://UI_PlayerInfo.tscn" id="3_hb5mc"]
-[ext_resource type="PackedScene" path="res://src/Mask/MaskPickup.tscn" id="5_i6pfi"]
-[ext_resource type="Resource" uid="uid://gshqmoyctg6e" path="res://src/Mask/MaskData/ProjectileMask.tres" id="6_1w8sc"]
 
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_r2psd"]
 
@@ -82,3 +80,14 @@ mesh = SubResource("BoxMesh_5i8u7")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.4467177)
 shape = SubResource("ConcavePolygonShape3D_6ci18")
 
+[node name="PlayerInfo" type="HBoxContainer" parent="." unique_id=612019549]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -20.0
+offset_top = -40.0
+offset_right = 20.0
+grow_horizontal = 2
+grow_vertical = 0
