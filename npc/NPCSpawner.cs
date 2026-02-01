@@ -94,11 +94,11 @@ public partial class NPCSpawner : Node3D {
   }
 
   private Vector3 FindValidPosition() {
-    Vector3 bestPosition = GenerateRandomPosition();
+    Vector3 bestPosition = Position + GenerateRandomPosition();
     float bestScore = 0f;
 
     for (int attempt = 0; attempt < MaxPlacementAttempts; attempt++) {
-      Vector3 candidate = GenerateRandomPosition();
+      Vector3 candidate = Position + GenerateRandomPosition();
       Vector3 worldCandidate = candidate;
 
       if (IsPositionNearPlayerSpawn(worldCandidate))
