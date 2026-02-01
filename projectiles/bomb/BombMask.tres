@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="MaskData" format=3 uid="uid://b1k7ex4rf5r0x"]
+
+[ext_resource type="Texture2D" uid="uid://se0elgxvdrif" path="res://projectiles/bomb/bomb_mask.png" id="1_xi0vy"]
+[ext_resource type="PackedScene" uid="uid://ci6wjb3gqboa6" path="res://projectiles/bomb/BOMB.tscn" id="2_0sfcy"]
+[ext_resource type="Script" uid="uid://cbwkmtyoylbwe" path="res://src/Mask/MaskData.cs" id="3_y7m70"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hl2rm"]
+atlas = ExtResource("1_xi0vy")
+region = Rect2(156, 46, 158, 165)
+
+[resource]
+script = ExtResource("3_y7m70")
+Name = "Bomb Mask"
+MaskBits = 2
+Icon = SubResource("AtlasTexture_hl2rm")
+Sprite = ExtResource("1_xi0vy")
+SpeedMultiplier = 1.2
+HasProjectile = true
+ProjectileScene = ExtResource("2_0sfcy")
+FireRate = 3.0
+Scorable = true
+metadata/_custom_type_script = "uid://cbwkmtyoylbwe"
