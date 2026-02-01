@@ -37,6 +37,7 @@
 [ext_resource type="Texture2D" uid="uid://0gwtbxxftkt4" path="res://player/assets/frames_gun/frame_8.png" id="19_5xqo2"]
 [ext_resource type="Texture2D" uid="uid://c13cjpmv1aca" path="res://player/assets/head_white.png" id="36_a453s"]
 [ext_resource type="AudioStream" uid="uid://dlfmani2wg4yr" path="res://assets/sfx/oof.mp3" id="37_a453s"]
+[ext_resource type="AudioStream" uid="uid://dlet474hrc0k7" path="res://assets/sfx/pickup.mp3" id="38_26uui"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_bmjc0"]
 
@@ -159,7 +160,7 @@ animations = [{
 "speed": 10.0
 }]
 
-[node name="Player" type="CharacterBody3D" unique_id=1005422296 node_paths=PackedStringArray("NamePlate", "PlayerController", "SpriteParent", "Light") groups=["Player"]]
+[node name="Player" type="CharacterBody3D" unique_id=1005422296 node_paths=PackedStringArray("NamePlate", "PlayerController", "SpriteParent", "Light", "OuchSfx", "PickupSfx") groups=["Player"]]
 floor_constant_speed = true
 floor_block_on_wall = false
 script = ExtResource("1_f76hg")
@@ -167,6 +168,8 @@ NamePlate = NodePath("NamePlate/Name")
 PlayerController = NodePath("PlayerController")
 SpriteParent = NodePath("SpriteParent")
 Light = NodePath("OmniLight3D")
+OuchSfx = NodePath("OuchSfx")
+PickupSfx = NodePath("PickupSfx")
 color = Color(0.8039216, 0, 0.92156863, 1)
 MaxSpeed = 2.0
 MinSpeed = 0.0
@@ -234,3 +237,6 @@ light_energy = 3.0
 
 [node name="OuchSfx" type="AudioStreamPlayer3D" parent="." unique_id=660019962]
 stream = ExtResource("37_a453s")
+
+[node name="PickupSfx" type="AudioStreamPlayer3D" parent="." unique_id=155015122]
+stream = ExtResource("38_26uui")

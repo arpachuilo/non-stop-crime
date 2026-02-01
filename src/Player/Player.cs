@@ -49,6 +49,9 @@ public partial class Player : Character {
   [Export]
   public AudioStreamPlayer3D OuchSfx;
 
+  [Export]
+  public AudioStreamPlayer3D PickupSfx;
+
   private ProjectileEmitter _projectileEmitter;
   private float _baseMaxSpeed;
 
@@ -183,6 +186,8 @@ public partial class Player : Character {
   public void EquipMask(MaskData mask) {
     // Remove previous abilities
     RemoveMaskAbilities();
+
+    PickupSfx?.Play();
 
     CurrentMask = mask;
     Mask = mask?.MaskBits ?? 0;  // Update zone access mask
