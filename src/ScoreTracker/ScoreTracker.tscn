@@ -6,7 +6,7 @@
 
 [sub_resource type="LabelSettings" id="LabelSettings_137n6"]
 font = ExtResource("3_2vqii")
-font_size = 40
+font_size = 50
 
 [node name="ScoreTracker" type="Control" unique_id=2090427259 node_paths=PackedStringArray("TimerLabel")]
 layout_mode = 3
