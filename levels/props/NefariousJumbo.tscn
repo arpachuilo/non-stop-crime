@@ -12,6 +12,8 @@
 render_priority = 0
 shader = ExtResource("2_o3f3e")
 shader_parameter/base_color = Color(0.25713375, 0.4030725, 1, 1)
+shader_parameter/capture_color = Color(1, 1, 1, 1)
+shader_parameter/capture_progress = 0.0
 shader_parameter/glow_strength = 2.0
 shader_parameter/box_height = 2.0
 shader_parameter/bottom_solid_height = 0.25
@@ -24,10 +26,26 @@ shader_parameter/noise_pulse = 0.25
 
 [sub_resource type="BoxMesh" id="BoxMesh_8omod"]
 material = SubResource("ShaderMaterial_35ju7")
-size = Vector3(3, 1, 6)
+size = Vector3(4.405, 1, 9.145)
 
-[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_vv5rx"]
-data = PackedVector3Array(-1.5, 0.5, 3, 1.5, 0.5, 3, -1.5, -0.5, 3, 1.5, 0.5, 3, 1.5, -0.5, 3, -1.5, -0.5, 3, 1.5, 0.5, -3, -1.5, 0.5, -3, 1.5, -0.5, -3, -1.5, 0.5, -3, -1.5, -0.5, -3, 1.5, -0.5, -3, 1.5, 0.5, 3, 1.5, 0.5, -3, 1.5, -0.5, 3, 1.5, 0.5, -3, 1.5, -0.5, -3, 1.5, -0.5, 3, -1.5, 0.5, -3, -1.5, 0.5, 3, -1.5, -0.5, -3, -1.5, 0.5, 3, -1.5, -0.5, 3, -1.5, -0.5, -3, 1.5, 0.5, 3, -1.5, 0.5, 3, 1.5, 0.5, -3, -1.5, 0.5, 3, -1.5, 0.5, -3, 1.5, 0.5, -3, -1.5, -0.5, 3, 1.5, -0.5, 3, -1.5, -0.5, -3, 1.5, -0.5, 3, 1.5, -0.5, -3, -1.5, -0.5, -3)
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_o3f3e"]
+render_priority = 0
+shader = ExtResource("2_o3f3e")
+shader_parameter/base_color = Color(0.5, 0.5, 0.5, 0.5)
+shader_parameter/capture_color = Color(1, 1, 1, 1)
+shader_parameter/capture_progress = 0.0
+shader_parameter/glow_strength = 2.0
+shader_parameter/box_height = 2.0
+shader_parameter/bottom_solid_height = 0.25
+shader_parameter/alpha_falloff_power = 1.5
+shader_parameter/noise_scale = 6.0
+shader_parameter/noise_strength = 0.15
+shader_parameter/noise_speed = 1.2
+shader_parameter/noise_wobble = 0.35
+shader_parameter/noise_pulse = 0.25
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_35ju7"]
+data = PackedVector3Array(-2.2024999, 0.5, 4.5724998, 2.2024999, 0.5, 4.5724998, -2.2024999, -0.5, 4.5724998, 2.2024999, 0.5, 4.5724998, 2.2024999, -0.5, 4.5724998, -2.2024999, -0.5, 4.5724998, 2.2024999, 0.5, -4.5724998, -2.2024999, 0.5, -4.5724998, 2.2024999, -0.5, -4.5724998, -2.2024999, 0.5, -4.5724998, -2.2024999, -0.5, -4.5724998, 2.2024999, -0.5, -4.5724998, 2.2024999, 0.5, 4.5724998, 2.2024999, 0.5, -4.5724998, 2.2024999, -0.5, 4.5724998, 2.2024999, 0.5, -4.5724998, 2.2024999, -0.5, -4.5724998, 2.2024999, -0.5, 4.5724998, -2.2024999, 0.5, -4.5724998, -2.2024999, 0.5, 4.5724998, -2.2024999, -0.5, -4.5724998, -2.2024999, 0.5, 4.5724998, -2.2024999, -0.5, 4.5724998, -2.2024999, -0.5, -4.5724998, 2.2024999, 0.5, 4.5724998, -2.2024999, 0.5, 4.5724998, 2.2024999, 0.5, -4.5724998, -2.2024999, 0.5, 4.5724998, -2.2024999, 0.5, -4.5724998, 2.2024999, 0.5, -4.5724998, -2.2024999, -0.5, 4.5724998, 2.2024999, -0.5, 4.5724998, -2.2024999, -0.5, -4.5724998, 2.2024999, -0.5, 4.5724998, 2.2024999, -0.5, -4.5724998, -2.2024999, -0.5, -4.5724998)
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_3rvjk"]
 radius = 1.5
@@ -48,10 +66,11 @@ CollisionShape = NodePath("ObmujCaptureZoneCollider")
 [node name="ObmujCaptureZoneMesh" type="MeshInstance3D" parent="." unique_id=1597020757]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5844593, 0.50530374, -0.10588312)
 mesh = SubResource("BoxMesh_8omod")
+surface_material_override/0 = SubResource("ShaderMaterial_o3f3e")
 
-[node name="ObmujCaptureZoneCollider" type="CollisionShape3D" parent="." unique_id=148417784]
+[node name="ObmujCaptureZoneCollider" type="CollisionShape3D" parent="." unique_id=1900883257 groups=["goal_zones"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5844593, 0.50530374, -0.10588312)
-shape = SubResource("ConcavePolygonShape3D_vv5rx")
+shape = SubResource("ConcavePolygonShape3D_35ju7")
 
 [node name="ObmujStaticBody" type="StaticBody3D" parent="." unique_id=762354467]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.3901017, 0)
