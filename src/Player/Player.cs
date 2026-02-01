@@ -98,6 +98,7 @@ public partial class Player : Character {
 
     _isDead = true;
     SpawnCorpse();
+    GlobalPosition = Spawn;
     EquipMask(null);
     EmitSignal(SignalName.PlayerReset);
     OuchSfx?.Play();
