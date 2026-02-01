@@ -4,8 +4,9 @@
 [ext_resource type="Script" uid="uid://b430y4e1vno6x" path="res://src/Lobby.cs" id="1_pb8y7"]
 [ext_resource type="PackedScene" uid="uid://cj7ucao0d5den" path="res://AC_Player.tscn" id="2_hjsbj"]
 [ext_resource type="PackedScene" uid="uid://b1awodkisntg" path="res://player/UI_PlayerInfo.tscn" id="3_vnv7o"]
-[ext_resource type="PackedScene" path="res://menus/LobbyOverlay.tscn" id="4_hy0rb"]
+[ext_resource type="PackedScene" uid="uid://bolpqy5islgfi" path="res://menus/LobbyOverlay.tscn" id="4_hy0rb"]
 [ext_resource type="Script" uid="uid://ch7jcbdn7a7yi" path="res://src/DynamicCamera.cs" id="4_rtcij"]
+[ext_resource type="Texture2D" uid="uid://bim0wfxfjakdv" path="res://assets/fence.png" id="5_574oa"]
 [ext_resource type="Texture2D" uid="uid://jum8fmc7rbed" path="res://levels/assets/PavingStones150_1K-PNG_Color.png" id="6_3ca7f"]
 [ext_resource type="PackedScene" path="res://levels/props/greeblies/Trashbag.tscn" id="6_lh335"]
 [ext_resource type="Script" uid="uid://bx8sqineax63u" path="res://src/Mask/MaskSpawner.cs" id="7_d5x7l"]
@@ -25,7 +26,41 @@
 [sub_resource type="BoxShape3D" id="BoxShape3D_kogck"]
 size = Vector3(1, 1, 55)
 
-[sub_resource type="BoxMesh" id="BoxMesh_umreq"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_574oa"]
+albedo_texture = ExtResource("5_574oa")
+uv1_triplanar = true
+uv1_world_triplanar = true
+
+[sub_resource type="QuadMesh" id="QuadMesh_tn76l"]
+material = SubResource("StandardMaterial3D_574oa")
+orientation = 0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tn76l"]
+transparency = 1
+albedo_texture = ExtResource("5_574oa")
+uv1_triplanar = true
+uv1_world_triplanar = true
+
+[sub_resource type="QuadMesh" id="QuadMesh_werwd"]
+material = SubResource("StandardMaterial3D_tn76l")
+flip_faces = true
+orientation = 0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_werwd"]
+albedo_texture = ExtResource("5_574oa")
+uv1_triplanar = true
+uv1_world_triplanar = true
+
+[sub_resource type="QuadMesh" id="QuadMesh_of21v"]
+material = SubResource("StandardMaterial3D_werwd")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_80cyg"]
+albedo_texture = ExtResource("5_574oa")
+uv1_triplanar = true
+uv1_world_triplanar = true
+
+[sub_resource type="QuadMesh" id="QuadMesh_mca5t"]
+material = SubResource("StandardMaterial3D_80cyg")
 
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_umreq"]
 
@@ -120,23 +155,23 @@ transform = Transform3D(-4.3711385e-08, 0, 0.99999994, 0, 1, 0, -0.99999994, 0, 
 shape = SubResource("BoxShape3D_kogck")
 
 [node name="WallEast" type="MeshInstance3D" parent="Walls" unique_id=203067950]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 55, -26.778, 0, 17)
-mesh = SubResource("BoxMesh_umreq")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 55, -26.778, 0.17721272, 17)
+mesh = SubResource("QuadMesh_tn76l")
 skeleton = NodePath("")
 
 [node name="WallWest" type="MeshInstance3D" parent="Walls" unique_id=658359860]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 55, 25.979944, 0, 16.95297)
-mesh = SubResource("BoxMesh_umreq")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 55, 25.979944, 0.18727374, 16.95297)
+mesh = SubResource("QuadMesh_werwd")
 skeleton = NodePath("")
 
 [node name="WallNorth" type="MeshInstance3D" parent="Walls" unique_id=517507882]
-transform = Transform3D(52.95, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -10)
-mesh = SubResource("BoxMesh_umreq")
+transform = Transform3D(52.95, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.302042, -10)
+mesh = SubResource("QuadMesh_of21v")
 skeleton = NodePath("")
 
 [node name="WallSouth" type="MeshInstance3D" parent="Walls" unique_id=1983312205]
-transform = Transform3D(53, 0, 0, 0, 1, 0, 0, 0, 1, -0.396552, 0, 43.97227)
-mesh = SubResource("BoxMesh_umreq")
+transform = Transform3D(53, 0, 0, 0, 1, 0, 0, 0, 1, -0.396552, 0.16546798, 44.167297)
+mesh = SubResource("QuadMesh_mca5t")
 skeleton = NodePath("")
 
 [node name="Ground" type="StaticBody3D" parent="." unique_id=673564305]
