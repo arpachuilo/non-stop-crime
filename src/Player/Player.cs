@@ -38,6 +38,9 @@ public partial class Player : Character {
   [Export]
   public OmniLight3D Light;
 
+  [Export]
+  public AudioStreamPlayer3D OuchSfx;
+
   private ProjectileEmitter _projectileEmitter;
   private float _baseMaxSpeed;
 
@@ -97,6 +100,7 @@ public partial class Player : Character {
     SpawnCorpse();
     EquipMask(null);
     EmitSignal(SignalName.PlayerReset);
+    OuchSfx?.Play();
 
     // Hide player and disable light
     SpriteParent.Visible = false;
