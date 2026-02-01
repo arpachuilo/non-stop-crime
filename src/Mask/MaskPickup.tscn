@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bjerjgsbg7k1d" path="res://src/Mask/MaskPickup.cs" id="1_pickup"]
 [ext_resource type="Resource" uid="uid://b4ruexidpexgr" path="res://projectiles/gun/GunMask.tres" id="2_v4e6o"]
-[ext_resource type="Texture2D" uid="uid://dgrc1k4g2dvv0" path="res://projectiles/knife/stab_mask_icon.png" id="3_v4e6o"]
+[ext_resource type="Texture2D" uid="uid://binyunater2xi" path="res://projectiles/gun/gun_mask.png" id="3_ck8un"]
 [ext_resource type="Script" uid="uid://cumljpiaj7ee6" path="res://src/Mask/MaskSpriteBob.cs" id="4_ck8un"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ck8un"]
@@ -12,6 +12,10 @@ albedo_color = Color(1, 1, 1, 0.8)
 [sub_resource type="SphereMesh" id="SphereMesh_d41i8"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_trodt"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xynlu"]
+atlas = ExtResource("3_ck8un")
+region = Rect2(138, 85, 203, 155)
 
 [node name="MaskPickup" type="Area3D" unique_id=1033929926]
 script = ExtResource("1_pickup")
@@ -27,10 +31,9 @@ mesh = SubResource("SphereMesh_d41i8")
 shape = SubResource("SphereShape3D_trodt")
 
 [node name="IconSprite3D" type="Sprite3D" parent="." unique_id=1855130851]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0.4, 0)
+transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 0, 0.4, 0)
 gi_mode = 2
-shaded = true
 alpha_antialiasing_mode = 2
 texture_filter = 4
-texture = ExtResource("3_v4e6o")
+texture = SubResource("AtlasTexture_xynlu")
 script = ExtResource("4_ck8un")
