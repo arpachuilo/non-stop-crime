@@ -14,6 +14,8 @@
 render_priority = 0
 shader = ExtResource("2_urtgs")
 shader_parameter/base_color = Color(0.2, 0.8, 1, 1)
+shader_parameter/capture_color = Color(1, 1, 1, 1)
+shader_parameter/capture_progress = 0.0
 shader_parameter/glow_strength = 2.0
 shader_parameter/box_height = 2.0
 shader_parameter/bottom_solid_height = 0.25
@@ -27,6 +29,22 @@ shader_parameter/noise_pulse = 0.25
 [sub_resource type="BoxMesh" id="BoxMesh_rc3nn"]
 material = SubResource("ShaderMaterial_lu4a6")
 size = Vector3(10, 1, 4)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_urtgs"]
+render_priority = 0
+shader = ExtResource("2_urtgs")
+shader_parameter/base_color = Color(0.5, 0.5, 0.5, 0.5)
+shader_parameter/capture_color = Color(1, 1, 1, 1)
+shader_parameter/capture_progress = 0.0
+shader_parameter/glow_strength = 2.0
+shader_parameter/box_height = 2.0
+shader_parameter/bottom_solid_height = 0.25
+shader_parameter/alpha_falloff_power = 1.5
+shader_parameter/noise_scale = 6.0
+shader_parameter/noise_strength = 0.15
+shader_parameter/noise_speed = 1.2
+shader_parameter/noise_wobble = 0.35
+shader_parameter/noise_pulse = 0.25
 
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_urtgs"]
 data = PackedVector3Array(-5, 0.5, 2, 5, 0.5, 2, -5, -0.5, 2, 5, 0.5, 2, 5, -0.5, 2, -5, -0.5, 2, 5, 0.5, -2, -5, 0.5, -2, 5, -0.5, -2, -5, 0.5, -2, -5, -0.5, -2, 5, -0.5, -2, 5, 0.5, 2, 5, 0.5, -2, 5, -0.5, 2, 5, 0.5, -2, 5, -0.5, -2, 5, -0.5, 2, -5, 0.5, -2, -5, 0.5, 2, -5, -0.5, -2, -5, 0.5, 2, -5, -0.5, 2, -5, -0.5, -2, 5, 0.5, 2, -5, 0.5, 2, 5, 0.5, -2, -5, 0.5, 2, -5, 0.5, -2, 5, 0.5, -2, -5, -0.5, 2, 5, -0.5, 2, -5, -0.5, -2, 5, -0.5, 2, 5, -0.5, -2, -5, -0.5, -2)
@@ -49,13 +67,14 @@ VisualMesh = NodePath("PigstyCaptureZoneMesh")
 CollisionShape = NodePath("PigstyCaptureZoneCollider")
 
 [node name="PigstyCaptureZoneMesh" type="MeshInstance3D" parent="." unique_id=920715692]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.49084258, 4.63853)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.42432594, 4.63853)
 cast_shadow = 0
 ignore_occlusion_culling = true
 mesh = SubResource("BoxMesh_rc3nn")
+surface_material_override/0 = SubResource("ShaderMaterial_urtgs")
 
 [node name="PigstyCaptureZoneCollider" type="CollisionShape3D" parent="." unique_id=1705747883 groups=["goal_zones"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.49084258, 4.63853)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4185269, 4.63853)
 shape = SubResource("ConcavePolygonShape3D_urtgs")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=389625438]
