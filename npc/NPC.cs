@@ -22,7 +22,11 @@ public partial class NPC : Character
   public AudioStreamPlayer3D OofSfx { get; set; }
 
   private static Texture2D _deathTexture;
+  private static Texture2D _happyFaceTexture;
+  private static Texture2D _scaredFaceTexture;
   private static RandomNumberGenerator _rng;
+
+  private bool _isScared = false;
 
   static NPC()
   {
@@ -35,6 +39,11 @@ public partial class NPC : Character
     SpriteParent ??= GetNode<SpriteParent>("SpriteParent");
     VoicePlayer ??= GetNodeOrNull<AudioStreamPlayer3D>("VoicePlayer");
     _deathTexture ??= GD.Load<Texture2D>("res://player/assets/death.png");
+    _happyFaceTexture ??= GD.Load<Texture2D>("res://npc/faces/npc_happy.png");
+    _scaredFaceTexture ??= GD.Load<Texture2D>("res://npc/faces/npc_scared.png");
+
+    // Apply happy face on spawn
+    SpriteParent?.ApplyMaskTexture(_happyFaceTexture);
 
     PlayRandomVoice();
   }
@@ -47,6 +56,20 @@ public partial class NPC : Character
     VoicePlayer.Stream = VoiceClips[index];
     VoicePlayer.PitchScale = _rng.RandfRange(0.8f, 1.3f);
     VoicePlayer.Play();
+  }
+
+  private void UpdateFaceExpression(bool playerNearby)
+  {
+    if (playerNearby && !_isScared)
+    {
+      _isScared = true;
+      SpriteParent?.ApplyMaskTexture(_scaredFaceTexture);
+    }
+    else if (!playerNearby && _isScared)
+    {
+      _isScared = false;
+      SpriteParent?.ApplyMaskTexture(_happyFaceTexture);
+    }
   }
 
   public override Vector3 GetDirection()
@@ -69,10 +92,12 @@ public partial class NPC : Character
 
     if (closest != null)
     {
+      UpdateFaceExpression(true);
       return -(closest.GlobalPosition - GlobalPosition).Normalized();
     }
 
     // Do a random walk if no player is within aggro radius
+    UpdateFaceExpression(false);
     return RandomUtil.RandomDirection().Normalized()._X0Y();
   }
 
