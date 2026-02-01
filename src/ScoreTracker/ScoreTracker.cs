@@ -51,6 +51,7 @@ public partial class ScoreTracker : Control {
     bool hasTie = false;
     bool hasWinner = false;
 
+    var color = Colors.Black;
     if (players.Count == 0) {
       winnerName = "No players!";
     } else {
@@ -63,10 +64,11 @@ public partial class ScoreTracker : Control {
       } else {
         winnerName = winner.NamePlate.Text;
         hasWinner = true;
+        color = winner.PlayerInfo.UIColor;
       }
     }
 
-    WinnerOverlay.SetWinState(winnerName, hasTie, hasWinner);
+    WinnerOverlay.SetWinState(winnerName, hasTie, hasWinner, color);
     GetTree().ChangeSceneToPacked(WinnerScreenScene);
   }
 }
