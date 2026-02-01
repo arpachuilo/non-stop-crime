@@ -18,11 +18,11 @@ public partial class MainMenu : Control {
   }
 
   private void OnStartButtonPressed() {
-    GetTree().ChangeSceneToPacked(gameScene);
+    GetTree()?.ChangeSceneToPacked(gameScene);
   }
 
   private void OnDemoButtonPressed() {
-    GetTree().ChangeSceneToPacked(demoScene);
+    GetTree()?.ChangeSceneToPacked(demoScene);
   }
 
   private void OnExitButtonPressed() {
