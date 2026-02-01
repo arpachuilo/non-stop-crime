@@ -4,10 +4,10 @@
 [ext_resource type="Script" uid="uid://b430y4e1vno6x" path="res://src/Lobby.cs" id="1_pb8y7"]
 [ext_resource type="PackedScene" uid="uid://cj7ucao0d5den" path="res://AC_Player.tscn" id="2_hjsbj"]
 [ext_resource type="PackedScene" uid="uid://b1awodkisntg" path="res://player/UI_PlayerInfo.tscn" id="3_vnv7o"]
-[ext_resource type="PackedScene" path="res://menus/LobbyOverlay.tscn" id="4_hy0rb"]
+[ext_resource type="PackedScene" uid="uid://bolpqy5islgfi" path="res://menus/LobbyOverlay.tscn" id="4_hy0rb"]
 [ext_resource type="Script" uid="uid://ch7jcbdn7a7yi" path="res://src/DynamicCamera.cs" id="4_rtcij"]
 [ext_resource type="Texture2D" uid="uid://dq8fhsvfeubu4" path="res://levels/assets/PavingStones150_1K-PNG_Color.png" id="6_3ca7f"]
-[ext_resource type="PackedScene" path="res://levels/props/greeblies/Trashbag.tscn" id="6_lh335"]
+[ext_resource type="PackedScene" uid="uid://e72mqccnojuq" path="res://levels/props/greeblies/Trashbag.tscn" id="6_lh335"]
 [ext_resource type="Script" uid="uid://bx8sqineax63u" path="res://src/Mask/MaskSpawner.cs" id="7_d5x7l"]
 [ext_resource type="PackedScene" uid="uid://27h8ms28togi" path="res://src/Mask/MaskPickup.tscn" id="8_rtcij"]
 [ext_resource type="Resource" uid="uid://bif5c1tl2gr2i" path="res://src/Mask/D_AllMasks.tres" id="8_ukwr8"]
@@ -63,7 +63,7 @@ script = ExtResource("1_pb8y7")
 PlayerScene = ExtResource("2_hjsbj")
 PlayerContainer = NodePath("../Players")
 PlayerInfoScene = ExtResource("3_vnv7o")
-PlayerInfoContainer = NodePath("../HBoxContainer")
+PlayerInfoContainer = NodePath("../InRoundPlayerInfoContainer")
 Safetymode = NodePath("LobbyOverlay/SafetyModeLabel")
 PlayerColors = Array[Color]([Color(0.8004218, 0.3579007, 0.35808152, 1), Color(0.50016034, 0.65481156, 0.9719935, 1), Color(0.19607843, 0.8039216, 0.19607843, 1), Color(0.727104, 0.69937444, 0, 1)])
 SpawnPoints = [NodePath("../Players/Spawn A"), NodePath("../Players/Spawn B"), NodePath("../Players/Spawn C"), NodePath("../Players/Spawn D")]
@@ -175,7 +175,7 @@ SpawnAreaSize = Vector3(50, 10.04, 50)
 [node name="ScoreTracker" parent="." unique_id=2090427259 instance=ExtResource("11_pb8y7")]
 GameDurationSeconds = 90.0
 
-[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=1143154661]
+[node name="InRoundPlayerInfoContainer" type="HBoxContainer" parent="." unique_id=1143154661]
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
