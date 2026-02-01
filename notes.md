@@ -17,6 +17,7 @@
 - NPC's
   - Reduce jittering 👉 don't allow instant direction changes
   - Add npc limit 👉 max in scene at any point in time
+  - Add faces
 - Balance
   - Gun is too powerful
     - Reduce fire rate
