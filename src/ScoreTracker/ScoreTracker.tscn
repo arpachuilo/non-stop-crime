@@ -1,26 +1,37 @@
 [gd_scene format=3 uid="uid://bxaqr0eh0nytl"]
 
 [ext_resource type="Script" uid="uid://cwquqvlnbup2" path="res://src/ScoreTracker/ScoreTracker.cs" id="1_score"]
-[ext_resource type="PackedScene" path="res://menus/WinnerOverlay.tscn" id="2_winner"]
+[ext_resource type="PackedScene" uid="uid://dqeupnhachgnt" path="res://menus/WinnerOverlay.tscn" id="2_winner"]
+[ext_resource type="FontFile" uid="uid://dtb16dgkgphjp" path="res://menus/assets/fonts/Chalkduster.ttf" id="3_2vqii"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_137n6"]
+font = ExtResource("3_2vqii")
+font_size = 32
 
 [node name="ScoreTracker" type="Control" unique_id=2090427259 node_paths=PackedStringArray("ScoreContainer", "TimerLabel")]
 layout_mode = 3
 anchors_preset = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
 script = ExtResource("1_score")
-ScoreContainer = NodePath("MarginContainer/VBoxContainer")
-TimerLabel = NodePath("MarginContainer/VBoxContainer/TimerLabel")
+ScoreContainer = NodePath("")
+TimerLabel = NodePath("TimerMarginContainer/TimerLabel")
 WinnerScreenScene = ExtResource("2_winner")
 
-[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1625825793]
-layout_mode = 0
-offset_right = 200.0
-offset_bottom = 200.0
-theme_override_constants/margin_left = 20
-theme_override_constants/margin_top = 20
+[node name="TimerMarginContainer" type="MarginContainer" parent="." unique_id=2111820727]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -21.0
+offset_right = 21.0
+offset_bottom = 40.0
+grow_horizontal = 2
+theme_override_constants/margin_top = 30
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" unique_id=748741638]
+[node name="TimerLabel" type="Label" parent="TimerMarginContainer" unique_id=1596798693]
 layout_mode = 2
-
-[node name="TimerLabel" type="Label" parent="MarginContainer/VBoxContainer" unique_id=1596798693]
-layout_mode = 2
-text = "10:00"
+text = "2:00"
+label_settings = SubResource("LabelSettings_137n6")
+horizontal_alignment = 1
+vertical_alignment = 1
