@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://vr472n0ku81u"]
 
-[ext_resource type="Shader" uid="uid://cxvp62bp8aq08" path="res://levels/assets/Backdrop.gdshader" id="1_80vhd"]
+[ext_resource type="Shader" path="res://levels/assets/Backdrop.gdshader" id="1_80vhd"]
 [ext_resource type="Script" uid="uid://b430y4e1vno6x" path="res://src/Lobby.cs" id="1_pb8y7"]
 [ext_resource type="PackedScene" uid="uid://cj7ucao0d5den" path="res://AC_Player.tscn" id="2_hjsbj"]
 [ext_resource type="PackedScene" uid="uid://b1awodkisntg" path="res://player/UI_PlayerInfo.tscn" id="3_vnv7o"]
@@ -12,15 +12,15 @@
 [ext_resource type="PackedScene" uid="uid://27h8ms28togi" path="res://src/Mask/MaskPickup.tscn" id="8_rtcij"]
 [ext_resource type="Resource" uid="uid://bif5c1tl2gr2i" path="res://src/Mask/D_AllMasks.tres" id="8_ukwr8"]
 [ext_resource type="PackedScene" uid="uid://bxaqr0eh0nytl" path="res://src/ScoreTracker/ScoreTracker.tscn" id="11_pb8y7"]
-[ext_resource type="PackedScene" uid="uid://d0ie1mhex1w1l" path="res://levels/props/Hospital.tscn" id="12_0qmeg"]
-[ext_resource type="PackedScene" uid="uid://b0u72twc7avie" path="res://levels/props/NefariousJumbo.tscn" id="13_ta7ci"]
-[ext_resource type="PackedScene" uid="uid://c2hmq40jdskvd" path="res://levels/props/ParkingLot.tscn" id="14_lh335"]
+[ext_resource type="PackedScene" path="res://levels/props/Hospital.tscn" id="12_0qmeg"]
+[ext_resource type="PackedScene" path="res://levels/props/NefariousJumbo.tscn" id="13_ta7ci"]
+[ext_resource type="PackedScene" path="res://levels/props/ParkingLot.tscn" id="14_lh335"]
 [ext_resource type="PackedScene" uid="uid://bx6jancv55uem" path="res://levels/props/Lamp.tscn" id="15_0qmeg"]
-[ext_resource type="PackedScene" uid="uid://ctol3tugnm1rv" path="res://levels/props/Pigsty.tscn" id="15_u6cys"]
+[ext_resource type="PackedScene" path="res://levels/props/Pigsty.tscn" id="15_u6cys"]
 [ext_resource type="PackedScene" uid="uid://5h4p037xui6w" path="res://levels/props/greeblies/Bush.tscn" id="16_ta7ci"]
 [ext_resource type="Script" uid="uid://h6b127a3t5at" path="res://npc/NPCSpawner.cs" id="17_u6cys"]
 [ext_resource type="PackedScene" uid="uid://c4a4i2hhu3r40" path="res://npc/NPC.tscn" id="18_368ro"]
-[ext_resource type="PackedScene" uid="uid://cq086pc3a0s8n" path="res://levels/props/Park.tscn" id="20_3ca7f"]
+[ext_resource type="PackedScene" path="res://levels/props/Park.tscn" id="20_3ca7f"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_umreq"]
 
@@ -159,7 +159,7 @@ surface_material_override/0 = SubResource("ShaderMaterial_cwqvt")
 [node name="MaskSpawner" type="Node3D" parent="." unique_id=321745574 node_paths=PackedStringArray("PlayerSpawnLocations")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 18.037977)
 script = ExtResource("7_d5x7l")
-SpawnAreaSize = Vector3(40, 8.11, 40)
+SpawnAreaSize = Vector3(50, 8.11, 50)
 MaskPickupScene = ExtResource("8_rtcij")
 PlayerSpawnLocations = [NodePath("../Players")]
 _availableMasks = ExtResource("8_ukwr8")
@@ -169,7 +169,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.7833881, 17.178421)
 script = ExtResource("17_u6cys")
 NPCScene = ExtResource("18_368ro")
 SpawnDelay = 0.5
-SpawnAreaSize = Vector3(40, 10.04, 40)
+SpawnAreaSize = Vector3(50, 10.04, 50)
 
 [node name="ScoreTracker" parent="." unique_id=2090427259 instance=ExtResource("11_pb8y7")]
 
