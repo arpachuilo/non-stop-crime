@@ -4,9 +4,10 @@
 [ext_resource type="Script" uid="uid://bs5r0hgmu14nl" path="res://src/Mask/MaskDataArray.cs" id="2_6a2qg"]
 [ext_resource type="Resource" uid="uid://bygsu8w48ifb7" path="res://projectiles/arson/ArsonMask.tres" id="2_nd6jh"]
 [ext_resource type="Resource" uid="uid://bfx8px6hsb2wc" path="res://projectiles/knife/KnifeMask.tres" id="3_nd6jh"]
+[ext_resource type="Resource" uid="uid://b1k7ex4rf5r0x" path="res://projectiles/bomb/BombMask.tres" id="4_1p0f3"]
 [ext_resource type="Resource" uid="uid://b4ruexidpexgr" path="res://projectiles/gun/GunMask.tres" id="4_f7gkc"]
 
 [resource]
 script = ExtResource("2_6a2qg")
-Masks = Array[ExtResource("1_wcy8s")]([ExtResource("2_nd6jh"), ExtResource("3_nd6jh"), ExtResource("4_f7gkc")])
+Masks = Array[ExtResource("1_wcy8s")]([ExtResource("2_nd6jh"), ExtResource("3_nd6jh"), ExtResource("4_f7gkc"), ExtResource("4_1p0f3")])
 metadata/_custom_type_script = "uid://bs5r0hgmu14nl"
