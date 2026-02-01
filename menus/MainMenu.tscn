@@ -6,19 +6,28 @@
 [ext_resource type="Texture2D" uid="uid://bh70ortkyk4t" path="res://menus/assets/Main_menu_BG.png" id="4_k15nl"]
 [ext_resource type="Texture2D" uid="uid://bgxko56g8bn26" path="res://menus/assets/Main_menu_buttons.png" id="5_4yyw3"]
 [ext_resource type="FontFile" uid="uid://boo61ehi8k82u" path="res://menus/assets/fonts/Small Town Skyline.ttf" id="6_e2awe"]
+[ext_resource type="Texture2D" uid="uid://carga5i7rjpvr" path="res://menus/assets/Main_menu_buttons_darker.png" id="6_lb38e"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_je8l7"]
 atlas = ExtResource("5_4yyw3")
+region = Rect2(387, 305, 125, 57)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7fxis"]
+atlas = ExtResource("6_lb38e")
 region = Rect2(387, 305, 125, 57)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_wnv6w"]
 atlas = ExtResource("5_4yyw3")
 region = Rect2(360, 373, 170, 51)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_lb38e"]
+atlas = ExtResource("6_lb38e")
+region = Rect2(360, 373, 170, 51)
+
 [sub_resource type="LabelSettings" id="LabelSettings_m8c1o"]
 font_size = 50
 
-[node name="MainMenu" type="Control" unique_id=1873563801 node_paths=PackedStringArray("startButton", "demoButton", "exitButton")]
+[node name="MainMenu" type="Control" unique_id=1873563801 node_paths=PackedStringArray("startButton", "exitButton")]
 clip_contents = true
 layout_mode = 3
 anchors_preset = 15
@@ -29,9 +38,8 @@ grow_vertical = 2
 script = ExtResource("1_ot3ob")
 gameScene = ExtResource("2_vp83o")
 demoScene = ExtResource("2_rmsp1")
-startButton = NodePath("")
-demoButton = NodePath("")
-exitButton = NodePath("")
+startButton = NodePath("MarginContainer/VBoxContainer/ButtonsVBox/StartGameV2")
+exitButton = NodePath("MarginContainer/VBoxContainer/ButtonsVBox/QuitGameV2")
 
 [node name="MainMenuBG" type="TextureRect" parent="." unique_id=1230870007]
 layout_mode = 0
@@ -59,12 +67,24 @@ theme_override_constants/separation = 15
 [node name="StartGameV2" type="TextureButton" parent="MarginContainer/VBoxContainer/ButtonsVBox" unique_id=1672514580]
 layout_mode = 2
 size_flags_horizontal = 4
+focus_neighbor_top = NodePath("../QuitGameV2")
+focus_neighbor_bottom = NodePath("../QuitGameV2")
+focus_next = NodePath("../QuitGameV2")
+focus_previous = NodePath("../QuitGameV2")
 texture_normal = SubResource("AtlasTexture_je8l7")
+texture_hover = SubResource("AtlasTexture_7fxis")
+texture_focused = SubResource("AtlasTexture_7fxis")
 
 [node name="QuitGameV2" type="TextureButton" parent="MarginContainer/VBoxContainer/ButtonsVBox" unique_id=575679870]
 layout_mode = 2
 size_flags_horizontal = 4
+focus_neighbor_top = NodePath("../StartGameV2")
+focus_neighbor_bottom = NodePath("../StartGameV2")
+focus_next = NodePath("../StartGameV2")
+focus_previous = NodePath("../StartGameV2")
 texture_normal = SubResource("AtlasTexture_wnv6w")
+texture_hover = SubResource("AtlasTexture_lb38e")
+texture_focused = SubResource("AtlasTexture_lb38e")
 
 [node name="Label" type="Label" parent="MarginContainer/VBoxContainer" unique_id=1648181000]
 layout_mode = 2
