@@ -1,5 +1,5 @@
 using Godot;
-using System;
+using System.Collections.Generic;
 
 public partial class LobbyOverlay : Control {
   [Export] Texture2D UnreadyIconTexture;
@@ -15,6 +15,8 @@ public partial class LobbyOverlay : Control {
   private TextureRect _player3ReadyIcon;
   private TextureRect _player4ReadyIcon;
 
+  private Dictionary<Player, int> PlayerToIndex = new();
+
   public override void _Ready() {
     _player1ReadyIcon = Player1VBox.GetNodeOrNull<TextureRect>("ReadyState");
     _player2ReadyIcon = Player2VBox.GetNodeOrNull<TextureRect>("ReadyState");
@@ -27,7 +29,15 @@ public partial class LobbyOverlay : Control {
     Player4VBox.Visible = false;
   }
 
-  public void SetPlayerActiveState(int playerIndex, bool isActive) {
+  public void SetPlayerActiveState(Player player, bool isActive) {
+    int playerIndex;
+    if (PlayerToIndex.ContainsKey(player)) {
+      playerIndex = PlayerToIndex[player];
+    } else {
+      playerIndex = PlayerToIndex.Count + 1;
+      PlayerToIndex[player] = playerIndex;
+    }
+
     switch (playerIndex) {
       case 1:
         Player1VBox.Visible = isActive;
@@ -47,7 +57,15 @@ public partial class LobbyOverlay : Control {
     }
   }
 
-  public void SetPlayerReadyState(int playerIndex, bool isReady) {
+  public void SetPlayerReadyState(Player player, bool isReady) {
+    int playerIndex;
+    if (PlayerToIndex.ContainsKey(player)) {
+      playerIndex = PlayerToIndex[player];
+    } else {
+      playerIndex = PlayerToIndex.Count + 1;
+      PlayerToIndex[player] = playerIndex;
+    }
+
     Texture2D iconTexture = isReady ? ReadyIconTexture : UnreadyIconTexture;
 
     switch (playerIndex) {

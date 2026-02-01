@@ -98,7 +98,7 @@ public partial class Lobby : Node {
   private void ToggleReady(Player player) {
     player.PlayerInfo.IsReady = !player.PlayerInfo.IsReady;
 
-    LobbyOverlay?.SetPlayerReadyState(Players.IndexOf(player) + 1, player.PlayerInfo.IsReady);
+    LobbyOverlay?.SetPlayerReadyState(player, player.PlayerInfo.IsReady);
 
     CheckStartCondition();
   }
@@ -129,8 +129,8 @@ public partial class Lobby : Node {
     else
       JoypadToPlayer[deviceId] = player;
 
-    LobbyOverlay?.SetPlayerActiveState(Players.IndexOf(player) + 1, true);
-    LobbyOverlay?.SetPlayerReadyState(Players.IndexOf(player) + 1, false);
+    LobbyOverlay?.SetPlayerActiveState(player, true);
+    LobbyOverlay?.SetPlayerReadyState(player, false);
   }
 
   private Vector3 GetNextSpawnPosition() {
