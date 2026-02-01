@@ -5,6 +5,7 @@ using System.Collections.Generic;
 public partial class NPCSpawner : Node3D {
   [Export] public PackedScene NPCScene { get; set; }
   [Export] public float SpawnDelay { get; set; } = 10.0f;
+  [Export] public float SpicySpawnDelay { get; set; } = 10.0f;
   [Export] public float SpawnHeight { get; set; } = 20.0f;
   [Export] public Vector3 SpawnAreaSize { get; set; } = new(20, 0, 20);
   [Export] public Vector3 GoalZoneSize { get; set; } = new(2, 1, 2);
@@ -18,6 +19,18 @@ public partial class NPCSpawner : Node3D {
   private RandomNumberGenerator _rng = new();
   private Timer _spawnTimer;
   private Poller _lifetimePoller = new(5.0f);
+
+  public override void _Input(InputEvent @event) {
+    if (@event is InputEventKey hiddenEvent) {
+      if (hiddenEvent.Keycode == Key.Key6) {
+        _lifetimePoller.Interval = SpawnDelay;
+      }
+
+      if (hiddenEvent.Keycode == Key.Key7) {
+        _lifetimePoller.Interval = SpicySpawnDelay;
+      }
+    }
+  }
 
   public override void _Ready() {
     if (Engine.IsEditorHint()) {
