@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://bxaqr0eh0nytl"]
 
 [ext_resource type="Script" uid="uid://cwquqvlnbup2" path="res://src/ScoreTracker/ScoreTracker.cs" id="1_score"]
-[ext_resource type="PackedScene" uid="uid://dqeupnhachgnt" path="res://src/WinnerScreen/WinnerScreen.tscn" id="2_winner"]
+[ext_resource type="PackedScene" uid="uid://dqeupnhachgnt" path="res://menus/WinnerOverlay.tscn" id="2_winner"]
 
 [node name="ScoreTracker" type="Control" unique_id=2090427259 node_paths=PackedStringArray("ScoreContainer", "TimerLabel")]
 layout_mode = 3
