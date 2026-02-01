@@ -10,9 +10,6 @@
 - Sound
   - SFX for abilities
   - Background music
-- Graphics/design
-  - Replace wall assets with fences 👉 Nice to have tbh
-  - Masks are hard to see 👉 Add cylinder with capture zone shader?
 - NPC's
   - Reduce jittering 👉 don't allow instant direction changes
   - Add npc limit 👉 max in scene at any point in time
