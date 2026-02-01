@@ -8,7 +8,7 @@
 [ext_resource type="Script" uid="uid://ch7jcbdn7a7yi" path="res://src/DynamicCamera.cs" id="4_rtcij"]
 [ext_resource type="Texture2D" uid="uid://bim0wfxfjakdv" path="res://assets/fence.png" id="5_574oa"]
 [ext_resource type="Texture2D" uid="uid://jum8fmc7rbed" path="res://levels/assets/PavingStones150_1K-PNG_Color.png" id="6_3ca7f"]
-[ext_resource type="PackedScene" path="res://levels/props/greeblies/Trashbag.tscn" id="6_lh335"]
+[ext_resource type="PackedScene" uid="uid://e72mqccnojuq" path="res://levels/props/greeblies/Trashbag.tscn" id="6_lh335"]
 [ext_resource type="Script" uid="uid://bx8sqineax63u" path="res://src/Mask/MaskSpawner.cs" id="7_d5x7l"]
 [ext_resource type="PackedScene" uid="uid://27h8ms28togi" path="res://src/Mask/MaskPickup.tscn" id="8_rtcij"]
 [ext_resource type="Resource" uid="uid://bif5c1tl2gr2i" path="res://src/Mask/D_AllMasks.tres" id="8_ukwr8"]
@@ -79,8 +79,8 @@ uv1_triplanar = true
 render_priority = -2
 shader = ExtResource("1_80vhd")
 shader_parameter/top_color = Color(0.1, 0.14, 0.28, 1)
-shader_parameter/bottom_color = Color(0.03, 0.03, 0.04, 1)
-shader_parameter/boundary_y = 0.42
+shader_parameter/bottom_color = Color(0.06, 0.06, 0.08, 1)
+shader_parameter/boundary_y = 0.45
 shader_parameter/arc_curvature = 0.18
 shader_parameter/band_softness = 0.06
 shader_parameter/wobble_amp = 0.015

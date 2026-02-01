@@ -1,0 +1,8 @@
+[gd_resource type="LabelSettings" format=3 uid="uid://ddvbmgecanm0u"]
+
+[ext_resource type="FontFile" uid="uid://dtb16dgkgphjp" path="res://menus/assets/fonts/Chalkduster.ttf" id="1_gok1s"]
+
+[resource]
+font = ExtResource("1_gok1s")
+font_size = 22
+font_color = Color(0, 0, 0, 1)
