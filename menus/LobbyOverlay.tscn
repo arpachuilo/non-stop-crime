@@ -8,19 +8,55 @@
 [ext_resource type="Texture2D" uid="uid://ccsgsvf1lavgs" path="res://menus/assets/player 1/player 1 box character.png" id="4_26b0x"]
 [ext_resource type="Texture2D" uid="uid://bfon3i13qlrov" path="res://menus/assets/player 1/player 1 box outline.png" id="5_smvte"]
 [ext_resource type="FontFile" uid="uid://dtb16dgkgphjp" path="res://menus/assets/fonts/Chalkduster.ttf" id="6_26b0x"]
+[ext_resource type="Texture2D" uid="uid://sp4bd7qwt46w" path="res://menus/assets/claim_zone.png" id="6_afcw3"]
 [ext_resource type="Texture2D" uid="uid://00cvnt1nonnr" path="res://menus/assets/ready_maybe.png" id="6_jin3t"]
 [ext_resource type="Texture2D" uid="uid://b2j83q1vtaecg" path="res://menus/assets/player 2/player 2 box character.png" id="7_ao7qt"]
+[ext_resource type="Texture2D" uid="uid://cawaj8cag6w6m" path="res://menus/assets/kill_player.png" id="7_b7goe"]
 [ext_resource type="Texture2D" uid="uid://doe5rxlfrbwns" path="res://menus/assets/player 3/player 3 box character.png" id="8_afcw3"]
+[ext_resource type="Texture2D" uid="uid://bjlfomyakchel" path="res://menus/assets/kill_npc.png" id="8_fex41"]
 [ext_resource type="Texture2D" uid="uid://b6v33u3gdi2r7" path="res://menus/assets/player 4/player 4 box character.png" id="9_b7goe"]
+[ext_resource type="LabelSettings" uid="uid://ddvbmgecanm0u" path="res://menus/assets/DefaultLabel.tres" id="9_pwkj3"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_26b0x"]
 font = ExtResource("6_26b0x")
 font_size = 40
 font_color = Color(0, 0, 0, 1)
 
-[sub_resource type="LabelSettings" id="LabelSettings_jin3t"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_gmioj"]
+atlas = ExtResource("6_afcw3")
+region = Rect2(146.81, 68, 132, 132)
+
+[sub_resource type="LabelSettings" id="LabelSettings_70s21"]
 font = ExtResource("6_26b0x")
-font_size = 32
+font_size = 30
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_crkqv"]
+font = ExtResource("6_26b0x")
+font_size = 22
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r7kfx"]
+atlas = ExtResource("7_b7goe")
+region = Rect2(322, 78.6, 132, 132)
+
+[sub_resource type="LabelSettings" id="LabelSettings_lwuet"]
+font = ExtResource("6_26b0x")
+font_size = 30
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_yevb0"]
+font = ExtResource("6_26b0x")
+font_size = 22
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lly1r"]
+atlas = ExtResource("8_fex41")
+region = Rect2(490.335, 73.235, 132, 132)
+
+[sub_resource type="LabelSettings" id="LabelSettings_4lvmq"]
+font = ExtResource("6_26b0x")
+font_size = 30
 font_color = Color(0, 0, 0, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_smvte"]
@@ -99,12 +135,76 @@ text = "Instructions"
 label_settings = SubResource("LabelSettings_26b0x")
 horizontal_alignment = 1
 
-[node name="InstructionsBody" type="Label" parent="LobbyMarginContainer/LobbyVBox/InstructionsVBox" unique_id=1142323245]
+[node name="InstructionsHBox" type="HBoxContainer" parent="LobbyMarginContainer/LobbyVBox/InstructionsVBox" unique_id=114774181]
 layout_mode = 2
-text = "- Be gay
-- Do crime"
-label_settings = SubResource("LabelSettings_jin3t")
+size_flags_horizontal = 4
+theme_override_constants/separation = 80
+
+[node name="VBoxContainer" type="VBoxContainer" parent="LobbyMarginContainer/LobbyVBox/InstructionsVBox/InstructionsHBox" unique_id=1193492756]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="LobbyMarginContainer/LobbyVBox/InstructionsVBox/InstructionsHBox/VBoxContainer" unique_id=786327492]
+layout_mode = 2
+texture = SubResource("AtlasTexture_gmioj")
+stretch_mode = 3
+
+[node name="LabelPurpose" type="Label" parent="LobbyMarginContainer/LobbyVBox/InstructionsVBox/InstructionsHBox/VBoxContainer" unique_id=658212593]
+layout_mode = 2
+text = "Capture zones!"
+label_settings = SubResource("LabelSettings_70s21")
 horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LabelPoints" type="Label" parent="LobbyMarginContainer/LobbyVBox/InstructionsVBox/InstructionsHBox/VBoxContainer" unique_id=516674743]
+layout_mode = 2
+text = "+2pts every 5 seconds"
+label_settings = SubResource("LabelSettings_crkqv")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="LobbyMarginContainer/LobbyVBox/InstructionsVBox/InstructionsHBox" unique_id=1417543790]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="LobbyMarginContainer/LobbyVBox/InstructionsVBox/InstructionsHBox/VBoxContainer2" unique_id=850926408]
+layout_mode = 2
+texture = SubResource("AtlasTexture_r7kfx")
+stretch_mode = 3
+
+[node name="LabelPurpose" type="Label" parent="LobbyMarginContainer/LobbyVBox/InstructionsVBox/InstructionsHBox/VBoxContainer2" unique_id=1823227799]
+layout_mode = 2
+text = "Knock out players!"
+label_settings = SubResource("LabelSettings_lwuet")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LabelPoints" type="Label" parent="LobbyMarginContainer/LobbyVBox/InstructionsVBox/InstructionsHBox/VBoxContainer2" unique_id=260163288]
+layout_mode = 2
+text = "+5pts per k.o."
+label_settings = SubResource("LabelSettings_yevb0")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VBoxContainer3" type="VBoxContainer" parent="LobbyMarginContainer/LobbyVBox/InstructionsVBox/InstructionsHBox" unique_id=105282267]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="LobbyMarginContainer/LobbyVBox/InstructionsVBox/InstructionsHBox/VBoxContainer3" unique_id=1523535353]
+layout_mode = 2
+texture = SubResource("AtlasTexture_lly1r")
+stretch_mode = 3
+
+[node name="LabelPurpose" type="Label" parent="LobbyMarginContainer/LobbyVBox/InstructionsVBox/InstructionsHBox/VBoxContainer3" unique_id=1670937938]
+layout_mode = 2
+text = "Knock out NPC's!"
+label_settings = SubResource("LabelSettings_4lvmq")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LabelPoints" type="Label" parent="LobbyMarginContainer/LobbyVBox/InstructionsVBox/InstructionsHBox/VBoxContainer3" unique_id=283155640]
+layout_mode = 2
+text = "+1pt per k.o."
+label_settings = ExtResource("9_pwkj3")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Spacer" type="Control" parent="LobbyMarginContainer/LobbyVBox" unique_id=1403044763]
 custom_minimum_size = Vector2(0, 50)

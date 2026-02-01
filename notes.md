@@ -30,6 +30,12 @@
   - Players complete objectives and frustrate others until time limit 👉 This works really well right now, only the gun is a little OP
   - Game ends, winner announced 👉 Just needs a better win screen
   - Game restarts or goes back to lobby 👉 Add buttons to the win screen
+# Playtest notes
+- Zones are too small
+- Gun is too OP indeed
+- Zone cap progress shouldn't immediately reset when leaving zone, maybe have a grace period or slowly decay
+- Show back faces of capture zone meshes
+- minSize on arson trail too small
 
 # Stretch goals
 - More than 4 masks
