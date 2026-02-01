@@ -1,5 +1,5 @@
 shader_type spatial;
-render_mode blend_mix, depth_draw_opaque, cull_back;
+render_mode blend_mix, depth_draw_opaque, cull_back, unshaded;
 
 uniform sampler2D fire_texture : source_color;
 uniform float wiggle_strength : hint_range(0.0, 0.1) = 0.02;
@@ -68,5 +68,4 @@ void fragment() {
 
     ALBEDO = tex.rgb;
     ALPHA = tex.a;
-	EMISSION = emission;
 }
