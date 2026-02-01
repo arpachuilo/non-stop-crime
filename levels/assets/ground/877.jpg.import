@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://bi8qu35eu1f8p"
 path.s3tc="res://.godot/imported/877.jpg-bcb1b36f60c4374f519d34cfbb81e9d2.s3tc.ctex"
+path.etc2="res://.godot/imported/877.jpg-bcb1b36f60c4374f519d34cfbb81e9d2.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://levels/assets/ground/877.jpg"
-dest_files=["res://.godot/imported/877.jpg-bcb1b36f60c4374f519d34cfbb81e9d2.s3tc.ctex"]
+dest_files=["res://.godot/imported/877.jpg-bcb1b36f60c4374f519d34cfbb81e9d2.s3tc.ctex", "res://.godot/imported/877.jpg-bcb1b36f60c4374f519d34cfbb81e9d2.etc2.ctex"]
 
 [params]
 

@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://djps0jcq2hgmy"
 path.s3tc="res://.godot/imported/stab_mask.png-c85c746b801e841b92594e4b38dc0d21.s3tc.ctex"
+path.etc2="res://.godot/imported/stab_mask.png-c85c746b801e841b92594e4b38dc0d21.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://projectiles/knife/stab_mask.png"
-dest_files=["res://.godot/imported/stab_mask.png-c85c746b801e841b92594e4b38dc0d21.s3tc.ctex"]
+dest_files=["res://.godot/imported/stab_mask.png-c85c746b801e841b92594e4b38dc0d21.s3tc.ctex", "res://.godot/imported/stab_mask.png-c85c746b801e841b92594e4b38dc0d21.etc2.ctex"]
 
 [params]
 

@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://3m13orq37nxp"
 path.s3tc="res://.godot/imported/streetlight.png-c4296ff8963be99d3117c6ad08503889.s3tc.ctex"
+path.etc2="res://.godot/imported/streetlight.png-c4296ff8963be99d3117c6ad08503889.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://levels/assets/greeblies/streetlight.png"
-dest_files=["res://.godot/imported/streetlight.png-c4296ff8963be99d3117c6ad08503889.s3tc.ctex"]
+dest_files=["res://.godot/imported/streetlight.png-c4296ff8963be99d3117c6ad08503889.s3tc.ctex", "res://.godot/imported/streetlight.png-c4296ff8963be99d3117c6ad08503889.etc2.ctex"]
 
 [params]
 

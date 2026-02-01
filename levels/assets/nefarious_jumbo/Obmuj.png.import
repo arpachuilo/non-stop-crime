@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://r6w7t6avl27v"
 path.s3tc="res://.godot/imported/Obmuj.png-7c409ca7b541bed71f3281197f7186ce.s3tc.ctex"
+path.etc2="res://.godot/imported/Obmuj.png-7c409ca7b541bed71f3281197f7186ce.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://levels/assets/nefarious_jumbo/Obmuj.png"
-dest_files=["res://.godot/imported/Obmuj.png-7c409ca7b541bed71f3281197f7186ce.s3tc.ctex"]
+dest_files=["res://.godot/imported/Obmuj.png-7c409ca7b541bed71f3281197f7186ce.s3tc.ctex", "res://.godot/imported/Obmuj.png-7c409ca7b541bed71f3281197f7186ce.etc2.ctex"]
 
 [params]
 

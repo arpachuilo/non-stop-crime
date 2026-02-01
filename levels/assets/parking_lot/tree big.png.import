@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://bg8rxawhi7r75"
 path.s3tc="res://.godot/imported/tree big.png-d6fffe83541de411c89787c42ba3dd50.s3tc.ctex"
+path.etc2="res://.godot/imported/tree big.png-d6fffe83541de411c89787c42ba3dd50.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://levels/assets/parking_lot/tree big.png"
-dest_files=["res://.godot/imported/tree big.png-d6fffe83541de411c89787c42ba3dd50.s3tc.ctex"]
+dest_files=["res://.godot/imported/tree big.png-d6fffe83541de411c89787c42ba3dd50.s3tc.ctex", "res://.godot/imported/tree big.png-d6fffe83541de411c89787c42ba3dd50.etc2.ctex"]
 
 [params]
 

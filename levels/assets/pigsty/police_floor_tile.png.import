@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://dh1h6kh6kpuq8"
 path.s3tc="res://.godot/imported/police_floor_tile.png-988cf626183daa04b4fa36d01043485f.s3tc.ctex"
+path.etc2="res://.godot/imported/police_floor_tile.png-988cf626183daa04b4fa36d01043485f.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://levels/assets/pigsty/police_floor_tile.png"
-dest_files=["res://.godot/imported/police_floor_tile.png-988cf626183daa04b4fa36d01043485f.s3tc.ctex"]
+dest_files=["res://.godot/imported/police_floor_tile.png-988cf626183daa04b4fa36d01043485f.s3tc.ctex", "res://.godot/imported/police_floor_tile.png-988cf626183daa04b4fa36d01043485f.etc2.ctex"]
 
 [params]
 

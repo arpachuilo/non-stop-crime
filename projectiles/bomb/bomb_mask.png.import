@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://se0elgxvdrif"
 path.s3tc="res://.godot/imported/bomb_mask.png-b136c8965ec11962b8d344c3950aa00e.s3tc.ctex"
+path.etc2="res://.godot/imported/bomb_mask.png-b136c8965ec11962b8d344c3950aa00e.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://projectiles/bomb/bomb_mask.png"
-dest_files=["res://.godot/imported/bomb_mask.png-b136c8965ec11962b8d344c3950aa00e.s3tc.ctex"]
+dest_files=["res://.godot/imported/bomb_mask.png-b136c8965ec11962b8d344c3950aa00e.s3tc.ctex", "res://.godot/imported/bomb_mask.png-b136c8965ec11962b8d344c3950aa00e.etc2.ctex"]
 
 [params]
 

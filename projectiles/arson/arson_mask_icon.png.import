@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://dtx4y8bi8gp3d"
 path.s3tc="res://.godot/imported/arson_mask_icon.png-77b59c9217fb78df04f081601bf1f8db.s3tc.ctex"
+path.etc2="res://.godot/imported/arson_mask_icon.png-77b59c9217fb78df04f081601bf1f8db.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://projectiles/arson/arson_mask_icon.png"
-dest_files=["res://.godot/imported/arson_mask_icon.png-77b59c9217fb78df04f081601bf1f8db.s3tc.ctex"]
+dest_files=["res://.godot/imported/arson_mask_icon.png-77b59c9217fb78df04f081601bf1f8db.s3tc.ctex", "res://.godot/imported/arson_mask_icon.png-77b59c9217fb78df04f081601bf1f8db.etc2.ctex"]
 
 [params]
 

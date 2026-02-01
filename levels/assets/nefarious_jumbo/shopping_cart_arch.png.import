@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://dmj0iswu8w41e"
 path.s3tc="res://.godot/imported/shopping_cart_arch.png-e884b159af5ef006038f81a79c801e72.s3tc.ctex"
+path.etc2="res://.godot/imported/shopping_cart_arch.png-e884b159af5ef006038f81a79c801e72.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://levels/assets/nefarious_jumbo/shopping_cart_arch.png"
-dest_files=["res://.godot/imported/shopping_cart_arch.png-e884b159af5ef006038f81a79c801e72.s3tc.ctex"]
+dest_files=["res://.godot/imported/shopping_cart_arch.png-e884b159af5ef006038f81a79c801e72.s3tc.ctex", "res://.godot/imported/shopping_cart_arch.png-e884b159af5ef006038f81a79c801e72.etc2.ctex"]
 
 [params]
 

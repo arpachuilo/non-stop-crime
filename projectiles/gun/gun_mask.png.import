@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://binyunater2xi"
 path.s3tc="res://.godot/imported/gun_mask.png-aa246c34a76519c9894637ac365369d0.s3tc.ctex"
+path.etc2="res://.godot/imported/gun_mask.png-aa246c34a76519c9894637ac365369d0.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://projectiles/gun/gun_mask.png"
-dest_files=["res://.godot/imported/gun_mask.png-aa246c34a76519c9894637ac365369d0.s3tc.ctex"]
+dest_files=["res://.godot/imported/gun_mask.png-aa246c34a76519c9894637ac365369d0.s3tc.ctex", "res://.godot/imported/gun_mask.png-aa246c34a76519c9894637ac365369d0.etc2.ctex"]
 
 [params]
 

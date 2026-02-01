@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://cf3aixryj8nvh"
 path.s3tc="res://.godot/imported/tunt_1zdj_231020.jpg-b5d7c6e3ed5af730f450e8e629432585.s3tc.ctex"
+path.etc2="res://.godot/imported/tunt_1zdj_231020.jpg-b5d7c6e3ed5af730f450e8e629432585.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://levels/assets/ground/tunt_1zdj_231020.jpg"
-dest_files=["res://.godot/imported/tunt_1zdj_231020.jpg-b5d7c6e3ed5af730f450e8e629432585.s3tc.ctex"]
+dest_files=["res://.godot/imported/tunt_1zdj_231020.jpg-b5d7c6e3ed5af730f450e8e629432585.s3tc.ctex", "res://.godot/imported/tunt_1zdj_231020.jpg-b5d7c6e3ed5af730f450e8e629432585.etc2.ctex"]
 
 [params]
 

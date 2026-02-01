@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://xcq65mqjxmqb"
 path.s3tc="res://.godot/imported/frame_3.png-233a8b77e63e39eebc824e19d0f69c30.s3tc.ctex"
+path.etc2="res://.godot/imported/frame_3.png-233a8b77e63e39eebc824e19d0f69c30.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://player/assets/frames_walking/frame_3.png"
-dest_files=["res://.godot/imported/frame_3.png-233a8b77e63e39eebc824e19d0f69c30.s3tc.ctex"]
+dest_files=["res://.godot/imported/frame_3.png-233a8b77e63e39eebc824e19d0f69c30.s3tc.ctex", "res://.godot/imported/frame_3.png-233a8b77e63e39eebc824e19d0f69c30.etc2.ctex"]
 
 [params]
 

@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://ljln3d3yslvn"
 path.s3tc="res://.godot/imported/hospital side.png-7840140a69a3acf837b6748755992b59.s3tc.ctex"
+path.etc2="res://.godot/imported/hospital side.png-7840140a69a3acf837b6748755992b59.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://levels/assets/hospital/hospital side.png"
-dest_files=["res://.godot/imported/hospital side.png-7840140a69a3acf837b6748755992b59.s3tc.ctex"]
+dest_files=["res://.godot/imported/hospital side.png-7840140a69a3acf837b6748755992b59.s3tc.ctex", "res://.godot/imported/hospital side.png-7840140a69a3acf837b6748755992b59.etc2.ctex"]
 
 [params]
 

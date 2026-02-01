@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://ckwnx5suw54x7"
 path.s3tc="res://.godot/imported/Blue car.png-f0b8bd6b6020d59051781a4e45e660ac.s3tc.ctex"
+path.etc2="res://.godot/imported/Blue car.png-f0b8bd6b6020d59051781a4e45e660ac.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://levels/assets/parking_lot/Blue car.png"
-dest_files=["res://.godot/imported/Blue car.png-f0b8bd6b6020d59051781a4e45e660ac.s3tc.ctex"]
+dest_files=["res://.godot/imported/Blue car.png-f0b8bd6b6020d59051781a4e45e660ac.s3tc.ctex", "res://.godot/imported/Blue car.png-f0b8bd6b6020d59051781a4e45e660ac.etc2.ctex"]
 
 [params]
 

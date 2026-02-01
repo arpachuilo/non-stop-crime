@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://we4iy73o4423"
 path.s3tc="res://.godot/imported/rykkel-imagen-2023-05-11-170835960-1854358763.jpg-19d45208265481d388881f5adbb365f8.s3tc.ctex"
+path.etc2="res://.godot/imported/rykkel-imagen-2023-05-11-170835960-1854358763.jpg-19d45208265481d388881f5adbb365f8.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://assets/rykkel-imagen-2023-05-11-170835960-1854358763.jpg"
-dest_files=["res://.godot/imported/rykkel-imagen-2023-05-11-170835960-1854358763.jpg-19d45208265481d388881f5adbb365f8.s3tc.ctex"]
+dest_files=["res://.godot/imported/rykkel-imagen-2023-05-11-170835960-1854358763.jpg-19d45208265481d388881f5adbb365f8.s3tc.ctex", "res://.godot/imported/rykkel-imagen-2023-05-11-170835960-1854358763.jpg-19d45208265481d388881f5adbb365f8.etc2.ctex"]
 
 [params]
 
