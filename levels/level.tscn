@@ -173,6 +173,7 @@ SpicySpawnDelay = 0.5
 SpawnAreaSize = Vector3(50, 10.04, 50)
 
 [node name="ScoreTracker" parent="." unique_id=2090427259 instance=ExtResource("11_pb8y7")]
+GameDurationSeconds = 90.0
 
 [node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=1143154661]
 anchors_preset = 7
