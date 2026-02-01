@@ -18,6 +18,9 @@ public partial class NPC : Character
   [Export]
   public AudioStreamPlayer3D VoicePlayer { get; set; }
 
+  [Export]
+  public AudioStreamPlayer3D OofSfx { get; set; }
+
   private static Texture2D _deathTexture;
   private static RandomNumberGenerator _rng;
 
@@ -93,6 +96,7 @@ public partial class NPC : Character
   private bool _lockOnFloor = false;
   public void OnGoalCaptured(Player player)
   {
+    OofSfx?.Play();
     IsCaptured = true;
     CapturedBy = player;
     SpriteParent?.ShowDeath(_deathTexture);

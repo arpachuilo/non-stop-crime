@@ -22,6 +22,7 @@
 [ext_resource type="AudioStream" uid="uid://cnpehmyugyfcm" path="res://npc/voices/Hello.wav" id="19_voice1"]
 [ext_resource type="AudioStream" uid="uid://b105tgixx8ysy" path="res://npc/voices/Hiiii.wav" id="20_voice2"]
 [ext_resource type="AudioStream" uid="uid://do3u2ukj7wg4m" path="res://npc/voices/Wazup.wav" id="21_voice3"]
+[ext_resource type="AudioStream" uid="uid://dlfmani2wg4yr" path="res://assets/sfx/oof.mp3" id="23_cngn5"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_dnf2n"]
 
@@ -86,12 +87,13 @@ animations = [{
 "speed": 10.0
 }]
 
-[node name="Npc" type="CharacterBody3D" unique_id=1618199586 node_paths=PackedStringArray("SpriteParent", "VoicePlayer")]
+[node name="Npc" type="CharacterBody3D" unique_id=1618199586 node_paths=PackedStringArray("SpriteParent", "VoicePlayer", "OofSfx")]
 script = ExtResource("1_ob0l3")
 SpriteParent = NodePath("SpriteParent")
 AggroRadius = 6.0
 VoiceClips = Array[AudioStream]([ExtResource("19_voice1"), ExtResource("20_voice2"), ExtResource("21_voice3")])
 VoicePlayer = NodePath("VoicePlayer")
+OofSfx = NodePath("OofSfx")
 MaxSpeed = 1.0
 MinSpeed = 0.0
 
@@ -141,3 +143,6 @@ texture_filter = 4
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 volume_db = 14.889
 max_distance = 50.0
+
+[node name="OofSfx" type="AudioStreamPlayer3D" parent="." unique_id=1558517124]
+stream = ExtResource("23_cngn5")

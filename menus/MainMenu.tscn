@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://bgxko56g8bn26" path="res://menus/assets/Main_menu_buttons.png" id="5_4yyw3"]
 [ext_resource type="FontFile" uid="uid://boo61ehi8k82u" path="res://menus/assets/fonts/Small Town Skyline.ttf" id="6_e2awe"]
 [ext_resource type="Texture2D" uid="uid://carga5i7rjpvr" path="res://menus/assets/Main_menu_buttons_darker.png" id="6_lb38e"]
+[ext_resource type="FontFile" uid="uid://dtb16dgkgphjp" path="res://menus/assets/fonts/Chalkduster.ttf" id="8_7fxis"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_je8l7"]
 atlas = ExtResource("5_4yyw3")
@@ -25,7 +26,8 @@ atlas = ExtResource("6_lb38e")
 region = Rect2(360, 373, 170, 51)
 
 [sub_resource type="LabelSettings" id="LabelSettings_m8c1o"]
-font_size = 50
+font = ExtResource("8_7fxis")
+font_size = 25
 
 [node name="MainMenu" type="Control" unique_id=1873563801 node_paths=PackedStringArray("startButton", "exitButton")]
 clip_contents = true
