@@ -25,6 +25,16 @@ public partial class Projectile : Area3D {
 
   public override void _Ready() {
     Sfx?.Play();
+    UpdateSpriteDirection();
+  }
+
+  private void UpdateSpriteDirection() {
+    var sprite = GetNodeOrNull<Sprite3D>("Sprite3D");
+    if (sprite == null) return;
+
+    // Check if projectile is moving left (negative X component of forward)
+    Vector3 forward = -GlobalTransform.Basis.Z;
+    sprite.FlipH = forward.X < 0;
   }
 
   public override void _EnterTree() {
