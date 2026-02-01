@@ -88,13 +88,45 @@ public partial class Player : Character {
     base._EnterTree();
   }
 
+  private bool _isDead = false;
+
   public void Reset() {
-    GlobalPosition = Spawn;
+    if (_isDead) return;
+
+    _isDead = true;
+    SpawnCorpse();
     EquipMask(null);
     EmitSignal(SignalName.PlayerReset);
+
+    // Hide player and disable light
+    SpriteParent.Visible = false;
+    Light.Visible = false;
+    SetPhysicsProcess(false);
+
+    // Controller vibration
     if (!PlayerController.IsKB) {
       Input.StartJoyVibration(PlayerController.DeviceId, 0.5f, 0.5f, 1.2f);
     }
+
+    // Respawn after 3 seconds
+    var timer = GetTree().CreateTimer(3.0f);
+    timer.Timeout += Respawn;
+  }
+
+  private void SpawnCorpse() {
+    var corpse = new PlayerCorpse();
+    corpse.Color = color;
+    GetTree().CurrentScene.AddChild(corpse);
+    corpse.GlobalPosition = GlobalPosition;
+    GD.Print($"Corpse placed at {corpse.GlobalPosition}");
+  }
+
+  private void Respawn() {
+    GlobalPosition = Spawn;
+    SpriteParent.Visible = true;
+    Light.Visible = true;
+    SetPhysicsProcess(true);
+    _isDead = false;
   }
 
   public void AddScore(int points) {
