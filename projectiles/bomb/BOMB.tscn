@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://cam52fb8h24fv" path="res://src/Projectile.cs" id="1_3xd0v"]
 [ext_resource type="Script" uid="uid://dafjaicr66xib" path="res://projectiles/bomb/BOMB.cs" id="1_4y7ne"]
-[ext_resource type="AudioStream" uid="uid://chk0pr2ohtjge" path="res://assets/sfx/glock.mp3" id="2_4y7ne"]
+[ext_resource type="AudioStream" uid="uid://b6c332rbro8ya" path="res://projectiles/bomb/bomb.mp3" id="2_yqdnj"]
 [ext_resource type="Shader" uid="uid://dy1ghxxodoq1d" path="res://projectiles/bomb/BOMB.gdshader" id="3_4y7ne"]
 [ext_resource type="Texture2D" uid="uid://e4m6otv8b74b" path="res://projectiles/bomb/Explosion.png" id="3_yqdnj"]
 
@@ -32,7 +32,7 @@ Sfx = NodePath("AudioStreamPlayer")
 shape = SubResource("CylinderShape3D_3xd0v")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1627557983]
-stream = ExtResource("2_4y7ne")
+stream = ExtResource("2_yqdnj")
 
 [node name="Sprite3D" type="Sprite3D" parent="." unique_id=1249293837]
 transform = Transform3D(2.1, 0, 0, 0, -9.1793915e-08, 2.1, 0, -2.1, -9.1793915e-08, 0, 0.36996496, 0)
