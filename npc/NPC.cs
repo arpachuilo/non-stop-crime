@@ -12,12 +12,38 @@ public partial class NPC : Character
   [Export]
   public float AggroRadius = 10f;
 
+  [Export]
+  public Godot.Collections.Array<AudioStream> VoiceClips { get; set; } = new();
+
+  [Export]
+  public AudioStreamPlayer3D VoicePlayer { get; set; }
+
   private static Texture2D _deathTexture;
+  private static RandomNumberGenerator _rng;
+
+  static NPC()
+  {
+    _rng = new RandomNumberGenerator();
+    _rng.Randomize();
+  }
 
   public override void _Ready()
   {
     SpriteParent ??= GetNode<SpriteParent>("SpriteParent");
+    VoicePlayer ??= GetNodeOrNull<AudioStreamPlayer3D>("VoicePlayer");
     _deathTexture ??= GD.Load<Texture2D>("res://player/assets/death.png");
+
+    PlayRandomVoice();
+  }
+
+  private void PlayRandomVoice()
+  {
+    if (VoiceClips.Count == 0 || VoicePlayer == null) return;
+
+    int index = _rng.RandiRange(0, VoiceClips.Count - 1);
+    VoicePlayer.Stream = VoiceClips[index];
+    VoicePlayer.PitchScale = _rng.RandfRange(0.8f, 1.3f);
+    VoicePlayer.Play();
   }
 
   public override Vector3 GetDirection()

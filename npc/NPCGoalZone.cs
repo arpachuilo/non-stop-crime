@@ -15,6 +15,7 @@ public partial class NPCGoalZone : Area3D
         _parentNPC = GetParent<NPC>();
         SetupCollision();
         BodyEntered += OnBodyEntered;
+        AreaEntered += OnAreaEntered;
     }
 
     private void SetupCollision()
@@ -31,9 +32,27 @@ public partial class NPCGoalZone : Area3D
 
         if (body is Player player)
         {
-            IsCompleted = true;
-            EmitSignal(SignalName.Captured, player);
-            _parentNPC?.OnGoalCaptured(player);
+            // Only allow contact capture if the player's mask has ContactCapture enabled
+            if (player.CurrentMask == null || !player.CurrentMask.ContactCapture) return;
+
+            Capture(player);
         }
+    }
+
+    private void OnAreaEntered(Area3D area)
+    {
+        if (IsCompleted) return;
+
+        if (area is Projectile projectile && projectile.PlayerOwner != null)
+        {
+            Capture(projectile.PlayerOwner);
+        }
+    }
+
+    private void Capture(Player player)
+    {
+        IsCompleted = true;
+        EmitSignal(SignalName.Captured, player);
+        _parentNPC?.OnGoalCaptured(player);
     }
 }
