@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://dqeupnhachgnt"]
 
-[ext_resource type="Script" uid="uid://bits1rmvalj68" path="res://menus/WinnerOverlay.cs" id="1_av0ib"]
+[ext_resource type="Script" path="res://menus/WinnerOverlay.cs" id="1_av0ib"]
 
 [node name="WinnerOverlay" type="Control" unique_id=254244403 node_paths=PackedStringArray("WinnerLabel", "MainMenuButton")]
 layout_mode = 3
