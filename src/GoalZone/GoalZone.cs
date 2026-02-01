@@ -50,6 +50,7 @@ public partial class GoalZone : Area3D {
   private Player _ownerPlayer = null;
   private Player _capturingPlayer = null;
   private float _captureProgress = 0f;
+  private int _partialCapturePlayerId = NEUTRAL_OWNER_ID;
   private float _lockTimeRemaining = 0f;
   private float _pointAccrualTimer = 0f;
   private HashSet<Player> _playersInZone = new();
@@ -110,7 +111,6 @@ public partial class GoalZone : Area3D {
       // Check if owner is in zone
       if (playerId == OwnerPlayerId) {
         ownerInZone = true;
-        break;
       }
 
       // Check if this player can capture
@@ -122,36 +122,85 @@ public partial class GoalZone : Area3D {
       }
     }
 
-    // Owner presence blocks capture
+    // Check if the partial capture holder is still in zone
+    bool partialCapturerInZone = false;
+    if (_partialCapturePlayerId != NEUTRAL_OWNER_ID) {
+      foreach (var player in _playersInZone) {
+        if (IsInstanceValid(player) && player.PlayerController.DeviceId == _partialCapturePlayerId) {
+          partialCapturerInZone = true;
+          break;
+        }
+      }
+    }
+
+    // Owner defense logic
     if (ownerInZone) {
-      ResetCaptureProgress();
-      return;
+      if (partialCapturerInZone) {
+        // Both owner and capturer present - freeze progress
+        return;
+      } else {
+        // Owner defending, capturer left - decay at 2x speed
+        if (_captureProgress > 0f) {
+          _captureProgress -= delta * 2f;
+          if (_captureProgress <= 0f) {
+            ResetCaptureProgress();
+          } else {
+            UpdateCaptureVisual();
+          }
+        }
+        return;
+      }
     }
 
-    // No valid capturer
+    // No valid capturer in zone
     if (validCapturer == null) {
-      ResetCaptureProgress();
+      if (_captureProgress > 0f) {
+        // Decay at 1x speed
+        _captureProgress -= delta;
+        if (_captureProgress <= 0f) {
+          ResetCaptureProgress();
+        } else {
+          UpdateCaptureVisual();
+        }
+      }
       return;
     }
 
-    // Progress capture
-    if (_capturingPlayer != validCapturer) {
+    int capturerId = validCapturer.PlayerController.DeviceId;
+
+    if (_captureProgress <= 0f) {
+      // Fresh capture start
       _capturingPlayer = validCapturer;
-      _captureProgress = 0f;
-    }
+      _partialCapturePlayerId = capturerId;
+      _captureProgress = delta;
+      UpdateCaptureVisual();
+    } else if (capturerId == _partialCapturePlayerId) {
+      // Same player continuing capture
+      _capturingPlayer = validCapturer;
+      _captureProgress += delta;
+      UpdateCaptureVisual();
 
-    _captureProgress += delta;
-    UpdateCaptureVisual();
-
-    if (_captureProgress >= CaptureTime) {
-      CompleteClaim(_capturingPlayer);
+      if (_captureProgress >= CaptureTime) {
+        CompleteClaim(_capturingPlayer);
+      }
+    } else {
+      // Contested - different player, decay at 2x speed
+      _captureProgress -= delta * 2f;
+      if (_captureProgress <= 0f) {
+        // New player takes over
+        _captureProgress = delta;
+        _partialCapturePlayerId = capturerId;
+        _capturingPlayer = validCapturer;
+      }
+      UpdateCaptureVisual();
     }
   }
 
   private void ResetCaptureProgress() {
-    if (_captureProgress > 0f || _capturingPlayer != null) {
+    if (_captureProgress > 0f || _capturingPlayer != null || _partialCapturePlayerId != NEUTRAL_OWNER_ID) {
       _captureProgress = 0f;
       _capturingPlayer = null;
+      _partialCapturePlayerId = NEUTRAL_OWNER_ID;
       UpdateCaptureVisual();
     }
   }
@@ -185,11 +234,6 @@ public partial class GoalZone : Area3D {
   private void OnBodyExited(Node3D body) {
     if (body is Player player) {
       _playersInZone.Remove(player);
-
-      // Reset capture if the capturing player left
-      if (player == _capturingPlayer) {
-        ResetCaptureProgress();
-      }
     }
   }
 
