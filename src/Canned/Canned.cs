@@ -17,7 +17,7 @@ public static class Canned {
     }
   }
 
-  public static bool UseSafeNames { get; set; } = false;
+  public static bool UseSafeNames { get; set; } = true;
 
   private static string[] LoadNames(string filepath) {
     using var file = FileAccess.Open(filepath, FileAccess.ModeFlags.Read);
