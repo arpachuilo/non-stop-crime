@@ -59,6 +59,11 @@ font = ExtResource("6_26b0x")
 font_size = 30
 font_color = Color(0, 0, 0, 1)
 
+[sub_resource type="LabelSettings" id="LabelSettings_afcw3"]
+font = ExtResource("6_26b0x")
+font_size = 24
+font_color = Color(0, 0, 0, 1)
+
 [sub_resource type="LabelSettings" id="LabelSettings_smvte"]
 font = ExtResource("6_26b0x")
 font_size = 30
@@ -128,6 +133,7 @@ theme_override_constants/separation = 40
 
 [node name="InstructionsVBox" type="VBoxContainer" parent="LobbyMarginContainer/LobbyVBox" unique_id=2077544291]
 layout_mode = 2
+theme_override_constants/separation = 20
 
 [node name="InstructionsHeader" type="Label" parent="LobbyMarginContainer/LobbyVBox/InstructionsVBox" unique_id=1546027936]
 layout_mode = 2
@@ -206,8 +212,15 @@ label_settings = ExtResource("9_pwkj3")
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="ExtraInstructionsLabel" type="Label" parent="LobbyMarginContainer/LobbyVBox/InstructionsVBox" unique_id=1502038385]
+layout_mode = 2
+text = "Pick up a mask from the floor to gain attack power!
+Use your left stick to move around - you can't stop your character once you start moving!"
+label_settings = SubResource("LabelSettings_afcw3")
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="Spacer" type="Control" parent="LobbyMarginContainer/LobbyVBox" unique_id=1403044763]
-custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 
 [node name="PlayersVBox" type="VBoxContainer" parent="LobbyMarginContainer/LobbyVBox" unique_id=936636568]
