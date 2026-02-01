@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://vr472n0ku81u"]
 
-[ext_resource type="Shader" path="res://levels/assets/Backdrop.gdshader" id="1_80vhd"]
+[ext_resource type="Shader" uid="uid://cxvp62bp8aq08" path="res://levels/assets/Backdrop.gdshader" id="1_80vhd"]
 [ext_resource type="Script" uid="uid://b430y4e1vno6x" path="res://src/Lobby.cs" id="1_pb8y7"]
 [ext_resource type="PackedScene" uid="uid://cj7ucao0d5den" path="res://AC_Player.tscn" id="2_hjsbj"]
 [ext_resource type="PackedScene" uid="uid://b1awodkisntg" path="res://player/UI_PlayerInfo.tscn" id="3_vnv7o"]
@@ -12,15 +12,15 @@
 [ext_resource type="PackedScene" uid="uid://27h8ms28togi" path="res://src/Mask/MaskPickup.tscn" id="8_rtcij"]
 [ext_resource type="Resource" uid="uid://bif5c1tl2gr2i" path="res://src/Mask/D_AllMasks.tres" id="8_ukwr8"]
 [ext_resource type="PackedScene" uid="uid://bxaqr0eh0nytl" path="res://src/ScoreTracker/ScoreTracker.tscn" id="11_pb8y7"]
-[ext_resource type="PackedScene" path="res://levels/props/Hospital.tscn" id="12_0qmeg"]
-[ext_resource type="PackedScene" path="res://levels/props/NefariousJumbo.tscn" id="13_ta7ci"]
-[ext_resource type="PackedScene" path="res://levels/props/ParkingLot.tscn" id="14_lh335"]
+[ext_resource type="PackedScene" uid="uid://d0ie1mhex1w1l" path="res://levels/props/Hospital.tscn" id="12_0qmeg"]
+[ext_resource type="PackedScene" uid="uid://b0u72twc7avie" path="res://levels/props/NefariousJumbo.tscn" id="13_ta7ci"]
+[ext_resource type="PackedScene" uid="uid://c2hmq40jdskvd" path="res://levels/props/ParkingLot.tscn" id="14_lh335"]
 [ext_resource type="PackedScene" uid="uid://bx6jancv55uem" path="res://levels/props/Lamp.tscn" id="15_0qmeg"]
-[ext_resource type="PackedScene" path="res://levels/props/Pigsty.tscn" id="15_u6cys"]
+[ext_resource type="PackedScene" uid="uid://ctol3tugnm1rv" path="res://levels/props/Pigsty.tscn" id="15_u6cys"]
 [ext_resource type="PackedScene" uid="uid://5h4p037xui6w" path="res://levels/props/greeblies/Bush.tscn" id="16_ta7ci"]
 [ext_resource type="Script" uid="uid://h6b127a3t5at" path="res://npc/NPCSpawner.cs" id="17_u6cys"]
 [ext_resource type="PackedScene" uid="uid://c4a4i2hhu3r40" path="res://npc/NPC.tscn" id="18_368ro"]
-[ext_resource type="PackedScene" path="res://levels/props/Park.tscn" id="20_3ca7f"]
+[ext_resource type="PackedScene" uid="uid://cq086pc3a0s8n" path="res://levels/props/Park.tscn" id="20_3ca7f"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_umreq"]
 
@@ -244,6 +244,10 @@ shadow_enabled = true
 distance_fade_enabled = true
 omni_range = 55.0
 omni_attenuation = 0.75
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Camera3D" unique_id=1221620741]
+transform = Transform3D(-0.9183094, 0.38570714, -0.08909618, 0.045702085, -0.1202656, -0.9916892, -0.3932168, -0.9147494, 0.09281364, 0, 24.473022, -24.473022)
+light_energy = 0.2
 
 [connection signal="GameStarted" from="Lobby" to="MaskSpawner" method="_on_lobby_game_started"]
 [connection signal="GameStarted" from="Lobby" to="NPCSpawner" method="_on_lobby_game_started"]
