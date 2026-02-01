@@ -12,6 +12,6 @@ public partial class GASOLINE : AnimatedSprite3D {
 
   public override void _Process(double delta) {
     _timer -= (float)delta;
-    SetInstanceShaderParameter("scale", Mathf.Clamp(_timer / DecayTime, 0.2f, 1.0f));
+    SetInstanceShaderParameter("scale", Mathf.Clamp(_timer / DecayTime, 0.4f, 1.0f));
   }
 }
