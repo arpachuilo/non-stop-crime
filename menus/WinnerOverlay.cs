@@ -26,6 +26,7 @@ public partial class WinnerOverlay : Control {
   public override void _Ready() {
     WinnerLabel.Text = _winnerText;
     MainMenuButton.Pressed += OnMainMenuPressed;
+    MainMenuButton.GrabFocus();
 
     if (_isTie || !_hasWinner) {
       WinnerGraphic.Visible = false;
