@@ -15,8 +15,16 @@ public partial class Player : Character {
   [Export]
   public int Mask { get; set; } = 0;
 
+  private int _score = 0;
   [Export]
-  public int Score { get; set; } = 0;
+  public int Score {
+    get => _score;
+    set {
+        int diff = value - _score;
+        _score = value;
+        PlayerInfo.AnimateScore(diff);
+    }
+  }
 
   [Export]
   private Camera3D _camera;

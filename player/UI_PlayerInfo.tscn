@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://b1awodkisntg"]
 
 [ext_resource type="Script" uid="uid://blijpu13bmx3v" path="res://src/PlayerInfo.cs" id="1_v54wg"]
+[ext_resource type="PackedScene" uid="uid://b011evlerca28" path="res://player/animated_score.tscn" id="2_mby17"]
 [ext_resource type="Texture2D" uid="uid://ba6cx8tkskyd" path="res://player/Player_HUD.png" id="2_swmtq"]
 [ext_resource type="Texture2D" uid="uid://buya8506ukc0l" path="res://player/assets/head.png" id="3_n3yn7"]
 
@@ -29,6 +30,7 @@ ScoreOrReadyStatus = NodePath("Score")
 MaskIcon = NodePath("MaskIcon")
 DefaultMask = NodePath("DefaultMask")
 PlayerHUD = NodePath("PlayerHud")
+ScoreAnimationScene = ExtResource("2_mby17")
 metadata/_edit_use_anchors_ = true
 
 [node name="PlayerHud" type="Sprite2D" parent="." unique_id=1560364067]
@@ -63,14 +65,15 @@ expand_mode = 1
 stretch_mode = 5
 
 [node name="Score" type="Label" parent="." unique_id=819121830]
-custom_minimum_size = Vector2(252.91, 128)
+custom_minimum_size = Vector2(205.73, 128)
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 23.0
+offset_left = 160.0
+offset_top = -1.0
+offset_right = 365.72998
+offset_bottom = 127.0
 size_flags_horizontal = 8
-theme_override_font_sizes/font_size = 32
+theme_override_font_sizes/font_size = 64
 text = "0"
-horizontal_alignment = 2
 vertical_alignment = 1
 
 [node name="DefaultMask" type="TextureRect" parent="." unique_id=243858177]

@@ -26,6 +26,9 @@ public partial class PlayerInfo : Control {
   [Export]
   public Sprite2D PlayerHUD { get; set; }
 
+  [Export]
+  public PackedScene ScoreAnimationScene { get; set; }
+
   public bool IsPlaying = false;
 
   public bool _isReady = false;
@@ -37,9 +40,17 @@ public partial class PlayerInfo : Control {
     }
   }
 
+  public void AnimateScore(int diff) {
+    var animatedScore = ScoreAnimationScene.Instantiate<AnimatedScore>();
+    animatedScore.Text = diff > 0 ? $"+{diff}" : diff.ToString();
+    animatedScore.Modulate = UIColor;
+    AddChild(animatedScore);
+  }
+
   public void UpdateColors() {
     DefaultMask.Modulate = UIColor;
     PlayerHUD.Modulate = UIColor;
+    ScoreOrReadyStatus.Modulate = UIColor;
   }
 
   public void UpdateMaskIcon(Texture2D icon) {

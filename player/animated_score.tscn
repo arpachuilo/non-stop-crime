@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://b011evlerca28"]
+
+[ext_resource type="Script" uid="uid://4qqew23xd4qt" path="res://player/AnimatedScore.cs" id="1_kuwb7"]
+
+[node name="AnimatedScore" type="Label" unique_id=623560453]
+custom_minimum_size = Vector2(205.73, 128)
+offset_right = 40.0
+offset_bottom = 23.0
+theme_override_font_sizes/font_size = 32
+text = "0"
+horizontal_alignment = 2
+vertical_alignment = 1
+script = ExtResource("1_kuwb7")
