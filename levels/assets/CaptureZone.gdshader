@@ -2,6 +2,8 @@ shader_type spatial;
 render_mode blend_mix, depth_prepass_alpha, cull_back;
 
 uniform vec4 base_color : source_color = vec4(0.2, 0.8, 1.0, 1.0);
+uniform vec4 capture_color : source_color = vec4(1.0, 1.0, 1.0, 1.0);
+uniform float capture_progress = 0.0; // 0.0 to 1.0
 uniform float glow_strength = 2.0;
 
 /* Box dimensions */
@@ -82,8 +84,15 @@ void fragment() {
 	/* Apply noise only to sides */
 	alpha += (n - 0.5) * noise_strength * pulse * side_mask;
 
+	/* Capture progress fill effect */
+	vec4 final_color = base_color;
+	if (capture_progress > 0.0) {
+		float fill_height = capture_progress;
+		float fill_mask = smoothstep(fill_height - 0.05, fill_height + 0.05, local_y);
+		final_color = mix(capture_color, base_color, fill_mask);
+	}
 
-	ALBEDO = base_color.rgb;
-	ALPHA = alpha * base_color.a;
-	EMISSION = base_color.rgb * glow_strength * alpha;
+	ALBEDO = final_color.rgb;
+	ALPHA = alpha * final_color.a;
+	EMISSION = final_color.rgb * glow_strength * alpha;
 }

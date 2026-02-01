@@ -1,5 +1,5 @@
+using System.Collections.Generic;
 using System.ComponentModel;
-using Chickensoft.Collections;
 using Godot;
 
 [Tool]
@@ -25,31 +25,147 @@ public partial class GoalZone : Area3D {
   [Export]
   public int Mask { get; set; } = 0;
 
+  [Export]
+  public float CaptureTime { get; set; } = 5.0f;
+
+  [Export]
+  public float CaptureLockTime { get; set; } = 15.0f;
+
+  [Export]
+  public float PointInterval { get; set; } = 5.0f;
+
+  [Export]
+  public int PointsPerInterval { get; set; } = 2;
+
+  [Export]
+  public float PopupDuration { get; set; } = 2.0f;
+
+  [Export]
+  public float PopupHeight { get; set; } = 3.0f;
+
   public int OwnerPlayerId { get; private set; } = NEUTRAL_OWNER_ID;
-  public bool IsCompleted { get; private set; } = false;
+  public bool IsLocked { get; private set; } = false;
 
   private ShaderMaterial _materialInstance;
+  private Player _ownerPlayer = null;
+  private Player _capturingPlayer = null;
+  private float _captureProgress = 0f;
+  private float _lockTimeRemaining = 0f;
+  private float _pointAccrualTimer = 0f;
+  private HashSet<Player> _playersInZone = new();
 
   public override void _Ready() {
     SetupVisuals();
     SetupCollision();
 
     BodyEntered += OnBodyEntered;
-    AreaEntered += OnAreaEntered;
+    BodyExited += OnBodyExited;
+  }
+
+  public override void _Process(double delta) {
+    if (Engine.IsEditorHint()) return;
+
+    float dt = (float)delta;
+
+    UpdateLockTimer(dt);
+    UpdatePointAccrual(dt);
+    UpdateCaptureProgress(dt);
+  }
+
+  private void UpdateLockTimer(float delta) {
+    if (!IsLocked) return;
+
+    _lockTimeRemaining -= delta;
+    if (_lockTimeRemaining <= 0f) {
+      IsLocked = false;
+      GD.Print($"Zone unlocked, can be recaptured");
+    }
+  }
+
+  private void UpdatePointAccrual(float delta) {
+    if (_ownerPlayer == null) return;
+    if (!IsInstanceValid(_ownerPlayer)) {
+      _ownerPlayer = null;
+      return;
+    }
+
+    _pointAccrualTimer += delta;
+    if (_pointAccrualTimer >= PointInterval) {
+      _pointAccrualTimer -= PointInterval;
+      _ownerPlayer.AddScore(PointsPerInterval);
+      GD.Print($"Zone awarded {PointsPerInterval} points to Player {OwnerPlayerId}");
+    }
+  }
+
+  private void UpdateCaptureProgress(float delta) {
+    // Find a valid capturing player
+    Player validCapturer = null;
+    bool ownerInZone = false;
+
+    foreach (var player in _playersInZone) {
+      if (!IsInstanceValid(player)) continue;
+
+      int playerId = player.PlayerController.DeviceId;
+
+      // Check if owner is in zone
+      if (playerId == OwnerPlayerId) {
+        ownerInZone = true;
+        break;
+      }
+
+      // Check if this player can capture
+      if (playerId != OwnerPlayerId && !IsLocked) {
+        // Check mask requirement
+        if (Mask == 0 || (player.Mask & Mask) == Mask) {
+          validCapturer = player;
+        }
+      }
+    }
+
+    // Owner presence blocks capture
+    if (ownerInZone) {
+      ResetCaptureProgress();
+      return;
+    }
+
+    // No valid capturer
+    if (validCapturer == null) {
+      ResetCaptureProgress();
+      return;
+    }
+
+    // Progress capture
+    if (_capturingPlayer != validCapturer) {
+      _capturingPlayer = validCapturer;
+      _captureProgress = 0f;
+    }
+
+    _captureProgress += delta;
+    UpdateCaptureVisual();
+
+    if (_captureProgress >= CaptureTime) {
+      CompleteClaim(_capturingPlayer);
+    }
+  }
+
+  private void ResetCaptureProgress() {
+    if (_captureProgress > 0f || _capturingPlayer != null) {
+      _captureProgress = 0f;
+      _capturingPlayer = null;
+      UpdateCaptureVisual();
+    }
   }
 
   private void SetupVisuals() {
     VisualMesh ??= GetNodeOrNull<MeshInstance3D>("VisualMesh");
     if (VisualMesh == null) return;
 
-    // Get the material currently assigned to the mesh
     var originalMaterial = VisualMesh.GetActiveMaterial(0) as ShaderMaterial;
     if (originalMaterial == null) {
       GD.PushWarning("GoalZone VisualMesh does not have a ShaderMaterial.");
       return;
     }
 
-    // Duplicate so this zone has its own instance
     _materialInstance = (ShaderMaterial)originalMaterial.Duplicate();
     VisualMesh.SetSurfaceOverrideMaterial(0, _materialInstance);
 
@@ -61,43 +177,60 @@ public partial class GoalZone : Area3D {
   }
 
   private void OnBodyEntered(Node3D body) {
-    if (IsCompleted) return;
-
     if (body is Player player) {
-      Claim(player);
+      _playersInZone.Add(player);
     }
   }
 
-  private void OnAreaEntered(Area3D area) {
-    if (IsCompleted) return;
+  private void OnBodyExited(Node3D body) {
+    if (body is Player player) {
+      _playersInZone.Remove(player);
 
-    if (area is Projectile projectile) {
-      var player = projectile.PlayerOwner;
-      Claim(player);
+      // Reset capture if the capturing player left
+      if (player == _capturingPlayer) {
+        ResetCaptureProgress();
+      }
     }
   }
 
-  private void Claim(Player player) {
-    // Mask logic
-    if (Mask != 0 && (player.Mask & Mask) != Mask) return;
-
+  private void CompleteClaim(Player player) {
     int playerId = player.PlayerController.DeviceId;
-    if (playerId != OwnerPlayerId) {
-      OwnerPlayerId = playerId;
-      IsCompleted = true;
 
-      UpdateVisualColor(player.PlayerInfo.UIColor);
+    OwnerPlayerId = playerId;
+    _ownerPlayer = player;
+    IsLocked = true;
+    _lockTimeRemaining = CaptureLockTime;
+    _pointAccrualTimer = 0f;
 
-      player.AddScore(1);
-      EmitSignal(SignalName.Captured, player);
-      GD.Print($"Zone captured by Player {playerId}");
-    }
+    ResetCaptureProgress();
+    UpdateVisualColor(player.PlayerInfo.UIColor);
+    SpawnCapturePopup(player);
+
+    EmitSignal(SignalName.Captured, player);
+    GD.Print($"Zone captured by Player {playerId}, locked for {CaptureLockTime}s");
   }
 
   private void UpdateVisualColor(Color color) {
     if (_materialInstance == null) return;
-
-    // Shader uniform name must match the shader exactly
     _materialInstance.SetShaderParameter("base_color", color);
+  }
+
+  private void UpdateCaptureVisual() {
+    if (_materialInstance == null) return;
+
+    float progress = Mathf.Clamp(_captureProgress / CaptureTime, 0f, 1f);
+    _materialInstance.SetShaderParameter("capture_progress", progress);
+
+    if (_capturingPlayer != null && progress > 0f) {
+      _materialInstance.SetShaderParameter("capture_color", _capturingPlayer.PlayerInfo.UIColor);
+    }
+  }
+
+  private void SpawnCapturePopup(Player player) {
+    var popup = new CapturePopup();
+    popup.Color = player.PlayerInfo.UIColor;
+    popup.Duration = PopupDuration;
+    popup.Position = new Vector3(0, PopupHeight, 0);
+    AddChild(popup);
   }
 }
