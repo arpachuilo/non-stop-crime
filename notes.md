@@ -62,6 +62,7 @@ attempts of other players at achieving their objectives
   - ✅ Arson
   - ✅ Knife
   - ✅ Gun
+  - ✅ Bomb
   - Beefy
   - Prank
   - Fast
