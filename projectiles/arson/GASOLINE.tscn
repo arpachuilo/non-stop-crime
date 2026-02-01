@@ -32,7 +32,7 @@ animations = [{
 
 [node name="Gasoline" type="Area3D" unique_id=2024149760 node_paths=PackedStringArray("Sfx")]
 script = ExtResource("1_syetx")
-Duration = 0.5
+Duration = 1.5
 Speed = 0.0
 Sfx = NodePath("AudioStreamPlayer")
 
