@@ -17,6 +17,6 @@ Sprite = ExtResource("1_xi0vy")
 SpeedMultiplier = 1.2
 HasProjectile = true
 ProjectileScene = ExtResource("2_0sfcy")
-FireRate = 3.0
+FireRate = 2.0
 Scorable = true
 metadata/_custom_type_script = "uid://cbwkmtyoylbwe"
