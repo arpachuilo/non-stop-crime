@@ -3,17 +3,17 @@ using Godot;
 public partial class MainMenu : Control {
   [Export] private PackedScene gameScene;
   [Export] private PackedScene demoScene;
-  [Export] private Button startButton;
-  [Export] private Button demoButton;
-  [Export] private Button exitButton;
+  [Export] private BaseButton startButton;
+  [Export] private BaseButton demoButton;
+  [Export] private BaseButton exitButton;
   [Export] private AudioStream bgmStart;
 
   public override void _Ready() {
     // Re-enable once we have bgm
     // AudioManager.PlaySFX(bgmStart, 1, false, GlobalPosition);
-    startButton.ButtonDown += OnStartButtonPressed;
-    demoButton.ButtonDown += OnDemoButtonPressed;
-    exitButton.ButtonDown += OnExitButtonPressed;
+    if (startButton != null) startButton.ButtonDown += OnStartButtonPressed;
+    if (demoButton != null) demoButton.ButtonDown += OnDemoButtonPressed;
+    if (exitButton != null) exitButton.ButtonDown += OnExitButtonPressed;
     startButton.GrabFocus();
   }
 
@@ -33,9 +33,9 @@ public partial class MainMenu : Control {
     if (@event is InputEventJoypadButton joypadEvent) {
       if (joypadEvent.ButtonIndex == JoyButton.A && joypadEvent.Pressed && startButton.HasFocus()) {
         OnStartButtonPressed();
-      } else if (joypadEvent.ButtonIndex == JoyButton.A && joypadEvent.Pressed && demoButton.HasFocus()) {
+      } else if (joypadEvent.ButtonIndex == JoyButton.A && joypadEvent.Pressed && demoButton != null && demoButton.HasFocus()) {
         OnDemoButtonPressed();
-      } else if (joypadEvent.ButtonIndex == JoyButton.A && joypadEvent.Pressed && exitButton.HasFocus()) {
+      } else if (joypadEvent.ButtonIndex == JoyButton.A && joypadEvent.Pressed && exitButton != null && exitButton.HasFocus()) {
         OnExitButtonPressed();
       }
     }

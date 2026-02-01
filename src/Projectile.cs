@@ -1,79 +1,75 @@
 using Godot;
 
-public partial class Projectile : Area3D
-{
-	[Signal] public delegate void HitPlayerEventHandler(Player shooter, Player victim);
-	[Export]
-	public float Duration = 5.0f;
+public partial class Projectile : Area3D {
+  [Signal] public delegate void HitPlayerEventHandler(Player shooter, Player victim);
+  [Export]
+  public float Duration = 5.0f;
 
-	[Export]
-	public float Speed = 3.0f;
+  [Export]
+  public float Speed = 3.0f;
 
-	[Export]
-	public AudioStreamPlayer Sfx;
+  [Export]
+  public AudioStreamPlayer Sfx;
 
-	[Export]
-	public Player PlayerOwner;
+  [Export]
+  public Player PlayerOwner;
 
-	private Poller _lifetimePoller = new(5.0f);
+  [Export]
+  public bool DespawnOnCollide = false;
 
-	public void Own(Player player)
-	{
-		PlayerOwner = player;
-	}
+  private Poller _lifetimePoller = new(5.0f);
 
-	public override void _Ready()
-	{
-		Sfx?.Play();
-	}
+  public void Own(Player player) {
+    PlayerOwner = player;
+  }
 
-	public override void _EnterTree()
-	{
-		_lifetimePoller.Interval = Duration;
-		AreaEntered += OnAreaEntered;
-		BodyEntered += OnBodyEntered;
-	}
+  public override void _Ready() {
+    Sfx?.Play();
+  }
 
-	public override void _ExitTree()
-	{
-		AreaEntered -= OnAreaEntered;
-		BodyEntered -= OnBodyEntered;
-	}
+  public override void _EnterTree() {
+    _lifetimePoller.Interval = Duration;
+    AreaEntered += OnAreaEntered;
+    BodyEntered += OnBodyEntered;
+  }
 
-	public override void _PhysicsProcess(double delta)
-	{
-		MoveTowards(delta);
-		_lifetimePoller?.Poll(QueueFree);
-	}
+  public override void _ExitTree() {
+    AreaEntered -= OnAreaEntered;
+    BodyEntered -= OnBodyEntered;
+  }
 
-	protected virtual void MoveTowards(double delta)
-	{
-		Vector3 forward = -GlobalTransform.Basis.Z;
-		GlobalPosition += forward * Speed * (float)delta;
-	}
+  public override void _PhysicsProcess(double delta) {
+    base._PhysicsProcess(delta);
+    MoveTowards(delta);
+    _lifetimePoller?.Poll(QueueFree);
+  }
 
-	protected virtual void OnAreaEntered(Area3D area)
-	{
+  protected virtual void MoveTowards(double delta) {
+    Vector3 forward = -GlobalTransform.Basis.Z;
+    GlobalPosition += forward * Speed * (float)delta;
+  }
 
-	}
+  protected virtual void OnAreaEntered(Area3D area) {
+  }
 
-	protected virtual void OnBodyEntered(Node3D body)
-	{
-		if (body is Player player)
-		{
-			if (player == PlayerOwner) return; // Ignore self-hit
+  protected virtual void OnBodyEntered(Node3D body) {
+    if (body is Player owner) {
+      if (owner == PlayerOwner) return; // Ignore self-hit
+    }
 
-			PlayerOwner?.AddScore(1);
-			EmitSignal(SignalName.HitPlayer, PlayerOwner, player);
-			player.Reset();
-		}
-		else if (body is NPC npc)
-		{
-			if (npc.IsCaptured) return; // Already captured
+    if (body is Player player) {
+      PlayerOwner?.AddScore(1);
+      EmitSignal(SignalName.HitPlayer, PlayerOwner, player);
+      player.Reset();
+    } else if (body is NPC npc) {
+      if (npc.IsCaptured) return; // Already captured
 
-			PlayerOwner?.AddScore(1);
-			npc.OnGoalCaptured(PlayerOwner);
-			QueueFree();
-		}
-	}
+      PlayerOwner?.AddScore(1);
+      npc.OnGoalCaptured(PlayerOwner);
+    }
+
+    if (DespawnOnCollide) {
+      QueueFree();
+    }
+  }
 }

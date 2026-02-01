@@ -1,9 +1,9 @@
 # TODO
 - UI
-  - In-round HUD 👉 Pretty good already, might need some scaling for 4K screens and general polish
-  - Tutorial 👉 Throw some text up in the lobby
-  - Lobby 👉 Matthis is finishing assets
-  - Win screen 👉 Needs design still
+  - In-round HUD 👉 Pretty good already, might need some scaling for 4K screens and general polish @ Floris
+  - Tutorial 👉 Throw some text up in the lobby @ Floris
+  - Lobby 👉 Assets going into the game now @ Floris
+  - Win screen 👉 Needs design still @ Floris
 - Gameplay
   - Finalize mask abilities + VFX 👉 Maybe add one or two more masks as a stretch goal
   - Build final level 👉 Floris: I'm pretty pleased with the current state, might add some more greeblies
@@ -43,7 +43,6 @@
   - Game restarts or goes back to lobby 👉 Add buttons to the win screen
 
 # Stretch goals
-- Main menu: button states
 - More than 4 masks
 
 # Graphics

@@ -169,8 +169,6 @@ Light = NodePath("OmniLight3D")
 color = Color(0.8039216, 0, 0.92156863, 1)
 MaxSpeed = 2.0
 MinSpeed = 0.0
-_displayVelocity = true
-_displayGravity = true
 
 [node name="PlayerController" type="Node" parent="." unique_id=1303242672]
 script = ExtResource("2_32haq")

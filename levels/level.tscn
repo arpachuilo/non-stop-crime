@@ -4,10 +4,10 @@
 [ext_resource type="Script" uid="uid://b430y4e1vno6x" path="res://src/Lobby.cs" id="1_pb8y7"]
 [ext_resource type="PackedScene" uid="uid://cj7ucao0d5den" path="res://AC_Player.tscn" id="2_hjsbj"]
 [ext_resource type="PackedScene" uid="uid://b1awodkisntg" path="res://player/UI_PlayerInfo.tscn" id="3_vnv7o"]
-[ext_resource type="PackedScene" path="res://menus/LobbyOverlay.tscn" id="4_hy0rb"]
+[ext_resource type="PackedScene" uid="uid://bolpqy5islgfi" path="res://menus/LobbyOverlay.tscn" id="4_hy0rb"]
 [ext_resource type="Script" uid="uid://ch7jcbdn7a7yi" path="res://src/DynamicCamera.cs" id="4_rtcij"]
 [ext_resource type="Texture2D" uid="uid://dq8fhsvfeubu4" path="res://levels/assets/PavingStones150_1K-PNG_Color.png" id="6_3ca7f"]
-[ext_resource type="PackedScene" path="res://levels/props/greeblies/Trashbag.tscn" id="6_lh335"]
+[ext_resource type="PackedScene" uid="uid://e72mqccnojuq" path="res://levels/props/greeblies/Trashbag.tscn" id="6_lh335"]
 [ext_resource type="Script" uid="uid://bx8sqineax63u" path="res://src/Mask/MaskSpawner.cs" id="7_d5x7l"]
 [ext_resource type="PackedScene" uid="uid://27h8ms28togi" path="res://src/Mask/MaskPickup.tscn" id="8_rtcij"]
 [ext_resource type="Resource" uid="uid://bif5c1tl2gr2i" path="res://src/Mask/D_AllMasks.tres" id="8_ukwr8"]
@@ -22,10 +22,10 @@
 [ext_resource type="PackedScene" uid="uid://c4a4i2hhu3r40" path="res://npc/NPC.tscn" id="18_368ro"]
 [ext_resource type="PackedScene" uid="uid://cq086pc3a0s8n" path="res://levels/props/Park.tscn" id="20_3ca7f"]
 
-[sub_resource type="BoxMesh" id="BoxMesh_umreq"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_kogck"]
+size = Vector3(1, 1, 55)
 
-[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_80vhd"]
-data = PackedVector3Array(-0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, -0.5)
+[sub_resource type="BoxMesh" id="BoxMesh_umreq"]
 
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_umreq"]
 
@@ -63,7 +63,7 @@ script = ExtResource("1_pb8y7")
 PlayerScene = ExtResource("2_hjsbj")
 PlayerContainer = NodePath("../Players")
 PlayerInfoScene = ExtResource("3_vnv7o")
-PlayerInfoContainer = NodePath("../HBoxContainer")
+PlayerInfoContainer = NodePath("../InRoundPlayerInfoContainer")
 Safetymode = NodePath("LobbyOverlay/SafetyModeLabel")
 PlayerColors = Array[Color]([Color(0.8004218, 0.3579007, 0.35808152, 1), Color(0.50016034, 0.65481156, 0.9719935, 1), Color(0.19607843, 0.8039216, 0.19607843, 1), Color(0.727104, 0.69937444, 0, 1)])
 SpawnPoints = [NodePath("../Players/Spawn A"), NodePath("../Players/Spawn B"), NodePath("../Players/Spawn C"), NodePath("../Players/Spawn D")]
@@ -99,45 +99,45 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.1638875, 0, -4.2016945)
 
 [node name="Walls" type="Node3D" parent="." unique_id=8154275]
 
+[node name="Bullet Catch" type="StaticBody3D" parent="Walls" unique_id=1563021131]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26.778, 1.1432058, 17)
+collision_layer = 3
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Walls/Bullet Catch" unique_id=1897434013]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.1782138, 0)
+shape = SubResource("BoxShape3D_kogck")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Walls/Bullet Catch" unique_id=1138919641]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 52.73728, -1.1782138, 0)
+shape = SubResource("BoxShape3D_kogck")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="Walls/Bullet Catch" unique_id=614120034]
+transform = Transform3D(-4.3711385e-08, 0, 0.99999994, 0, 1, 0, -0.99999994, 0, -4.3711385e-08, 26.233286, -1.1782138, 26.986244)
+shape = SubResource("BoxShape3D_kogck")
+
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="Walls/Bullet Catch" unique_id=1839957396]
+transform = Transform3D(-4.3711385e-08, 0, 0.99999994, 0, 1, 0, -0.99999994, 0, -4.3711385e-08, 26.233286, -1.1782138, -26.874994)
+shape = SubResource("BoxShape3D_kogck")
+
 [node name="WallEast" type="MeshInstance3D" parent="Walls" unique_id=203067950]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 55, -26.778, 0, 17)
 mesh = SubResource("BoxMesh_umreq")
 skeleton = NodePath("")
-
-[node name="StaticBody3D" type="StaticBody3D" parent="Walls/WallEast" unique_id=1577158931]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Walls/WallEast/StaticBody3D" unique_id=1577493223]
-shape = SubResource("ConcavePolygonShape3D_80vhd")
 
 [node name="WallWest" type="MeshInstance3D" parent="Walls" unique_id=658359860]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 55, 25.979944, 0, 16.95297)
 mesh = SubResource("BoxMesh_umreq")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Walls/WallWest" unique_id=1814816694]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Walls/WallWest/StaticBody3D" unique_id=1972186605]
-shape = SubResource("ConcavePolygonShape3D_80vhd")
-
 [node name="WallNorth" type="MeshInstance3D" parent="Walls" unique_id=517507882]
 transform = Transform3D(52.95, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -10)
 mesh = SubResource("BoxMesh_umreq")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Walls/WallNorth" unique_id=890576302]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Walls/WallNorth/StaticBody3D" unique_id=1089162527]
-shape = SubResource("ConcavePolygonShape3D_80vhd")
-
 [node name="WallSouth" type="MeshInstance3D" parent="Walls" unique_id=1983312205]
 transform = Transform3D(53, 0, 0, 0, 1, 0, 0, 0, 1, -0.396552, 0, 43.97227)
 mesh = SubResource("BoxMesh_umreq")
 skeleton = NodePath("")
-
-[node name="StaticBody3D" type="StaticBody3D" parent="Walls/WallSouth" unique_id=557929901]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Walls/WallSouth/StaticBody3D" unique_id=642406714]
-shape = SubResource("ConcavePolygonShape3D_80vhd")
 
 [node name="Ground" type="StaticBody3D" parent="." unique_id=673564305]
 transform = Transform3D(2.5, 0, 0, 0, 1, 0, 0, 0, 2.5, 0, 0, 16.874304)
@@ -168,12 +168,14 @@ _availableMasks = ExtResource("8_ukwr8")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.7833881, 17.178421)
 script = ExtResource("17_u6cys")
 NPCScene = ExtResource("18_368ro")
-SpawnDelay = 0.5
+SpawnDelay = 3.0
+SpicySpawnDelay = 0.5
 SpawnAreaSize = Vector3(50, 10.04, 50)
 
 [node name="ScoreTracker" parent="." unique_id=2090427259 instance=ExtResource("11_pb8y7")]
+GameDurationSeconds = 90.0
 
-[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=1143154661]
+[node name="InRoundPlayerInfoContainer" type="HBoxContainer" parent="." unique_id=1143154661]
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
@@ -247,6 +249,7 @@ omni_attenuation = 0.75
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="Camera3D" unique_id=1221620741]
 transform = Transform3D(-0.9183094, 0.38570714, -0.08909618, 0.045702085, -0.1202656, -0.9916892, -0.3932168, -0.9147494, 0.09281364, 0, 24.473022, -24.473022)
+light_color = Color(0.30876932, 0.3087694, 0.30876926, 1)
 light_energy = 0.2
 
 [connection signal="GameStarted" from="Lobby" to="MaskSpawner" method="_on_lobby_game_started"]
