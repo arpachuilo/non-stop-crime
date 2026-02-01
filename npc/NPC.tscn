@@ -113,6 +113,7 @@ _mask = NodePath("MaskSprite")
 
 [node name="BodyCycleSprite" type="AnimatedSprite3D" parent="SpriteParent" unique_id=1898876859]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+cast_shadow = 0
 billboard = 1
 shaded = true
 alpha_cut = 2
@@ -124,6 +125,7 @@ frame_progress = 0.54208577
 
 [node name="HeadSprite" type="Sprite3D" parent="SpriteParent" unique_id=1861983109]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.074, -0.512, 0.1)
+cast_shadow = 0
 billboard = 1
 shaded = true
 alpha_cut = 2
@@ -133,6 +135,7 @@ texture = ExtResource("18_hhdgm")
 
 [node name="MaskSprite" type="Sprite3D" parent="SpriteParent" unique_id=723561790]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.074, -0.512, 0.15)
+cast_shadow = 0
 billboard = 1
 shaded = true
 alpha_cut = 2
