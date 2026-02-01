@@ -17,6 +17,8 @@ compatibility/default_parent_skeleton_in_mesh_instance_3d=true
 config/name="Non-Stop Crime"
 run/main_scene="uid://r1l4cou0ykpr"
 config/features=PackedStringArray("4.6", "C#", "Mobile")
+boot_splash/bg_color=Color(0.09923185, 0.09923173, 0.09923176, 1)
+boot_splash/image="uid://bh70ortkyk4t"
 config/icon="res://icon.svg"
 
 [autoload]

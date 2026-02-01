@@ -1,31 +1,84 @@
 [gd_scene format=3 uid="uid://dqeupnhachgnt"]
 
-[ext_resource type="Script" path="res://menus/WinnerOverlay.cs" id="1_av0ib"]
+[ext_resource type="Script" uid="uid://bits1rmvalj68" path="res://menus/WinnerOverlay.cs" id="1_av0ib"]
+[ext_resource type="Texture2D" uid="uid://bfhy0yqu1ly0i" path="res://menus/assets/Lobby_BG.png" id="2_hpw7k"]
+[ext_resource type="FontFile" uid="uid://dtb16dgkgphjp" path="res://menus/assets/fonts/Chalkduster.ttf" id="3_i63y4"]
+[ext_resource type="Texture2D" uid="uid://bcgmmpfjbihni" path="res://menus/assets/win_screen.png" id="3_nea7y"]
+[ext_resource type="Theme" uid="uid://cu4n20cc1wscg" path="res://menus/assets/DefaultButton.tres" id="5_i63y4"]
 
-[node name="WinnerOverlay" type="Control" unique_id=254244403 node_paths=PackedStringArray("WinnerLabel", "MainMenuButton")]
+[sub_resource type="LabelSettings" id="LabelSettings_kfyhy"]
+font = ExtResource("3_i63y4")
+font_size = 70
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xivuf"]
+atlas = ExtResource("3_nea7y")
+region = Rect2(369.5199, 261.216, 1178.0563, 344.60803)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vxvq3"]
+atlas = ExtResource("3_nea7y")
+region = Rect2(467.19992, 627.19995, 925.59985, 194.40002)
+
+[node name="WinnerOverlay" type="Control" unique_id=254244403 node_paths=PackedStringArray("WinnerLabel", "WinnerGraphic", "MainMenuButton")]
 layout_mode = 3
 anchors_preset = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
 script = ExtResource("1_av0ib")
-WinnerLabel = NodePath("winnerText")
-MainMenuButton = NodePath("Button")
-MainMenuPath = "res://levels/level.tscn"
+WinnerLabel = NodePath("WinnerGraphicVBox/WinnerLabel")
+WinnerGraphic = NodePath("WinnerGraphicVBox/WinnerGraphicRect")
+MainMenuButton = NodePath("MainMenuButton")
 
-[node name="winnerText" type="Label" parent="." unique_id=573335501]
+[node name="BackgroundRect" type="TextureRect" parent="." unique_id=1670266691]
 layout_mode = 1
-anchors_preset = -1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
 anchor_right = 0.5
-anchor_bottom = 0.264
-offset_left = 786.0
-offset_top = 345.0
-offset_right = 176.0
-offset_bottom = 196.88
-theme_override_font_sizes/font_size = 100
-text = "Winner"
+anchor_bottom = 0.5
+offset_left = -960.0
+offset_top = -540.0
+offset_right = 960.0
+offset_bottom = 540.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_hpw7k")
 
-[node name="Button" type="Button" parent="." unique_id=1168580227]
+[node name="WinnerGraphicVBox" type="VBoxContainer" parent="." unique_id=478548963]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="WinnerLabel" type="Label" parent="WinnerGraphicVBox" unique_id=618302530]
+layout_mode = 2
+text = "Placeholder"
+label_settings = SubResource("LabelSettings_kfyhy")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="WinnerGraphicRect" type="TextureRect" parent="WinnerGraphicVBox" unique_id=2073318849]
+layout_mode = 2
+texture = SubResource("AtlasTexture_xivuf")
+
+[node name="ThanksForPlayingRect" type="TextureRect" parent="WinnerGraphicVBox" unique_id=736825083]
+layout_mode = 2
+texture = SubResource("AtlasTexture_vxvq3")
+
+[node name="MainMenuButton" type="Button" parent="." unique_id=1168580227]
 layout_mode = 0
 offset_left = 819.0
-offset_top = 514.0
+offset_top = 951.0
 offset_right = 1079.0
-offset_bottom = 577.0
-text = "Main Menu"
+offset_bottom = 1014.0
+theme = ExtResource("5_i63y4")
+text = "Restart
+"
