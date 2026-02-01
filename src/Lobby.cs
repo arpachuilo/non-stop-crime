@@ -137,6 +137,7 @@ public partial class Lobby : Node {
     LobbyOverlay?.SetPlayerReadyState(player, false);
     LobbyOverlay?.SetPlayerName(player, uniqueName);
     LobbyOverlay?.SetPlayerColor(player, playerColor);
+    LobbyOverlay?.SetPlayerPortrait(player);
   }
 
   private Vector3 GetNextSpawnPosition() {

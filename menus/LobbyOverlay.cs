@@ -16,8 +16,26 @@ public partial class LobbyOverlay : Control {
   private TextureRect _player4ReadyIcon;
 
   private Dictionary<Player, int> PlayerToIndex = [];
+  private List<Texture2D> _allPortraits = new();
+  private List<Texture2D> _availablePortraits = new();
+  private RandomNumberGenerator _rng = new();
 
   public override void _Ready() {
+    _rng.Randomize();
+
+    // Gather existing portrait textures from the BoxChar nodes
+    var p1Char = Player1VBox.GetNodeOrNull<TextureRect>("Player1Box/BoxChar");
+    var p2Char = Player2VBox.GetNodeOrNull<TextureRect>("Player2Box/BoxChar");
+    var p3Char = Player3VBox.GetNodeOrNull<TextureRect>("Player3Box/BoxChar");
+    var p4Char = Player4VBox.GetNodeOrNull<TextureRect>("Player4Box/BoxChar");
+
+    if (p1Char?.Texture != null) _allPortraits.Add(p1Char.Texture);
+    if (p2Char?.Texture != null) _allPortraits.Add(p2Char.Texture);
+    if (p3Char?.Texture != null) _allPortraits.Add(p3Char.Texture);
+    if (p4Char?.Texture != null) _allPortraits.Add(p4Char.Texture);
+
+    _availablePortraits = new List<Texture2D>(_allPortraits);
+
     _player1ReadyIcon = Player1VBox.GetNodeOrNull<TextureRect>("ReadyState");
     _player2ReadyIcon = Player2VBox.GetNodeOrNull<TextureRect>("ReadyState");
     _player3ReadyIcon = Player3VBox.GetNodeOrNull<TextureRect>("ReadyState");
@@ -95,6 +113,53 @@ public partial class LobbyOverlay : Control {
         GD.PrintErr($"LobbyOverlay::SetPlayerColor: Invalid player index: {playerIndex}");
         break;
     }
+  }
+
+  public void SetPlayerPortrait(Player player) {
+    int playerIndex;
+    if (PlayerToIndex.ContainsKey(player)) {
+      playerIndex = PlayerToIndex[player];
+    } else {
+      playerIndex = PlayerToIndex.Count + 1;
+      PlayerToIndex[player] = playerIndex;
+    }
+
+    var portrait = GetRandomPortrait();
+    if (portrait == null) return;
+
+    switch (playerIndex) {
+      case 1:
+        var p1BoxChar = Player1VBox.GetNodeOrNull<TextureRect>("Player1Box/BoxChar");
+        if (p1BoxChar != null) p1BoxChar.Texture = portrait;
+        break;
+      case 2:
+        var p2BoxChar = Player2VBox.GetNodeOrNull<TextureRect>("Player2Box/BoxChar");
+        if (p2BoxChar != null) p2BoxChar.Texture = portrait;
+        break;
+      case 3:
+        var p3BoxChar = Player3VBox.GetNodeOrNull<TextureRect>("Player3Box/BoxChar");
+        if (p3BoxChar != null) p3BoxChar.Texture = portrait;
+        break;
+      case 4:
+        var p4BoxChar = Player4VBox.GetNodeOrNull<TextureRect>("Player4Box/BoxChar");
+        if (p4BoxChar != null) p4BoxChar.Texture = portrait;
+        break;
+      default:
+        GD.PrintErr($"LobbyOverlay::SetPlayerPortrait: Invalid player index: {playerIndex}");
+        break;
+    }
+  }
+
+  private Texture2D GetRandomPortrait() {
+    if (_availablePortraits.Count == 0)
+      _availablePortraits = new List<Texture2D>(_allPortraits);
+
+    if (_availablePortraits.Count == 0) return null;
+
+    int index = _rng.RandiRange(0, _availablePortraits.Count - 1);
+    var portrait = _availablePortraits[index];
+    _availablePortraits.RemoveAt(index);
+    return portrait;
   }
 
   public void SetPlayerActiveState(Player player, bool isActive) {

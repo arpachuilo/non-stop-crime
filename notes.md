@@ -2,7 +2,6 @@
 - UI
   - In-round HUD 👉 Pretty good already, might need some scaling for 4K screens and general polish @ Floris
   - Tutorial 👉 Throw some text up in the lobby @ Floris
-  - Win screen 👉 Needs design still @ Floris
 - Gameplay
   - Finalize mask abilities + VFX 👉 Maybe add one or two more masks as a stretch goal
   - Build final level 👉 Floris: I'm pretty pleased with the current state, might add some more greeblies
@@ -22,6 +21,7 @@
   - Gun is too powerful
     - Reduce fire rate
     - Do not allow projectiles to penetrate walls
+  - Spawn invulnerability?
 - User journey aka The Horizontal Vertical Slice
   - ✅ Launch game 
   - ✅ Go into lobby

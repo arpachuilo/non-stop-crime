@@ -53,10 +53,10 @@ grow_vertical = 2
 script = ExtResource("1_0r6g1")
 UnreadyIconTexture = ExtResource("6_jin3t")
 ReadyIconTexture = ExtResource("3_26b0x")
-Player1VBox = NodePath("LobbyVBox/PlayerHBox/Player1VBox")
-Player2VBox = NodePath("LobbyVBox/PlayerHBox/Player2VBox")
-Player3VBox = NodePath("LobbyVBox/PlayerHBox/Player3VBox")
-Player4VBox = NodePath("LobbyVBox/PlayerHBox/Player4VBox")
+Player1VBox = NodePath("LobbyMarginContainer/LobbyVBox/PlayersVBox/PlayerHBox/Player1VBox")
+Player2VBox = NodePath("LobbyMarginContainer/LobbyVBox/PlayersVBox/PlayerHBox/Player2VBox")
+Player3VBox = NodePath("LobbyMarginContainer/LobbyVBox/PlayersVBox/PlayerHBox/Player3VBox")
+Player4VBox = NodePath("LobbyMarginContainer/LobbyVBox/PlayersVBox/PlayerHBox/Player4VBox")
 
 [node name="Background" type="TextureRect" parent="." unique_id=259443658]
 layout_mode = 0
@@ -64,36 +64,56 @@ offset_right = 1920.0
 offset_bottom = 1080.0
 texture = ExtResource("1_u0y3a")
 
-[node name="LobbyVBox" type="VBoxContainer" parent="." unique_id=936636568]
+[node name="LobbyMarginContainer" type="MarginContainer" parent="." unique_id=1211420176]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -338.0
-offset_top = -211.82999
-offset_right = 338.0
-offset_bottom = 214.16943
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-pivot_offset = Vector2(338, 213)
-theme_override_constants/separation = 0
+theme_override_constants/margin_left = 32
+theme_override_constants/margin_top = 64
+theme_override_constants/margin_right = 32
+theme_override_constants/margin_bottom = 32
 
-[node name="PressStartRect" type="TextureRect" parent="LobbyVBox" unique_id=1778009454]
+[node name="LobbyVBox" type="VBoxContainer" parent="LobbyMarginContainer" unique_id=1299373083]
+layout_mode = 2
+theme_override_constants/separation = 40
+
+[node name="Label" type="Label" parent="LobbyMarginContainer/LobbyVBox" unique_id=1546027936]
+layout_mode = 2
+text = "Hallo :)
+
+Je moeder"
+
+[node name="Spacer" type="Control" parent="LobbyMarginContainer/LobbyVBox" unique_id=1403044763]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+
+[node name="PlayersVBox" type="VBoxContainer" parent="LobbyMarginContainer/LobbyVBox" unique_id=936636568]
+layout_mode = 2
+
+[node name="InstructionsLabel" type="Label" parent="LobbyMarginContainer/LobbyVBox/PlayersVBox" unique_id=1418649247]
+layout_mode = 2
+
+[node name="Control" type="Control" parent="LobbyMarginContainer/LobbyVBox/PlayersVBox" unique_id=311910467]
+layout_mode = 2
+
+[node name="PressStartRect" type="TextureRect" parent="LobbyMarginContainer/LobbyVBox/PlayersVBox" unique_id=1778009454]
 layout_mode = 2
 texture = ExtResource("2_0r6g1")
+stretch_mode = 3
 
-[node name="PlayerHBox" type="HBoxContainer" parent="LobbyVBox" unique_id=184169637]
+[node name="PlayerHBox" type="HBoxContainer" parent="LobbyMarginContainer/LobbyVBox/PlayersVBox" unique_id=184169637]
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_constants/separation = 60
 
-[node name="Player1VBox" type="VBoxContainer" parent="LobbyVBox/PlayerHBox" unique_id=945769024]
+[node name="Player1VBox" type="VBoxContainer" parent="LobbyMarginContainer/LobbyVBox/PlayersVBox/PlayerHBox" unique_id=945769024]
 layout_mode = 2
 theme_override_constants/separation = 15
 
-[node name="PlayerNameLabel" type="Label" parent="LobbyVBox/PlayerHBox/Player1VBox" unique_id=1558943588]
+[node name="PlayerNameLabel" type="Label" parent="LobbyMarginContainer/LobbyVBox/PlayersVBox/PlayerHBox/Player1VBox" unique_id=1558943588]
 custom_minimum_size = Vector2(200, 100)
 layout_mode = 2
 text = "Player 1"
@@ -102,30 +122,30 @@ horizontal_alignment = 1
 vertical_alignment = 2
 autowrap_mode = 3
 
-[node name="Player1Box" type="CenterContainer" parent="LobbyVBox/PlayerHBox/Player1VBox" unique_id=857128759]
+[node name="Player1Box" type="CenterContainer" parent="LobbyMarginContainer/LobbyVBox/PlayersVBox/PlayerHBox/Player1VBox" unique_id=857128759]
 layout_mode = 2
 
-[node name="BoxBG" type="TextureRect" parent="LobbyVBox/PlayerHBox/Player1VBox/Player1Box" unique_id=706839499]
+[node name="BoxBG" type="TextureRect" parent="LobbyMarginContainer/LobbyVBox/PlayersVBox/PlayerHBox/Player1VBox/Player1Box" unique_id=706839499]
 layout_mode = 2
 texture = SubResource("AtlasTexture_fex41")
 
-[node name="BoxChar" type="TextureRect" parent="LobbyVBox/PlayerHBox/Player1VBox/Player1Box" unique_id=904602097]
+[node name="BoxChar" type="TextureRect" parent="LobbyMarginContainer/LobbyVBox/PlayersVBox/PlayerHBox/Player1VBox/Player1Box" unique_id=904602097]
 layout_mode = 2
 texture = SubResource("AtlasTexture_pwkj3")
 
-[node name="BoxOutline" type="TextureRect" parent="LobbyVBox/PlayerHBox/Player1VBox/Player1Box" unique_id=1264556734]
+[node name="BoxOutline" type="TextureRect" parent="LobbyMarginContainer/LobbyVBox/PlayersVBox/PlayerHBox/Player1VBox/Player1Box" unique_id=1264556734]
 layout_mode = 2
 texture = SubResource("AtlasTexture_f416k")
 
-[node name="ReadyState" type="TextureRect" parent="LobbyVBox/PlayerHBox/Player1VBox" unique_id=1170016788]
+[node name="ReadyState" type="TextureRect" parent="LobbyMarginContainer/LobbyVBox/PlayersVBox/PlayerHBox/Player1VBox" unique_id=1170016788]
 layout_mode = 2
 texture = ExtResource("6_jin3t")
 
-[node name="Player2VBox" type="VBoxContainer" parent="LobbyVBox/PlayerHBox" unique_id=1620463471]
+[node name="Player2VBox" type="VBoxContainer" parent="LobbyMarginContainer/LobbyVBox/PlayersVBox/PlayerHBox" unique_id=1620463471]
 layout_mode = 2
 theme_override_constants/separation = 15
 
-[node name="PlayerNameLabel" type="Label" parent="LobbyVBox/PlayerHBox/Player2VBox" unique_id=1087663533]
+[node name="PlayerNameLabel" type="Label" parent="LobbyMarginContainer/LobbyVBox/PlayersVBox/PlayerHBox/Player2VBox" unique_id=1087663533]
 custom_minimum_size = Vector2(200, 100)
 layout_mode = 2
 text = "Player 2"
@@ -134,30 +154,30 @@ horizontal_alignment = 1
 vertical_alignment = 2
 autowrap_mode = 3
 
-[node name="Player2Box" type="CenterContainer" parent="LobbyVBox/PlayerHBox/Player2VBox" unique_id=1623551962]
+[node name="Player2Box" type="CenterContainer" parent="LobbyMarginContainer/LobbyVBox/PlayersVBox/PlayerHBox/Player2VBox" unique_id=1623551962]
 layout_mode = 2
 
-[node name="BoxBG" type="TextureRect" parent="LobbyVBox/PlayerHBox/Player2VBox/Player2Box" unique_id=782639879]
+[node name="BoxBG" type="TextureRect" parent="LobbyMarginContainer/LobbyVBox/PlayersVBox/PlayerHBox/Player2VBox/Player2Box" unique_id=782639879]
 layout_mode = 2
 texture = SubResource("AtlasTexture_fex41")
 
-[node name="BoxChar" type="TextureRect" parent="LobbyVBox/PlayerHBox/Player2VBox/Player2Box" unique_id=300874874]
+[node name="BoxChar" type="TextureRect" parent="LobbyMarginContainer/LobbyVBox/PlayersVBox/PlayerHBox/Player2VBox/Player2Box" unique_id=300874874]
 layout_mode = 2
 texture = SubResource("AtlasTexture_22uj2")
 
-[node name="BoxOutline" type="TextureRect" parent="LobbyVBox/PlayerHBox/Player2VBox/Player2Box" unique_id=1733775893]
+[node name="BoxOutline" type="TextureRect" parent="LobbyMarginContainer/LobbyVBox/PlayersVBox/PlayerHBox/Player2VBox/Player2Box" unique_id=1733775893]
 layout_mode = 2
 texture = SubResource("AtlasTexture_f416k")
 
-[node name="ReadyState" type="TextureRect" parent="LobbyVBox/PlayerHBox/Player2VBox" unique_id=1463587031]
+[node name="ReadyState" type="TextureRect" parent="LobbyMarginContainer/LobbyVBox/PlayersVBox/PlayerHBox/Player2VBox" unique_id=1463587031]
 layout_mode = 2
 texture = ExtResource("6_jin3t")
 
-[node name="Player3VBox" type="VBoxContainer" parent="LobbyVBox/PlayerHBox" unique_id=1330862848]
+[node name="Player3VBox" type="VBoxContainer" parent="LobbyMarginContainer/LobbyVBox/PlayersVBox/PlayerHBox" unique_id=1330862848]
 layout_mode = 2
 theme_override_constants/separation = 15
 
-[node name="PlayerNameLabel" type="Label" parent="LobbyVBox/PlayerHBox/Player3VBox" unique_id=1909070943]
+[node name="PlayerNameLabel" type="Label" parent="LobbyMarginContainer/LobbyVBox/PlayersVBox/PlayerHBox/Player3VBox" unique_id=1909070943]
 custom_minimum_size = Vector2(200, 100)
 layout_mode = 2
 text = "Player 3"
@@ -166,30 +186,30 @@ horizontal_alignment = 1
 vertical_alignment = 2
 autowrap_mode = 3
 
-[node name="Player3Box" type="CenterContainer" parent="LobbyVBox/PlayerHBox/Player3VBox" unique_id=1027594959]
+[node name="Player3Box" type="CenterContainer" parent="LobbyMarginContainer/LobbyVBox/PlayersVBox/PlayerHBox/Player3VBox" unique_id=1027594959]
 layout_mode = 2
 
-[node name="BoxBG" type="TextureRect" parent="LobbyVBox/PlayerHBox/Player3VBox/Player3Box" unique_id=301028688]
+[node name="BoxBG" type="TextureRect" parent="LobbyMarginContainer/LobbyVBox/PlayersVBox/PlayerHBox/Player3VBox/Player3Box" unique_id=301028688]
 layout_mode = 2
 texture = SubResource("AtlasTexture_fex41")
 
-[node name="BoxChar" type="TextureRect" parent="LobbyVBox/PlayerHBox/Player3VBox/Player3Box" unique_id=671133133]
+[node name="BoxChar" type="TextureRect" parent="LobbyMarginContainer/LobbyVBox/PlayersVBox/PlayerHBox/Player3VBox/Player3Box" unique_id=671133133]
 layout_mode = 2
 texture = SubResource("AtlasTexture_bf1jk")
 
-[node name="BoxOutline" type="TextureRect" parent="LobbyVBox/PlayerHBox/Player3VBox/Player3Box" unique_id=1294553930]
+[node name="BoxOutline" type="TextureRect" parent="LobbyMarginContainer/LobbyVBox/PlayersVBox/PlayerHBox/Player3VBox/Player3Box" unique_id=1294553930]
 layout_mode = 2
 texture = SubResource("AtlasTexture_f416k")
 
-[node name="ReadyState" type="TextureRect" parent="LobbyVBox/PlayerHBox/Player3VBox" unique_id=1291519123]
+[node name="ReadyState" type="TextureRect" parent="LobbyMarginContainer/LobbyVBox/PlayersVBox/PlayerHBox/Player3VBox" unique_id=1291519123]
 layout_mode = 2
 texture = ExtResource("6_jin3t")
 
-[node name="Player4VBox" type="VBoxContainer" parent="LobbyVBox/PlayerHBox" unique_id=1175791203]
+[node name="Player4VBox" type="VBoxContainer" parent="LobbyMarginContainer/LobbyVBox/PlayersVBox/PlayerHBox" unique_id=1175791203]
 layout_mode = 2
 theme_override_constants/separation = 15
 
-[node name="PlayerNameLabel" type="Label" parent="LobbyVBox/PlayerHBox/Player4VBox" unique_id=1682077509]
+[node name="PlayerNameLabel" type="Label" parent="LobbyMarginContainer/LobbyVBox/PlayersVBox/PlayerHBox/Player4VBox" unique_id=1682077509]
 custom_minimum_size = Vector2(200, 100)
 layout_mode = 2
 text = "Player 4"
@@ -198,21 +218,21 @@ horizontal_alignment = 1
 vertical_alignment = 2
 autowrap_mode = 3
 
-[node name="Player4Box" type="CenterContainer" parent="LobbyVBox/PlayerHBox/Player4VBox" unique_id=1498215136]
+[node name="Player4Box" type="CenterContainer" parent="LobbyMarginContainer/LobbyVBox/PlayersVBox/PlayerHBox/Player4VBox" unique_id=1498215136]
 layout_mode = 2
 
-[node name="BoxBG" type="TextureRect" parent="LobbyVBox/PlayerHBox/Player4VBox/Player4Box" unique_id=1829348806]
+[node name="BoxBG" type="TextureRect" parent="LobbyMarginContainer/LobbyVBox/PlayersVBox/PlayerHBox/Player4VBox/Player4Box" unique_id=1829348806]
 layout_mode = 2
 texture = SubResource("AtlasTexture_fex41")
 
-[node name="BoxChar" type="TextureRect" parent="LobbyVBox/PlayerHBox/Player4VBox/Player4Box" unique_id=2018897340]
+[node name="BoxChar" type="TextureRect" parent="LobbyMarginContainer/LobbyVBox/PlayersVBox/PlayerHBox/Player4VBox/Player4Box" unique_id=2018897340]
 layout_mode = 2
 texture = SubResource("AtlasTexture_hv72m")
 
-[node name="BoxOutline" type="TextureRect" parent="LobbyVBox/PlayerHBox/Player4VBox/Player4Box" unique_id=812494047]
+[node name="BoxOutline" type="TextureRect" parent="LobbyMarginContainer/LobbyVBox/PlayersVBox/PlayerHBox/Player4VBox/Player4Box" unique_id=812494047]
 layout_mode = 2
 texture = SubResource("AtlasTexture_f416k")
 
-[node name="ReadyState" type="TextureRect" parent="LobbyVBox/PlayerHBox/Player4VBox" unique_id=1444027980]
+[node name="ReadyState" type="TextureRect" parent="LobbyMarginContainer/LobbyVBox/PlayersVBox/PlayerHBox/Player4VBox" unique_id=1444027980]
 layout_mode = 2
 texture = ExtResource("6_jin3t")
