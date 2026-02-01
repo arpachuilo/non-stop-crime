@@ -63,7 +63,6 @@ public partial class Lobby : Node {
           return;
         }
       }
-      return;
     }
 
     if (@event is InputEventJoypadButton joypadEvent && joypadEvent.ButtonIndex == JoyButton.Start && joypadEvent.Pressed) {
