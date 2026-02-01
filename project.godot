@@ -15,7 +15,7 @@ compatibility/default_parent_skeleton_in_mesh_instance_3d=true
 [application]
 
 config/name="Non-Stop Crime"
-run/main_scene="uid://vr472n0ku81u"
+run/main_scene="uid://r1l4cou0ykpr"
 config/features=PackedStringArray("4.6", "C#", "Mobile")
 config/icon="res://icon.svg"
 
