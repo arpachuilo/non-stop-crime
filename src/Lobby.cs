@@ -114,6 +114,7 @@ public partial class Lobby : Node {
     player.PlayerController.IsKB = isKB;
     player.Position = spawnPosition;
     player.Spawn = spawnPosition;
+    player.SpawnPoints = new System.Collections.Generic.List<Node3D>(SpawnPoints);
 
     string uniqueName = GetUniqueName();
     player.NamePlate.Text = uniqueName;
