@@ -47,7 +47,9 @@ folder_colors={
 "res://external/": "gray",
 "res://levels/": "teal",
 "res://menus/": "orange",
+"res://npc/": "green",
 "res://player/": "yellow",
+"res://projectiles/": "red",
 "res://src/": "pink"
 }
 

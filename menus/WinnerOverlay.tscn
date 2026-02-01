@@ -1,11 +1,11 @@
 [gd_scene format=3 uid="uid://dqeupnhachgnt"]
 
-[ext_resource type="Script" uid="uid://bits1rmvalj68" path="res://src/WinnerScreen/WinnerScreen.cs" id="1_winner"]
+[ext_resource type="Script" uid="uid://bits1rmvalj68" path="res://menus/WinnerOverlay.cs" id="1_av0ib"]
 
-[node name="Node2D" type="Control" unique_id=254244403 node_paths=PackedStringArray("WinnerLabel", "MainMenuButton")]
+[node name="WinnerOverlay" type="Control" unique_id=254244403 node_paths=PackedStringArray("WinnerLabel", "MainMenuButton")]
 layout_mode = 3
 anchors_preset = 0
-script = ExtResource("1_winner")
+script = ExtResource("1_av0ib")
 WinnerLabel = NodePath("winnerText")
 MainMenuButton = NodePath("Button")
 MainMenuPath = "res://levels/level.tscn"
