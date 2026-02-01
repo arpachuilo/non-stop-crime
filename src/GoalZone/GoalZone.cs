@@ -4,7 +4,7 @@ using Godot;
 
 [Tool]
 public partial class GoalZone : Area3D {
-  const int NEUTRAL_OWNER_ID = -1;
+  const int NEUTRAL_OWNER_ID = -67;
 
   [Signal] public delegate void CapturedEventHandler(Player player);
 

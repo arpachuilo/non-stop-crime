@@ -4,10 +4,10 @@
 [ext_resource type="Script" uid="uid://b430y4e1vno6x" path="res://src/Lobby.cs" id="1_pb8y7"]
 [ext_resource type="PackedScene" uid="uid://cj7ucao0d5den" path="res://AC_Player.tscn" id="2_hjsbj"]
 [ext_resource type="PackedScene" uid="uid://b1awodkisntg" path="res://player/UI_PlayerInfo.tscn" id="3_vnv7o"]
-[ext_resource type="PackedScene" uid="uid://bolpqy5islgfi" path="res://menus/LobbyOverlay.tscn" id="4_hy0rb"]
+[ext_resource type="PackedScene" path="res://menus/LobbyOverlay.tscn" id="4_hy0rb"]
 [ext_resource type="Script" uid="uid://ch7jcbdn7a7yi" path="res://src/DynamicCamera.cs" id="4_rtcij"]
-[ext_resource type="Texture2D" uid="uid://dq8fhsvfeubu4" path="res://levels/assets/PavingStones150_1K-PNG_Color.png" id="6_3ca7f"]
-[ext_resource type="PackedScene" uid="uid://e72mqccnojuq" path="res://levels/props/greeblies/Trashbag.tscn" id="6_lh335"]
+[ext_resource type="Texture2D" uid="uid://jum8fmc7rbed" path="res://levels/assets/PavingStones150_1K-PNG_Color.png" id="6_3ca7f"]
+[ext_resource type="PackedScene" path="res://levels/props/greeblies/Trashbag.tscn" id="6_lh335"]
 [ext_resource type="Script" uid="uid://bx8sqineax63u" path="res://src/Mask/MaskSpawner.cs" id="7_d5x7l"]
 [ext_resource type="PackedScene" uid="uid://27h8ms28togi" path="res://src/Mask/MaskPickup.tscn" id="8_rtcij"]
 [ext_resource type="Resource" uid="uid://bif5c1tl2gr2i" path="res://src/Mask/D_AllMasks.tres" id="8_ukwr8"]
@@ -176,14 +176,15 @@ SpawnAreaSize = Vector3(50, 10.04, 50)
 GameDurationSeconds = 90.0
 
 [node name="InRoundPlayerInfoContainer" type="HBoxContainer" parent="." unique_id=1143154661]
-anchors_preset = 7
+anchors_preset = -1
 anchor_left = 0.5
-anchor_top = 1.0
+anchor_top = 0.98600006
 anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -20.0
-offset_top = -40.0
-offset_right = 20.0
+anchor_bottom = 0.98600006
+offset_left = -19.0
+offset_top = -39.880127
+offset_right = 21.0
+offset_bottom = 0.11987305
 grow_horizontal = 2
 grow_vertical = 0
 theme_override_constants/separation = 32

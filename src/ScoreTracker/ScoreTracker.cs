@@ -47,22 +47,26 @@ public partial class ScoreTracker : Control {
   }
 
   private void DeclareWinner(List<Player> players) {
-    string winnerText;
+    string winnerName = "";
+    bool hasTie = false;
+    bool hasWinner = false;
+
     if (players.Count == 0) {
-      winnerText = "No players!";
+      winnerName = "No players!";
     } else {
       var winner = players.OrderByDescending(p => p.Score).First();
       var topScore = winner.Score;
       var tied = players.Where(p => p.Score == topScore).ToList();
 
       if (tied.Count > 1) {
-        winnerText = "TIE!";
+        hasTie = true;
       } else {
-        winnerText = $"Winner: {winner.NamePlate.Text}!";
+        winnerName = winner.NamePlate.Text;
+        hasWinner = true;
       }
     }
 
-    WinnerOverlay.SetWinnerText(winnerText);
+    WinnerOverlay.SetWinState(winnerName, hasTie, hasWinner);
     GetTree().ChangeSceneToPacked(WinnerScreenScene);
   }
 }
