@@ -3,7 +3,6 @@
 [ext_resource type="Script" uid="uid://b2yg1oih5ffa5" path="res://src/Player/Player.cs" id="1_f76hg"]
 [ext_resource type="Script" uid="uid://c1rrgldwnt40" path="res://src/Player/PlayerController.cs" id="2_32haq"]
 [ext_resource type="Script" uid="uid://dkoc23piooi7c" path="res://player/SpriteParent.cs" id="3_4jfri"]
-[ext_resource type="Texture2D" uid="uid://buya8506ukc0l" path="res://player/assets/head.png" id="3_077pa"]
 [ext_resource type="Texture2D" uid="uid://ojhdl63j4jho" path="res://player/assets/frames_walking/frame_1.png" id="4_0hh6e"]
 [ext_resource type="Texture2D" uid="uid://dvsv0as8aic04" path="res://player/assets/frames_running/frame_1.png" id="4_4jfri"]
 [ext_resource type="Texture2D" uid="uid://cqj84jnat5roi" path="res://player/assets/frames_walking/frame_2.png" id="5_7rwuv"]
@@ -36,6 +35,7 @@
 [ext_resource type="Texture2D" uid="uid://d1va534q2b21g" path="res://player/assets/frames_gun/frame_7.png" id="18_yqyef"]
 [ext_resource type="Texture2D" uid="uid://cbv72mx5dbaqj" path="res://player/assets/frames_stab/frame_8.png" id="19_0fo2y"]
 [ext_resource type="Texture2D" uid="uid://0gwtbxxftkt4" path="res://player/assets/frames_gun/frame_8.png" id="19_5xqo2"]
+[ext_resource type="Texture2D" uid="uid://c13cjpmv1aca" path="res://player/assets/head_white.png" id="36_a453s"]
 [ext_resource type="AudioStream" uid="uid://dlfmani2wg4yr" path="res://assets/sfx/oof.mp3" id="37_a453s"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_bmjc0"]
@@ -159,7 +159,7 @@ animations = [{
 "speed": 10.0
 }]
 
-[node name="Player" type="CharacterBody3D" unique_id=1005422296 node_paths=PackedStringArray("NamePlate", "PlayerController", "SpriteParent", "Light", "OuchSfx") groups=["Player"]]
+[node name="Player" type="CharacterBody3D" unique_id=1005422296 node_paths=PackedStringArray("NamePlate", "PlayerController", "SpriteParent", "Light") groups=["Player"]]
 floor_constant_speed = true
 floor_block_on_wall = false
 script = ExtResource("1_f76hg")
@@ -167,7 +167,6 @@ NamePlate = NodePath("NamePlate/Name")
 PlayerController = NodePath("PlayerController")
 SpriteParent = NodePath("SpriteParent")
 Light = NodePath("OmniLight3D")
-OuchSfx = NodePath("OuchSfx")
 color = Color(0.8039216, 0, 0.92156863, 1)
 MaxSpeed = 2.0
 MinSpeed = 0.0
@@ -218,7 +217,7 @@ billboard = 1
 alpha_cut = 1
 alpha_antialiasing_mode = 2
 texture_filter = 4
-texture = ExtResource("3_077pa")
+texture = ExtResource("36_a453s")
 
 [node name="MaskSprite" type="Sprite3D" parent="SpriteParent" unique_id=576538117]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.074, -0.512, 0.15)
