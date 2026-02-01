@@ -247,6 +247,7 @@ omni_attenuation = 0.75
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="Camera3D" unique_id=1221620741]
 transform = Transform3D(-0.9183094, 0.38570714, -0.08909618, 0.045702085, -0.1202656, -0.9916892, -0.3932168, -0.9147494, 0.09281364, 0, 24.473022, -24.473022)
+light_color = Color(0.30876932, 0.3087694, 0.30876926, 1)
 light_energy = 0.2
 
 [connection signal="GameStarted" from="Lobby" to="MaskSpawner" method="_on_lobby_game_started"]
