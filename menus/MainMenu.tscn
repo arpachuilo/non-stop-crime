@@ -90,6 +90,6 @@ texture_focused = SubResource("AtlasTexture_lb38e")
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("6_e2awe")
-text = "A 2026 Global Game Jame game by Non-stop Crime"
+text = "A 2026 Global Game Jame game by The Cutting Room Floor"
 label_settings = SubResource("LabelSettings_m8c1o")
 horizontal_alignment = 1
