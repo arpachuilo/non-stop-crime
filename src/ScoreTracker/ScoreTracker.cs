@@ -62,7 +62,7 @@ public partial class ScoreTracker : Control {
       }
     }
 
-    WinnerScreen.SetWinnerText(winnerText);
+    WinnerOverlay.SetWinnerText(winnerText);
     GetTree().ChangeSceneToPacked(WinnerScreenScene);
   }
 }

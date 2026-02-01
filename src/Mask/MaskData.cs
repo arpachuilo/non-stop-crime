@@ -18,4 +18,5 @@ public partial class MaskData : Resource
     [Export] public bool Scorable {get; set; }
     [Export] public bool HasAnimation { get; set; } = false;
     [Export] public string Animation { get; set; } = null;
+    [Export] public bool ContactCapture { get; set; } = false;
 }

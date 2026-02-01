@@ -2,34 +2,25 @@
 - UI
   - In-round HUD 👉 Pretty good already, might need some scaling for 4K screens and general polish @ Floris
   - Tutorial 👉 Throw some text up in the lobby @ Floris
-  - Lobby 👉 Matthis is finishing assets @ Floris
   - Win screen 👉 Needs design still @ Floris
 - Gameplay
   - Finalize mask abilities + VFX 👉 Maybe add one or two more masks as a stretch goal
   - Build final level 👉 Floris: I'm pretty pleased with the current state, might add some more greeblies
   - Communicate which zones relate to which masks 👉 Are we still doing this?
   - Spawnpoint asset (tiny house colored in player color)
-  - Capture zones should maybe not be instant to capture
-  - Owning capture zones should give points over time
-  - Capture zones might have uncappable cooldown after being captured
 - Sound
   - SFX for abilities
   - Background music
 - Graphics/design
   - Replace wall assets with fences 👉 Nice to have tbh
   - Masks are hard to see 👉 Add cylinder with capture zone shader?
-  - Player characters are hard to see 👉 Dont shade them, or add light source to them
 - NPC's
-  - Reduce jittering
-  - Reduce spawnrate
-  - Add npc limit (max in scene at any point in time)
-- Bugs
-  - Projectiles entering a zone captures it for the player who shot it
+  - Reduce jittering 👉 don't allow instant direction changes
+  - Add npc limit 👉 max in scene at any point in time
 - Balance
   - Gun is too powerful
     - Reduce fire rate
     - Do not allow projectiles to penetrate walls
-  - Round timer is too long
 - User journey aka The Horizontal Vertical Slice
   - ✅ Launch game 
   - ✅ Go into lobby
@@ -43,7 +34,6 @@
   - Game restarts or goes back to lobby 👉 Add buttons to the win screen
 
 # Stretch goals
-- Main menu: button states
 - More than 4 masks
 
 # Graphics

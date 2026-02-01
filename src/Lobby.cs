@@ -22,7 +22,7 @@ public partial class Lobby : Node {
 
   [Export] public GoalZoneSpawner GoalZoneSpawner;
   [Export] public MaskSpawner MaskSpawner;
-  [Export] public Control LobbyOverlay;
+  [Export] public LobbyOverlay LobbyOverlay;
 
   public Dictionary<int, Player> JoypadToPlayer = new();
   public Player KBPlayer = null;
@@ -43,6 +43,9 @@ public partial class Lobby : Node {
       GoalZoneSpawner.PlayerSpawnLocations = SpawnPoints;
     if (MaskSpawner != null)
       MaskSpawner.PlayerSpawnLocations = SpawnPoints;
+
+    // Hide the in-round playerinfo until we start
+    PlayerInfoContainer.Visible = false;
   }
 
   public override void _Input(InputEvent @event) {
@@ -94,6 +97,9 @@ public partial class Lobby : Node {
 
   private void ToggleReady(Player player) {
     player.PlayerInfo.IsReady = !player.PlayerInfo.IsReady;
+
+    LobbyOverlay?.SetPlayerReadyState(Players.IndexOf(player) + 1, player.PlayerInfo.IsReady);
+
     CheckStartCondition();
   }
 
@@ -122,6 +128,9 @@ public partial class Lobby : Node {
       KBPlayer = player;
     else
       JoypadToPlayer[deviceId] = player;
+
+    LobbyOverlay?.SetPlayerActiveState(Players.IndexOf(player) + 1, true);
+    LobbyOverlay?.SetPlayerReadyState(Players.IndexOf(player) + 1, false);
   }
 
   private Vector3 GetNextSpawnPosition() {
@@ -160,6 +169,8 @@ public partial class Lobby : Node {
 
     if (LobbyOverlay != null)
       LobbyOverlay.Visible = false;
+
+    PlayerInfoContainer.Visible = true;
 
     foreach (var player in Players) {
       player.StartPlaying();

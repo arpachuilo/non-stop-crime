@@ -16,4 +16,5 @@ FireRate = 0.3
 Scorable = true
 HasAnimation = true
 Animation = "stab"
+ContactCapture = true
 metadata/_custom_type_script = "uid://cbwkmtyoylbwe"
