@@ -1,7 +1,12 @@
 using Godot;
+using System.Collections.Generic;
 
 public partial class Player : Character {
   [Signal] public delegate void PlayerResetEventHandler();
+
+  // Scoring constants - all point values defined here
+  public const int PointsPerPlayerKill = 5;
+  public const int PointsPerNPCCapture = 1;
 
   [Export]
   public Label3D NamePlate;
@@ -32,6 +37,9 @@ public partial class Player : Character {
   [Export]
   public Vector3 Spawn;
 
+  public List<Node3D> SpawnPoints { get; set; }
+  private RandomNumberGenerator _rng = new();
+
   [Export]
   public MaskData CurrentMask { get; set; }
 
@@ -55,6 +63,7 @@ public partial class Player : Character {
   public PlayerInfo PlayerInfo { get; set; }
 
   public override void _Ready() {
+    _rng.Randomize();
     SpriteParent ??= GetNode<SpriteParent>("SpriteParent");
     _camera ??= GetViewport().GetCamera3D();
     _baseMaxSpeed = MaxSpeed;
@@ -127,17 +136,33 @@ public partial class Player : Character {
   }
 
   private void Respawn() {
-    GlobalPosition = Spawn;
+    GlobalPosition = GetRandomSpawnPosition();
     SpriteParent.Visible = true;
     Light.Visible = true;
     SetPhysicsProcess(true);
     _isDead = false;
   }
 
+  private Vector3 GetRandomSpawnPosition() {
+    if (SpawnPoints == null || SpawnPoints.Count == 0)
+      return Spawn;
+
+    int index = _rng.RandiRange(0, SpawnPoints.Count - 1);
+    return SpawnPoints[index].GlobalPosition;
+  }
+
   public void AddScore(int points) {
     Score += points;
     PlayerInfo.ScoreOrReadyStatus.Text = Score.ToString();
     GD.Print($"Player {PlayerController?.DeviceId} scored {points} points (Total: {Score})");
+  }
+
+  public void AddScoreForPlayerKill() {
+    AddScore(PointsPerPlayerKill);
+  }
+
+  public void AddScoreForNPCCapture() {
+    AddScore(PointsPerNPCCapture);
   }
 
   public override Vector3 GetDirection() {

@@ -52,6 +52,7 @@ public partial class NPCGoalZone : Area3D
     private void Capture(Player player)
     {
         IsCompleted = true;
+        player.AddScoreForNPCCapture();
         EmitSignal(SignalName.Captured, player);
         _parentNPC?.OnGoalCaptured(player);
     }
