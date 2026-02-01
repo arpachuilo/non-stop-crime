@@ -10,6 +10,7 @@ script = ExtResource("3_jark5")
 MaskBits = 2
 Icon = ExtResource("1_utepg")
 Sprite = ExtResource("2_utepg")
+SpeedMultiplier = 1.5
 HasProjectile = true
 ProjectileScene = ExtResource("1_xqwmr")
 FireRate = 0.05

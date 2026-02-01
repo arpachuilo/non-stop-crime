@@ -10,6 +10,7 @@ region = Rect2(138, 85, 203, 155)
 
 [resource]
 script = ExtResource("2_xynlu")
+Name = "Gun Mask"
 MaskBits = 2
 Icon = SubResource("AtlasTexture_xynlu")
 Sprite = ExtResource("3_xsw4k")
