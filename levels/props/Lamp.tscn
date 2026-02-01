@@ -23,12 +23,10 @@ alpha_antialiasing_mode = 2
 texture_filter = 4
 sprite_frames = SubResource("SpriteFrames_ta7ci")
 
-[node name="OmniLight3D" type="OmniLight3D" parent="." unique_id=1679526219]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.1460127, 3.9454412, 0)
-visible = false
-light_color = Color(0.47508043, 0.4702974, 0, 1)
-omni_range = 12.0
-
 [node name="SpotLight3D" type="SpotLight3D" parent="." unique_id=1792735001]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -1.5025516, 4.113699, 0)
-light_color = Color(0.59807706, 0.59653616, 0, 1)
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -1.5025516, 4.005175, 0)
+light_color = Color(0.7019312, 0.6973995, 3.85046e-07, 1)
+light_energy = 2.409
+light_indirect_energy = 6.857
+light_size = 1.0
+spot_range = 8.0
