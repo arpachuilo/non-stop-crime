@@ -13,6 +13,16 @@
 [ext_resource type="Texture2D" uid="uid://doe5rxlfrbwns" path="res://menus/assets/player 3/player 3 box character.png" id="8_afcw3"]
 [ext_resource type="Texture2D" uid="uid://b6v33u3gdi2r7" path="res://menus/assets/player 4/player 4 box character.png" id="9_b7goe"]
 
+[sub_resource type="LabelSettings" id="LabelSettings_26b0x"]
+font = ExtResource("6_26b0x")
+font_size = 40
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_jin3t"]
+font = ExtResource("6_26b0x")
+font_size = 32
+font_color = Color(0, 0, 0, 1)
+
 [sub_resource type="LabelSettings" id="LabelSettings_smvte"]
 font = ExtResource("6_26b0x")
 font_size = 30
@@ -80,23 +90,27 @@ theme_override_constants/margin_bottom = 32
 layout_mode = 2
 theme_override_constants/separation = 40
 
-[node name="Label" type="Label" parent="LobbyMarginContainer/LobbyVBox" unique_id=1546027936]
+[node name="InstructionsVBox" type="VBoxContainer" parent="LobbyMarginContainer/LobbyVBox" unique_id=2077544291]
 layout_mode = 2
-text = "Hallo :)
 
-Je moeder"
+[node name="InstructionsHeader" type="Label" parent="LobbyMarginContainer/LobbyVBox/InstructionsVBox" unique_id=1546027936]
+layout_mode = 2
+text = "Instructions"
+label_settings = SubResource("LabelSettings_26b0x")
+horizontal_alignment = 1
+
+[node name="InstructionsBody" type="Label" parent="LobbyMarginContainer/LobbyVBox/InstructionsVBox" unique_id=1142323245]
+layout_mode = 2
+text = "- Be gay
+- Do crime"
+label_settings = SubResource("LabelSettings_jin3t")
+horizontal_alignment = 1
 
 [node name="Spacer" type="Control" parent="LobbyMarginContainer/LobbyVBox" unique_id=1403044763]
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 
 [node name="PlayersVBox" type="VBoxContainer" parent="LobbyMarginContainer/LobbyVBox" unique_id=936636568]
-layout_mode = 2
-
-[node name="InstructionsLabel" type="Label" parent="LobbyMarginContainer/LobbyVBox/PlayersVBox" unique_id=1418649247]
-layout_mode = 2
-
-[node name="Control" type="Control" parent="LobbyMarginContainer/LobbyVBox/PlayersVBox" unique_id=311910467]
 layout_mode = 2
 
 [node name="PressStartRect" type="TextureRect" parent="LobbyMarginContainer/LobbyVBox/PlayersVBox" unique_id=1778009454]
