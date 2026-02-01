@@ -15,7 +15,7 @@ public partial class LobbyOverlay : Control {
   private TextureRect _player3ReadyIcon;
   private TextureRect _player4ReadyIcon;
 
-  private Dictionary<Player, int> PlayerToIndex = new();
+  private Dictionary<Player, int> PlayerToIndex = [];
 
   public override void _Ready() {
     _player1ReadyIcon = Player1VBox.GetNodeOrNull<TextureRect>("ReadyState");
@@ -27,6 +27,74 @@ public partial class LobbyOverlay : Control {
     Player2VBox.Visible = false;
     Player3VBox.Visible = false;
     Player4VBox.Visible = false;
+  }
+
+  public void SetPlayerName(Player player, string name) {
+    int playerIndex;
+    if (PlayerToIndex.ContainsKey(player)) {
+      playerIndex = PlayerToIndex[player];
+    } else {
+      playerIndex = PlayerToIndex.Count + 1;
+      PlayerToIndex[player] = playerIndex;
+    }
+
+    switch (playerIndex) {
+      case 1:
+        var nameLabel1 = Player1VBox.GetNodeOrNull<Label>("PlayerNameLabel");
+        if (nameLabel1 != null)
+          nameLabel1.Text = name;
+        break;
+      case 2:
+        var nameLabel2 = Player2VBox.GetNodeOrNull<Label>("PlayerNameLabel");
+        if (nameLabel2 != null)
+          nameLabel2.Text = name;
+        break;
+      case 3:
+        var nameLabel3 = Player3VBox.GetNodeOrNull<Label>("PlayerNameLabel");
+        if (nameLabel3 != null)
+          nameLabel3.Text = name;
+        break;
+      case 4:
+        var nameLabel4 = Player4VBox.GetNodeOrNull<Label>("PlayerNameLabel");
+        if (nameLabel4 != null)
+          nameLabel4.Text = name;
+        break;
+      default:
+        GD.PrintErr($"LobbyOverlay::SetPlayerName: Invalid player index: {playerIndex}");
+        break;
+    }
+  }
+
+  public void SetPlayerColor(Player player, Color color) {
+    int playerIndex;
+    if (PlayerToIndex.ContainsKey(player)) {
+      playerIndex = PlayerToIndex[player];
+    } else {
+      playerIndex = PlayerToIndex.Count + 1;
+      PlayerToIndex[player] = playerIndex;
+    }
+
+    switch (playerIndex) {
+      case 1:
+        var p1BoxChar = Player1VBox.GetNodeOrNull<TextureRect>("Player1Box/BoxChar");
+        p1BoxChar.Modulate = color;
+        break;
+      case 2:
+        var p2BoxChar = Player2VBox.GetNodeOrNull<TextureRect>("Player2Box/BoxChar");
+        p2BoxChar.Modulate = color;
+        break;
+      case 3:
+        var p3BoxChar = Player3VBox.GetNodeOrNull<TextureRect>("Player3Box/BoxChar");
+        p3BoxChar.Modulate = color;
+        break;
+      case 4:
+        var p4BoxChar = Player4VBox.GetNodeOrNull<TextureRect>("Player4Box/BoxChar");
+        p4BoxChar.Modulate = color;
+        break;
+      default:
+        GD.PrintErr($"LobbyOverlay::SetPlayerColor: Invalid player index: {playerIndex}");
+        break;
+    }
   }
 
   public void SetPlayerActiveState(Player player, bool isActive) {
@@ -59,6 +127,7 @@ public partial class LobbyOverlay : Control {
 
   public void SetPlayerReadyState(Player player, bool isReady) {
     int playerIndex;
+
     if (PlayerToIndex.ContainsKey(player)) {
       playerIndex = PlayerToIndex[player];
     } else {

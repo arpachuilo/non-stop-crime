@@ -7,10 +7,17 @@
 [ext_resource type="Texture2D" uid="uid://bysctvb4w7krb" path="res://menus/assets/player 1/player 1 box BG.png" id="3_faoog"]
 [ext_resource type="Texture2D" uid="uid://ccsgsvf1lavgs" path="res://menus/assets/player 1/player 1 box character.png" id="4_26b0x"]
 [ext_resource type="Texture2D" uid="uid://bfon3i13qlrov" path="res://menus/assets/player 1/player 1 box outline.png" id="5_smvte"]
+[ext_resource type="FontFile" uid="uid://dtb16dgkgphjp" path="res://menus/assets/fonts/Chalkduster.ttf" id="6_26b0x"]
 [ext_resource type="Texture2D" uid="uid://00cvnt1nonnr" path="res://menus/assets/ready_maybe.png" id="6_jin3t"]
 [ext_resource type="Texture2D" uid="uid://b2j83q1vtaecg" path="res://menus/assets/player 2/player 2 box character.png" id="7_ao7qt"]
 [ext_resource type="Texture2D" uid="uid://doe5rxlfrbwns" path="res://menus/assets/player 3/player 3 box character.png" id="8_afcw3"]
 [ext_resource type="Texture2D" uid="uid://b6v33u3gdi2r7" path="res://menus/assets/player 4/player 4 box character.png" id="9_b7goe"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_smvte"]
+font = ExtResource("6_26b0x")
+font_size = 30
+font_color = Color(0, 0, 0, 1)
+shadow_size = 0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_fex41"]
 atlas = ExtResource("3_faoog")
@@ -71,7 +78,7 @@ offset_bottom = 214.16943
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(338, 213)
-theme_override_constants/separation = 40
+theme_override_constants/separation = 0
 
 [node name="PressStartRect" type="TextureRect" parent="LobbyVBox" unique_id=1778009454]
 layout_mode = 2
@@ -84,6 +91,16 @@ theme_override_constants/separation = 60
 
 [node name="Player1VBox" type="VBoxContainer" parent="LobbyVBox/PlayerHBox" unique_id=945769024]
 layout_mode = 2
+theme_override_constants/separation = 15
+
+[node name="PlayerNameLabel" type="Label" parent="LobbyVBox/PlayerHBox/Player1VBox" unique_id=1558943588]
+custom_minimum_size = Vector2(200, 100)
+layout_mode = 2
+text = "Player 1"
+label_settings = SubResource("LabelSettings_smvte")
+horizontal_alignment = 1
+vertical_alignment = 2
+autowrap_mode = 3
 
 [node name="Player1Box" type="CenterContainer" parent="LobbyVBox/PlayerHBox/Player1VBox" unique_id=857128759]
 layout_mode = 2
@@ -106,6 +123,16 @@ texture = ExtResource("6_jin3t")
 
 [node name="Player2VBox" type="VBoxContainer" parent="LobbyVBox/PlayerHBox" unique_id=1620463471]
 layout_mode = 2
+theme_override_constants/separation = 15
+
+[node name="PlayerNameLabel" type="Label" parent="LobbyVBox/PlayerHBox/Player2VBox" unique_id=1087663533]
+custom_minimum_size = Vector2(200, 100)
+layout_mode = 2
+text = "Player 2"
+label_settings = SubResource("LabelSettings_smvte")
+horizontal_alignment = 1
+vertical_alignment = 2
+autowrap_mode = 3
 
 [node name="Player2Box" type="CenterContainer" parent="LobbyVBox/PlayerHBox/Player2VBox" unique_id=1623551962]
 layout_mode = 2
@@ -128,6 +155,16 @@ texture = ExtResource("6_jin3t")
 
 [node name="Player3VBox" type="VBoxContainer" parent="LobbyVBox/PlayerHBox" unique_id=1330862848]
 layout_mode = 2
+theme_override_constants/separation = 15
+
+[node name="PlayerNameLabel" type="Label" parent="LobbyVBox/PlayerHBox/Player3VBox" unique_id=1909070943]
+custom_minimum_size = Vector2(200, 100)
+layout_mode = 2
+text = "Player 3"
+label_settings = SubResource("LabelSettings_smvte")
+horizontal_alignment = 1
+vertical_alignment = 2
+autowrap_mode = 3
 
 [node name="Player3Box" type="CenterContainer" parent="LobbyVBox/PlayerHBox/Player3VBox" unique_id=1027594959]
 layout_mode = 2
@@ -150,6 +187,16 @@ texture = ExtResource("6_jin3t")
 
 [node name="Player4VBox" type="VBoxContainer" parent="LobbyVBox/PlayerHBox" unique_id=1175791203]
 layout_mode = 2
+theme_override_constants/separation = 15
+
+[node name="PlayerNameLabel" type="Label" parent="LobbyVBox/PlayerHBox/Player4VBox" unique_id=1682077509]
+custom_minimum_size = Vector2(200, 100)
+layout_mode = 2
+text = "Player 4"
+label_settings = SubResource("LabelSettings_smvte")
+horizontal_alignment = 1
+vertical_alignment = 2
+autowrap_mode = 3
 
 [node name="Player4Box" type="CenterContainer" parent="LobbyVBox/PlayerHBox/Player4VBox" unique_id=1498215136]
 layout_mode = 2

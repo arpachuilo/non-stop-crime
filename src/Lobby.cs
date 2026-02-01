@@ -114,23 +114,29 @@ public partial class Lobby : Node {
     player.PlayerController.IsKB = isKB;
     player.Position = spawnPosition;
     player.Spawn = spawnPosition;
-    player.NamePlate.Text = GetUniqueName();
-    playerInfo.NameLabel.Text = player.NamePlate.Text;
+
+    string uniqueName = GetUniqueName();
+    player.NamePlate.Text = uniqueName;
+    playerInfo.NameLabel.Text = uniqueName;
     playerInfo.ScoreOrReadyStatus.Text = "Not Ready";
     player.PlayerInfo = playerInfo;
+
     var playerColor = GetNextColor();
     if (!isKB) Input.SetJoyLight(deviceId, playerColor);
     player.PlayerInfo.UIColor = playerColor;
     player.color = playerColor;
     PlayerContainer.AddChild(player);
 
-    if (isKB)
+    if (isKB) {
       KBPlayer = player;
-    else
+    } else {
       JoypadToPlayer[deviceId] = player;
+    }
 
     LobbyOverlay?.SetPlayerActiveState(player, true);
     LobbyOverlay?.SetPlayerReadyState(player, false);
+    LobbyOverlay?.SetPlayerName(player, uniqueName);
+    LobbyOverlay?.SetPlayerColor(player, playerColor);
   }
 
   private Vector3 GetNextSpawnPosition() {
