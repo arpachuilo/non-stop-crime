@@ -11,7 +11,8 @@ public partial class Lobby : Node {
   [Export] public Control PlayerInfoContainer;
   [Export] public Label Safetymode;
   [Export] public int MinPlayersToStart { get; set; } = 2;
-  [Export] public Godot.Collections.Array<Color> PlayerColors { get; set; } = [
+  [Export]
+  public Godot.Collections.Array<Color> PlayerColors { get; set; } = [
     Colors.IndianRed,
     Colors.Azure,
     Colors.LimeGreen,
@@ -49,20 +50,24 @@ public partial class Lobby : Node {
   }
 
   public override void _Input(InputEvent @event) {
-    if (@event is InputEventKey hiddenEvent && hiddenEvent.Keycode == Key.Key1) {
-      if (hiddenEvent.IsReleased()) {
-        Canned.UseSafeNames = !Canned.UseSafeNames;
-        Safetymode.Text = Canned.UseSafeNames ? "S" : "";
+    if (@event is InputEventKey hiddenEvent) {
+      if (hiddenEvent.Keycode == Key.Key1) {
+        if (hiddenEvent.IsReleased()) {
+          Canned.UseSafeNames = !Canned.UseSafeNames;
+          Safetymode.Text = Canned.UseSafeNames ? "S" : "";
+        }
       }
-
+      if (hiddenEvent.Keycode == Key.Key0) {
+        if (_gameStarted) {
+          ReturnToLobby();
+          return;
+        }
+      }
       return;
     }
 
     if (@event is InputEventJoypadButton joypadEvent && joypadEvent.ButtonIndex == JoyButton.Start && joypadEvent.Pressed) {
-      if (_gameStarted) {
-        ReturnToLobby();
-        return;
-      }
+
       HandleJoypadInput(joypadEvent.Device);
     } else if (@event is InputEventKey keyEvent && keyEvent.Pressed) {
       if (keyEvent.Keycode == Key.Escape && _gameStarted) {

@@ -196,6 +196,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 18.037977)
 script = ExtResource("7_d5x7l")
 SpawnAreaSize = Vector3(50, 8.11, 50)
 MaskPickupScene = ExtResource("8_rtcij")
+MinDistanceFromZones = 6.0
 PlayerSpawnLocations = [NodePath("../Players")]
 _availableMasks = ExtResource("8_ukwr8")
 
@@ -273,6 +274,7 @@ transform = Transform3D(0.9999997, 0, 0, 0, 1, 0, 0, 0, 0.9999997, 22.59651, 0.0
 [node name="Camera3D" type="Camera3D" parent="." unique_id=170340263]
 transform = Transform3D(1, 0, 0, 0, 0.7071068, 0.7071068, 0, -0.7071068, 0.7071068, 0, 22.298, 49.86)
 script = ExtResource("4_rtcij")
+MaxDistance = 40.0
 
 [node name="OmniLight3D" type="OmniLight3D" parent="Camera3D" unique_id=154900804]
 transform = Transform3D(1, 0, 0, 0, 0.70710677, -0.70710677, 0, 0.70710677, 0.70710677, 0, 0, 0)
