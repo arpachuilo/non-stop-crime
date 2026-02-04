@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://bfhy0yqu1ly0i" path="res://menus/assets/Lobby_BG.png" id="2_hpw7k"]
 [ext_resource type="FontFile" uid="uid://dtb16dgkgphjp" path="res://menus/assets/fonts/Chalkduster.ttf" id="3_i63y4"]
 [ext_resource type="Texture2D" uid="uid://bcgmmpfjbihni" path="res://menus/assets/win_screen.png" id="3_nea7y"]
-[ext_resource type="Theme" uid="uid://cu4n20cc1wscg" path="res://menus/assets/DefaultButton.tres" id="5_i63y4"]
+[ext_resource type="Theme" uid="uid://cu4n20cc1wscg" path="res://menus/assets/styles/DefaultButton.tres" id="5_i63y4"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_kfyhy"]
 font = ExtResource("3_i63y4")

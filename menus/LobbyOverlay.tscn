@@ -15,7 +15,8 @@
 [ext_resource type="Texture2D" uid="uid://doe5rxlfrbwns" path="res://menus/assets/player 3/player 3 box character.png" id="8_afcw3"]
 [ext_resource type="Texture2D" uid="uid://bjlfomyakchel" path="res://menus/assets/kill_npc.png" id="8_fex41"]
 [ext_resource type="Texture2D" uid="uid://b6v33u3gdi2r7" path="res://menus/assets/player 4/player 4 box character.png" id="9_b7goe"]
-[ext_resource type="LabelSettings" uid="uid://ddvbmgecanm0u" path="res://menus/assets/DefaultLabel.tres" id="9_pwkj3"]
+[ext_resource type="LabelSettings" uid="uid://ddvbmgecanm0u" path="res://menus/assets/styles/DefaultLabel.tres" id="9_pwkj3"]
+[ext_resource type="PackedScene" uid="uid://ccbnbd86csomt" path="res://menus/StartButtonHint.tscn" id="11_b7goe"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_26b0x"]
 font = ExtResource("6_26b0x")
@@ -129,7 +130,7 @@ theme_override_constants/margin_bottom = 32
 
 [node name="LobbyVBox" type="VBoxContainer" parent="LobbyMarginContainer" unique_id=1299373083]
 layout_mode = 2
-theme_override_constants/separation = 40
+theme_override_constants/separation = 20
 
 [node name="InstructionsVBox" type="VBoxContainer" parent="LobbyMarginContainer/LobbyVBox" unique_id=2077544291]
 layout_mode = 2
@@ -214,7 +215,7 @@ vertical_alignment = 1
 
 [node name="ExtraInstructionsLabel" type="Label" parent="LobbyMarginContainer/LobbyVBox/InstructionsVBox" unique_id=1502038385]
 layout_mode = 2
-text = "Pick up a mask from the floor to gain attack power!
+text = "Pick up a mask from the floor to gain an attack power!
 Use your left stick to move around - you can't stop your character once you start moving!"
 label_settings = SubResource("LabelSettings_afcw3")
 horizontal_alignment = 1
@@ -226,10 +227,19 @@ layout_mode = 2
 [node name="PlayersVBox" type="VBoxContainer" parent="LobbyMarginContainer/LobbyVBox" unique_id=936636568]
 layout_mode = 2
 
-[node name="PressStartRect" type="TextureRect" parent="LobbyMarginContainer/LobbyVBox/PlayersVBox" unique_id=1778009454]
+[node name="PressStartHBox" type="HBoxContainer" parent="LobbyMarginContainer/LobbyVBox/PlayersVBox" unique_id=1681091528]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+theme_override_constants/separation = 50
+alignment = 1
+
+[node name="PressStartRect" type="TextureRect" parent="LobbyMarginContainer/LobbyVBox/PlayersVBox/PressStartHBox" unique_id=1778009454]
 layout_mode = 2
 texture = ExtResource("2_0r6g1")
 stretch_mode = 3
+
+[node name="StartButtonHint" parent="LobbyMarginContainer/LobbyVBox/PlayersVBox/PressStartHBox" unique_id=1874281591 instance=ExtResource("11_b7goe")]
+layout_mode = 2
 
 [node name="PlayerHBox" type="HBoxContainer" parent="LobbyMarginContainer/LobbyVBox/PlayersVBox" unique_id=184169637]
 layout_mode = 2
@@ -363,3 +373,10 @@ texture = SubResource("AtlasTexture_f416k")
 [node name="ReadyState" type="TextureRect" parent="LobbyMarginContainer/LobbyVBox/PlayersVBox/PlayerHBox/Player4VBox" unique_id=1444027980]
 layout_mode = 2
 texture = ExtResource("6_jin3t")
+
+[node name="AdditionalInstructionsLabel" type="Label" parent="LobbyMarginContainer/LobbyVBox" unique_id=303192954]
+layout_mode = 2
+text = "Max 4 players"
+label_settings = ExtResource("9_pwkj3")
+horizontal_alignment = 1
+vertical_alignment = 1

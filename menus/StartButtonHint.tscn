@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://ccbnbd86csomt"]
+
+[ext_resource type="Texture2D" uid="uid://ch0s6x4itshy4" path="res://menus/assets/slop/dualsense.png" id="1_h7wbj"]
+[ext_resource type="Texture2D" uid="uid://83r67gfcbu24" path="res://menus/assets/slop/xbone.png" id="2_3gucm"]
+
+[sub_resource type="AnimatedTexture" id="AnimatedTexture_h7wbj"]
+frames = 2
+frame_0/texture = ExtResource("1_h7wbj")
+frame_0/duration = 2.0
+frame_1/texture = ExtResource("2_3gucm")
+frame_1/duration = 2.0
+
+[node name="StartButtonHint" type="Control" unique_id=1874281591]
+layout_mode = 3
+anchors_preset = 0
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=692035279]
+layout_mode = 0
+offset_right = 150.0
+offset_bottom = 100.0
+texture = SubResource("AnimatedTexture_h7wbj")
+expand_mode = 5
