@@ -25,9 +25,9 @@ public partial class Player : Character {
   public int Score {
     get => _score;
     set {
-        int diff = value - _score;
-        _score = value;
-        PlayerInfo.AnimateScore(diff);
+      int diff = value - _score;
+      _score = value;
+      PlayerInfo.AnimateScore(diff);
     }
   }
 

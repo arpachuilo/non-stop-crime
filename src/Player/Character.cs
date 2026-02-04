@@ -10,8 +10,7 @@ using Godot;
 /// - GetDirection()
 /// - LookAt()
 /// </summary>
-public partial class Character : CharacterBody3D
-{
+public partial class Character : CharacterBody3D {
   [Export]
   public Vector3 Drag { get; set; } = Vector3.One * 10f;
 
@@ -35,25 +34,21 @@ public partial class Character : CharacterBody3D
   protected float _collisionCooldown = 0f;
   private const float CollisionCooldownDuration = 0.3f;
 
-  public Vector3 PreviousLocation
-  {
+  public Vector3 PreviousLocation {
     get => _previousPosition;
   }
 
-  public virtual Vector3 GetDirection()
-  {
+  public virtual Vector3 GetDirection() {
     return Vector3.Zero;
   }
 
-  public override void _PhysicsProcess(double delta)
-  {
+  public override void _PhysicsProcess(double delta) {
     // Get what our "up" vector is
     var up = -GetGravity().Normalized();
     var direction = GetDirection();
 
     // Acceleration
-    if (direction != Vector3.Zero)
-    {
+    if (direction != Vector3.Zero) {
       _currentSpeed = Mathf.Clamp(Mathf.MoveToward(_currentSpeed, MaxSpeed, AccelerationRate * (float)delta), MinSpeed, MaxSpeed);
     }
 
@@ -69,26 +64,22 @@ public partial class Character : CharacterBody3D
     Vector3 verticalVelocity = _velocity - horizontalVelocity;
 
     // Handle Ceiling Hits
-    if (IsOnCeiling())
-    {
+    if (IsOnCeiling()) {
       verticalVelocity = Vector3.Zero;
     }
 
     // Handle gravity with terminal velocity
-    if (!IsOnFloor())
-    {
+    if (!IsOnFloor()) {
       Vector3 gravityDir = _gravity.Normalized();
       float currentFallSpeed = verticalVelocity.Dot(gravityDir); // Negative because we're falling
 
       // Only apply more gravity if we haven't reached terminal velocity
-      if (currentFallSpeed < _terminalVelocity)
-      {
+      if (currentFallSpeed < _terminalVelocity) {
         float gravityMultiplier = 2.5f; // Increased initial acceleration for snappier feel
         verticalVelocity += gravityMultiplier * _gravity * (float)delta;
 
         // Clamp to terminal velocity
-        if (currentFallSpeed > _terminalVelocity)
-        {
+        if (currentFallSpeed > _terminalVelocity) {
           verticalVelocity = gravityDir * _terminalVelocity;
         }
       }
@@ -112,21 +103,17 @@ public partial class Character : CharacterBody3D
     MoveAndSlide();
 
     // Deceleration collision detection
-    if (_collisionCooldown > 0)
-    {
+    if (_collisionCooldown > 0) {
       _collisionCooldown -= (float)delta;
     }
 
-    if (GetSlideCollisionCount() > 0 && _collisionCooldown <= 0)
-    {
-      for (int i = 0; i < GetSlideCollisionCount(); i++)
-      {
+    if (GetSlideCollisionCount() > 0 && _collisionCooldown <= 0) {
+      for (int i = 0; i < GetSlideCollisionCount(); i++) {
         var collision = GetSlideCollision(i);
         var normal = collision.GetNormal();
         float verticalComponent = Mathf.Abs(normal.Dot(UpDirection));
 
-        if (verticalComponent < 0.5f)
-        {  // Wall (not floor/ceiling)
+        if (verticalComponent < 0.5f) {  // Wall (not floor/ceiling)
           _currentSpeed = Mathf.Max(_currentSpeed * CollisionSpeedPenalty, CollisionMinSpeedThreshold);
           _collisionCooldown = CollisionCooldownDuration;
           break;
@@ -135,13 +122,11 @@ public partial class Character : CharacterBody3D
     }
 
     // Debug
-    if (_displayGravity)
-    {
+    if (_displayGravity) {
       DebugDraw3D.DrawArrow(GlobalPosition, GlobalPosition + _gravity.LimitLength(2f), Colors.Orange);
     }
 
-    if (_displayVelocity)
-    {
+    if (_displayVelocity) {
       DebugDraw3D.DrawArrow(GlobalPosition, GlobalPosition + horizontalVelocity.LimitLength(2f), Colors.Red);
       DebugDraw3D.DrawArrow(GlobalPosition, GlobalPosition + verticalVelocity.LimitLength(2f), Colors.Green);
     }

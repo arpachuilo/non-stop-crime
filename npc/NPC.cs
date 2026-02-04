@@ -1,8 +1,7 @@
 using Godot;
 using System.Linq;
 
-public partial class NPC : Character
-{
+public partial class NPC : Character {
   [Export]
   public SpriteParent SpriteParent;
 
@@ -28,14 +27,12 @@ public partial class NPC : Character
 
   private bool _isScared = false;
 
-  static NPC()
-  {
+  static NPC() {
     _rng = new RandomNumberGenerator();
     _rng.Randomize();
   }
 
-  public override void _Ready()
-  {
+  public override void _Ready() {
     SpriteParent ??= GetNode<SpriteParent>("SpriteParent");
     VoicePlayer ??= GetNodeOrNull<AudioStreamPlayer3D>("VoicePlayer");
     _deathTexture ??= GD.Load<Texture2D>("res://player/assets/death.png");
@@ -48,8 +45,7 @@ public partial class NPC : Character
     PlayRandomVoice();
   }
 
-  private void PlayRandomVoice()
-  {
+  private void PlayRandomVoice() {
     if (VoiceClips.Count == 0 || VoicePlayer == null) return;
 
     int index = _rng.RandiRange(0, VoiceClips.Count - 1);
@@ -58,40 +54,32 @@ public partial class NPC : Character
     VoicePlayer.Play();
   }
 
-  private void UpdateFaceExpression(bool playerNearby)
-  {
-    if (playerNearby && !_isScared)
-    {
+  private void UpdateFaceExpression(bool playerNearby) {
+    if (playerNearby && !_isScared) {
       _isScared = true;
       SpriteParent?.ApplyMaskTexture(_scaredFaceTexture);
-    }
-    else if (!playerNearby && _isScared)
-    {
+    } else if (!playerNearby && _isScared) {
       _isScared = false;
       SpriteParent?.ApplyMaskTexture(_happyFaceTexture);
     }
   }
 
-  public override Vector3 GetDirection()
-  {
+  public override Vector3 GetDirection() {
     if (IsCaptured)
       return Vector3.Zero;
 
     var players = GetTree().GetNodesInGroup(Group.Player).Cast<Player>().ToList();
     Player closest = null;
     var minRadius = AggroRadius * 2f;
-    foreach (var player in players)
-    {
+    foreach (var player in players) {
       var distance = GlobalPosition.DistanceTo(player.GlobalPosition);
-      if (distance < AggroRadius && distance < minRadius)
-      {
+      if (distance < AggroRadius && distance < minRadius) {
         closest = player;
         minRadius = distance;
       }
     }
 
-    if (closest != null)
-    {
+    if (closest != null) {
       UpdateFaceExpression(true);
       return -(closest.GlobalPosition - GlobalPosition).Normalized();
     }
@@ -104,10 +92,8 @@ public partial class NPC : Character
   public bool IsCaptured { get; private set; } = false;
   public Player CapturedBy { get; private set; } = null;
 
-  public override void _PhysicsProcess(double delta)
-  {
-    if (_lockOnFloor && IsOnFloor())
-    {
+  public override void _PhysicsProcess(double delta) {
+    if (_lockOnFloor && IsOnFloor()) {
       AxisLockLinearX = true;
       AxisLockLinearY = true;
       AxisLockLinearZ = true;
@@ -119,8 +105,7 @@ public partial class NPC : Character
   }
 
   private bool _lockOnFloor = false;
-  public void OnGoalCaptured(Player player)
-  {
+  public void OnGoalCaptured(Player player) {
     OofSfx?.Play();
     IsCaptured = true;
     CapturedBy = player;
@@ -131,16 +116,13 @@ public partial class NPC : Character
     GD.Print($"NPC {NPCName} was captured by player {player.PlayerController.DeviceId}");
   }
 
-  public void Kill()
-  {
-    var timer = new Timer
-    {
+  public void Kill() {
+    var timer = new Timer {
       Autostart = true,
       WaitTime = 0.5f
     };
 
-    timer.Timeout += () =>
-    {
+    timer.Timeout += () => {
       QueueFree();
     };
   }

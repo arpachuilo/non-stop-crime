@@ -5,8 +5,7 @@ using System.Linq;
 /// <summary>
 /// Handle spawning in players for level based joypad
 /// </summary>
-public partial class LocalMultiplayerLevel : Node
-{
+public partial class LocalMultiplayerLevel : Node {
   [Export]
   public PackedScene PlayerScene;
 
@@ -28,25 +27,20 @@ public partial class LocalMultiplayerLevel : Node
 
   public Player KBPlayer = null;
 
-  public List<Player> Players
-  {
+  public List<Player> Players {
     get => [.. JoypadToPlayer.Values, .. KBPlayer != null ? new[] { KBPlayer } : []];
   }
 
-  public override void _Input(InputEvent @event)
-  {
+  public override void _Input(InputEvent @event) {
     // Handle potential new joypad player
-    if (@event is InputEventJoypadButton joypadEvent)
-    {
+    if (@event is InputEventJoypadButton joypadEvent) {
       // Not start
-      if (joypadEvent.ButtonIndex != JoyButton.Start)
-      {
+      if (joypadEvent.ButtonIndex != JoyButton.Start) {
         return;
       }
 
       // Already assigned
-      if (JoypadToPlayer.ContainsKey(joypadEvent.Device))
-      {
+      if (JoypadToPlayer.ContainsKey(joypadEvent.Device)) {
         var joyPlayer = JoypadToPlayer[joypadEvent.Device];
         if (joyPlayer.PlayerInfo.IsPlaying) return;
         joyPlayer.PlayerInfo.IsReady = !joyPlayer.PlayerInfo.IsReady;
@@ -57,17 +51,14 @@ public partial class LocalMultiplayerLevel : Node
       JoypadToPlayer[joypadEvent.Device] = player;
     }
 
-    if (@event is InputEventKey keyEvent)
-    {
+    if (@event is InputEventKey keyEvent) {
       // Not escape
-      if (keyEvent.Keycode != Key.Enter)
-      {
+      if (keyEvent.Keycode != Key.Enter) {
         return;
       }
 
       // Already assigned
-      if (KBPlayer != null)
-      {
+      if (KBPlayer != null) {
         if (KBPlayer.PlayerInfo.IsPlaying) return;
         KBPlayer.PlayerInfo.IsReady = !KBPlayer.PlayerInfo.IsReady;
         return;
@@ -78,12 +69,10 @@ public partial class LocalMultiplayerLevel : Node
     }
   }
 
-  private Player AddPlayer(int deviceId, bool isKB = false)
-  {
+  private Player AddPlayer(int deviceId, bool isKB = false) {
     var spawnPosition = new Vector3(0, 1, 0);
 
-    if (SpawnLocations.Count > 0)
-    {
+    if (SpawnLocations.Count > 0) {
       spawnPosition = SpawnLocations[0].Position;
       SpawnLocations.RemoveAt(0);
     }
@@ -111,8 +100,7 @@ public partial class LocalMultiplayerLevel : Node
     return player;
   }
 
-  private void RemovePlayer(int id, bool isKB = false)
-  {
+  private void RemovePlayer(int id, bool isKB = false) {
     var player = isKB ? KBPlayer : JoypadToPlayer.GetValueOrDefault(id, null);
 
     if (player == null) return;
@@ -123,12 +111,9 @@ public partial class LocalMultiplayerLevel : Node
 
     // Cleanup supporting structures
     PlayerToInfo.Remove(player);
-    if (isKB)
-    {
+    if (isKB) {
       KBPlayer = null;
-    }
-    else
-    {
+    } else {
       JoypadToPlayer.Remove(id);
     }
   }

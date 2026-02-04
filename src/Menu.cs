@@ -21,6 +21,6 @@ public partial class Menu : Control {
 
   private void ChangeLevel() {
     LevelManager.ChangeLevel(LevelScene);
-	StartButton.Disabled = true;
+    StartButton.Disabled = true;
   }
 }
